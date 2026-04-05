@@ -1,19 +1,19 @@
 // Plaza Steel & Crockery - Service Worker
-const CACHE_NAME = 'plaza-rate-list-v2';
+const CACHE_NAME = 'plaza-rate-list-v4';
 
 const urlsToCache = [
     './',
-    './public/index.html',
-    './public/admin-login.html',
-    './public/admin-dashboard.html',
-    './public/portal.html',
-    './public/offline.html',
-    './list/iteam list.json',
+    './index.html',
+    './admin-login.html',
+    './admin-dashboard.html',
+    './portal.html',
+    './data/items.json',
     './manifest.json',
     './cache/logo.png',
     './cache/app icon.png',
-    './assets/css/animations.css',
     './assets/css/style.css',
+    './assets/css/animations.css',
+    './assets/js/main.js',
     './assets/js/search.js',
     './assets/js/pwa.js'
 ];

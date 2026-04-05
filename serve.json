@@ -1,11 +1,12 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/public/index.html" },
-    { "source": "/index.html", "destination": "/public/index.html" },
+    { "source": "/", "destination": "/public.html" },
+    { "source": "/index.html", "destination": "/public.html" },
     { "source": "/admin-login", "destination": "/public/admin-login.html" },
     { "source": "/admin-dashboard", "destination": "/public/admin-dashboard.html" },
     { "source": "/portal", "destination": "/public/portal.html" },
-    { "source": "/offline", "destination": "/public/offline.html" }
+    { "source": "/offline", "destination": "/public/offline.html" },
+    { "source": "/list/**", "destination": "/list/$1" }
   ],
   "headers": [
     {

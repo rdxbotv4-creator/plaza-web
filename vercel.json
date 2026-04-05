@@ -1,7 +1,7 @@
 {
     "builds": [
         {
-            "src": "public/**",
+            "src": "**/*.html",
             "use": "@vercel/static"
         },
         {
@@ -9,7 +9,7 @@
             "use": "@vercel/static"
         },
         {
-            "src": "list/**",
+            "src": "data/**",
             "use": "@vercel/static"
         },
         {
@@ -28,27 +28,31 @@
     "routes": [
         {
             "src": "/",
-            "dest": "/public/index.html"
+            "dest": "/index.html"
         },
         {
             "src": "/index.html",
-            "dest": "/public/index.html"
+            "dest": "/index.html"
+        },
+        {
+            "src": "/data/(.*)",
+            "dest": "/data/$1"
         },
         {
             "src": "/admin-login",
-            "dest": "/public/admin-login.html"
+            "dest": "/admin-login.html"
         },
         {
             "src": "/admin-dashboard",
-            "dest": "/public/admin-dashboard.html"
+            "dest": "/admin-dashboard.html"
         },
         {
             "src": "/portal",
-            "dest": "/public/portal.html"
+            "dest": "/portal.html"
         },
         {
-            "src": "/offline",
-            "dest": "/public/offline.html"
+            "src": "/admin",
+            "dest": "/admin-login.html"
         },
         {
             "src": "/(.*)",

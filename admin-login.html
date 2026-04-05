@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#87CEEB">
+    <title>Admin Login | Plaza Rate List</title>
+    <link rel="manifest" href="manifest.json">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        body {
+            background: linear-gradient(180deg, var(--sky-light) 0%, var(--sky-medium) 50%, var(--sky-deep) 100%);
+        }
+
+        .admin-login-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .admin-login-bg .clouds-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .admin-login-bg .cloud {
+            position: absolute;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 100%);
+            border-radius: 100px;
+            animation: cloudFloatLogin linear infinite;
+        }
+
+        .admin-login-bg .cloud-1 {
+            width: 180px;
+            height: 50px;
+            top: 10%;
+            animation-duration: 50s;
+        }
+
+        .admin-login-bg .cloud-2 {
+            width: 140px;
+            height: 40px;
+            top: 25%;
+            animation-duration: 40s;
+            animation-direction: reverse;
+        }
+
+        .admin-login-bg .cloud-3 {
+            width: 160px;
+            height: 45px;
+            top: 15%;
+            animation-duration: 45s;
+            animation-delay: -20s;
+        }
+
+        @keyframes cloudFloatLogin {
+            0% { transform: translateX(-200px); }
+            100% { transform: translateX(calc(100vw + 200px)); }
+        }
+
+        .admin-login-bg .sun-container {
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 150px;
+            height: 150px;
+        }
+
+        .admin-login-bg .sun {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            top: 30px;
+            left: 35px;
+            background: radial-gradient(circle, #FFFDE7 0%, #FFF9C4 50%, #FFE082 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 40px rgba(255, 248, 225, 0.8);
+            animation: sunPulseLogin 4s ease-in-out infinite;
+        }
+
+        @keyframes sunPulseLogin {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="admin-login-bg">
+        <div class="clouds-container">
+            <div class="cloud cloud-1"></div>
+            <div class="cloud cloud-2"></div>
+            <div class="cloud cloud-3"></div>
+        </div>
+        <div class="sun-container">
+            <div class="sun"></div>
+        </div>
+    </div>
+    
+    <div class="login-page">
+        <div class="login-container-3d">
+            <div class="login-card-3d">
+                <div class="login-logo-3d">
+                    <img src="cache/logo.png" alt="Plaza Steel & Crockery" onerror="this.style.display='none'">
+                </div>
+                <h1 class="login-title-3d">Admin Portal</h1>
+                
+                <form id="loginForm">
+                    <div class="form-group-3d" style="margin-bottom: 20px;">
+                        <label style="display: block; margin-bottom: 8px; font-size: 0.9rem; color: var(--sky-deep); font-weight: 500;">Username</label>
+                        <input type="text" class="input-3d" id="username" placeholder="Enter username" required>
+                    </div>
+                    <div class="form-group-3d" style="margin-bottom: 25px;">
+                        <label style="display: block; margin-bottom: 8px; font-size: 0.9rem; color: var(--sky-deep); font-weight: 500;">Password</label>
+                        <input type="password" class="input-3d" id="password" placeholder="Enter password" required>
+                    </div>
+                    <button type="submit" class="submit-btn-3d">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                    <p class="login-error-3d" id="loginError" style="color: #FF1744; text-align: center; margin-top: 15px; font-size: 0.9rem; display: none; padding: 12px; background: rgba(255, 23, 68, 0.1); border-radius: 8px;">Invalid username or password</p>
+                </form>
+            </div>
+            
+            <a href="index.html" style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 20px; color: var(--white-cloud); text-decoration: none; font-size: 0.95rem; transition: all 0.3s ease;">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const CORRECT_USERNAME = 'adminplaza';
+        const CORRECT_PASSWORD = '34402';
+
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const loginError = document.getElementById('loginError');
+            
+            if (username === CORRECT_USERNAME && password === CORRECT_PASSWORD) {
+                sessionStorage.setItem('adminLoggedIn', 'true');
+                window.location.href = 'admin-dashboard.html';
+            } else {
+                loginError.style.display = 'block';
+                loginError.style.animation = 'shake 0.5s ease-in-out';
+                setTimeout(() => {
+                    loginError.style.display = 'none';
+                }, 3000);
+            }
+        });
+
+        // Add shake animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                20% { transform: translateX(-10px); }
+                40% { transform: translateX(10px); }
+                60% { transform: translateX(-10px); }
+                80% { transform: translateX(10px); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+
+</html>
