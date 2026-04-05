@@ -124,7 +124,6 @@
     <script>
         // Global product data
         let allProducts = [];
-        let deferredPrompt;
         let searchQuery = '';
 
         // Typewriter effect
@@ -316,43 +315,6 @@
             toast.textContent = message;
             toast.classList.add('show');
             setTimeout(() => toast.classList.remove('show'), duration);
-        }
-
-        // Install functions
-        function triggerInstall(platform) {
-            if (platform === 'android') {
-                showToast('For Android: Tap menu → Add to Home Screen');
-            } else {
-                showToast('For iOS: Tap Share → Add to Home Screen');
-            }
-        }
-
-        function promptInstall() {
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then((result) => {
-                    if (result.outcome === 'accepted') {
-                        showToast('App installed successfully! 🎉');
-                    }
-                    deferredPrompt = null;
-                });
-            }
-        }
-
-        // PWA Install Prompt
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            setTimeout(() => {
-                document.getElementById('installPrompt').classList.add('show');
-            }, 3000);
-        });
-
-        // Service Worker
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('../sw.js').catch(() => { });
-            });
         }
 
         // Initialize
