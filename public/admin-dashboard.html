@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#1a2a6c">
+    <title>Admin Dashboard | Plaza Rate List</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="../cache/app icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="../assets/css/animations.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="cinematic-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <div class="admin-container">
+        <!-- Header -->
+        <div class="dash-header">
+            <div>
+                <div class="dash-title">📊 Dashboard</div>
+                <div style="font-size: 0.75rem; color: rgba(255,255,255,0.6);">Plaza Steel & Crockery</div>
+            </div>
+            <button class="logout-btn" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+            <div class="stat-card total">
+                <i class="fas fa-boxes"></i>
+                <div class="stat-value" id="totalItems">0</div>
+                <div class="stat-label">Total Items</div>
+            </div>
+            <div class="stat-card in-stock">
+                <i class="fas fa-check-circle"></i>
+                <div class="stat-value" id="inStock">0</div>
+                <div class="stat-label">In Stock</div>
+            </div>
+            <div class="stat-card out-stock">
+                <i class="fas fa-times-circle"></i>
+                <div class="stat-value" id="outStock">0</div>
+                <div class="stat-label">Out of Stock</div>
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="nav-tabs">
+            <div class="nav-tab active" onclick="showSection('inventory')">
+                <i class="fas fa-box"></i> Inventory
+            </div>
+            <div class="nav-tab" onclick="showSection('report')">
+                <i class="fas fa-chart-bar"></i> Report
+            </div>
+        </div>
+
+        <!-- Inventory Section -->
+        <div class="content-section active" id="inventorySection">
+            <button class="add-new-btn" onclick="showAddModal()">
+                <i class="fas fa-plus"></i> Add New Item
+            </button>
+
+            <!-- Search in Inventory -->
+            <input type="text" class="inv-search" id="invSearch" placeholder="Search inventory... (e.g., COOKER, PAN)">
+
+            <!-- Filter Buttons -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterInventory('all')">All</button>
+                <button class="filter-btn" onclick="filterInventory('online')">Online</button>
+                <button class="filter-btn" onclick="filterInventory('offline')">Offline</button>
+                <button class="filter-btn" onclick="filterInventory('low')">Low Stock</button>
+                <button class="filter-btn" onclick="filterInventory('negative')">Negative</button>
+            </div>
+
+            <div id="inventoryList"></div>
+        </div>
+
+        <!-- Report Section -->
+        <div class="content-section" id="reportSection">
+            <div class="summary-section">
+                <!-- Out of Stock -->
+                <div class="summary-card out-of-stock">
+                    <div class="summary-header">
+                        <span class="summary-title">🔴 Out of Stock (0 or less)</span>
+                        <span class="summary-count" id="outOfStockCount">0</span>
+                    </div>
+                    <div class="report-list" id="outOfStockList"></div>
+                </div>
+
+                <!-- Low Stock -->
+                <div class="summary-card low-stock">
+                    <div class="summary-header">
+                        <span class="summary-title">🟠 Low Stock (1-10)</span>
+                        <span class="summary-count" id="lowStockCount">0</span>
+                    </div>
+                    <div class="report-list" id="lowStockList"></div>
+                </div>
+
+                <!-- Active Stock -->
+                <div class="summary-card active">
+                    <div class="summary-header">
+                        <span class="summary-title">🟢 Active Stock (10+)</span>
+                        <span class="summary-count" id="activeStockCount">0</span>
+                    </div>
+                    <div class="report-list" id="activeStockList"></div>
+                </div>
+            </div>
+
+            <button class="download-report-btn" onclick="downloadPDF()">
+                <i class="fas fa-file-pdf"></i> Download PDF Report
+            </button>
+        </div>
+    </div>
+
+    <!-- Add/Edit Modal -->
+    <div class="modal" id="itemModal">
+        <div class="modal-content">
+            <h3 class="modal-title" id="modalTitle">Add New Item</h3>
+            <form class="modal-form" id="itemForm">
+                <div class="form-group">
+                    <label>Item Description</label>
+                    <input type="text" id="itemDescription" placeholder="Enter item name" required>
+                </div>
+                <div class="form-group">
+                    <label>Cost Price (Rs.)</label>
+                    <input type="number" id="itemCost" placeholder="0" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label>Sale Price (Rs.)</label>
+                    <input type="number" id="itemPrice" placeholder="0" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label>Quantity in Hand</label>
+                    <input type="number" id="itemQty" placeholder="0" required>
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" class="modal-btn cancel-btn" onclick="closeModal()">Cancel</button>
+                    <button type="submit" class="modal-btn submit-btn">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // Data Storage
+        let products = [];
+        let editingIndex = -1;
+        let currentFilter = 'all';
+
+        // Check login
+        const isLoggedIn = sessionStorage.getItem('plazaAdminLoggedIn');
+        if (isLoggedIn !== 'true') {
+            window.location.href = 'admin-login.html';
+        }
+
+        // Load Products
+        async function loadProducts() {
+            try {
+                const response = await fetch('../list/iteam list.json');
+                const data = await response.json();
+
+                // Parse JSON structure
+                products = [];
+                data.forEach(table => {
+                    if (Array.isArray(table)) {
+                        table.forEach(item => {
+                            if (item['Item Description'] && item.Price !== undefined) {
+                                products.push({
+                                    description: item['Item Description'],
+                                    cost: item.Cost || 0,
+                                    price: item.Price,
+                                    qty: item['Qty OH'] || 0,
+                                    status: item.status !== false && item.status !== 'offline'
+                                });
+                            }
+                        });
+                    } else if (table['Table 1']) {
+                        table['Table 1'].forEach(item => {
+                            if (item['Item Description'] && item.Price !== undefined) {
+                                products.push({
+                                    description: item['Item Description'],
+                                    cost: item.Cost || 0,
+                                    price: item.Price,
+                                    qty: item['Qty OH'] || 0,
+                                    status: item.status !== false && item.status !== 'offline'
+                                });
+                            }
+                        });
+                    }
+                });
+
+                // Load from localStorage if available (admin updates)
+                const savedProducts = localStorage.getItem('plazaProducts');
+                if (savedProducts) {
+                    try {
+                        const parsed = JSON.parse(savedProducts);
+                        if (Array.isArray(parsed) && parsed.length > 0) {
+                            products = parsed;
+                        }
+                    } catch (e) { }
+                } else {
+                    saveToLocalStorage();
+                }
+
+                updateStats();
+                renderInventory();
+                renderReport();
+            } catch (error) {
+                console.error('Error loading products:', error);
+                showToast('Error loading products', true);
+            }
+        }
+
+        // Save to LocalStorage
+        function saveToLocalStorage() {
+            localStorage.setItem('plazaProducts', JSON.stringify(products));
+        }
+
+        // Logout
+        function logout() {
+            sessionStorage.removeItem('plazaAdminLoggedIn');
+            sessionStorage.removeItem('plazaAdminLoginTime');
+            window.location.href = 'index.html';
+        }
+
+        // Update Stats with animation
+        function updateStats() {
+            const total = products.length;
+            const inStock = products.filter(p => p.qty > 0).length;
+            const outStock = products.filter(p => p.qty <= 0).length;
+
+            // Animate counting
+            animateCounter('totalItems', total);
+            animateCounter('inStock', inStock);
+            animateCounter('outStock', outStock);
+        }
+
+        function animateCounter(elementId, target) {
+            const element = document.getElementById(elementId);
+            const start = parseInt(element.textContent) || 0;
+            const duration = 500;
+            const startTime = performance.now();
+
+            function update(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const value = Math.floor(start + (target - start) * progress);
+                element.textContent = value;
+
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                }
+            }
+
+            requestAnimationFrame(update);
+        }
+
+        // Show Section
+        function showSection(section) {
+            document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
+
+            if (section === 'inventory') {
+                document.querySelectorAll('.nav-tab')[0].classList.add('active');
+                document.getElementById('inventorySection').classList.add('active');
+            } else {
+                document.querySelectorAll('.nav-tab')[1].classList.add('active');
+                document.getElementById('reportSection').classList.add('active');
+                renderReport();
+            }
+        }
+
+        // Filter Inventory
+        function filterInventory(filter) {
+            currentFilter = filter;
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            renderInventory();
+        }
+
+        // Render Inventory
+        function renderInventory() {
+            const searchTerm = document.getElementById('invSearch').value.toLowerCase();
+
+            let filtered = products.filter(p => {
+                const matchesSearch = p.description.toLowerCase().includes(searchTerm);
+
+                switch (currentFilter) {
+                    case 'online': return matchesSearch && p.status;
+                    case 'offline': return matchesSearch && !p.status;
+                    case 'low': return matchesSearch && p.qty > 0 && p.qty <= 10;
+                    case 'negative': return matchesSearch && p.qty < 0;
+                    default: return matchesSearch;
+                }
+            });
+
+            const inventoryList = document.getElementById('inventoryList');
+
+            if (filtered.length === 0) {
+                inventoryList.innerHTML = `
+                    <div class="no-products">
+                        <i class="fas fa-box-open"></i>
+                        <p>No items found</p>
+                    </div>
+                `;
+                return;
+            }
+
+            inventoryList.innerHTML = filtered.map((product, index) => {
+                const originalIndex = products.indexOf(product);
+                const qtyColor = product.qty < 0 ? 'var(--danger)' : product.qty <= 10 ? 'var(--warning)' : 'var(--light)';
+
+                return `
+                    <div class="inv-item">
+                        <div class="inv-item-header">
+                            <div class="inv-item-name">${escapeHtml(product.description)}</div>
+                            <div class="status-toggle ${product.status ? 'online' : 'offline'}" 
+                                onclick="toggleStatus(${originalIndex})">
+                                ${product.status ? 'ONLINE' : 'OFFLINE'}
+                            </div>
+                        </div>
+                        <div class="inv-item-details">
+                            <div class="inv-detail">
+                                <label>Cost</label>
+                                <input type="number" value="${product.cost}" 
+                                    onchange="updateField(${originalIndex}, 'cost', this.value)">
+                            </div>
+                            <div class="inv-detail">
+                                <label>Price</label>
+                                <input type="number" value="${product.price}" 
+                                    onchange="updateField(${originalIndex}, 'price', this.value)">
+                            </div>
+                            <div class="inv-detail">
+                                <label>Qty OH</label>
+                                <input type="number" value="${product.qty}" 
+                                    onchange="updateField(${originalIndex}, 'qty', this.value)"
+                                    style="color: ${qtyColor}">
+                            </div>
+                        </div>
+                        <div class="inv-actions">
+                            <button class="inv-btn save-btn" onclick="editItem(${originalIndex})">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                            <button class="inv-btn delete-btn" onclick="deleteItem(${originalIndex})">
+                                <i class="fas fa-trash"></i> Delete
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Toggle Status
+        function toggleStatus(index) {
+            products[index].status = !products[index].status;
+            saveToLocalStorage();
+            renderInventory();
+            updateStats();
+            renderReport();
+            showToast(`Item ${products[index].status ? 'activated' : 'deactivated'}`);
+        }
+
+        // Update Field
+        function updateField(index, field, value) {
+            products[index][field] = parseFloat(value) || 0;
+            saveToLocalStorage();
+            updateStats();
+            renderReport();
+        }
+
+        // Edit Item
+        function editItem(index) {
+            editingIndex = index;
+            const product = products[index];
+
+            document.getElementById('modalTitle').innerHTML = '<i class="fas fa-edit"></i> Edit Item';
+            document.getElementById('itemDescription').value = product.description;
+            document.getElementById('itemCost').value = product.cost;
+            document.getElementById('itemPrice').value = product.price;
+            document.getElementById('itemQty').value = product.qty;
+
+            document.getElementById('itemModal').classList.add('show');
+        }
+
+        // Delete Item
+        function deleteItem(index) {
+            if (confirm('Are you sure you want to delete this item?')) {
+                products.splice(index, 1);
+                saveToLocalStorage();
+                renderInventory();
+                updateStats();
+                renderReport();
+                showToast('Item deleted successfully');
+            }
+        }
+
+        // Show Add Modal
+        function showAddModal() {
+            editingIndex = -1;
+            document.getElementById('modalTitle').innerHTML = '<i class="fas fa-plus"></i> Add New Item';
+            document.getElementById('itemForm').reset();
+            document.getElementById('itemModal').classList.add('show');
+        }
+
+        // Close Modal
+        function closeModal() {
+            document.getElementById('itemModal').classList.remove('show');
+            editingIndex = -1;
+        }
+
+        // Save Item
+        document.getElementById('itemForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const newItem = {
+                description: document.getElementById('itemDescription').value,
+                cost: parseFloat(document.getElementById('itemCost').value) || 0,
+                price: parseFloat(document.getElementById('itemPrice').value) || 0,
+                qty: parseFloat(document.getElementById('itemQty').value) || 0,
+                status: true
+            };
+
+            if (editingIndex >= 0) {
+                products[editingIndex] = newItem;
+                showToast('Item updated successfully');
+            } else {
+                products.push(newItem);
+                showToast('Item added successfully');
+            }
+
+            saveToLocalStorage();
+            closeModal();
+            renderInventory();
+            updateStats();
+            renderReport();
+        });
+
+        // Render Report
+        function renderReport() {
+            const outOfStock = products.filter(p => p.qty <= 0);
+            const lowStock = products.filter(p => p.qty > 0 && p.qty <= 10);
+            const activeStock = products.filter(p => p.qty > 10);
+
+            document.getElementById('outOfStockCount').textContent = outOfStock.length;
+            document.getElementById('lowStockCount').textContent = lowStock.length;
+            document.getElementById('activeStockCount').textContent = activeStock.length;
+
+            // Render lists
+            document.getElementById('outOfStockList').innerHTML = outOfStock.length ?
+                outOfStock.slice(0, 15).map(p => `
+                    <div class="report-item">
+                        <span class="report-item-name">${escapeHtml(p.description.substring(0, 25))}</span>
+                        <span class="report-item-qty negative">${p.qty}</span>
+                    </div>
+                `).join('') + (outOfStock.length > 15 ? `<p style="padding:8px;color:rgba(255,255,255,0.5);text-align:center;font-size:0.75rem">+${outOfStock.length - 15} more</p>` : '')
+                : '<p style="padding:10px;color:rgba(255,255,255,0.5)">No items</p>';
+
+            document.getElementById('lowStockList').innerHTML = lowStock.length ?
+                lowStock.slice(0, 15).map(p => `
+                    <div class="report-item">
+                        <span class="report-item-name">${escapeHtml(p.description.substring(0, 25))}</span>
+                        <span class="report-item-qty low">${p.qty}</span>
+                    </div>
+                `).join('') + (lowStock.length > 15 ? `<p style="padding:8px;color:rgba(255,255,255,0.5);text-align:center;font-size:0.75rem">+${lowStock.length - 15} more</p>` : '')
+                : '<p style="padding:10px;color:rgba(255,255,255,0.5)">No items</p>';
+
+            document.getElementById('activeStockList').innerHTML = activeStock.length ?
+                activeStock.slice(0, 15).map(p => `
+                    <div class="report-item">
+                        <span class="report-item-name">${escapeHtml(p.description.substring(0, 25))}</span>
+                        <span class="report-item-qty">${p.qty}</span>
+                    </div>
+                `).join('') + (activeStock.length > 15 ? `<p style="padding:8px;color:rgba(255,255,255,0.5);text-align:center;font-size:0.75rem">+${activeStock.length - 15} more</p>` : '')
+                : '<p style="padding:10px;color:rgba(255,255,255,0.5)">No items</p>';
+        }
+
+        // Download PDF
+        function downloadPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            // Header
+            doc.setFontSize(22);
+            doc.setTextColor(26, 42, 108);
+            doc.text('PLAZA STEEL & CROCKERY', 105, 20, { align: 'center' });
+
+            doc.setFontSize(14);
+            doc.setTextColor(0, 0, 0);
+            doc.text('Inventory Summary Report', 105, 30, { align: 'center' });
+
+            doc.setFontSize(10);
+            doc.text(`Date: ${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}`, 105, 38, { align: 'center' });
+
+            // Stats
+            let y = 50;
+            doc.setFontSize(12);
+            doc.text(`Total Items: ${products.length}`, 20, y);
+            doc.text(`In Stock: ${products.filter(p => p.qty > 0).length}`, 20, y + 8);
+            doc.text(`Out of Stock: ${products.filter(p => p.qty <= 0).length}`, 20, y + 16);
+            doc.text(`Low Stock: ${products.filter(p => p.qty > 0 && p.qty <= 10).length}`, 20, y + 24);
+
+            // Out of Stock
+            y = 85;
+            doc.setFontSize(13);
+            doc.setTextColor(255, 0, 0);
+            doc.text('OUT OF STOCK (Negative/Zero Qty)', 20, y);
+
+            const outOfStock = products.filter(p => p.qty <= 0);
+            y += 8;
+            doc.setFontSize(9);
+            doc.setTextColor(0, 0, 0);
+
+            outOfStock.slice(0, 12).forEach((p, i) => {
+                doc.text(`${i + 1}. ${p.description.substring(0, 35)} - Qty: ${p.qty}`, 20, y);
+                y += 6;
+            });
+
+            // Low Stock
+            y += 5;
+            doc.setFontSize(13);
+            doc.setTextColor(255, 165, 0);
+            doc.text('LOW STOCK (1-10)', 20, y);
+
+            const lowStock = products.filter(p => p.qty > 0 && p.qty <= 10);
+            y += 8;
+            doc.setFontSize(9);
+            doc.setTextColor(0, 0, 0);
+
+            lowStock.slice(0, 12).forEach((p, i) => {
+                doc.text(`${i + 1}. ${p.description.substring(0, 35)} - Qty: ${p.qty}`, 20, y);
+                y += 6;
+            });
+
+            // Active Stock
+            y += 5;
+            doc.setFontSize(13);
+            doc.setTextColor(0, 150, 0);
+            doc.text('ACTIVE STOCK (10+)', 20, y);
+
+            const activeStock = products.filter(p => p.qty > 10);
+            y += 8;
+            doc.setFontSize(9);
+            doc.setTextColor(0, 0, 0);
+
+            activeStock.slice(0, 12).forEach((p, i) => {
+                doc.text(`${i + 1}. ${p.description.substring(0, 35)} - Qty: ${p.qty}`, 20, y);
+                y += 6;
+            });
+
+            // Footer
+            doc.setFontSize(8);
+            doc.setTextColor(128, 128, 128);
+            doc.text('Generated by Plaza Rate List App', 105, 285, { align: 'center' });
+
+            doc.save(`Plaza_Inventory_${new Date().toISOString().split('T')[0]}.pdf`);
+            showToast('PDF downloaded successfully! 📄');
+        }
+
+        // Search Event
+        document.getElementById('invSearch').addEventListener('input', renderInventory);
+
+        // Escape HTML
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Show Toast
+        function showToast(message, isError = false) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = 'toast show';
+            if (isError) {
+                toast.style.borderLeftColor = 'var(--danger)';
+            }
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadProducts();
+        });
+    </script>
+</body>
+
+</html>

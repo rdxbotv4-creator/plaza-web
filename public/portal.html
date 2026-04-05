@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#1a2a6c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Plaza Portal">
+    <title>Plaza Portal | Plaza Steel & Crockery</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="../cache/app icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="cinematic-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <div class="app-container">
+        <!-- Header with Spinning Logo -->
+        <header class="app-header">
+            <div class="logo-container">
+                <div class="logo-spinner">
+                    <img src="../cache/logo.png" alt="Plaza Steel & Crockery" class="logo-img"
+                        onerror="this.style.display='none'">
+                    <div class="logo-glow"></div>
+                </div>
+            </div>
+            <h1 class="app-title">
+                <span class="title-text">Plaza Portal</span>
+            </h1>
+            <p class="tagline">Connect with Plaza Steel & Crockery</p>
+        </header>
+
+        <!-- Portal Options -->
+        <section class="portal-section" style="margin-top: 20px;">
+            <h3 class="section-title">Get in Touch</h3>
+
+            <!-- WhatsApp -->
+            <a href="https://wa.me/message/AEITVKONJBS3N1" class="product-card"
+                style="display: flex; align-items: center; gap: 15px; text-decoration: none; margin-bottom: 12px;"
+                target="_blank">
+                <div
+                    style="width: 55px; height: 55px; border-radius: 50%; background: linear-gradient(135deg, #25D366, #20BD5A); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white; flex-shrink: 0;">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <div style="flex: 1;">
+                    <div style="font-size: 1rem; font-weight: 600; color: var(--light);">WhatsApp</div>
+                    <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">Contact us for inquiries</div>
+                </div>
+                <i class="fas fa-chevron-right" style="color: rgba(255,255,255,0.3);"></i>
+            </a>
+
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/plaza.steel" class="product-card"
+                style="display: flex; align-items: center; gap: 15px; text-decoration: none; margin-bottom: 12px;"
+                target="_blank">
+                <div
+                    style="width: 55px; height: 55px; border-radius: 50%; background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white; flex-shrink: 0;">
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <div style="flex: 1;">
+                    <div style="font-size: 1rem; font-weight: 600; color: var(--light);">Instagram</div>
+                    <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">Follow us for updates</div>
+                </div>
+                <i class="fas fa-chevron-right" style="color: rgba(255,255,255,0.3);"></i>
+            </a>
+
+            <!-- Admin Portal -->
+            <a href="admin-login.html" class="product-card"
+                style="display: flex; align-items: center; gap: 15px; text-decoration: none; margin-bottom: 12px;">
+                <div
+                    style="width: 55px; height: 55px; border-radius: 50%; background: linear-gradient(135deg, #1a2a6c, #b21f1f); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white; flex-shrink: 0;">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <div style="flex: 1;">
+                    <div style="font-size: 1rem; font-weight: 600; color: var(--light);">Admin Portal</div>
+                    <div style="font-size: 0.75rem; color: rgba(255,255,255,0.5);">Manage inventory & reports</div>
+                </div>
+                <i class="fas fa-chevron-right" style="color: rgba(255,255,255,0.3);"></i>
+            </a>
+        </section>
+
+        <!-- Back Button -->
+        <section class="portal-section" style="margin-top: auto; padding-top: 20px;">
+            <a href="index.html" class="portal-btn"
+                style="width: 100%; justify-content: center; text-decoration: none;">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back to Rate List</span>
+            </a>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p><i class="fas fa-heart"></i> Plaza Steel & Crockery</p>
+            <p>Your Trusted Partner for Quality Products</p>
+        </footer>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+    </script>
+</body>
+
+</html>

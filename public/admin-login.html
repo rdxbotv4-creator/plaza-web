@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#1a2a6c">
+    <title>Admin Login | Plaza Rate List</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="../cache/app icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="cinematic-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <!-- Login Screen -->
+    <div class="login-screen">
+        <div class="login-container">
+            <div class="login-logo">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <h2 class="login-title">Admin Portal</h2>
+
+            <form class="login-form" id="loginForm">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="username" placeholder="Enter username" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="password" placeholder="Enter password" required
+                        autocomplete="current-password">
+                </div>
+                <button type="submit" class="login-btn">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+                <p class="login-error" id="loginError">
+                    <i class="fas fa-exclamation-circle"></i> Invalid username or password
+                </p>
+            </form>
+
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="index.html" class="portal-btn"
+                    style="text-decoration: none; font-size: 0.9rem; padding: 12px 25px;">
+                    <i class="fas fa-arrow-left"></i> Back to Rate List
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Admin credentials
+        const CORRECT_USERNAME = 'adminplaza';
+        const CORRECT_PASSWORD = '34402';
+
+        // Check if already logged in
+        const isLoggedIn = sessionStorage.getItem('plazaAdminLoggedIn');
+        if (isLoggedIn === 'true') {
+            window.location.href = 'admin-dashboard.html';
+        }
+
+        // Login form handler
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const loginError = document.getElementById('loginError');
+
+            if (username === CORRECT_USERNAME && password === CORRECT_PASSWORD) {
+                // Success - store session
+                sessionStorage.setItem('plazaAdminLoggedIn', 'true');
+                sessionStorage.setItem('plazaAdminLoginTime', Date.now());
+
+                // Animate success
+                document.querySelector('.login-btn').innerHTML = '<i class="fas fa-check"></i> Success!';
+                document.querySelector('.login-btn').style.background = 'linear-gradient(135deg, #00c853, #00a844)';
+
+                setTimeout(() => {
+                    window.location.href = 'admin-dashboard.html';
+                }, 500);
+            } else {
+                // Error - show message with shake
+                loginError.classList.add('show');
+                document.querySelector('.login-container').style.animation = 'none';
+                setTimeout(() => {
+                    document.querySelector('.login-container').style.animation = 'shake 0.5s ease-in-out';
+                }, 10);
+            }
+        });
+
+        // Clear error on input
+        document.getElementById('username').addEventListener('input', () => {
+            document.getElementById('loginError').classList.remove('show');
+        });
+        document.getElementById('password').addEventListener('input', () => {
+            document.getElementById('loginError').classList.remove('show');
+        });
+
+        // Check session timeout (30 minutes)
+        function checkSession() {
+            const loginTime = sessionStorage.getItem('plazaAdminLoginTime');
+            if (loginTime) {
+                const elapsed = Date.now() - parseInt(loginTime);
+                const thirtyMinutes = 30 * 60 * 1000;
+
+                if (elapsed > thirtyMinutes) {
+                    sessionStorage.removeItem('plazaAdminLoggedIn');
+                    sessionStorage.removeItem('plazaAdminLoginTime');
+                    showToast('Session expired. Please login again.');
+                }
+            }
+        }
+
+        // Check every minute
+        setInterval(checkSession, 60000);
+
+        // Show toast notification
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast show';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>

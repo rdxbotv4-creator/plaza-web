@@ -1,0 +1,32 @@
+{
+    "name": "Plaza Rate List",
+    "short_name": "Plaza Rates",
+    "description": "Official rate list of Plaza Steel & Crockery - Premium Quality Products at Best Rates",
+    "start_url": "/public/index.html",
+    "display": "standalone",
+    "orientation": "portrait",
+    "theme_color": "#1a2a6c",
+    "background_color": "#0a0f2a",
+    "icons": [
+        {
+            "src": "cache/app icon.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "cache/app icon.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "categories": [
+        "shopping",
+        "business"
+    ],
+    "lang": "en",
+    "dir": "ltr",
+    "scope": "/",
+    "prefer_related_applications": false
+}

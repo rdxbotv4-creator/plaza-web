@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#1a2a6c">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Plaza Rate List">
+    <title>Plaza Rate List | Plaza Steel & Crockery</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="../cache/app icon.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/animations.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="../assets/js/search.js" defer></script>
+    <script src="../assets/js/pwa.js" defer></script>
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="cinematic-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo-container">
+                <div class="logo-spinner">
+                    <img src="../cache/logo.png" alt="Plaza Steel & Crockery" class="logo-img"
+                        onerror="this.style.display='none'">
+                    <div class="logo-glow"></div>
+                </div>
+            </div>
+            <h1 class="app-title">
+                <span class="title-text" id="typewriter"></span>
+                <span class="title-cursor">|</span>
+            </h1>
+            <p class="tagline">Premium Quality Products at Best Rates</p>
+        </header>
+
+        <!-- Search Section -->
+        <section class="search-section">
+            <div class="search-wrapper">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" id="searchInput"
+                    placeholder="Search products... (e.g., COOKER, PAN, SET)" autocomplete="off">
+                <button class="search-clear" id="searchClear" style="display: none;">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="search-results-info" id="searchResultsInfo"></div>
+        </section>
+
+        <!-- Product Box - Fixed 50% Height -->
+        <section class="product-section">
+            <div class="product-box" id="productBox">
+                <div class="product-header">
+                    <span><i class="fas fa-box-open"></i> Products</span>
+                    <span class="product-count" id="productCount">0 items</span>
+                </div>
+                <div class="product-list" id="productList">
+                    <!-- Products will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Download Buttons -->
+        <section class="download-section">
+            <h3 class="section-title">📱 Install Our App</h3>
+            <div class="download-buttons">
+                <button class="download-btn android" onclick="triggerInstall('android')">
+                    <i class="fab fa-android"></i>
+                    <span>Android</span>
+                    <div class="btn-pulse"></div>
+                </button>
+                <button class="download-btn ios" onclick="triggerInstall('ios')">
+                    <i class="fab fa-apple"></i>
+                    <span>iOS</span>
+                    <div class="btn-pulse"></div>
+                </button>
+            </div>
+        </section>
+
+        <!-- Social Links -->
+        <section class="social-section">
+            <a href="https://wa.me/message/AEITVKONJBS3N1" class="social-btn whatsapp" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+                <span>WhatsApp</span>
+            </a>
+            <a href="https://www.instagram.com/plaza.steel" class="social-btn instagram" target="_blank">
+                <i class="fab fa-instagram"></i>
+                <span>Instagram</span>
+            </a>
+        </section>
+
+        <!-- Plaza Portal Button -->
+        <section class="portal-section">
+            <a href="portal.html" class="portal-btn">
+                <i class="fas fa-store"></i>
+                <span>Plaza Portal</span>
+                <div class="ripple"></div>
+            </a>
+        </section>
+    </div>
+
+    <!-- Install Prompt -->
+    <div class="install-prompt" id="installPrompt">
+        <button class="install-now-btn" onclick="promptInstall()">
+            <i class="fas fa-download"></i> Install App
+        </button>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // Global product data
+        let allProducts = [];
+        let deferredPrompt;
+        let searchQuery = '';
+
+        // Typewriter effect
+        const titleText = "Plaza Rate List";
+        let charIndex = 0;
+
+        function typeWriter() {
+            if (charIndex < titleText.length) {
+                document.getElementById('typewriter').textContent += titleText.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+
+        // Load products from JSON
+        async function loadProducts() {
+            try {
+                const response = await fetch('../list/iteam list.json');
+                const data = await response.json();
+
+                // Parse the data structure
+                allProducts = [];
+                data.forEach(table => {
+                    if (Array.isArray(table)) {
+                        table.forEach(item => {
+                            if (item['Item Description'] && item.Price !== undefined) {
+                                allProducts.push({
+                                    itemNumber: item['Item #'] || item['Item No'] || '',
+                                    description: item['Item Description'],
+                                    cost: item.Cost || 0,
+                                    price: item.Price,
+                                    qty: item['Qty OH'] || 0,
+                                    status: item.status !== false && item.status !== 'offline'
+                                });
+                            }
+                        });
+                    } else if (table['Table 1']) {
+                        table['Table 1'].forEach(item => {
+                            if (item['Item Description'] && item.Price !== undefined) {
+                                allProducts.push({
+                                    itemNumber: item['Item #'] || item['Item No'] || '',
+                                    description: item['Item Description'],
+                                    cost: item.Cost || 0,
+                                    price: item.Price,
+                                    qty: item['Qty OH'] || 0,
+                                    status: item.status !== false && item.status !== 'offline'
+                                });
+                            }
+                        });
+                    }
+                });
+
+                // Check localStorage for any admin updates
+                const savedProducts = localStorage.getItem('plazaProducts');
+                if (savedProducts) {
+                    try {
+                        const parsed = JSON.parse(savedProducts);
+                        if (Array.isArray(parsed) && parsed.length > 0) {
+                            allProducts = parsed;
+                        }
+                    } catch (e) { }
+                }
+
+                displayProducts(allProducts);
+            } catch (error) {
+                console.error('Error loading products:', error);
+                showProductError();
+            }
+        }
+
+        // Display products with search
+        function displayProducts(products) {
+            const productList = document.getElementById('productList');
+            const productCount = document.getElementById('productCount');
+
+            // Filter active products only
+            const activeProducts = products.filter(p => p.status !== false);
+
+            productCount.textContent = `${activeProducts.length} items`;
+
+            if (activeProducts.length === 0) {
+                productList.innerHTML = `
+                    <div class="no-products">
+                        <i class="fas fa-sad-tear"></i>
+                        <p>No products found</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Search filtering
+            let displayProducts = activeProducts;
+            if (searchQuery.trim()) {
+                const terms = searchQuery.toLowerCase().split(' ').filter(t => t.length > 0);
+                displayProducts = activeProducts.filter(product => {
+                    const desc = product.description.toLowerCase();
+                    return terms.every(term => desc.includes(term));
+                });
+            }
+
+            productCount.textContent = `${displayProducts.length} items`;
+
+            if (displayProducts.length === 0) {
+                productList.innerHTML = `
+                    <div class="no-products">
+                        <i class="fas fa-search"></i>
+                        <p>No matching products</p>
+                        <span class="search-query">"${searchQuery}"</span>
+                    </div>
+                `;
+                return;
+            }
+
+            productList.innerHTML = displayProducts.map((product, index) => {
+                // Highlight search terms
+                let displayDesc = escapeHtml(product.description);
+                if (searchQuery.trim()) {
+                    const terms = searchQuery.toLowerCase().split(' ').filter(t => t.length > 0);
+                    terms.forEach(term => {
+                        const regex = new RegExp(`(${term})`, 'gi');
+                        displayDesc = displayDesc.replace(regex, '<mark class="search-highlight">$1</mark>');
+                    });
+                }
+
+                const itemNumHtml = product.itemNumber ? `<span class="product-item-num">#${product.itemNumber}</span>` : '';
+                const qtyClass = product.qty <= 0 ? 'out-of-stock' : (product.qty <= 5 ? 'low-stock' : 'in-stock');
+                const qtyDisplay = product.qty > 0 ? product.qty : '0';
+
+                return `
+                    <div class="product-card" style="animation-delay: ${index * 0.03}s">
+                        <div class="product-header-row">
+                            ${itemNumHtml}
+                            <span class="product-qty ${qtyClass}">Stock: ${qtyDisplay}</span>
+                        </div>
+                        <div class="product-description">${displayDesc}</div>
+                        <div class="product-price-row">
+                            <span class="product-cost">Cost: Rs. ${formatNumber(product.cost)}</span>
+                            <span class="product-price">Rs. ${formatNumber(product.price)}</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Search functionality
+        function handleSearch(query) {
+            searchQuery = query;
+            const clearBtn = document.getElementById('searchClear');
+            clearBtn.style.display = query.length > 0 ? 'flex' : 'none';
+            displayProducts(allProducts);
+        }
+
+        // Clear search
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('searchClear').style.display = 'none';
+            searchQuery = '';
+            displayProducts(allProducts);
+        }
+
+        // Show error
+        function showProductError() {
+            document.getElementById('productList').innerHTML = `
+                <div class="no-products error">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <p>Failed to load products</p>
+                    <button onclick="loadProducts()" class="retry-btn">
+                        <i class="fas fa-redo"></i> Retry
+                    </button>
+                </div>
+            `;
+        }
+
+        // Format number
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
+
+        // Escape HTML
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Show toast
+        function showToast(message, duration = 3000) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), duration);
+        }
+
+        // Install functions
+        function triggerInstall(platform) {
+            if (platform === 'android') {
+                showToast('For Android: Tap menu → Add to Home Screen');
+            } else {
+                showToast('For iOS: Tap Share → Add to Home Screen');
+            }
+        }
+
+        function promptInstall() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((result) => {
+                    if (result.outcome === 'accepted') {
+                        showToast('App installed successfully! 🎉');
+                    }
+                    deferredPrompt = null;
+                });
+            }
+        }
+
+        // PWA Install Prompt
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            setTimeout(() => {
+                document.getElementById('installPrompt').classList.add('show');
+            }, 3000);
+        });
+
+        // Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('../sw.js').catch(() => { });
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Start typewriter
+            setTimeout(typeWriter, 500);
+
+            // Load products
+            loadProducts();
+
+            // Search event
+            const searchInput = document.getElementById('searchInput');
+            let debounceTimer;
+
+            searchInput.addEventListener('input', (e) => {
+                clearTimeout(debounceTimer);
+                debounceTimer = setTimeout(() => {
+                    handleSearch(e.target.value);
+                }, 200);
+            });
+
+            // Clear button
+            document.getElementById('searchClear').addEventListener('click', clearSearch);
+
+            // Keyboard shortcuts
+            searchInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    clearSearch();
+                    searchInput.blur();
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

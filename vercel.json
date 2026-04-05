@@ -1,0 +1,69 @@
+{
+    "builds": [
+        {
+            "src": "public/**",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "assets/**",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "list/**",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "cache/**",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "manifest.json",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "sw.js",
+            "use": "@vercel/static"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/",
+            "dest": "/public/index.html"
+        },
+        {
+            "src": "/index.html",
+            "dest": "/public/index.html"
+        },
+        {
+            "src": "/admin-login",
+            "dest": "/public/admin-login.html"
+        },
+        {
+            "src": "/admin-dashboard",
+            "dest": "/public/admin-dashboard.html"
+        },
+        {
+            "src": "/portal",
+            "dest": "/public/portal.html"
+        },
+        {
+            "src": "/offline",
+            "dest": "/public/offline.html"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/$1"
+        }
+    ],
+    "headers": [
+        {
+            "source": "/(.*)",
+            "headers": [
+                {
+                    "key": "Service-Worker-Allowed",
+                    "value": "/"
+                }
+            ]
+        }
+    ]
+}

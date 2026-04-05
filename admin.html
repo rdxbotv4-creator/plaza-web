@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#1a1a2e">
+    <title>Plaza Portal | Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        :root {
+            --primary: #e94560;
+            --secondary: #0f3460;
+            --dark: #1a1a2e;
+            --darker: #16213e;
+            --light: #eaeaea;
+            --accent: #00d9ff;
+            --gold: #ffd700;
+            --success: #00c853;
+            --warning: #ffab00;
+            --danger: #ff1744;
+            --glow: rgba(233, 69, 96, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--dark);
+            min-height: 100vh;
+            color: var(--light);
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+        }
+
+        /* Login Screen */
+        #loginScreen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 40px 30px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 380px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-logo i {
+            font-size: 3rem;
+            color: var(--primary);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .login-title {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 20px var(--glow);
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--primary), #c73e54);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px var(--glow);
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px var(--glow);
+        }
+
+        .login-error {
+            color: var(--danger);
+            text-align: center;
+            margin-top: 15px;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        /* Dashboard */
+        #dashboard {
+            display: none;
+        }
+
+        .dashboard-container {
+            max-width: 430px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+
+        /* Header */
+        .dash-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dash-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .logout-btn {
+            padding: 8px 15px;
+            background: var(--danger);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px 10px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-card i {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .stat-card.total i {
+            color: var(--accent);
+        }
+
+        .stat-card.in-stock i {
+            color: var(--success);
+        }
+
+        .stat-card.out-stock i {
+            color: var(--danger);
+        }
+
+        .stat-value {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .nav-tab {
+            flex: 1;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .nav-tab.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 15px var(--glow);
+        }
+
+        .nav-tab:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Content Sections */
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        /* Inventory Search */
+        .inv-search {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .inv-search:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        /* Filter Buttons */
+        .filter-buttons {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--light);
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
+
+        .filter-btn:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Inventory Item */
+        .inv-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .inv-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+
+        .inv-item-name {
+            font-size: 0.9rem;
+            font-weight: 500;
+            flex: 1;
+            padding-right: 10px;
+        }
+
+        .status-toggle {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .status-toggle.online {
+            background: rgba(0, 200, 83, 0.2);
+            color: var(--success);
+            border: 1px solid var(--success);
+        }
+
+        .status-toggle.offline {
+            background: rgba(255, 23, 68, 0.2);
+            color: var(--danger);
+            border: 1px solid var(--danger);
+        }
+
+        .inv-item-details {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            font-size: 0.75rem;
+        }
+
+        .inv-detail {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 8px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .inv-detail label {
+            display: block;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 4px;
+        }
+
+        .inv-detail input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: var(--light);
+            font-size: 0.85rem;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .inv-detail input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+
+        .inv-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .inv-btn {
+            flex: 1;
+            padding: 8px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .save-btn {
+            background: var(--success);
+            color: white;
+        }
+
+        .delete-btn {
+            background: var(--danger);
+            color: white;
+        }
+
+        /* Add New Item */
+        .add-new-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--secondary), var(--darker));
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            color: var(--light);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+
+        .add-new-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--darker);
+            padding: 25px;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 350px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-title {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .modal-form .form-group {
+            margin-bottom: 15px;
+        }
+
+        .modal-form input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--light);
+            font-size: 0.9rem;
+        }
+
+        .modal-form input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cancel-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+        }
+
+        .submit-btn {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Summary Report */
+        .summary-section {
+            margin-bottom: 20px;
+        }
+
+        .summary-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .summary-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .summary-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .summary-count {
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .summary-card.out-of-stock .summary-count {
+            color: var(--danger);
+        }
+
+        .summary-card.low-stock .summary-count {
+            color: var(--warning);
+        }
+
+        .summary-card.active .summary-count {
+            color: var(--success);
+        }
+
+        .report-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .report-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            margin-bottom: 8px;
+            font-size: 0.8rem;
+        }
+
+        .report-item-name {
+            flex: 1;
+            padding-right: 10px;
+        }
+
+        .report-item-qty {
+            font-weight: 600;
+        }
+
+        .report-item-qty.negative {
+            color: var(--danger);
+        }
+
+        .report-item-qty.low {
+            color: var(--warning);
+        }
+
+        /* Download Button */
+        .download-report-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--success), #00a844);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 200, 83, 0.3);
+        }
+
+        .download-report-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 200, 83, 0.5);
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--darker);
+            color: var(--light);
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            opacity: 0;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--success);
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .toast.error {
+            border-left-color: var(--danger);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Login Screen -->
+    <div id="loginScreen">
+        <div class="login-container">
+            <div class="login-logo">
+                <i class="fas fa-shield-alt"></i>
+            </div>
+            <h2 class="login-title">Plaza Portal</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="username" placeholder="Enter username" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="password" placeholder="Enter password" required>
+                </div>
+                <button type="submit" class="login-btn">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+                <p class="login-error" id="loginError">Invalid username or password</p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div id="dashboard">
+        <div class="dashboard-container">
+            <!-- Header -->
+            <div class="dash-header">
+                <div>
+                    <div class="dash-title">📊 Dashboard</div>
+                    <div style="font-size: 0.75rem; color: rgba(255,255,255,0.6);">Plaza Steel & Crockery</div>
+                </div>
+                <button class="logout-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card total">
+                    <i class="fas fa-boxes"></i>
+                    <div class="stat-value" id="totalItems">0</div>
+                    <div class="stat-label">Total Items</div>
+                </div>
+                <div class="stat-card in-stock">
+                    <i class="fas fa-check-circle"></i>
+                    <div class="stat-value" id="inStock">0</div>
+                    <div class="stat-label">In Stock</div>
+                </div>
+                <div class="stat-card out-stock">
+                    <i class="fas fa-times-circle"></i>
+                    <div class="stat-value" id="outStock">0</div>
+                    <div class="stat-label">Out of Stock</div>
+                </div>
+            </div>
+
+            <!-- Navigation Tabs -->
+            <div class="nav-tabs">
+                <div class="nav-tab active" onclick="showSection('inventory')">
+                    <i class="fas fa-box"></i> Inventory
+                </div>
+                <div class="nav-tab" onclick="showSection('report')">
+                    <i class="fas fa-chart-bar"></i> Report
+                </div>
+            </div>
+
+            <!-- Inventory Section -->
+            <div class="content-section active" id="inventorySection">
+                <button class="add-new-btn" onclick="showAddModal()">
+                    <i class="fas fa-plus"></i> Add New Item
+                </button>
+
+                <input type="text" class="inv-search" id="invSearch" placeholder="Search inventory...">
+
+                <div class="filter-buttons">
+                    <button class="filter-btn active" onclick="filterInventory('all')">All</button>
+                    <button class="filter-btn" onclick="filterInventory('online')">Online</button>
+                    <button class="filter-btn" onclick="filterInventory('offline')">Offline</button>
+                    <button class="filter-btn" onclick="filterInventory('low')">Low Stock</button>
+                    <button class="filter-btn" onclick="filterInventory('negative')">Negative</button>
+                </div>
+
+                <div id="inventoryList"></div>
+            </div>
+
+            <!-- Report Section -->
+            <div class="content-section" id="reportSection">
+                <div class="summary-section">
+                    <div class="summary-card out-of-stock">
+                        <div class="summary-header">
+                            <span class="summary-title">❌ Out of Stock (0 or less)</span>
+                            <span class="summary-count" id="outOfStockCount">0</span>
+                        </div>
+                        <div class="report-list" id="outOfStockList"></div>
+                    </div>
+
+                    <div class="summary-card low-stock">
+                        <div class="summary-header">
+                            <span class="summary-title">⚠️ Low Stock (1-10)</span>
+                            <span class="summary-count" id="lowStockCount">0</span>
+                        </div>
+                        <div class="report-list" id="lowStockList"></div>
+                    </div>
+
+                    <div class="summary-card active">
+                        <div class="summary-header">
+                            <span class="summary-title">✅ Active Stock (10+)</span>
+                            <span class="summary-count" id="activeStockCount">0</span>
+                        </div>
+                        <div class="report-list" id="activeStockList"></div>
+                    </div>
+                </div>
+
+                <button class="download-report-btn" onclick="downloadPDF()">
+                    <i class="fas fa-file-pdf"></i> Download PDF Report
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Modal -->
+    <div class="modal" id="itemModal">
+        <div class="modal-content">
+            <h3 class="modal-title" id="modalTitle">Add New Item</h3>
+            <form class="modal-form" id="itemForm">
+                <div class="form-group">
+                    <label>Item Description</label>
+                    <input type="text" id="itemDescription" placeholder="Enter item name" required>
+                </div>
+                <div class="form-group">
+                    <label>Cost Price</label>
+                    <input type="number" id="itemCost" placeholder="0" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label>Sale Price</label>
+                    <input type="number" id="itemPrice" placeholder="0" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label>Quantity in Hand</label>
+                    <input type="number" id="itemQty" placeholder="0" required>
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" class="modal-btn cancel-btn" onclick="closeModal()">Cancel</button>
+                    <button type="submit" class="modal-btn submit-btn">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // Data Storage
+        let products = [];
+        let editingIndex = -1;
+        let currentFilter = 'all';
+
+        // Login Credentials
+        const CORRECT_USERNAME = 'adminplaza';
+        const CORRECT_PASSWORD = '34402';
+
+        // Load Products
+        async function loadProducts() {
+            try {
+                const response = await fetch('list/iteam list.json');
+                const data = await response.json();
+
+                products = [];
+                data.forEach(table => {
+                    if (Array.isArray(table)) {
+                        table.forEach(item => {
+                            if (item['Item Description'] && item.Price !== undefined) {
+                                products.push({
+                                    description: item['Item Description'],
+                                    cost: item.Cost || 0,
+                                    price: item.Price,
+                                    qty: item['Qty OH'] || 0,
+                                    status: item.status !== false
+                                });
+                            }
+                        });
+                    } else if (table['Table 1']) {
+                        table['Table 1'].forEach(item => {
+                            if (item['Item Description'] && item.Price !== undefined) {
+                                products.push({
+                                    description: item['Item Description'],
+                                    cost: item.Cost || 0,
+                                    price: item.Price,
+                                    qty: item['Qty OH'] || 0,
+                                    status: item.status !== false
+                                });
+                            }
+                        });
+                    }
+                });
+
+                // Load from localStorage if available
+                const savedProducts = localStorage.getItem('plazaProducts');
+                if (savedProducts) {
+                    products = JSON.parse(savedProducts);
+                } else {
+                    // Save initial data to localStorage
+                    saveToLocalStorage();
+                }
+
+                updateStats();
+                renderInventory();
+                renderReport();
+            } catch (error) {
+                console.error('Error loading products:', error);
+                showToast('Error loading products', true);
+            }
+        }
+
+        // Save to LocalStorage
+        function saveToLocalStorage() {
+            localStorage.setItem('plazaProducts', JSON.stringify(products));
+        }
+
+        // Login Function
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === CORRECT_USERNAME && password === CORRECT_PASSWORD) {
+                document.getElementById('loginScreen').style.display = 'none';
+                document.getElementById('dashboard').style.display = 'block';
+                loadProducts();
+            } else {
+                document.getElementById('loginError').style.display = 'block';
+            }
+        });
+
+        // Logout
+        function logout() {
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('loginScreen').style.display = 'flex';
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+            document.getElementById('loginError').style.display = 'none';
+        }
+
+        // Update Stats
+        function updateStats() {
+            const total = products.length;
+            const inStock = products.filter(p => p.qty > 0).length;
+            const outStock = products.filter(p => p.qty <= 0).length;
+
+            document.getElementById('totalItems').textContent = total;
+            document.getElementById('inStock').textContent = inStock;
+            document.getElementById('outStock').textContent = outStock;
+        }
+
+        // Show Section
+        function showSection(section) {
+            document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
+
+            if (section === 'inventory') {
+                document.querySelectorAll('.nav-tab')[0].classList.add('active');
+                document.getElementById('inventorySection').classList.add('active');
+            } else {
+                document.querySelectorAll('.nav-tab')[1].classList.add('active');
+                document.getElementById('reportSection').classList.add('active');
+                renderReport();
+            }
+        }
+
+        // Filter Inventory
+        function filterInventory(filter) {
+            currentFilter = filter;
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            renderInventory();
+        }
+
+        // Render Inventory
+        function renderInventory() {
+            const searchTerm = document.getElementById('invSearch').value.toLowerCase();
+
+            let filtered = products.filter(p => {
+                const matchesSearch = p.description.toLowerCase().includes(searchTerm);
+
+                switch (currentFilter) {
+                    case 'online': return matchesSearch && p.status;
+                    case 'offline': return matchesSearch && !p.status;
+                    case 'low': return matchesSearch && p.qty > 0 && p.qty <= 10;
+                    case 'negative': return matchesSearch && p.qty < 0;
+                    default: return matchesSearch;
+                }
+            });
+
+            const inventoryList = document.getElementById('inventoryList');
+
+            if (filtered.length === 0) {
+                inventoryList.innerHTML = `
+                    <div style="text-align: center; padding: 40px; color: rgba(255,255,255,0.5);">
+                        <i class="fas fa-box-open" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                        <p>No items found</p>
+                    </div>
+                `;
+                return;
+            }
+
+            inventoryList.innerHTML = filtered.map((product, index) => {
+                const originalIndex = products.indexOf(product);
+                return `
+                    <div class="inv-item">
+                        <div class="inv-item-header">
+                            <div class="inv-item-name">${escapeHtml(product.description)}</div>
+                            <div class="status-toggle ${product.status ? 'online' : 'offline'}" 
+                                onclick="toggleStatus(${originalIndex})">
+                                ${product.status ? 'ONLINE' : 'OFFLINE'}
+                            </div>
+                        </div>
+                        <div class="inv-item-details">
+                            <div class="inv-detail">
+                                <label>Cost</label>
+                                <input type="number" value="${product.cost}" 
+                                    onchange="updateField(${originalIndex}, 'cost', this.value)">
+                            </div>
+                            <div class="inv-detail">
+                                <label>Price</label>
+                                <input type="number" value="${product.price}" 
+                                    onchange="updateField(${originalIndex}, 'price', this.value)">
+                            </div>
+                            <div class="inv-detail">
+                                <label>Qty OH</label>
+                                <input type="number" value="${product.qty}" 
+                                    onchange="updateField(${originalIndex}, 'qty', this.value)"
+                                    style="color: ${product.qty < 0 ? 'var(--danger)' : product.qty <= 10 ? 'var(--warning)' : 'var(--light)'}">
+                            </div>
+                        </div>
+                        <div class="inv-actions">
+                            <button class="inv-btn save-btn" onclick="editItem(${originalIndex})">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                            <button class="inv-btn delete-btn" onclick="deleteItem(${originalIndex})">
+                                <i class="fas fa-trash"></i> Delete
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Toggle Status
+        function toggleStatus(index) {
+            products[index].status = !products[index].status;
+            saveToLocalStorage();
+            renderInventory();
+            updateStats();
+            showToast(`Item ${products[index].status ? 'activated' : 'deactivated'}`);
+        }
+
+        // Update Field
+        function updateField(index, field, value) {
+            products[index][field] = parseFloat(value) || 0;
+            saveToLocalStorage();
+            updateStats();
+        }
+
+        // Edit Item
+        function editItem(index) {
+            editingIndex = index;
+            const product = products[index];
+
+            document.getElementById('modalTitle').textContent = 'Edit Item';
+            document.getElementById('itemDescription').value = product.description;
+            document.getElementById('itemCost').value = product.cost;
+            document.getElementById('itemPrice').value = product.price;
+            document.getElementById('itemQty').value = product.qty;
+
+            document.getElementById('itemModal').classList.add('show');
+        }
+
+        // Delete Item
+        function deleteItem(index) {
+            if (confirm('Are you sure you want to delete this item?')) {
+                products.splice(index, 1);
+                saveToLocalStorage();
+                renderInventory();
+                updateStats();
+                showToast('Item deleted successfully');
+            }
+        }
+
+        // Show Add Modal
+        function showAddModal() {
+            editingIndex = -1;
+            document.getElementById('modalTitle').textContent = 'Add New Item';
+            document.getElementById('itemForm').reset();
+            document.getElementById('itemModal').classList.add('show');
+        }
+
+        // Close Modal
+        function closeModal() {
+            document.getElementById('itemModal').classList.remove('show');
+            editingIndex = -1;
+        }
+
+        // Save Item
+        document.getElementById('itemForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const newItem = {
+                description: document.getElementById('itemDescription').value,
+                cost: parseFloat(document.getElementById('itemCost').value) || 0,
+                price: parseFloat(document.getElementById('itemPrice').value) || 0,
+                qty: parseFloat(document.getElementById('itemQty').value) || 0,
+                status: true
+            };
+
+            if (editingIndex >= 0) {
+                products[editingIndex] = newItem;
+                showToast('Item updated successfully');
+            } else {
+                products.push(newItem);
+                showToast('Item added successfully');
+            }
+
+            saveToLocalStorage();
+            closeModal();
+            renderInventory();
+            updateStats();
+        });
+
+        // Render Report
+        function renderReport() {
+            const outOfStock = products.filter(p => p.qty <= 0);
+            const lowStock = products.filter(p => p.qty > 0 && p.qty <= 10);
+            const activeStock = products.filter(p => p.qty > 10);
+
+            document.getElementById('outOfStockCount').textContent = outOfStock.length;
+            document.getElementById('lowStockCount').textContent = lowStock.length;
+            document.getElementById('activeStockCount').textContent = activeStock.length;
+
+            document.getElementById('outOfStockList').innerHTML = outOfStock.length ?
+                outOfStock.map(p => `
+                    <div class="report-item">
+                        <span class="report-item-name">${escapeHtml(p.description.substring(0, 30))}</span>
+                        <span class="report-item-qty negative">${p.qty}</span>
+                    </div>
+                `).join('') : '<p style="padding:10px;color:rgba(255,255,255,0.5)">No items</p>';
+
+            document.getElementById('lowStockList').innerHTML = lowStock.length ?
+                lowStock.map(p => `
+                    <div class="report-item">
+                        <span class="report-item-name">${escapeHtml(p.description.substring(0, 30))}</span>
+                        <span class="report-item-qty low">${p.qty}</span>
+                    </div>
+                `).join('') : '<p style="padding:10px;color:rgba(255,255,255,0.5)">No items</p>';
+
+            document.getElementById('activeStockList').innerHTML = activeStock.length ?
+                activeStock.slice(0, 10).map(p => `
+                    <div class="report-item">
+                        <span class="report-item-name">${escapeHtml(p.description.substring(0, 30))}</span>
+                        <span class="report-item-qty">${p.qty}</span>
+                    </div>
+                `).join('') + (activeStock.length > 10 ? `<p style="padding:10px;color:rgba(255,255,255,0.5);text-align:center">+${activeStock.length - 10} more</p>` : '') : '<p style="padding:10px;color:rgba(255,255,255,0.5)">No items</p>';
+        }
+
+        // Download PDF
+        function downloadPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            // Header
+            doc.setFontSize(20);
+            doc.setTextColor(233, 69, 96);
+            doc.text('PLAZA STEEL & CROCKERY', 105, 20, { align: 'center' });
+
+            doc.setFontSize(14);
+            doc.setTextColor(0, 0, 0);
+            doc.text('Inventory Summary Report', 105, 30, { align: 'center' });
+
+            doc.setFontSize(10);
+            doc.text(`Date: ${new Date().toLocaleDateString()}`, 105, 38, { align: 'center' });
+
+            // Stats
+            let y = 50;
+            doc.setFontSize(12);
+            doc.setTextColor(0, 0, 0);
+            doc.text(`Total Items: ${products.length}`, 20, y);
+            doc.text(`In Stock: ${products.filter(p => p.qty > 0).length}`, 20, y + 8);
+            doc.text(`Out of Stock: ${products.filter(p => p.qty <= 0).length}`, 20, y + 16);
+
+            // Out of Stock Items
+            y = 80;
+            doc.setFontSize(14);
+            doc.setTextColor(255, 0, 0);
+            doc.text('OUT OF STOCK (Negative Qty)', 20, y);
+
+            const outOfStock = products.filter(p => p.qty <= 0);
+            y += 10;
+            doc.setFontSize(9);
+            doc.setTextColor(0, 0, 0);
+
+            outOfStock.slice(0, 15).forEach((p, i) => {
+                doc.text(`${i + 1}. ${p.description.substring(0, 40)} - Qty: ${p.qty}`, 20, y);
+                y += 6;
+            });
+
+            // Low Stock Items
+            y += 10;
+            doc.setFontSize(14);
+            doc.setTextColor(255, 171, 0);
+            doc.text('LOW STOCK (1-10)', 20, y);
+
+            const lowStock = products.filter(p => p.qty > 0 && p.qty <= 10);
+            y += 10;
+            doc.setFontSize(9);
+            doc.setTextColor(0, 0, 0);
+
+            lowStock.slice(0, 15).forEach((p, i) => {
+                doc.text(`${i + 1}. ${p.description.substring(0, 40)} - Qty: ${p.qty}`, 20, y);
+                y += 6;
+            });
+
+            // Active Stock Preview
+            y += 10;
+            doc.setFontSize(14);
+            doc.setTextColor(0, 200, 83);
+            doc.text('ACTIVE STOCK (10+)', 20, y);
+
+            const activeStock = products.filter(p => p.qty > 10);
+            y += 10;
+            doc.setFontSize(9);
+            doc.setTextColor(0, 0, 0);
+
+            activeStock.slice(0, 15).forEach((p, i) => {
+                doc.text(`${i + 1}. ${p.description.substring(0, 40)} - Qty: ${p.qty}`, 20, y);
+                y += 6;
+            });
+
+            // Footer
+            doc.setFontSize(8);
+            doc.setTextColor(128, 128, 128);
+            doc.text('Generated by Plaza Rate List App', 105, 285, { align: 'center' });
+
+            doc.save('Plaza_Inventory_Report.pdf');
+            showToast('PDF downloaded successfully');
+        }
+
+        // Search Event
+        document.getElementById('invSearch').addEventListener('input', renderInventory);
+
+        // Escape HTML
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Show Toast
+        function showToast(message, isError = false) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = 'toast show' + (isError ? ' error' : '');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+    </script>
+</body>
+
+</html>

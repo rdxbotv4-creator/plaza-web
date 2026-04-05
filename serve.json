@@ -1,0 +1,24 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/public/index.html" },
+    { "source": "/index.html", "destination": "/public/index.html" },
+    { "source": "/admin-login", "destination": "/public/admin-login.html" },
+    { "source": "/admin-dashboard", "destination": "/public/admin-dashboard.html" },
+    { "source": "/portal", "destination": "/public/portal.html" },
+    { "source": "/offline", "destination": "/public/offline.html" }
+  ],
+  "headers": [
+    {
+      "source": "/assets/**",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    },
+    {
+      "source": "/cache/**",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    },
+    {
+      "source": "/list/**",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600" }]
+    }
+  ]
+}
