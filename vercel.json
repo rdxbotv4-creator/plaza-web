@@ -17,6 +17,10 @@
             "use": "@vercel/static"
         },
         {
+            "src": "list/**",
+            "use": "@vercel/static"
+        },
+        {
             "src": "manifest.json",
             "use": "@vercel/static"
         },
@@ -37,6 +41,10 @@
         {
             "src": "/data/(.*)",
             "dest": "/data/$1"
+        },
+        {
+            "src": "/list/(.*)",
+            "dest": "/list/$1"
         },
         {
             "src": "/admin-login",
