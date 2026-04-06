@@ -836,19 +836,10 @@
                     });
                 }
 
-                const itemNumHtml = product.itemNumber ? `<span class="product-item-num">#${product.itemNumber}</span>` : '';
-                const qtyClass = product.qty <= 0 ? 'out-of-stock' : (product.qty <= 5 ? 'low-stock' : 'in-stock');
-                const qtyDisplay = product.qty > 0 ? product.qty : '0';
-
                 return `
                     <div class="product-card" style="animation-delay: ${index * 0.03}s">
-                        <div class="product-card-header">
-                            ${itemNumHtml}
-                            <span class="product-qty ${qtyClass}">Stock: ${qtyDisplay}</span>
-                        </div>
                         <div class="product-description">${displayDesc}</div>
                         <div class="product-prices">
-                            <span class="product-cost">Cost: Rs. ${formatNumber(product.cost)}</span>
                             <span class="product-price">Rs. ${formatNumber(product.price)}</span>
                         </div>
                     </div>
