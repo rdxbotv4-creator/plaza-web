@@ -1,5 +1,5 @@
 // Plaza Steel & Crockery - Service Worker
-const CACHE_NAME = 'plaza-rate-list-v4';
+const CACHE_NAME = 'plaza-rate-list-v5';
 
 const urlsToCache = [
     './',
@@ -7,7 +7,6 @@ const urlsToCache = [
     './admin-login.html',
     './admin-dashboard.html',
     './portal.html',
-    './data/items.json',
     './manifest.json',
     './cache/logo.png',
     './cache/app icon.png',
@@ -48,15 +47,31 @@ self.addEventListener('activate', (event) => {
     );
 });
 
-// Fetch Event - Network first, fallback to cache
+// Fetch Event - Network first for dynamic content
 self.addEventListener('fetch', (event) => {
+    const url = event.request.url;
+    
     // Skip cross-origin requests
-    if (!event.request.url.startsWith(self.location.origin)) {
+    if (!url.startsWith(self.location.origin)) {
         return;
     }
-
+    
+    // Always fetch JSON files from network (no cache)
+    if (url.includes('.json')) {
+        event.respondWith(
+            fetch(url, { cache: 'no-store' })
+                .then(response => response)
+                .catch(() => {
+                    return new Response('[]', { 
+                        headers: { 'Content-Type': 'application/json' }
+                    });
+                })
+        );
+        return;
+    }
+    
     // For HTML pages, try network first
-    if (event.request.headers.get('accept').includes('text/html')) {
+    if (event.request.headers.get('accept') && event.request.headers.get('accept').includes('text/html')) {
         event.respondWith(
             fetch(event.request)
                 .catch(() => {

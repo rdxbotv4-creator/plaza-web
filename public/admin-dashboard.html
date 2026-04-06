@@ -4,39 +4,855 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#1a2a6c">
-    <title>Admin Dashboard | Plaza Rate List</title>
+    <meta name="theme-color" content="#0f172a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Admin Dashboard">
+    <title>Admin Dashboard | Plaza Portal</title>
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="../cache/app icon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <link rel="stylesheet" href="../assets/css/animations.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/premium.css">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #06b6d4;
+            --accent-2: #a855f7;
+            --gold: #fbbf24;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --dark: #0f172a;
+            --darker: #020617;
+            --light: #f8fafc;
+            --light-muted: #94a3b8;
+            --glass: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --glow-primary: rgba(99, 102, 241, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background: var(--darker);
+            min-height: 100vh;
+            color: var(--light);
+        }
+
+        .premium-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+        }
+
+        .dashboard-container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .dash-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border-radius: 18px;
+            margin-bottom: 25px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .dash-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logout-btn {
+            padding: 10px 18px;
+            background: linear-gradient(135deg, var(--danger), #dc2626);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+        }
+
+        .logout-btn:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.5);
+        }
+
+        .logout-btn i {
+            margin-right: 6px;
+        }
+
+        .header-logo {
+            position: relative;
+            width: 50px;
+            height: 50px;
+        }
+
+        .header-logo .logo-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: ringPulse 2s ease-in-out infinite;
+        }
+
+        .header-logo .logo-ring:nth-child(2) {
+            width: 50px;
+            height: 50px;
+            animation-delay: 0.5s;
+            border-color: var(--accent);
+            opacity: 0.3;
+        }
+
+        @keyframes ringPulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.2; }
+        }
+
+        .header-logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            object-fit: cover;
+            position: relative;
+            z-index: 1;
+            animation: logoSpin 8s linear infinite;
+        }
+
+        @keyframes logoSpin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+            padding: 20px 12px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid var(--glass-border);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: fadeInUp 0.6s ease backwards;
+        }
+
+        .stat-card:nth-child(1) { animation-delay: 0.1s; }
+        .stat-card:nth-child(2) { animation-delay: 0.2s; }
+        .stat-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .stat-card:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        .stat-card i {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .stat-card.total i {
+            background: linear-gradient(135deg, var(--accent-2), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-card.in-stock i {
+            background: linear-gradient(135deg, var(--success), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-card.out-stock i {
+            background: linear-gradient(135deg, var(--danger), var(--warning));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--light);
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            color: var(--light-muted);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            margin-top: 5px;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .nav-tab {
+            flex: 1;
+            padding: 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: center;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-tab.active {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-color: var(--primary);
+            color: white;
+            box-shadow: 0 8px 25px var(--glow-primary);
+        }
+
+        .nav-tab:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-tab i {
+            margin-right: 6px;
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .inv-search {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid var(--glass-border);
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            color: var(--light);
+            font-size: 0.9rem;
+            margin-bottom: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .inv-search:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 20px var(--glow-primary);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .inv-search::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--accent-2));
+            border-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 15px var(--glow-primary);
+        }
+
+        .filter-btn:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .inv-item {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border-radius: 16px;
+            padding: 18px;
+            margin-bottom: 12px;
+            border: 1px solid var(--glass-border);
+            transition: all 0.4s ease;
+            animation: slideInLeft 0.5s ease backwards;
+        }
+
+        .inv-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .inv-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .inv-item-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            flex: 1;
+            padding-right: 12px;
+            line-height: 1.4;
+        }
+
+        .status-toggle {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .status-toggle.online {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(16, 185, 129, 0.1));
+            color: var(--success);
+            border: 1px solid var(--success);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+        }
+
+        .status-toggle.offline {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(239, 68, 68, 0.1));
+            color: var(--danger);
+            border: 1px solid var(--danger);
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
+        }
+
+        .status-toggle:hover {
+            transform: scale(1.05);
+        }
+
+        .inv-item-details {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            font-size: 0.75rem;
+        }
+
+        .inv-detail {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .inv-detail label {
+            display: block;
+            color: var(--light-muted);
+            margin-bottom: 6px;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .inv-detail input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: var(--light);
+            font-size: 0.9rem;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .inv-detail input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+        }
+
+        .inv-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .inv-btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .save-btn {
+            background: linear-gradient(135deg, var(--success), #059669);
+            color: white;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .save-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5);
+        }
+
+        .delete-btn {
+            background: linear-gradient(135deg, var(--danger), #dc2626);
+            color: white;
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+        }
+
+        .delete-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.5);
+        }
+
+        .add-new-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--secondary), var(--dark));
+            border: 2px dashed var(--glass-border);
+            border-radius: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .add-new-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.2);
+        }
+
+        .add-new-btn i {
+            font-size: 1.1rem;
+            animation: bounce 1s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%) translateY(150px);
+            background: linear-gradient(135deg, var(--dark), var(--darker));
+            color: var(--light);
+            padding: 16px 28px;
+            border-radius: 14px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(16, 185, 129, 0.2);
+            z-index: 1000;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            font-weight: 500;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .toast.error {
+            border-color: rgba(239, 68, 68, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(239, 68, 68, 0.2);
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--darker);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 3px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal.show {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, var(--dark), var(--darker));
+            padding: 30px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 380px;
+            border: 1px solid var(--glass-border);
+            animation: slideUp 0.4s ease;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(99, 102, 241, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent-2), var(--gold));
+        }
+
+        .modal-title {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .modal-form .form-group {
+            margin-bottom: 18px;
+        }
+
+        .modal-form input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid var(--glass-border);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            color: var(--light);
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .modal-form input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 20px var(--glow-primary);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .modal-form input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .cancel-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .cancel-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 4px 15px var(--glow-primary);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--glow-primary);
+        }
+
+        .submit-btn i {
+            margin-right: 6px;
+        }
+
+        .summary-section {
+            margin-bottom: 25px;
+        }
+
+        .summary-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border-radius: 16px;
+            padding: 18px;
+            margin-bottom: 12px;
+            border: 1px solid var(--glass-border);
+            animation: slideInLeft 0.5s ease backwards;
+        }
+
+        .summary-card:nth-child(1) { animation-delay: 0.1s; }
+        .summary-card:nth-child(2) { animation-delay: 0.2s; }
+        .summary-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .summary-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .summary-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .summary-count {
+            font-size: 1.3rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--primary), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .summary-card.out-of-stock .summary-count {
+            background: linear-gradient(90deg, var(--danger), var(--warning));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .summary-card.low-stock .summary-count {
+            background: linear-gradient(90deg, var(--warning), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .summary-card.active .summary-count {
+            background: linear-gradient(90deg, var(--success), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .report-list {
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .report-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            margin-bottom: 8px;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .report-item:hover {
+            background: rgba(0, 0, 0, 0.4);
+            transform: translateX(5px);
+        }
+
+        .report-item-name {
+            flex: 1;
+            padding-right: 12px;
+        }
+
+        .report-item-qty {
+            font-weight: 700;
+        }
+
+        .report-item-qty.negative {
+            color: var(--danger);
+        }
+
+        .report-item-qty.low {
+            color: var(--warning);
+        }
+
+        .download-report-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--success), #059669);
+            border: none;
+            border-radius: 14px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 25px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-report-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .download-report-btn:hover::before {
+            left: 100%;
+        }
+
+        .download-report-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(16, 185, 129, 0.5);
+        }
+
+        .download-report-btn i {
+            animation: bounce 1s ease-in-out infinite;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Animated Background -->
-    <div class="cinematic-bg">
+    <div class="premium-bg">
         <div class="gradient-orb orb-1"></div>
         <div class="gradient-orb orb-2"></div>
         <div class="gradient-orb orb-3"></div>
+        <div class="particles-container" id="particles"></div>
     </div>
 
-    <div class="admin-container">
-        <!-- Header -->
+    <div class="dashboard-container">
         <div class="dash-header">
-            <div>
-                <div class="dash-title">📊 Dashboard</div>
-                <div style="font-size: 0.75rem; color: rgba(255,255,255,0.6);">Plaza Steel & Crockery</div>
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <div class="header-logo">
+                    <div class="logo-ring"></div>
+                    <div class="logo-ring"></div>
+                    <img src="../cache/logo.png" alt="Logo" onerror="this.style.display='none'">
+                </div>
+                <div>
+                    <div class="dash-title">Dashboard</div>
+                    <div style="font-size: 0.75rem; color: rgba(255,255,255,0.6);">Plaza Steel & Crockery</div>
+                </div>
             </div>
             <button class="logout-btn" onclick="logout()">
                 <i class="fas fa-sign-out-alt"></i> Logout
             </button>
         </div>
 
-        <!-- Stats Cards -->
         <div class="stats-grid">
             <div class="stat-card total">
                 <i class="fas fa-boxes"></i>
@@ -55,7 +871,6 @@
             </div>
         </div>
 
-        <!-- Navigation Tabs -->
         <div class="nav-tabs">
             <div class="nav-tab active" onclick="showSection('inventory')">
                 <i class="fas fa-box"></i> Inventory
@@ -65,16 +880,13 @@
             </div>
         </div>
 
-        <!-- Inventory Section -->
         <div class="content-section active" id="inventorySection">
             <button class="add-new-btn" onclick="showAddModal()">
                 <i class="fas fa-plus"></i> Add New Item
             </button>
 
-            <!-- Search in Inventory -->
-            <input type="text" class="inv-search" id="invSearch" placeholder="Search inventory... (e.g., COOKER, PAN)">
+            <input type="text" class="inv-search" id="invSearch" placeholder="Search inventory...">
 
-            <!-- Filter Buttons -->
             <div class="filter-buttons">
                 <button class="filter-btn active" onclick="filterInventory('all')">All</button>
                 <button class="filter-btn" onclick="filterInventory('online')">Online</button>
@@ -86,44 +898,44 @@
             <div id="inventoryList"></div>
         </div>
 
-        <!-- Report Section -->
         <div class="content-section" id="reportSection">
             <div class="summary-section">
-                <!-- Out of Stock -->
                 <div class="summary-card out-of-stock">
                     <div class="summary-header">
-                        <span class="summary-title">🔴 Out of Stock (0 or less)</span>
+                        <span class="summary-title">Out of Stock (0 or less)</span>
                         <span class="summary-count" id="outOfStockCount">0</span>
                     </div>
                     <div class="report-list" id="outOfStockList"></div>
                 </div>
 
-                <!-- Low Stock -->
                 <div class="summary-card low-stock">
                     <div class="summary-header">
-                        <span class="summary-title">🟠 Low Stock (1-10)</span>
+                        <span class="summary-title">Low Stock (1-10)</span>
                         <span class="summary-count" id="lowStockCount">0</span>
                     </div>
                     <div class="report-list" id="lowStockList"></div>
                 </div>
 
-                <!-- Active Stock -->
                 <div class="summary-card active">
                     <div class="summary-header">
-                        <span class="summary-title">🟢 Active Stock (10+)</span>
+                        <span class="summary-title">Active Stock (10+)</span>
                         <span class="summary-count" id="activeStockCount">0</span>
                     </div>
                     <div class="report-list" id="activeStockList"></div>
                 </div>
             </div>
 
-            <button class="download-report-btn" onclick="downloadPDF()">
-                <i class="fas fa-file-pdf"></i> Download PDF Report
-            </button>
+            <div class="pdf-buttons-row">
+                <button class="download-report-btn negative-btn" onclick="downloadNegativePDF()">
+                    <i class="fas fa-minus-circle"></i> Negative Stock PDF
+                </button>
+                <button class="download-report-btn low-btn" onclick="downloadLowStockPDF()">
+                    <i class="fas fa-exclamation-triangle"></i> Low Stock PDF
+                </button>
+            </div>
         </div>
     </div>
 
-    <!-- Add/Edit Modal -->
     <div class="modal" id="itemModal">
         <div class="modal-content">
             <h3 class="modal-title" id="modalTitle">Add New Item</h3>
@@ -133,11 +945,11 @@
                     <input type="text" id="itemDescription" placeholder="Enter item name" required>
                 </div>
                 <div class="form-group">
-                    <label>Cost Price (Rs.)</label>
+                    <label>Cost Price</label>
                     <input type="number" id="itemCost" placeholder="0" min="0" required>
                 </div>
                 <div class="form-group">
-                    <label>Sale Price (Rs.)</label>
+                    <label>Sale Price</label>
                     <input type="number" id="itemPrice" placeholder="0" min="0" required>
                 </div>
                 <div class="form-group">
@@ -152,32 +964,56 @@
         </div>
     </div>
 
-    <!-- Toast -->
     <div class="toast" id="toast"></div>
 
     <script>
-        // Data Storage
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 12 + 's';
+                particle.style.animationDuration = (8 + Math.random() * 8) + 's';
+                particle.style.width = (3 + Math.random() * 3) + 'px';
+                particle.style.height = particle.style.width;
+                container.appendChild(particle);
+            }
+        }
+
         let products = [];
         let editingIndex = -1;
         let currentFilter = 'all';
 
-        // Check login
         const isLoggedIn = sessionStorage.getItem('plazaAdminLoggedIn');
         if (isLoggedIn !== 'true') {
             window.location.href = 'admin-login.html';
         }
 
-        // Load Products
         async function loadProducts() {
             try {
-                const response = await fetch('../list/iteam list.json');
-                const data = await response.json();
+                localStorage.removeItem('plazaProducts');
+                
+                const response = await fetch('../list/iteam list.json?t=' + Date.now());
+                const text = await response.text();
+                
+                console.log('JSON response:', text);
+                
+                if (!text || text.trim() === '' || text.trim() === '{}') {
+                    console.log('Empty JSON - clearing products');
+                    products = [];
+                    updateStats();
+                    renderInventory();
+                    renderReport();
+                    return;
+                }
+                
+                const data = JSON.parse(text);
 
-                // Parse JSON structure
                 products = [];
                 data.forEach(table => {
-                    if (Array.isArray(table)) {
-                        table.forEach(item => {
+                    if (table['Sheet1'] && Array.isArray(table['Sheet1'])) {
+                        table['Sheet1'].forEach(item => {
                             if (item['Item Description'] && item.Price !== undefined) {
                                 products.push({
                                     description: item['Item Description'],
@@ -200,21 +1036,30 @@
                                 });
                             }
                         });
+                    } else if (Array.isArray(table)) {
+                        table.forEach(item => {
+                            if (item['Item Description'] && item.Price !== undefined) {
+                                products.push({
+                                    description: item['Item Description'],
+                                    cost: item.Cost || 0,
+                                    price: item.Price,
+                                    qty: item['Qty OH'] || 0,
+                                    status: item.status !== false && item.status !== 'offline'
+                                });
+                            }
+                        });
                     }
                 });
 
-                // Load from localStorage if available (admin updates)
-                const savedProducts = localStorage.getItem('plazaProducts');
-                if (savedProducts) {
-                    try {
-                        const parsed = JSON.parse(savedProducts);
-                        if (Array.isArray(parsed) && parsed.length > 0) {
-                            products = parsed;
-                        }
-                    } catch (e) { }
-                } else {
-                    saveToLocalStorage();
+                if (products.length === 0) {
+                    localStorage.removeItem('plazaProducts');
+                    updateStats();
+                    renderInventory();
+                    renderReport();
+                    return;
                 }
+
+                localStorage.setItem('plazaProducts', JSON.stringify(products));
 
                 updateStats();
                 renderInventory();
@@ -225,51 +1070,26 @@
             }
         }
 
-        // Save to LocalStorage
         function saveToLocalStorage() {
             localStorage.setItem('plazaProducts', JSON.stringify(products));
         }
 
-        // Logout
         function logout() {
             sessionStorage.removeItem('plazaAdminLoggedIn');
             sessionStorage.removeItem('plazaAdminLoginTime');
             window.location.href = 'index.html';
         }
 
-        // Update Stats with animation
         function updateStats() {
             const total = products.length;
             const inStock = products.filter(p => p.qty > 0).length;
             const outStock = products.filter(p => p.qty <= 0).length;
 
-            // Animate counting
-            animateCounter('totalItems', total);
-            animateCounter('inStock', inStock);
-            animateCounter('outStock', outStock);
+            document.getElementById('totalItems').textContent = total;
+            document.getElementById('inStock').textContent = inStock;
+            document.getElementById('outStock').textContent = outStock;
         }
 
-        function animateCounter(elementId, target) {
-            const element = document.getElementById(elementId);
-            const start = parseInt(element.textContent) || 0;
-            const duration = 500;
-            const startTime = performance.now();
-
-            function update(currentTime) {
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-                const value = Math.floor(start + (target - start) * progress);
-                element.textContent = value;
-
-                if (progress < 1) {
-                    requestAnimationFrame(update);
-                }
-            }
-
-            requestAnimationFrame(update);
-        }
-
-        // Show Section
         function showSection(section) {
             document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
@@ -284,7 +1104,6 @@
             }
         }
 
-        // Filter Inventory
         function filterInventory(filter) {
             currentFilter = filter;
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
@@ -292,7 +1111,6 @@
             renderInventory();
         }
 
-        // Render Inventory
         function renderInventory() {
             const searchTerm = document.getElementById('invSearch').value.toLowerCase();
 
@@ -312,8 +1130,8 @@
 
             if (filtered.length === 0) {
                 inventoryList.innerHTML = `
-                    <div class="no-products">
-                        <i class="fas fa-box-open"></i>
+                    <div style="text-align: center; padding: 40px; color: rgba(255,255,255,0.5);">
+                        <i class="fas fa-box-open" style="font-size: 2rem; margin-bottom: 10px;"></i>
                         <p>No items found</p>
                     </div>
                 `;
@@ -322,8 +1140,6 @@
 
             inventoryList.innerHTML = filtered.map((product, index) => {
                 const originalIndex = products.indexOf(product);
-                const qtyColor = product.qty < 0 ? 'var(--danger)' : product.qty <= 10 ? 'var(--warning)' : 'var(--light)';
-
                 return `
                     <div class="inv-item">
                         <div class="inv-item-header">
@@ -348,7 +1164,7 @@
                                 <label>Qty OH</label>
                                 <input type="number" value="${product.qty}" 
                                     onchange="updateField(${originalIndex}, 'qty', this.value)"
-                                    style="color: ${qtyColor}">
+                                    style="color: ${product.qty < 0 ? 'var(--danger)' : product.qty <= 10 ? 'var(--warning)' : 'var(--light)'}">
                             </div>
                         </div>
                         <div class="inv-actions">
@@ -364,7 +1180,6 @@
             }).join('');
         }
 
-        // Toggle Status
         function toggleStatus(index) {
             products[index].status = !products[index].status;
             saveToLocalStorage();
@@ -374,7 +1189,6 @@
             showToast(`Item ${products[index].status ? 'activated' : 'deactivated'}`);
         }
 
-        // Update Field
         function updateField(index, field, value) {
             products[index][field] = parseFloat(value) || 0;
             saveToLocalStorage();
@@ -382,12 +1196,11 @@
             renderReport();
         }
 
-        // Edit Item
         function editItem(index) {
             editingIndex = index;
             const product = products[index];
 
-            document.getElementById('modalTitle').innerHTML = '<i class="fas fa-edit"></i> Edit Item';
+            document.getElementById('modalTitle').textContent = 'Edit Item';
             document.getElementById('itemDescription').value = product.description;
             document.getElementById('itemCost').value = product.cost;
             document.getElementById('itemPrice').value = product.price;
@@ -396,7 +1209,6 @@
             document.getElementById('itemModal').classList.add('show');
         }
 
-        // Delete Item
         function deleteItem(index) {
             if (confirm('Are you sure you want to delete this item?')) {
                 products.splice(index, 1);
@@ -408,21 +1220,18 @@
             }
         }
 
-        // Show Add Modal
         function showAddModal() {
             editingIndex = -1;
-            document.getElementById('modalTitle').innerHTML = '<i class="fas fa-plus"></i> Add New Item';
+            document.getElementById('modalTitle').textContent = 'Add New Item';
             document.getElementById('itemForm').reset();
             document.getElementById('itemModal').classList.add('show');
         }
 
-        // Close Modal
         function closeModal() {
             document.getElementById('itemModal').classList.remove('show');
             editingIndex = -1;
         }
 
-        // Save Item
         document.getElementById('itemForm').addEventListener('submit', function (e) {
             e.preventDefault();
 
@@ -449,7 +1258,6 @@
             renderReport();
         });
 
-        // Render Report
         function renderReport() {
             const outOfStock = products.filter(p => p.qty <= 0);
             const lowStock = products.filter(p => p.qty > 0 && p.qty <= 10);
@@ -459,7 +1267,6 @@
             document.getElementById('lowStockCount').textContent = lowStock.length;
             document.getElementById('activeStockCount').textContent = activeStock.length;
 
-            // Render lists
             document.getElementById('outOfStockList').innerHTML = outOfStock.length ?
                 outOfStock.slice(0, 15).map(p => `
                     <div class="report-item">
@@ -488,111 +1295,326 @@
                 : '<p style="padding:10px;color:rgba(255,255,255,0.5)">No items</p>';
         }
 
-        // Download PDF
         function downloadPDF() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
-
-            // Header
+            
+            const pageWidth = doc.internal.pageSize.getWidth();
+            const pageHeight = doc.internal.pageSize.getHeight();
+            const margin = 14;
+            const tableWidth = pageWidth - (margin * 2);
+            const colWidths = [tableWidth * 0.45, tableWidth * 0.15, tableWidth * 0.20, tableWidth * 0.20];
+            
             doc.setFontSize(22);
-            doc.setTextColor(26, 42, 108);
-            doc.text('PLAZA STEEL & CROCKERY', 105, 20, { align: 'center' });
+            doc.setTextColor(99, 102, 241);
+            doc.text('PLAZA STEEL & CROCKERY', pageWidth / 2, 18, { align: 'center' });
 
-            doc.setFontSize(14);
-            doc.setTextColor(0, 0, 0);
-            doc.text('Inventory Summary Report', 105, 30, { align: 'center' });
-
-            doc.setFontSize(10);
-            doc.text(`Date: ${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()}`, 105, 38, { align: 'center' });
-
-            // Stats
-            let y = 50;
             doc.setFontSize(12);
-            doc.text(`Total Items: ${products.length}`, 20, y);
-            doc.text(`In Stock: ${products.filter(p => p.qty > 0).length}`, 20, y + 8);
-            doc.text(`Out of Stock: ${products.filter(p => p.qty <= 0).length}`, 20, y + 16);
-            doc.text(`Low Stock: ${products.filter(p => p.qty > 0 && p.qty <= 10).length}`, 20, y + 24);
+            doc.setTextColor(100, 100, 100);
+            doc.text('Complete Product Rate List', pageWidth / 2, 26, { align: 'center' });
 
-            // Out of Stock
-            y = 85;
-            doc.setFontSize(13);
-            doc.setTextColor(255, 0, 0);
-            doc.text('OUT OF STOCK (Negative/Zero Qty)', 20, y);
-
-            const outOfStock = products.filter(p => p.qty <= 0);
-            y += 8;
             doc.setFontSize(9);
-            doc.setTextColor(0, 0, 0);
+            doc.setTextColor(150, 150, 150);
+            doc.text(`Generated: ${new Date().toLocaleDateString()} | Total Items: ${products.length}`, pageWidth / 2, 32, { align: 'center' });
 
-            outOfStock.slice(0, 12).forEach((p, i) => {
-                doc.text(`${i + 1}. ${p.description.substring(0, 35)} - Qty: ${p.qty}`, 20, y);
-                y += 6;
+            let y = 42;
+            
+            const headers = ['Item Description', 'Cost', 'Price', 'Qty'];
+            doc.setFillColor(99, 102, 241);
+            doc.rect(margin, y, tableWidth, 8, 'F');
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(10);
+            doc.setFont(undefined, 'bold');
+            
+            let xPos = margin + 2;
+            headers.forEach((header, i) => {
+                doc.text(header, xPos + colWidths[i] / 2, y + 5.5, { align: 'center' });
+                xPos += colWidths[i];
             });
-
-            // Low Stock
+            
+            doc.setFont(undefined, 'normal');
+            y += 10;
+            
+            products.forEach((p, index) => {
+                if (y > pageHeight - 20) {
+                    doc.addPage();
+                    y = 20;
+                    
+                    doc.setFillColor(99, 102, 241);
+                    doc.rect(margin, y, tableWidth, 8, 'F');
+                    doc.setTextColor(255, 255, 255);
+                    doc.setFontSize(10);
+                    doc.setFont(undefined, 'bold');
+                    
+                    xPos = margin + 2;
+                    headers.forEach((header, i) => {
+                        doc.text(header, xPos + colWidths[i] / 2, y + 5.5, { align: 'center' });
+                        xPos += colWidths[i];
+                    });
+                    
+                    doc.setFont(undefined, 'normal');
+                    y += 10;
+                }
+                
+                const bgColor = index % 2 === 0 ? [248, 250, 252] : [255, 255, 255];
+                doc.setFillColor(...bgColor);
+                doc.rect(margin, y - 4, tableWidth, 7, 'F');
+                
+                doc.setTextColor(50, 50, 50);
+                doc.setFontSize(8);
+                
+                xPos = margin + 2;
+                const desc = p.description ? p.description.substring(0, 30) : '';
+                doc.text(desc, xPos + colWidths[0] / 2, y, { align: 'center' });
+                xPos += colWidths[0];
+                
+                doc.text(p.cost ? p.cost.toString() : '0', xPos + colWidths[1] / 2, y, { align: 'center' });
+                xPos += colWidths[1];
+                
+                doc.text(p.price ? p.price.toString() : '0', xPos + colWidths[2] / 2, y, { align: 'center' });
+                xPos += colWidths[2];
+                
+                if (p.qty <= 0) {
+                    doc.setTextColor(239, 68, 68);
+                } else if (p.qty <= 10) {
+                    doc.setTextColor(245, 158, 11);
+                } else {
+                    doc.setTextColor(16, 185, 129);
+                }
+                doc.text(p.qty ? p.qty.toString() : '0', xPos + colWidths[3] / 2, y, { align: 'center' });
+                
+                y += 7;
+            });
+            
             y += 5;
-            doc.setFontSize(13);
-            doc.setTextColor(255, 165, 0);
-            doc.text('LOW STOCK (1-10)', 20, y);
-
-            const lowStock = products.filter(p => p.qty > 0 && p.qty <= 10);
-            y += 8;
-            doc.setFontSize(9);
-            doc.setTextColor(0, 0, 0);
-
-            lowStock.slice(0, 12).forEach((p, i) => {
-                doc.text(`${i + 1}. ${p.description.substring(0, 35)} - Qty: ${p.qty}`, 20, y);
-                y += 6;
-            });
-
-            // Active Stock
-            y += 5;
-            doc.setFontSize(13);
-            doc.setTextColor(0, 150, 0);
-            doc.text('ACTIVE STOCK (10+)', 20, y);
-
-            const activeStock = products.filter(p => p.qty > 10);
-            y += 8;
-            doc.setFontSize(9);
-            doc.setTextColor(0, 0, 0);
-
-            activeStock.slice(0, 12).forEach((p, i) => {
-                doc.text(`${i + 1}. ${p.description.substring(0, 35)} - Qty: ${p.qty}`, 20, y);
-                y += 6;
-            });
-
-            // Footer
             doc.setFontSize(8);
-            doc.setTextColor(128, 128, 128);
-            doc.text('Generated by Plaza Rate List App', 105, 285, { align: 'center' });
+            doc.setTextColor(150, 150, 150);
+            doc.text('Page ' + doc.internal.getCurrentPageInfo().pageNumber, pageWidth / 2, y, { align: 'center' });
 
-            doc.save(`Plaza_Inventory_${new Date().toISOString().split('T')[0]}.pdf`);
-            showToast('PDF downloaded successfully! 📄');
+            doc.save(`Plaza_Products_${new Date().toISOString().split('T')[0]}.pdf`);
+            showToast('All products saved to PDF!');
         }
 
-        // Search Event
-        document.getElementById('invSearch').addEventListener('input', renderInventory);
+        function downloadNegativePDF() {
+            const negativeStock = products.filter(p => p.qty < 0);
+            if (negativeStock.length === 0) {
+                showToast('No negative stock items found!', true);
+                return;
+            }
+            
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            const pageWidth = doc.internal.pageSize.getWidth();
+            const pageHeight = doc.internal.pageSize.getHeight();
+            const margin = 14;
+            const tableWidth = pageWidth - (margin * 2);
+            const colWidths = [tableWidth * 0.45, tableWidth * 0.15, tableWidth * 0.20, tableWidth * 0.20];
+            
+            doc.setFontSize(22);
+            doc.setTextColor(239, 68, 68);
+            doc.text('PLAZA STEEL & CROCKERY', pageWidth / 2, 18, { align: 'center' });
 
-        // Escape HTML
+            doc.setFontSize(12);
+            doc.setTextColor(200, 50, 50);
+            doc.text('Negative Stock Report', pageWidth / 2, 26, { align: 'center' });
+
+            doc.setFontSize(9);
+            doc.setTextColor(150, 150, 150);
+            doc.text(`Generated: ${new Date().toLocaleDateString()} | Items: ${negativeStock.length}`, pageWidth / 2, 32, { align: 'center' });
+
+            let y = 42;
+            
+            const headers = ['Item Description', 'Cost', 'Price', 'Qty'];
+            doc.setFillColor(239, 68, 68);
+            doc.rect(margin, y, tableWidth, 8, 'F');
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(10);
+            doc.setFont(undefined, 'bold');
+            
+            let xPos = margin + 2;
+            headers.forEach((header, i) => {
+                doc.text(header, xPos + colWidths[i] / 2, y + 5.5, { align: 'center' });
+                xPos += colWidths[i];
+            });
+            
+            doc.setFont(undefined, 'normal');
+            y += 10;
+            
+            negativeStock.forEach((p, index) => {
+                if (y > pageHeight - 20) {
+                    doc.addPage();
+                    y = 20;
+                    
+                    doc.setFillColor(239, 68, 68);
+                    doc.rect(margin, y, tableWidth, 8, 'F');
+                    doc.setTextColor(255, 255, 255);
+                    doc.setFontSize(10);
+                    doc.setFont(undefined, 'bold');
+                    
+                    xPos = margin + 2;
+                    headers.forEach((header, i) => {
+                        doc.text(header, xPos + colWidths[i] / 2, y + 5.5, { align: 'center' });
+                        xPos += colWidths[i];
+                    });
+                    
+                    doc.setFont(undefined, 'normal');
+                    y += 10;
+                }
+                
+                doc.setFillColor(255, 240, 240);
+                doc.rect(margin, y - 4, tableWidth, 7, 'F');
+                
+                doc.setTextColor(50, 50, 50);
+                doc.setFontSize(8);
+                
+                xPos = margin + 2;
+                const desc = p.description ? p.description.substring(0, 30) : '';
+                doc.text(desc, xPos + colWidths[0] / 2, y, { align: 'center' });
+                xPos += colWidths[0];
+                
+                doc.text(p.cost ? p.cost.toString() : '0', xPos + colWidths[1] / 2, y, { align: 'center' });
+                xPos += colWidths[1];
+                
+                doc.text(p.price ? p.price.toString() : '0', xPos + colWidths[2] / 2, y, { align: 'center' });
+                xPos += colWidths[2];
+                
+                doc.setTextColor(239, 68, 68);
+                doc.setFont(undefined, 'bold');
+                doc.text(p.qty ? p.qty.toString() : '0', xPos + colWidths[3] / 2, y, { align: 'center' });
+                doc.setFont(undefined, 'normal');
+                
+                y += 7;
+            });
+            
+            y += 5;
+            doc.setFontSize(8);
+            doc.setTextColor(150, 150, 150);
+            doc.text('Page ' + doc.internal.getCurrentPageInfo().pageNumber, pageWidth / 2, y, { align: 'center' });
+
+            doc.save(`Plaza_Negative_Stock_${new Date().toISOString().split('T')[0]}.pdf`);
+            showToast('Negative stock PDF downloaded!');
+        }
+
+        function downloadLowStockPDF() {
+            const lowStock = products.filter(p => p.qty >= 1 && p.qty <= 10);
+            if (lowStock.length === 0) {
+                showToast('No low stock items found!', true);
+                return;
+            }
+            
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            const pageWidth = doc.internal.pageSize.getWidth();
+            const pageHeight = doc.internal.pageSize.getHeight();
+            const margin = 14;
+            const tableWidth = pageWidth - (margin * 2);
+            const colWidths = [tableWidth * 0.45, tableWidth * 0.15, tableWidth * 0.20, tableWidth * 0.20];
+            
+            doc.setFontSize(22);
+            doc.setTextColor(245, 158, 11);
+            doc.text('PLAZA STEEL & CROCKERY', pageWidth / 2, 18, { align: 'center' });
+
+            doc.setFontSize(12);
+            doc.setTextColor(200, 130, 20);
+            doc.text('Low Stock Report (1-10)', pageWidth / 2, 26, { align: 'center' });
+
+            doc.setFontSize(9);
+            doc.setTextColor(150, 150, 150);
+            doc.text(`Generated: ${new Date().toLocaleDateString()} | Items: ${lowStock.length}`, pageWidth / 2, 32, { align: 'center' });
+
+            let y = 42;
+            
+            const headers = ['Item Description', 'Cost', 'Price', 'Qty'];
+            doc.setFillColor(245, 158, 11);
+            doc.rect(margin, y, tableWidth, 8, 'F');
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(10);
+            doc.setFont(undefined, 'bold');
+            
+            let xPos = margin + 2;
+            headers.forEach((header, i) => {
+                doc.text(header, xPos + colWidths[i] / 2, y + 5.5, { align: 'center' });
+                xPos += colWidths[i];
+            });
+            
+            doc.setFont(undefined, 'normal');
+            y += 10;
+            
+            lowStock.forEach((p, index) => {
+                if (y > pageHeight - 20) {
+                    doc.addPage();
+                    y = 20;
+                    
+                    doc.setFillColor(245, 158, 11);
+                    doc.rect(margin, y, tableWidth, 8, 'F');
+                    doc.setTextColor(255, 255, 255);
+                    doc.setFontSize(10);
+                    doc.setFont(undefined, 'bold');
+                    
+                    xPos = margin + 2;
+                    headers.forEach((header, i) => {
+                        doc.text(header, xPos + colWidths[i] / 2, y + 5.5, { align: 'center' });
+                        xPos += colWidths[i];
+                    });
+                    
+                    doc.setFont(undefined, 'normal');
+                    y += 10;
+                }
+                
+                doc.setFillColor(255, 250, 230);
+                doc.rect(margin, y - 4, tableWidth, 7, 'F');
+                
+                doc.setTextColor(50, 50, 50);
+                doc.setFontSize(8);
+                
+                xPos = margin + 2;
+                const desc = p.description ? p.description.substring(0, 30) : '';
+                doc.text(desc, xPos + colWidths[0] / 2, y, { align: 'center' });
+                xPos += colWidths[0];
+                
+                doc.text(p.cost ? p.cost.toString() : '0', xPos + colWidths[1] / 2, y, { align: 'center' });
+                xPos += colWidths[1];
+                
+                doc.text(p.price ? p.price.toString() : '0', xPos + colWidths[2] / 2, y, { align: 'center' });
+                xPos += colWidths[2];
+                
+                doc.setTextColor(245, 158, 11);
+                doc.setFont(undefined, 'bold');
+                doc.text(p.qty ? p.qty.toString() : '0', xPos + colWidths[3] / 2, y, { align: 'center' });
+                doc.setFont(undefined, 'normal');
+                
+                y += 7;
+            });
+            
+            y += 5;
+            doc.setFontSize(8);
+            doc.setTextColor(150, 150, 150);
+            doc.text('Page ' + doc.internal.getCurrentPageInfo().pageNumber, pageWidth / 2, y, { align: 'center' });
+
+            doc.save(`Plaza_Low_Stock_${new Date().toISOString().split('T')[0]}.pdf`);
+            showToast('Low stock PDF downloaded!');
+        }
+
         function escapeHtml(text) {
             const div = document.createElement('div');
             div.textContent = text;
             return div.innerHTML;
         }
 
-        // Show Toast
         function showToast(message, isError = false) {
             const toast = document.getElementById('toast');
             toast.textContent = message;
             toast.className = 'toast show';
             if (isError) {
-                toast.style.borderLeftColor = 'var(--danger)';
+                toast.classList.add('error');
             }
             setTimeout(() => toast.classList.remove('show'), 3000);
         }
 
-        // Initialize
         document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
             loadProducts();
         });
     </script>

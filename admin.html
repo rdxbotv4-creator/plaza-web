@@ -4,31 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#0d1b2a">
+    <meta name="theme-color" content="#0f172a">
     <title>Plaza Portal | Admin Dashboard</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="assets/css/premium.css">
     <style>
         :root {
-            --primary: #f72585;
-            --primary-dark: #b5179e;
-            --secondary: #4cc9f0;
-            --secondary-dark: #4895ef;
-            --dark: #0d1b2a;
-            --darker: #050a12;
-            --light: #f8f9fa;
-            --accent: #7209b7;
-            --accent-light: #9d4edd;
-            --gold: #ffd700;
-            --success: #06d6a0;
-            --warning: #ffb703;
-            --danger: #ef233c;
-            --surface: rgba(255, 255, 255, 0.03);
-            --surface-hover: rgba(255, 255, 255, 0.08);
-            --border: rgba(255, 255, 255, 0.08);
-            --glow-pink: rgba(247, 37, 133, 0.5);
-            --glow-cyan: rgba(76, 201, 240, 0.4);
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #06b6d4;
+            --accent: #f472b6;
+            --accent-2: #a855f7;
+            --gold: #fbbf24;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --dark: #0f172a;
+            --darker: #020617;
+            --light: #f8fafc;
+            --light-muted: #94a3b8;
+            --glass: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --glow-primary: rgba(99, 102, 241, 0.5);
         }
 
         * {
@@ -46,10 +45,9 @@
             background: var(--darker);
             min-height: 100vh;
             color: var(--light);
-            background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 50%, #0d1b2a 100%);
         }
 
-        .bg-glow {
+        .premium-bg {
             position: fixed;
             top: 0;
             left: 0;
@@ -57,72 +55,10 @@
             height: 100%;
             z-index: -1;
             overflow: hidden;
-            pointer-events: none;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
         }
 
-        .glow-blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            animation: blobFloat 20s ease-in-out infinite;
-        }
-
-        .glow-blob-1 {
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, var(--glow-pink) 0%, transparent 70%);
-            top: -150px;
-            left: -100px;
-            opacity: 0.4;
-        }
-
-        .glow-blob-2 {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, var(--glow-cyan) 0%, transparent 70%);
-            bottom: -100px;
-            right: -100px;
-            opacity: 0.35;
-            animation-delay: -7s;
-        }
-
-        @keyframes blobFloat {
-            0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
-            25% { transform: translate(50px, -30px) rotate(90deg) scale(1.1); }
-            50% { transform: translate(-30px, 30px) rotate(180deg) scale(0.95); }
-            75% { transform: translate(20px, 10px) rotate(270deg) scale(1.05); }
-        }
-
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .particle {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: var(--secondary);
-            border-radius: 50%;
-            animation: float 12s infinite;
-            opacity: 0;
-            box-shadow: 0 0 6px var(--secondary);
-        }
-
-        @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.8; }
-            90% { opacity: 0.6; }
-            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
-        }
-
-        /* Login Screen */
-        #loginScreen {
+        .login-screen {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -137,9 +73,9 @@
             border-radius: 24px;
             width: 100%;
             max-width: 400px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
             animation: fadeIn 0.6s ease, slideUp 0.6s ease;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(233, 69, 96, 0.1);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(99, 102, 241, 0.1);
             position: relative;
             overflow: hidden;
         }
@@ -151,7 +87,7 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--accent), var(--gold));
+            background: linear-gradient(90deg, var(--primary), var(--accent-2), var(--gold));
         }
 
         @keyframes fadeIn {
@@ -166,13 +102,13 @@
 
         .login-logo {
             text-align: center;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
             position: relative;
         }
 
         .login-logo i {
             font-size: 3.5rem;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, var(--primary), var(--accent-2));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -185,8 +121,8 @@
         }
 
         @keyframes glow {
-            from { filter: drop-shadow(0 0 10px var(--glow)); }
-            to { filter: drop-shadow(0 0 25px var(--glow)); }
+            from { filter: drop-shadow(0 0 10px var(--glow-primary)); }
+            to { filter: drop-shadow(0 0 25px var(--glow-primary)); }
         }
 
         .login-title {
@@ -194,21 +130,21 @@
             font-size: 1.6rem;
             margin-bottom: 30px;
             font-weight: 700;
-            background: linear-gradient(90deg, var(--primary), var(--accent), var(--gold));
+            background: linear-gradient(90deg, var(--primary), var(--accent-2), var(--gold));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: shimmer 3s linear infinite;
+            animation: neonShimmer 3s linear infinite;
             background-size: 200% auto;
         }
 
-        @keyframes shimmer {
+        @keyframes neonShimmer {
             0% { background-position: 0% 50%; }
             100% { background-position: 200% 50%; }
         }
 
         .form-group {
-            margin-bottom: 22px;
+            margin-bottom: 20px;
             position: relative;
         }
 
@@ -224,20 +160,19 @@
         .form-group input {
             width: 100%;
             padding: 16px 18px;
-            border: 2px solid rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--glass-border);
             border-radius: 14px;
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             color: var(--light);
             font-size: 1rem;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .form-group input:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 25px var(--glow), inset 0 2px 4px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 0 25px var(--glow-primary), inset 0 1px 0 rgba(255, 255, 255, 0.1);
             transform: scale(1.02);
             background: rgba(255, 255, 255, 0.08);
         }
@@ -249,7 +184,7 @@
         .login-btn {
             width: 100%;
             padding: 16px;
-            background: linear-gradient(135deg, var(--primary), #c73e54);
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             border: none;
             border-radius: 14px;
             color: white;
@@ -257,7 +192,7 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 8px 25px var(--glow), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 25px var(--glow-primary);
             position: relative;
             overflow: hidden;
         }
@@ -279,7 +214,7 @@
 
         .login-btn:hover {
             transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 15px 35px var(--glow), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px var(--glow-primary);
         }
 
         .login-btn i {
@@ -300,9 +235,9 @@
             display: none;
             animation: shake 0.5s ease-in-out;
             padding: 12px;
-            background: rgba(255, 23, 68, 0.1);
+            background: rgba(239, 68, 68, 0.1);
             border-radius: 10px;
-            border: 1px solid rgba(255, 23, 68, 0.3);
+            border: 1px solid rgba(239, 68, 68, 0.3);
         }
 
         @keyframes shake {
@@ -334,20 +269,20 @@
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
             border-radius: 18px;
             margin-bottom: 25px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            animation: slideIn 0.5s ease;
+            animation: fadeInUp 0.5s ease;
         }
 
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-20px); }
-            to { opacity: 1; transform: translateX(0); }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .dash-title {
             font-size: 1.3rem;
             font-weight: 700;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
+            background: linear-gradient(90deg, var(--primary), var(--accent-2));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -355,7 +290,7 @@
 
         .logout-btn {
             padding: 10px 18px;
-            background: linear-gradient(135deg, var(--danger), #ff4569);
+            background: linear-gradient(135deg, var(--danger), #dc2626);
             border: none;
             border-radius: 12px;
             color: white;
@@ -363,12 +298,12 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 23, 68, 0.3);
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
         }
 
         .logout-btn:hover {
             transform: translateY(-2px) scale(1.05);
-            box-shadow: 0 8px 25px rgba(255, 23, 68, 0.5);
+            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.5);
         }
 
         .logout-btn i {
@@ -387,7 +322,7 @@
             padding: 20px 12px;
             border-radius: 16px;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--glass-border);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             animation: fadeInUp 0.6s ease backwards;
         }
@@ -395,11 +330,6 @@
         .stat-card:nth-child(1) { animation-delay: 0.1s; }
         .stat-card:nth-child(2) { animation-delay: 0.2s; }
         .stat-card:nth-child(3) { animation-delay: 0.3s; }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
 
         .stat-card:hover {
             transform: translateY(-5px) scale(1.03);
@@ -413,13 +343,13 @@
         }
 
         .stat-card.total i {
-            background: linear-gradient(135deg, var(--accent), var(--primary));
+            background: linear-gradient(135deg, var(--accent-2), var(--primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .stat-card.in-stock i {
-            background: linear-gradient(135deg, var(--success), var(--accent));
+            background: linear-gradient(135deg, var(--success), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -439,7 +369,7 @@
 
         .stat-label {
             font-size: 0.7rem;
-            color: rgba(255, 255, 255, 0.5);
+            color: var(--light-muted);
             font-weight: 500;
             letter-spacing: 0.5px;
             margin-top: 5px;
@@ -455,7 +385,7 @@
             flex: 1;
             padding: 14px;
             background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
             border-radius: 14px;
             color: rgba(255, 255, 255, 0.7);
             font-size: 0.85rem;
@@ -483,10 +413,10 @@
         }
 
         .nav-tab.active {
-            background: linear-gradient(135deg, var(--primary), #c73e54);
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             border-color: var(--primary);
             color: white;
-            box-shadow: 0 8px 25px var(--glow);
+            box-shadow: 0 8px 25px var(--glow-primary);
         }
 
         .nav-tab:hover:not(.active) {
@@ -510,7 +440,7 @@
         .inv-search {
             width: 100%;
             padding: 14px 18px;
-            border: 2px solid rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--glass-border);
             border-radius: 14px;
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
@@ -523,7 +453,7 @@
         .inv-search:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 20px var(--glow);
+            box-shadow: 0 0 20px var(--glow-primary);
             background: rgba(255, 255, 255, 0.08);
         }
 
@@ -541,7 +471,7 @@
         .filter-btn {
             padding: 10px 14px;
             background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
             border-radius: 10px;
             color: rgba(255, 255, 255, 0.7);
             font-size: 0.75rem;
@@ -551,10 +481,10 @@
         }
 
         .filter-btn.active {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, var(--primary), var(--accent-2));
             border-color: var(--primary);
             color: white;
-            box-shadow: 0 4px 15px var(--glow);
+            box-shadow: 0 4px 15px var(--glow-primary);
         }
 
         .filter-btn:hover:not(.active) {
@@ -567,12 +497,12 @@
             border-radius: 16px;
             padding: 18px;
             margin-bottom: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--glass-border);
             transition: all 0.4s ease;
-            animation: slideIn 0.5s ease backwards;
+            animation: slideInLeft 0.5s ease backwards;
         }
 
-        @keyframes slideIn {
+        @keyframes slideInLeft {
             from { opacity: 0; transform: translateX(-20px); }
             to { opacity: 1; transform: translateX(0); }
         }
@@ -580,7 +510,7 @@
         .inv-item:hover {
             transform: translateY(-3px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            border-color: rgba(233, 69, 96, 0.3);
+            border-color: rgba(99, 102, 241, 0.3);
         }
 
         .inv-item-header {
@@ -609,17 +539,17 @@
         }
 
         .status-toggle.online {
-            background: linear-gradient(135deg, rgba(0, 200, 83, 0.2), rgba(0, 200, 83, 0.1));
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(16, 185, 129, 0.1));
             color: var(--success);
             border: 1px solid var(--success);
-            box-shadow: 0 0 15px rgba(0, 200, 83, 0.2);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
         }
 
         .status-toggle.offline {
-            background: linear-gradient(135deg, rgba(255, 23, 68, 0.2), rgba(255, 23, 68, 0.1));
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(239, 68, 68, 0.1));
             color: var(--danger);
             border: 1px solid var(--danger);
-            box-shadow: 0 0 15px rgba(255, 23, 68, 0.2);
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
         }
 
         .status-toggle:hover {
@@ -643,7 +573,7 @@
 
         .inv-detail label {
             display: block;
-            color: rgba(255, 255, 255, 0.4);
+            color: var(--light-muted);
             margin-bottom: 6px;
             font-size: 0.65rem;
             font-weight: 500;
@@ -688,32 +618,32 @@
         }
 
         .save-btn {
-            background: linear-gradient(135deg, var(--success), #00a844);
+            background: linear-gradient(135deg, var(--success), #059669);
             color: white;
-            box-shadow: 0 4px 15px rgba(0, 200, 83, 0.3);
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
         }
 
         .save-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 200, 83, 0.5);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5);
         }
 
         .delete-btn {
-            background: linear-gradient(135deg, var(--danger), #ff4569);
+            background: linear-gradient(135deg, var(--danger), #dc2626);
             color: white;
-            box-shadow: 0 4px 15px rgba(255, 23, 68, 0.3);
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
         }
 
         .delete-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 23, 68, 0.5);
+            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.5);
         }
 
         .add-new-btn {
             width: 100%;
             padding: 18px;
-            background: linear-gradient(135deg, var(--secondary), var(--darker));
-            border: 2px dashed rgba(255, 255, 255, 0.2);
+            background: linear-gradient(135deg, var(--secondary), var(--dark));
+            border: 2px dashed var(--glass-border);
             border-radius: 16px;
             color: rgba(255, 255, 255, 0.8);
             font-size: 0.95rem;
@@ -731,7 +661,7 @@
             border-color: var(--primary);
             color: var(--primary);
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(233, 69, 96, 0.2);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.2);
         }
 
         .add-new-btn i {
@@ -744,21 +674,20 @@
             50% { transform: translateY(-3px); }
         }
 
-        /* Toast */
         .toast {
             position: fixed;
             bottom: 25px;
             left: 50%;
             transform: translateX(-50%) translateY(150px);
-            background: linear-gradient(135deg, var(--darker), var(--dark));
+            background: linear-gradient(135deg, var(--dark), var(--darker));
             color: var(--light);
             padding: 16px 28px;
             border-radius: 14px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 200, 83, 0.2);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(16, 185, 129, 0.2);
             z-index: 1000;
             opacity: 0;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 1px solid rgba(0, 200, 83, 0.3);
+            border: 1px solid rgba(16, 185, 129, 0.3);
             font-weight: 500;
         }
 
@@ -768,11 +697,10 @@
         }
 
         .toast.error {
-            border-color: rgba(255, 23, 68, 0.3);
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 23, 68, 0.2);
+            border-color: rgba(239, 68, 68, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(239, 68, 68, 0.2);
         }
 
-        /* Scrollbar */
         ::-webkit-scrollbar {
             width: 6px;
         }
@@ -790,7 +718,6 @@
             background: var(--primary-light);
         }
 
-        /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
@@ -817,9 +744,9 @@
             border-radius: 20px;
             width: 100%;
             max-width: 380px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
             animation: slideUp 0.4s ease;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(233, 69, 96, 0.1);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(99, 102, 241, 0.1);
             position: relative;
             overflow: hidden;
         }
@@ -831,7 +758,7 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--accent), var(--gold));
+            background: linear-gradient(90deg, var(--primary), var(--accent-2), var(--gold));
         }
 
         @keyframes slideUp {
@@ -844,7 +771,7 @@
             margin-bottom: 25px;
             text-align: center;
             font-weight: 700;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
+            background: linear-gradient(90deg, var(--primary), var(--accent-2));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -857,7 +784,7 @@
         .modal-form input {
             width: 100%;
             padding: 14px 16px;
-            border: 2px solid rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--glass-border);
             border-radius: 12px;
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
@@ -869,7 +796,7 @@
         .modal-form input:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 20px var(--glow);
+            box-shadow: 0 0 20px var(--glow-primary);
             background: rgba(255, 255, 255, 0.08);
         }
 
@@ -906,21 +833,20 @@
         }
 
         .submit-btn {
-            background: linear-gradient(135deg, var(--primary), #c73e54);
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
-            box-shadow: 0 4px 15px var(--glow);
+            box-shadow: 0 4px 15px var(--glow-primary);
         }
 
         .submit-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px var(--glow);
+            box-shadow: 0 8px 25px var(--glow-primary);
         }
 
         .submit-btn i {
             margin-right: 6px;
         }
 
-        /* Summary Report */
         .summary-section {
             margin-bottom: 25px;
         }
@@ -930,8 +856,8 @@
             border-radius: 16px;
             padding: 18px;
             margin-bottom: 12px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            animation: slideIn 0.5s ease backwards;
+            border: 1px solid var(--glass-border);
+            animation: slideInLeft 0.5s ease backwards;
         }
 
         .summary-card:nth-child(1) { animation-delay: 0.1s; }
@@ -953,7 +879,7 @@
         .summary-count {
             font-size: 1.3rem;
             font-weight: 800;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
+            background: linear-gradient(90deg, var(--primary), var(--accent-2));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -972,7 +898,7 @@
         }
 
         .summary-card.active .summary-count {
-            background: linear-gradient(90deg, var(--success), var(--accent));
+            background: linear-gradient(90deg, var(--success), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -1016,11 +942,10 @@
             color: var(--warning);
         }
 
-        /* Download Button */
         .download-report-btn {
             width: 100%;
             padding: 18px;
-            background: linear-gradient(135deg, var(--success), #00a844);
+            background: linear-gradient(135deg, var(--success), #059669);
             border: none;
             border-radius: 14px;
             color: white;
@@ -1029,7 +954,7 @@
             cursor: pointer;
             margin-top: 25px;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 8px 25px rgba(0, 200, 83, 0.3);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1055,7 +980,7 @@
 
         .download-report-btn:hover {
             transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 15px 35px rgba(0, 200, 83, 0.5);
+            box-shadow: 0 15px 35px rgba(16, 185, 129, 0.5);
         }
 
         .download-report-btn i {
@@ -1065,16 +990,14 @@
 </head>
 
 <body>
-    <!-- Animated Background -->
-    <div class="bg-grid"></div>
-    <div class="orbs">
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
+    <div class="premium-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+        <div class="particles-container" id="particles"></div>
     </div>
-    <div class="particles" id="particles"></div>
 
-    <!-- Login Screen -->
-    <div id="loginScreen">
+    <div id="loginScreen" class="login-screen">
         <div class="login-container">
             <div class="login-logo">
                 <i class="fas fa-shield-alt"></i>
@@ -1097,13 +1020,11 @@
         </div>
     </div>
 
-    <!-- Dashboard -->
     <div id="dashboard">
         <div class="dashboard-container">
-            <!-- Header -->
             <div class="dash-header">
                 <div>
-                    <div class="dash-title">📊 Dashboard</div>
+                    <div class="dash-title">Dashboard</div>
                     <div style="font-size: 0.75rem; color: rgba(255,255,255,0.6);">Plaza Steel & Crockery</div>
                 </div>
                 <button class="logout-btn" onclick="logout()">
@@ -1111,7 +1032,6 @@
                 </button>
             </div>
 
-            <!-- Stats -->
             <div class="stats-grid">
                 <div class="stat-card total">
                     <i class="fas fa-boxes"></i>
@@ -1130,7 +1050,6 @@
                 </div>
             </div>
 
-            <!-- Navigation Tabs -->
             <div class="nav-tabs">
                 <div class="nav-tab active" onclick="showSection('inventory')">
                     <i class="fas fa-box"></i> Inventory
@@ -1140,7 +1059,6 @@
                 </div>
             </div>
 
-            <!-- Inventory Section -->
             <div class="content-section active" id="inventorySection">
                 <button class="add-new-btn" onclick="showAddModal()">
                     <i class="fas fa-plus"></i> Add New Item
@@ -1159,12 +1077,11 @@
                 <div id="inventoryList"></div>
             </div>
 
-            <!-- Report Section -->
             <div class="content-section" id="reportSection">
                 <div class="summary-section">
                     <div class="summary-card out-of-stock">
                         <div class="summary-header">
-                            <span class="summary-title">❌ Out of Stock (0 or less)</span>
+                            <span class="summary-title">Out of Stock (0 or less)</span>
                             <span class="summary-count" id="outOfStockCount">0</span>
                         </div>
                         <div class="report-list" id="outOfStockList"></div>
@@ -1172,7 +1089,7 @@
 
                     <div class="summary-card low-stock">
                         <div class="summary-header">
-                            <span class="summary-title">⚠️ Low Stock (1-10)</span>
+                            <span class="summary-title">Low Stock (1-10)</span>
                             <span class="summary-count" id="lowStockCount">0</span>
                         </div>
                         <div class="report-list" id="lowStockList"></div>
@@ -1180,21 +1097,25 @@
 
                     <div class="summary-card active">
                         <div class="summary-header">
-                            <span class="summary-title">✅ Active Stock (10+)</span>
+                            <span class="summary-title">Active Stock (10+)</span>
                             <span class="summary-count" id="activeStockCount">0</span>
                         </div>
                         <div class="report-list" id="activeStockList"></div>
                     </div>
                 </div>
 
-                <button class="download-report-btn" onclick="downloadPDF()">
-                    <i class="fas fa-file-pdf"></i> Download PDF Report
-                </button>
+                <div class="pdf-buttons-row">
+                    <button class="download-report-btn negative-btn" onclick="downloadNegativePDF()">
+                        <i class="fas fa-minus-circle"></i> Negative Stock PDF
+                    </button>
+                    <button class="download-report-btn low-btn" onclick="downloadLowStockPDF()">
+                        <i class="fas fa-exclamation-triangle"></i> Low Stock PDF
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Add/Edit Modal -->
     <div class="modal" id="itemModal">
         <div class="modal-content">
             <h3 class="modal-title" id="modalTitle">Add New Item</h3>
@@ -1223,11 +1144,9 @@
         </div>
     </div>
 
-    <!-- Toast -->
     <div class="toast" id="toast"></div>
 
     <script>
-        // Create Particles
         function createParticles() {
             const container = document.getElementById('particles');
             if (!container) return;
@@ -1243,20 +1162,32 @@
             }
         }
 
-        // Data Storage
         let products = [];
         let editingIndex = -1;
         let currentFilter = 'all';
 
-        // Login Credentials
         const CORRECT_USERNAME = 'adminplaza';
         const CORRECT_PASSWORD = '34402';
 
-        // Load Products
         async function loadProducts() {
             try {
-                const response = await fetch('list/iteam list.json');
-                const data = await response.json();
+                localStorage.removeItem('plazaProducts');
+                
+                const response = await fetch('list/iteam list.json?t=' + Date.now());
+                const text = await response.text();
+                
+                console.log('JSON response:', text);
+                
+                if (!text || text.trim() === '' || text.trim() === '{}') {
+                    console.log('Empty JSON - clearing products');
+                    products = [];
+                    updateStats();
+                    renderInventory();
+                    renderReport();
+                    return;
+                }
+                
+                const data = JSON.parse(text);
 
                 products = [];
                 data.forEach(table => {
@@ -1268,19 +1199,7 @@
                                     cost: item.Cost || 0,
                                     price: item.Price,
                                     qty: item['Qty OH'] || 0,
-                                    status: item.status !== false
-                                });
-                            }
-                        });
-                    } else if (Array.isArray(table)) {
-                        table.forEach(item => {
-                            if (item['Item Description'] && item.Price !== undefined) {
-                                products.push({
-                                    description: item['Item Description'],
-                                    cost: item.Cost || 0,
-                                    price: item.Price,
-                                    qty: item['Qty OH'] || 0,
-                                    status: item.status !== false
+                                    status: item.status !== false && item.status !== 'offline'
                                 });
                             }
                         });
@@ -1292,21 +1211,34 @@
                                     cost: item.Cost || 0,
                                     price: item.Price,
                                     qty: item['Qty OH'] || 0,
-                                    status: item.status !== false
+                                    status: item.status !== false && item.status !== 'offline'
+                                });
+                            }
+                        });
+                    } else if (Array.isArray(table)) {
+                        table.forEach(item => {
+                            if (item['Item Description'] && item.Price !== undefined) {
+                                products.push({
+                                    description: item['Item Description'],
+                                    cost: item.Cost || 0,
+                                    price: item.Price,
+                                    qty: item['Qty OH'] || 0,
+                                    status: item.status !== false && item.status !== 'offline'
                                 });
                             }
                         });
                     }
                 });
 
-                // Load from localStorage if available
-                const savedProducts = localStorage.getItem('plazaProducts');
-                if (savedProducts) {
-                    products = JSON.parse(savedProducts);
-                } else {
-                    // Save initial data to localStorage
-                    saveToLocalStorage();
+                if (products.length === 0) {
+                    localStorage.removeItem('plazaProducts');
+                    updateStats();
+                    renderInventory();
+                    renderReport();
+                    return;
                 }
+
+                localStorage.setItem('plazaProducts', JSON.stringify(products));
 
                 updateStats();
                 renderInventory();
@@ -1317,12 +1249,10 @@
             }
         }
 
-        // Save to LocalStorage
         function saveToLocalStorage() {
             localStorage.setItem('plazaProducts', JSON.stringify(products));
         }
 
-        // Login Function
         document.getElementById('loginForm').addEventListener('submit', function (e) {
             e.preventDefault();
             const username = document.getElementById('username').value;
@@ -1337,7 +1267,6 @@
             }
         });
 
-        // Logout
         function logout() {
             document.getElementById('dashboard').style.display = 'none';
             document.getElementById('loginScreen').style.display = 'flex';
@@ -1346,7 +1275,6 @@
             document.getElementById('loginError').style.display = 'none';
         }
 
-        // Update Stats
         function updateStats() {
             const total = products.length;
             const inStock = products.filter(p => p.qty > 0).length;
@@ -1357,7 +1285,6 @@
             document.getElementById('outStock').textContent = outStock;
         }
 
-        // Show Section
         function showSection(section) {
             document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
@@ -1372,7 +1299,6 @@
             }
         }
 
-        // Filter Inventory
         function filterInventory(filter) {
             currentFilter = filter;
             document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
@@ -1380,7 +1306,6 @@
             renderInventory();
         }
 
-        // Render Inventory
         function renderInventory() {
             const searchTerm = document.getElementById('invSearch').value.toLowerCase();
 
@@ -1450,7 +1375,6 @@
             }).join('');
         }
 
-        // Toggle Status
         function toggleStatus(index) {
             products[index].status = !products[index].status;
             saveToLocalStorage();
@@ -1459,14 +1383,12 @@
             showToast(`Item ${products[index].status ? 'activated' : 'deactivated'}`);
         }
 
-        // Update Field
         function updateField(index, field, value) {
             products[index][field] = parseFloat(value) || 0;
             saveToLocalStorage();
             updateStats();
         }
 
-        // Edit Item
         function editItem(index) {
             editingIndex = index;
             const product = products[index];
@@ -1480,7 +1402,6 @@
             document.getElementById('itemModal').classList.add('show');
         }
 
-        // Delete Item
         function deleteItem(index) {
             if (confirm('Are you sure you want to delete this item?')) {
                 products.splice(index, 1);
@@ -1491,7 +1412,6 @@
             }
         }
 
-        // Show Add Modal
         function showAddModal() {
             editingIndex = -1;
             document.getElementById('modalTitle').textContent = 'Add New Item';
@@ -1499,13 +1419,11 @@
             document.getElementById('itemModal').classList.add('show');
         }
 
-        // Close Modal
         function closeModal() {
             document.getElementById('itemModal').classList.remove('show');
             editingIndex = -1;
         }
 
-        // Save Item
         document.getElementById('itemForm').addEventListener('submit', function (e) {
             e.preventDefault();
 
@@ -1529,9 +1447,9 @@
             closeModal();
             renderInventory();
             updateStats();
+            renderReport();
         });
 
-        // Render Report
         function renderReport() {
             const outOfStock = products.filter(p => p.qty <= 0);
             const lowStock = products.filter(p => p.qty > 0 && p.qty <= 10);
@@ -1542,131 +1460,355 @@
             document.getElementById('activeStockCount').textContent = activeStock.length;
 
             document.getElementById('outOfStockList').innerHTML = outOfStock.length ?
-                outOfStock.map(p => `
+                outOfStock.slice(0, 15).map(p => `
                     <div class="report-item">
-                        <span class="report-item-name">${escapeHtml(p.description.substring(0, 30))}</span>
+                        <span class="report-item-name">${escapeHtml(p.description.substring(0, 25))}</span>
                         <span class="report-item-qty negative">${p.qty}</span>
                     </div>
-                `).join('') : '<p style="padding:10px;color:rgba(255,255,255,0.5)">No items</p>';
+                `).join('') + (outOfStock.length > 15 ? `<p style="padding:8px;color:rgba(255,255,255,0.5);text-align:center;font-size:0.75rem">+${outOfStock.length - 15} more</p>` : '')
+                : '<p style="padding:10px;color:rgba(255,255,255,0.5)">No items</p>';
 
             document.getElementById('lowStockList').innerHTML = lowStock.length ?
-                lowStock.map(p => `
+                lowStock.slice(0, 15).map(p => `
                     <div class="report-item">
-                        <span class="report-item-name">${escapeHtml(p.description.substring(0, 30))}</span>
+                        <span class="report-item-name">${escapeHtml(p.description.substring(0, 25))}</span>
                         <span class="report-item-qty low">${p.qty}</span>
                     </div>
-                `).join('') : '<p style="padding:10px;color:rgba(255,255,255,0.5)">No items</p>';
+                `).join('') + (lowStock.length > 15 ? `<p style="padding:8px;color:rgba(255,255,255,0.5);text-align:center;font-size:0.75rem">+${lowStock.length - 15} more</p>` : '')
+                : '<p style="padding:10px;color:rgba(255,255,255,0.5)">No items</p>';
 
             document.getElementById('activeStockList').innerHTML = activeStock.length ?
-                activeStock.slice(0, 10).map(p => `
+                activeStock.slice(0, 15).map(p => `
                     <div class="report-item">
-                        <span class="report-item-name">${escapeHtml(p.description.substring(0, 30))}</span>
+                        <span class="report-item-name">${escapeHtml(p.description.substring(0, 25))}</span>
                         <span class="report-item-qty">${p.qty}</span>
                     </div>
-                `).join('') + (activeStock.length > 10 ? `<p style="padding:10px;color:rgba(255,255,255,0.5);text-align:center">+${activeStock.length - 10} more</p>` : '') : '<p style="padding:10px;color:rgba(255,255,255,0.5)">No items</p>';
+                `).join('') + (activeStock.length > 15 ? `<p style="padding:8px;color:rgba(255,255,255,0.5);text-align:center;font-size:0.75rem">+${activeStock.length - 15} more</p>` : '')
+                : '<p style="padding:10px;color:rgba(255,255,255,0.5)">No items</p>';
         }
 
-        // Download PDF
         function downloadPDF() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
+            
+            const pageWidth = doc.internal.pageSize.getWidth();
+            const pageHeight = doc.internal.pageSize.getHeight();
+            const margin = 14;
+            const tableWidth = pageWidth - (margin * 2);
+            const colWidths = [tableWidth * 0.45, tableWidth * 0.15, tableWidth * 0.20, tableWidth * 0.20];
+            
+            doc.setFontSize(22);
+            doc.setTextColor(99, 102, 241);
+            doc.text('PLAZA STEEL & CROCKERY', pageWidth / 2, 18, { align: 'center' });
 
-            // Header
-            doc.setFontSize(20);
-            doc.setTextColor(233, 69, 96);
-            doc.text('PLAZA STEEL & CROCKERY', 105, 20, { align: 'center' });
-
-            doc.setFontSize(14);
-            doc.setTextColor(0, 0, 0);
-            doc.text('Inventory Summary Report', 105, 30, { align: 'center' });
-
-            doc.setFontSize(10);
-            doc.text(`Date: ${new Date().toLocaleDateString()}`, 105, 38, { align: 'center' });
-
-            // Stats
-            let y = 50;
             doc.setFontSize(12);
-            doc.setTextColor(0, 0, 0);
-            doc.text(`Total Items: ${products.length}`, 20, y);
-            doc.text(`In Stock: ${products.filter(p => p.qty > 0).length}`, 20, y + 8);
-            doc.text(`Out of Stock: ${products.filter(p => p.qty <= 0).length}`, 20, y + 16);
+            doc.setTextColor(100, 100, 100);
+            doc.text('Complete Product Rate List', pageWidth / 2, 26, { align: 'center' });
 
-            // Out of Stock Items
-            y = 80;
-            doc.setFontSize(14);
-            doc.setTextColor(255, 0, 0);
-            doc.text('OUT OF STOCK (Negative Qty)', 20, y);
-
-            const outOfStock = products.filter(p => p.qty <= 0);
-            y += 10;
             doc.setFontSize(9);
-            doc.setTextColor(0, 0, 0);
+            doc.setTextColor(150, 150, 150);
+            doc.text(`Generated: ${new Date().toLocaleDateString()} | Total Items: ${products.length}`, pageWidth / 2, 32, { align: 'center' });
 
-            outOfStock.slice(0, 15).forEach((p, i) => {
-                doc.text(`${i + 1}. ${p.description.substring(0, 40)} - Qty: ${p.qty}`, 20, y);
-                y += 6;
+            let y = 42;
+            
+            const headers = ['Item Description', 'Cost', 'Price', 'Qty'];
+            doc.setFillColor(99, 102, 241);
+            doc.rect(margin, y, tableWidth, 8, 'F');
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(10);
+            doc.setFont(undefined, 'bold');
+            
+            let xPos = margin + 2;
+            headers.forEach((header, i) => {
+                doc.text(header, xPos + colWidths[i] / 2, y + 5.5, { align: 'center' });
+                xPos += colWidths[i];
             });
-
-            // Low Stock Items
+            
+            doc.setFont(undefined, 'normal');
             y += 10;
-            doc.setFontSize(14);
-            doc.setTextColor(255, 171, 0);
-            doc.text('LOW STOCK (1-10)', 20, y);
-
-            const lowStock = products.filter(p => p.qty > 0 && p.qty <= 10);
-            y += 10;
-            doc.setFontSize(9);
-            doc.setTextColor(0, 0, 0);
-
-            lowStock.slice(0, 15).forEach((p, i) => {
-                doc.text(`${i + 1}. ${p.description.substring(0, 40)} - Qty: ${p.qty}`, 20, y);
-                y += 6;
+            
+            const rowsPerPage = 26;
+            let rowCount = 0;
+            
+            products.forEach((p, index) => {
+                if (y > pageHeight - 20) {
+                    doc.addPage();
+                    y = 20;
+                    
+                    doc.setFillColor(99, 102, 241);
+                    doc.rect(margin, y, tableWidth, 8, 'F');
+                    doc.setTextColor(255, 255, 255);
+                    doc.setFontSize(10);
+                    doc.setFont(undefined, 'bold');
+                    
+                    xPos = margin + 2;
+                    headers.forEach((header, i) => {
+                        doc.text(header, xPos + colWidths[i] / 2, y + 5.5, { align: 'center' });
+                        xPos += colWidths[i];
+                    });
+                    
+                    doc.setFont(undefined, 'normal');
+                    y += 10;
+                }
+                
+                const bgColor = index % 2 === 0 ? [248, 250, 252] : [255, 255, 255];
+                doc.setFillColor(...bgColor);
+                doc.rect(margin, y - 4, tableWidth, 7, 'F');
+                
+                doc.setTextColor(50, 50, 50);
+                doc.setFontSize(8);
+                
+                xPos = margin + 2;
+                const desc = p.description ? p.description.substring(0, 30) : '';
+                doc.text(desc, xPos + colWidths[0] / 2, y, { align: 'center' });
+                xPos += colWidths[0];
+                
+                doc.text(p.cost ? p.cost.toString() : '0', xPos + colWidths[1] / 2, y, { align: 'center' });
+                xPos += colWidths[1];
+                
+                doc.text(p.price ? p.price.toString() : '0', xPos + colWidths[2] / 2, y, { align: 'center' });
+                xPos += colWidths[2];
+                
+                if (p.qty <= 0) {
+                    doc.setTextColor(239, 68, 68);
+                } else if (p.qty <= 10) {
+                    doc.setTextColor(245, 158, 11);
+                } else {
+                    doc.setTextColor(16, 185, 129);
+                }
+                doc.text(p.qty ? p.qty.toString() : '0', xPos + colWidths[3] / 2, y, { align: 'center' });
+                
+                y += 7;
+                rowCount++;
             });
-
-            // Active Stock Preview
-            y += 10;
-            doc.setFontSize(14);
-            doc.setTextColor(0, 200, 83);
-            doc.text('ACTIVE STOCK (10+)', 20, y);
-
-            const activeStock = products.filter(p => p.qty > 10);
-            y += 10;
-            doc.setFontSize(9);
-            doc.setTextColor(0, 0, 0);
-
-            activeStock.slice(0, 15).forEach((p, i) => {
-                doc.text(`${i + 1}. ${p.description.substring(0, 40)} - Qty: ${p.qty}`, 20, y);
-                y += 6;
-            });
-
-            // Footer
+            
+            y += 5;
             doc.setFontSize(8);
-            doc.setTextColor(128, 128, 128);
-            doc.text('Generated by Plaza Rate List App', 105, 285, { align: 'center' });
+            doc.setTextColor(150, 150, 150);
+            doc.text('Page ' + doc.internal.getCurrentPageInfo().pageNumber, pageWidth / 2, y, { align: 'center' });
 
-            doc.save('Plaza_Inventory_Report.pdf');
-            showToast('PDF downloaded successfully');
+            doc.save(`Plaza_Products_${new Date().toISOString().split('T')[0]}.pdf`);
+            showToast('All products saved to PDF!');
         }
 
-        // Search Event
-        document.getElementById('invSearch').addEventListener('input', renderInventory);
+        function downloadNegativePDF() {
+            const negativeStock = products.filter(p => p.qty < 0);
+            if (negativeStock.length === 0) {
+                showToast('No negative stock items found!', true);
+                return;
+            }
+            
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            const pageWidth = doc.internal.pageSize.getWidth();
+            const pageHeight = doc.internal.pageSize.getHeight();
+            const margin = 14;
+            const tableWidth = pageWidth - (margin * 2);
+            const colWidths = [tableWidth * 0.45, tableWidth * 0.15, tableWidth * 0.20, tableWidth * 0.20];
+            
+            doc.setFontSize(22);
+            doc.setTextColor(239, 68, 68);
+            doc.text('PLAZA STEEL & CROCKERY', pageWidth / 2, 18, { align: 'center' });
 
-        // Escape HTML
+            doc.setFontSize(12);
+            doc.setTextColor(200, 50, 50);
+            doc.text('Negative Stock Report', pageWidth / 2, 26, { align: 'center' });
+
+            doc.setFontSize(9);
+            doc.setTextColor(150, 150, 150);
+            doc.text(`Generated: ${new Date().toLocaleDateString()} | Items: ${negativeStock.length}`, pageWidth / 2, 32, { align: 'center' });
+
+            let y = 42;
+            
+            const headers = ['Item Description', 'Cost', 'Price', 'Qty'];
+            doc.setFillColor(239, 68, 68);
+            doc.rect(margin, y, tableWidth, 8, 'F');
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(10);
+            doc.setFont(undefined, 'bold');
+            
+            let xPos = margin + 2;
+            headers.forEach((header, i) => {
+                doc.text(header, xPos + colWidths[i] / 2, y + 5.5, { align: 'center' });
+                xPos += colWidths[i];
+            });
+            
+            doc.setFont(undefined, 'normal');
+            y += 10;
+            
+            negativeStock.forEach((p, index) => {
+                if (y > pageHeight - 20) {
+                    doc.addPage();
+                    y = 20;
+                    
+                    doc.setFillColor(239, 68, 68);
+                    doc.rect(margin, y, tableWidth, 8, 'F');
+                    doc.setTextColor(255, 255, 255);
+                    doc.setFontSize(10);
+                    doc.setFont(undefined, 'bold');
+                    
+                    xPos = margin + 2;
+                    headers.forEach((header, i) => {
+                        doc.text(header, xPos + colWidths[i] / 2, y + 5.5, { align: 'center' });
+                        xPos += colWidths[i];
+                    });
+                    
+                    doc.setFont(undefined, 'normal');
+                    y += 10;
+                }
+                
+                doc.setFillColor(255, 240, 240);
+                doc.rect(margin, y - 4, tableWidth, 7, 'F');
+                
+                doc.setTextColor(50, 50, 50);
+                doc.setFontSize(8);
+                
+                xPos = margin + 2;
+                const desc = p.description ? p.description.substring(0, 30) : '';
+                doc.text(desc, xPos + colWidths[0] / 2, y, { align: 'center' });
+                xPos += colWidths[0];
+                
+                doc.text(p.cost ? p.cost.toString() : '0', xPos + colWidths[1] / 2, y, { align: 'center' });
+                xPos += colWidths[1];
+                
+                doc.text(p.price ? p.price.toString() : '0', xPos + colWidths[2] / 2, y, { align: 'center' });
+                xPos += colWidths[2];
+                
+                doc.setTextColor(239, 68, 68);
+                doc.setFont(undefined, 'bold');
+                doc.text(p.qty ? p.qty.toString() : '0', xPos + colWidths[3] / 2, y, { align: 'center' });
+                doc.setFont(undefined, 'normal');
+                
+                y += 7;
+            });
+            
+            y += 5;
+            doc.setFontSize(8);
+            doc.setTextColor(150, 150, 150);
+            doc.text('Page ' + doc.internal.getCurrentPageInfo().pageNumber, pageWidth / 2, y, { align: 'center' });
+
+            doc.save(`Plaza_Negative_Stock_${new Date().toISOString().split('T')[0]}.pdf`);
+            showToast('Negative stock PDF downloaded!');
+        }
+
+        function downloadLowStockPDF() {
+            const lowStock = products.filter(p => p.qty >= 1 && p.qty <= 10);
+            if (lowStock.length === 0) {
+                showToast('No low stock items found!', true);
+                return;
+            }
+            
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            const pageWidth = doc.internal.pageSize.getWidth();
+            const pageHeight = doc.internal.pageSize.getHeight();
+            const margin = 14;
+            const tableWidth = pageWidth - (margin * 2);
+            const colWidths = [tableWidth * 0.45, tableWidth * 0.15, tableWidth * 0.20, tableWidth * 0.20];
+            
+            doc.setFontSize(22);
+            doc.setTextColor(245, 158, 11);
+            doc.text('PLAZA STEEL & CROCKERY', pageWidth / 2, 18, { align: 'center' });
+
+            doc.setFontSize(12);
+            doc.setTextColor(200, 130, 20);
+            doc.text('Low Stock Report (1-10)', pageWidth / 2, 26, { align: 'center' });
+
+            doc.setFontSize(9);
+            doc.setTextColor(150, 150, 150);
+            doc.text(`Generated: ${new Date().toLocaleDateString()} | Items: ${lowStock.length}`, pageWidth / 2, 32, { align: 'center' });
+
+            let y = 42;
+            
+            const headers = ['Item Description', 'Cost', 'Price', 'Qty'];
+            doc.setFillColor(245, 158, 11);
+            doc.rect(margin, y, tableWidth, 8, 'F');
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(10);
+            doc.setFont(undefined, 'bold');
+            
+            let xPos = margin + 2;
+            headers.forEach((header, i) => {
+                doc.text(header, xPos + colWidths[i] / 2, y + 5.5, { align: 'center' });
+                xPos += colWidths[i];
+            });
+            
+            doc.setFont(undefined, 'normal');
+            y += 10;
+            
+            lowStock.forEach((p, index) => {
+                if (y > pageHeight - 20) {
+                    doc.addPage();
+                    y = 20;
+                    
+                    doc.setFillColor(245, 158, 11);
+                    doc.rect(margin, y, tableWidth, 8, 'F');
+                    doc.setTextColor(255, 255, 255);
+                    doc.setFontSize(10);
+                    doc.setFont(undefined, 'bold');
+                    
+                    xPos = margin + 2;
+                    headers.forEach((header, i) => {
+                        doc.text(header, xPos + colWidths[i] / 2, y + 5.5, { align: 'center' });
+                        xPos += colWidths[i];
+                    });
+                    
+                    doc.setFont(undefined, 'normal');
+                    y += 10;
+                }
+                
+                doc.setFillColor(255, 250, 230);
+                doc.rect(margin, y - 4, tableWidth, 7, 'F');
+                
+                doc.setTextColor(50, 50, 50);
+                doc.setFontSize(8);
+                
+                xPos = margin + 2;
+                const desc = p.description ? p.description.substring(0, 30) : '';
+                doc.text(desc, xPos + colWidths[0] / 2, y, { align: 'center' });
+                xPos += colWidths[0];
+                
+                doc.text(p.cost ? p.cost.toString() : '0', xPos + colWidths[1] / 2, y, { align: 'center' });
+                xPos += colWidths[1];
+                
+                doc.text(p.price ? p.price.toString() : '0', xPos + colWidths[2] / 2, y, { align: 'center' });
+                xPos += colWidths[2];
+                
+                doc.setTextColor(245, 158, 11);
+                doc.setFont(undefined, 'bold');
+                doc.text(p.qty ? p.qty.toString() : '0', xPos + colWidths[3] / 2, y, { align: 'center' });
+                doc.setFont(undefined, 'normal');
+                
+                y += 7;
+            });
+            
+            y += 5;
+            doc.setFontSize(8);
+            doc.setTextColor(150, 150, 150);
+            doc.text('Page ' + doc.internal.getCurrentPageInfo().pageNumber, pageWidth / 2, y, { align: 'center' });
+
+            doc.save(`Plaza_Low_Stock_${new Date().toISOString().split('T')[0]}.pdf`);
+            showToast('Low stock PDF downloaded!');
+        }
+
         function escapeHtml(text) {
             const div = document.createElement('div');
             div.textContent = text;
             return div.innerHTML;
         }
 
-        // Show Toast
         function showToast(message, isError = false) {
             const toast = document.getElementById('toast');
             toast.textContent = message;
-            toast.className = 'toast show' + (isError ? ' error' : '');
-            setTimeout(() => toast.classList.remove('show'), 3500);
+            toast.className = 'toast show';
+            if (isError) {
+                toast.classList.add('error');
+            }
+            setTimeout(() => toast.classList.remove('show'), 3000);
         }
 
-        // Initialize particles
         document.addEventListener('DOMContentLoaded', () => {
             createParticles();
         });

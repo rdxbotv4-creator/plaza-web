@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#87CEEB">
+    <meta name="theme-color" content="#0f172a">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Plaza Portal">
@@ -12,19 +12,19 @@
     <link rel="manifest" href="manifest.json">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/premium.css">
     <style>
         body {
-            background: linear-gradient(180deg, var(--sky-light) 0%, var(--sky-medium) 50%, var(--sky-deep) 100%);
+            background: var(--darker);
+            min-height: 100vh;
+            color: var(--light);
             font-family: 'Outfit', sans-serif;
-            color: var(--sky-deep);
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
         }
 
-        .portal-bg-3d {
+        .premium-bg {
             position: fixed;
             top: 0;
             left: 0;
@@ -32,274 +32,386 @@
             height: 100%;
             z-index: -1;
             overflow: hidden;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
         }
 
-        .portal-bg-3d .clouds-container {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .portal-container {
             width: 100%;
-            height: 100%;
-        }
-
-        .portal-bg-3d .cloud {
-            position: absolute;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0.4) 100%);
-            border-radius: 100px;
-            animation: cloudFloatPortal linear infinite;
-        }
-
-        .portal-bg-3d .cloud-1 {
-            width: 180px;
-            height: 50px;
-            top: 8%;
-            animation-duration: 45s;
-        }
-
-        .portal-bg-3d .cloud-2 {
-            width: 150px;
-            height: 45px;
-            top: 20%;
-            animation-duration: 55s;
-            animation-direction: reverse;
-        }
-
-        .portal-bg-3d .cloud-3 {
-            width: 160px;
-            height: 48px;
-            top: 35%;
-            animation-duration: 40s;
-            animation-delay: -15s;
-        }
-
-        @keyframes cloudFloatPortal {
-            0% { transform: translateX(-200px); }
-            100% { transform: translateX(calc(100vw + 200px)); }
-        }
-
-        .portal-container-3d {
-            width: 100%;
-            max-width: 380px;
-            padding: 20px;
+            max-width: 400px;
+            padding: 30px 20px;
             text-align: center;
-            perspective: 1000px;
+            position: relative;
+            z-index: 1;
         }
 
-        .portal-logo-3d {
+        .logo-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 25px;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .logo-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 130px;
+            height: 130px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: ringPulse 2s ease-in-out infinite;
+        }
+
+        .logo-ring:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            animation-delay: 0.5s;
+            border-color: var(--accent);
+        }
+
+        @keyframes ringPulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.1; }
+        }
+
+        .logo-img {
             width: 100px;
             height: 100px;
             border-radius: 50%;
-            border: 4px solid var(--white-pure);
-            background: linear-gradient(135deg, var(--white-pure), var(--white-cloud));
-            box-shadow: 
-                0 15px 35px rgba(0, 131, 176, 0.3),
-                inset 0 2px 10px rgba(255, 255, 255, 0.8);
-            animation: logo3DFloat 3s ease-in-out infinite;
-            margin-bottom: 25px;
+            border: 3px solid var(--glass-border);
+            object-fit: cover;
+            background: var(--glass);
+            animation: logoFloat 3s ease-in-out infinite;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 40px var(--glow-primary);
         }
 
-        @keyframes logo3DFloat {
-            0%, 100% { transform: translateY(0) rotateY(0deg); }
-            50% { transform: translateY(-10px) rotateY(10deg); }
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
         }
 
-        .portal-title-3d {
-            font-size: 2rem;
+        .portal-title {
+            font-size: 2.2rem;
             font-weight: 800;
-            color: var(--white-pure);
-            text-shadow: 0 2px 10px rgba(0, 131, 176, 0.3);
             margin-bottom: 8px;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+            opacity: 0;
         }
 
-        .portal-tagline-3d {
+        .portal-title span {
+            background: linear-gradient(90deg, #6366f1, #a855f7, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: neonShimmer 3s linear infinite;
+            background-size: 200% auto;
+        }
+
+        .portal-tagline {
             font-size: 0.95rem;
-            color: var(--white-cyan);
-            margin-bottom: 30px;
+            color: var(--light-muted);
+            margin-bottom: 35px;
+            animation: fadeInUp 0.8s ease 0.3s forwards;
+            opacity: 0;
         }
 
-        .portal-section-title-3d {
-            font-size: 0.85rem;
-            color: var(--white-cloud);
+        .section-label {
+            font-size: 0.8rem;
+            color: var(--light-muted);
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 20px;
-            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+            opacity: 0;
         }
 
-        .portal-btn-3d {
+        .portal-buttons {
+            animation: fadeInUp 0.8s ease 0.5s forwards;
+            opacity: 0;
+        }
+
+        .portal-btn {
             display: flex;
             align-items: center;
             gap: 15px;
             width: 100%;
             padding: 18px 20px;
-            background: linear-gradient(180deg, var(--white-pure), var(--white-cloud));
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%);
+            border: 1px solid var(--glass-border);
             border-radius: 16px;
-            color: var(--sky-deep);
+            color: var(--light);
             text-decoration: none;
             font-size: 1rem;
             font-weight: 600;
-            margin-bottom: 12px;
-            transition: all 0.3s ease;
+            margin-bottom: 14px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-align: left;
-            box-shadow: 0 8px 25px rgba(0, 131, 176, 0.15);
+            position: relative;
+            overflow: hidden;
         }
 
-        .portal-btn-3d:hover {
-            transform: translateY(-5px) translateZ(10px);
-            box-shadow: 0 15px 35px rgba(0, 131, 176, 0.25);
+        .portal-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transition: 0.5s;
         }
 
-        .portal-btn-3d.whatsapp-btn-3d:hover {
-            background: linear-gradient(180deg, #25D366, #20BD5A);
+        .portal-btn:hover::before {
+            left: 100%;
+        }
+
+        .portal-btn:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .portal-btn.whatsapp-btn:hover {
+            background: linear-gradient(135deg, #25D366, #20BD5A);
+            border-color: #25D366;
             color: white;
         }
 
-        .portal-btn-3d.instagram-btn-3d:hover {
-            background: linear-gradient(45deg, #f09433, #dc2743);
+        .portal-btn.instagram-btn:hover {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743);
+            border-color: #dc2743;
             color: white;
         }
 
-        .portal-btn-3d.admin-btn-3d:hover {
-            background: linear-gradient(180deg, var(--sky-medium), var(--sky-deep));
+        .portal-btn.admin-btn:hover {
+            background: linear-gradient(135deg, var(--primary), var(--accent-2));
+            border-color: var(--primary);
             color: white;
         }
 
-        .btn-icon-3d {
+        .btn-icon {
             width: 50px;
             height: 50px;
-            border-radius: 12px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.3rem;
             color: white;
             flex-shrink: 0;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .btn-icon-3d.whatsapp-icon { background: linear-gradient(135deg, #25D366, #20BD5A); }
-        .btn-icon-3d.instagram-icon { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-        .btn-icon-3d.admin-icon { background: linear-gradient(135deg, var(--sky-medium), var(--sky-deep)); }
+        .btn-icon.whatsapp {
+            background: linear-gradient(135deg, #25D366, #20BD5A);
+        }
 
-        .btn-content-3d {
+        .btn-icon.instagram {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+
+        .btn-icon.admin {
+            background: linear-gradient(135deg, var(--primary), var(--accent-2));
+        }
+
+        .btn-content {
             flex: 1;
         }
 
-        .btn-title-3d {
+        .btn-title {
             font-size: 1.05rem;
             font-weight: 600;
             margin-bottom: 2px;
         }
 
-        .btn-desc-3d {
+        .btn-desc {
             font-size: 0.75rem;
             opacity: 0.7;
         }
 
-        .btn-arrow-3d {
+        .btn-arrow {
             font-size: 1.2rem;
             opacity: 0.5;
             transition: all 0.3s ease;
         }
 
-        .portal-btn-3d:hover .btn-arrow-3d {
+        .portal-btn:hover .btn-arrow {
             opacity: 1;
             transform: translateX(5px);
         }
 
-        .back-btn-3d {
+        .back-link {
             display: inline-flex;
             align-items: center;
             gap: 10px;
             padding: 16px 35px;
-            background: linear-gradient(180deg, var(--white-pure), var(--white-cloud));
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%);
+            border: 1px solid var(--glass-border);
             border-radius: 50px;
-            color: var(--sky-deep);
+            color: var(--light);
             text-decoration: none;
             font-size: 0.95rem;
             font-weight: 600;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             margin-top: 25px;
-            box-shadow: 0 8px 25px rgba(0, 131, 176, 0.2);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 0.8s ease 0.6s forwards;
+            opacity: 0;
         }
 
-        .back-btn-3d:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(0, 131, 176, 0.3);
+        .back-link:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary);
         }
 
-        .back-btn-3d i {
+        .back-link i {
             transition: all 0.3s ease;
         }
 
-        .back-btn-3d:hover i {
+        .back-link:hover i {
             transform: translateX(-5px);
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(150px);
+            background: linear-gradient(135deg, var(--dark), var(--darker));
+            color: var(--light);
+            padding: 16px 28px;
+            border-radius: 16px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.5), 0 0 30px var(--glow-primary);
+            z-index: 9999;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid var(--glass-border);
+            font-weight: 500;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        @media (max-width: 480px) {
+            .portal-container {
+                padding: 20px 15px;
+            }
+            
+            .portal-title {
+                font-size: 1.8rem;
+            }
+            
+            .portal-btn {
+                padding: 15px 16px;
+            }
+            
+            .btn-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
         }
     </style>
 </head>
 
 <body>
-    <div class="portal-bg-3d">
-        <div class="clouds-container">
-            <div class="cloud cloud-1"></div>
-            <div class="cloud cloud-2"></div>
-            <div class="cloud cloud-3"></div>
-        </div>
+    <div class="premium-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+        <div class="particles-container" id="particles"></div>
     </div>
-    
-    <div class="portal-container-3d">
-        <img src="cache/logo.png" alt="Plaza Steel & Crockery" class="portal-logo-3d" onerror="this.style.display='none'">
-        
-        <h1 class="portal-title-3d">Plaza Portal</h1>
-        <p class="portal-tagline-3d">Connect with Plaza Steel & Crockery</p>
-        
-        <p class="portal-section-title-3d">Get in Touch</p>
-        
-        <a href="https://wa.me/message/AEITVKONJBS3N1" class="portal-btn-3d whatsapp-btn-3d" target="_blank">
-            <div class="btn-icon-3d whatsapp-icon">
-                <i class="fab fa-whatsapp"></i>
-            </div>
-            <div class="btn-content-3d">
-                <div class="btn-title-3d">WhatsApp</div>
-                <div class="btn-desc-3d">Chat with us</div>
-            </div>
-            <div class="btn-arrow-3d">
-                <i class="fas fa-chevron-right"></i>
-            </div>
-        </a>
-        
-        <a href="https://www.instagram.com/plaza.steel" class="portal-btn-3d instagram-btn-3d" target="_blank">
-            <div class="btn-icon-3d instagram-icon">
-                <i class="fab fa-instagram"></i>
-            </div>
-            <div class="btn-content-3d">
-                <div class="btn-title-3d">Instagram</div>
-                <div class="btn-desc-3d">Follow for updates</div>
-            </div>
-            <div class="btn-arrow-3d">
-                <i class="fas fa-chevron-right"></i>
-            </div>
-        </a>
-        
-        <a href="admin-login.html" class="portal-btn-3d admin-btn-3d">
-            <div class="btn-icon-3d admin-icon">
-                <i class="fas fa-cogs"></i>
-            </div>
-            <div class="btn-content-3d">
-                <div class="btn-title-3d">Admin Portal</div>
-                <div class="btn-desc-3d">Manage inventory</div>
-            </div>
-            <div class="btn-arrow-3d">
-                <i class="fas fa-chevron-right"></i>
-            </div>
-        </a>
-        
-        <a href="index.html" class="back-btn-3d">
+
+    <div class="portal-container">
+        <div class="logo-wrapper">
+            <div class="logo-ring"></div>
+            <div class="logo-ring"></div>
+            <img src="cache/logo.png" alt="Plaza Steel & Crockery" class="logo-img" onerror="this.style.display='none'">
+        </div>
+
+        <h1 class="portal-title"><span>Plaza Portal</span></h1>
+        <p class="portal-tagline">Connect with Plaza Steel & Crockery</p>
+
+        <p class="section-label">Get in Touch</p>
+
+        <div class="portal-buttons">
+            <a href="https://wa.me/message/AEITVKONJBS3N1" class="portal-btn whatsapp-btn" target="_blank">
+                <div class="btn-icon whatsapp">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <div class="btn-content">
+                    <div class="btn-title">WhatsApp</div>
+                    <div class="btn-desc">Chat with us</div>
+                </div>
+                <div class="btn-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </a>
+
+            <a href="https://www.instagram.com/plaza.steel" class="portal-btn instagram-btn" target="_blank">
+                <div class="btn-icon instagram">
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <div class="btn-content">
+                    <div class="btn-title">Instagram</div>
+                    <div class="btn-desc">Follow for updates</div>
+                </div>
+                <div class="btn-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </a>
+
+            <a href="admin-login.html" class="portal-btn admin-btn">
+                <div class="btn-icon admin">
+                    <i class="fas fa-cogs"></i>
+                </div>
+                <div class="btn-content">
+                    <div class="btn-title">Admin Portal</div>
+                    <div class="btn-desc">Manage inventory</div>
+                </div>
+                <div class="btn-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </a>
+        </div>
+
+        <a href="index.html" class="back-link">
             <i class="fas fa-arrow-left"></i> Back to Rate List
         </a>
     </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 25; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+                particle.style.width = (2 + Math.random() * 3) + 'px';
+                particle.style.height = particle.style.width;
+                container.appendChild(particle);
+            }
+        }
+
+        function showToast(message, duration = 3000) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), duration);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+        });
+    </script>
 </body>
 
 </html>

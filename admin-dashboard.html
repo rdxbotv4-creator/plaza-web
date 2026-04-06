@@ -4,745 +4,1174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="theme-color" content="#87CEEB">
-    <title>Admin Dashboard | Plaza Rate List</title>
+    <meta name="theme-color" content="#0f172a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Admin Dashboard">
+    <title>Admin Dashboard | Plaza Portal</title>
     <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="cache/app icon.png">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="assets/css/premium.css">
     <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #06b6d4;
+            --accent: #f472b6;
+            --accent-2: #a855f7;
+            --gold: #fbbf24;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --dark: #0f172a;
+            --darker: #020617;
+            --light: #f8fafc;
+            --light-muted: #94a3b8;
+            --glass: rgba(255, 255, 255, 0.08);
+            --glass-border: rgba(255, 255, 255, 0.12);
+            --glow-primary: rgba(99, 102, 241, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background: linear-gradient(180deg, var(--sky-light) 0%, var(--sky-medium) 50%, var(--sky-deep) 100%);
-        }
-
-        .admin-page {
+            background: var(--darker);
             min-height: 100vh;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-            padding-bottom: 40px;
+            color: var(--light);
         }
 
-        .admin-content {
+        .premium-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #0f172a 100%);
+        }
+
+        .dashboard-container {
+            max-width: 480px;
+            margin: 0 auto;
             padding: 15px;
+            position: relative;
+            z-index: 1;
         }
 
-        .admin-header-3d {
+        .dash-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 20px;
-            background: linear-gradient(180deg, var(--white-pure), var(--white-cloud));
-            border-radius: 16px;
-            margin-bottom: 15px;
-            box-shadow: 0 10px 30px rgba(0, 131, 176, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            padding: 20px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border-radius: 18px;
+            margin-bottom: 25px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 0.5s ease;
         }
 
-        .admin-title-3d {
-            font-size: 1.2rem;
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .dash-title {
+            font-size: 1.3rem;
             font-weight: 700;
-            color: var(--sky-deep);
+            background: linear-gradient(90deg, var(--primary), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .admin-subtitle-3d {
-            font-size: 0.7rem;
-            color: var(--sky-deep);
-            opacity: 0.7;
-        }
-
-        .logout-btn-3d {
+        .logout-btn {
             padding: 10px 18px;
-            background: linear-gradient(180deg, #FF1744, #D50000);
+            background: linear-gradient(135deg, var(--danger), #dc2626);
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             color: white;
             font-size: 0.85rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-family: 'Outfit', sans-serif;
-            box-shadow: 0 4px 15px rgba(255, 23, 68, 0.3);
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
         }
 
-        .logout-btn-3d:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 23, 68, 0.4);
+        .logout-btn:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.5);
         }
 
-        .tab-nav-3d {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
+        .logout-btn i {
+            margin-right: 6px;
         }
 
-        .tab-btn-3d {
-            flex: 1;
-            padding: 14px;
-            background: linear-gradient(180deg, var(--white-pure), var(--white-cloud));
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 12px;
-            color: var(--sky-deep);
-            font-size: 0.9rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Outfit', sans-serif;
-            box-shadow: 0 4px 15px rgba(0, 131, 176, 0.1);
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 25px;
         }
 
-        .tab-btn-3d.active {
-            background: linear-gradient(180deg, var(--sky-medium), var(--sky-deep));
-            color: white;
-            border-color: var(--sky-light);
-            box-shadow: 0 6px 20px rgba(0, 131, 176, 0.3);
+        .stat-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+            padding: 20px 12px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid var(--glass-border);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: fadeInUp 0.6s ease backwards;
         }
 
-        .tab-btn-3d:hover:not(.active) {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 131, 176, 0.15);
+        .stat-card:nth-child(1) { animation-delay: 0.1s; }
+        .stat-card:nth-child(2) { animation-delay: 0.2s; }
+        .stat-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .stat-card:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
         }
 
-        .tab-content-3d {
-            display: none;
-        }
-
-        .tab-content-3d.active {
+        .stat-card i {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
             display: block;
         }
 
-        .filter-btns-3d {
+        .stat-card.total i {
+            background: linear-gradient(135deg, var(--accent-2), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-card.in-stock i {
+            background: linear-gradient(135deg, var(--success), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-card.out-stock i {
+            background: linear-gradient(135deg, var(--danger), var(--warning));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--light);
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            color: var(--light-muted);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            margin-top: 5px;
+        }
+
+        .nav-tabs {
             display: flex;
-            gap: 8px;
-            margin-bottom: 12px;
-            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
         }
 
-        .filter-btn-3d {
-            padding: 8px 14px;
-            background: linear-gradient(180deg, var(--white-pure), var(--white-cloud));
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 20px;
-            color: var(--sky-deep);
-            font-size: 0.75rem;
+        .nav-tab {
+            flex: 1;
+            padding: 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Outfit', sans-serif;
-            box-shadow: 0 2px 8px rgba(0, 131, 176, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-align: center;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
         }
 
-        .filter-btn-3d.active {
-            background: linear-gradient(180deg, var(--sky-medium), var(--sky-deep));
+        .nav-tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: 0.5s;
+        }
+
+        .nav-tab:hover::before {
+            left: 100%;
+        }
+
+        .nav-tab.active {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border-color: var(--primary);
             color: white;
+            box-shadow: 0 8px 25px var(--glow-primary);
         }
 
-        .filter-btn-3d:hover:not(.active) {
+        .nav-tab:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.1);
             transform: translateY(-2px);
         }
 
-        .inventory-box-3d {
-            background: linear-gradient(180deg, var(--white-pure), var(--white-cloud));
-            border-radius: 16px;
-            max-height: 40vh;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-            box-shadow: 0 10px 30px rgba(0, 131, 176, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.5);
+        .nav-tab i {
+            margin-right: 6px;
         }
 
-        .inventory-box-3d::-webkit-scrollbar {
-            width: 5px;
+        .content-section {
+            display: none;
         }
 
-        .inventory-box-3d::-webkit-scrollbar-thumb {
-            background: var(--sky-light);
-            border-radius: 3px;
+        .content-section.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
         }
 
-        .inv-item-3d {
-            padding: 15px;
-            border-bottom: 1px solid rgba(135, 206, 235, 0.2);
+        .inv-search {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid var(--glass-border);
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            color: var(--light);
+            font-size: 0.9rem;
+            margin-bottom: 18px;
             transition: all 0.3s ease;
         }
 
-        .inv-item-3d:hover {
-            background: rgba(135, 206, 235, 0.1);
-            transform: translateX(5px);
+        .inv-search:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 20px var(--glow-primary);
+            background: rgba(255, 255, 255, 0.08);
         }
 
-        .inv-item-3d:last-child {
-            border-bottom: none;
+        .inv-search::placeholder {
+            color: rgba(255, 255, 255, 0.3);
         }
 
-        .inv-header-3d {
+        .filter-buttons {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--accent-2));
+            border-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 15px var(--glow-primary);
+        }
+
+        .filter-btn:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .inv-item {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border-radius: 16px;
+            padding: 18px;
+            margin-bottom: 12px;
+            border: 1px solid var(--glass-border);
+            transition: all 0.4s ease;
+            animation: slideInLeft 0.5s ease backwards;
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .inv-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .inv-item-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
             margin-bottom: 12px;
         }
 
-        .inv-name-3d {
-            font-size: 0.9rem;
+        .inv-item-name {
+            font-size: 0.95rem;
             font-weight: 600;
-            color: var(--sky-deep);
             flex: 1;
-            padding-right: 10px;
+            padding-right: 12px;
+            line-height: 1.4;
         }
 
-        .status-badge-3d {
-            padding: 5px 12px;
+        .status-toggle {
+            padding: 6px 14px;
             border-radius: 20px;
-            font-size: 0.65rem;
-            font-weight: 700;
+            font-size: 0.7rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 0.5px;
         }
 
-        .status-badge-3d.online {
-            background: linear-gradient(180deg, rgba(0, 230, 118, 0.2), rgba(0, 230, 118, 0.1));
-            color: var(--accent-green);
-            border: 1px solid var(--accent-green);
+        .status-toggle.online {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(16, 185, 129, 0.1));
+            color: var(--success);
+            border: 1px solid var(--success);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
         }
 
-        .status-badge-3d.offline {
-            background: linear-gradient(180deg, rgba(255, 23, 68, 0.2), rgba(255, 23, 68, 0.1));
-            color: #FF1744;
-            border: 1px solid #FF1744;
+        .status-toggle.offline {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(239, 68, 68, 0.1));
+            color: var(--danger);
+            border: 1px solid var(--danger);
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.2);
         }
 
-        .inv-fields-3d {
+        .status-toggle:hover {
+            transform: scale(1.05);
+        }
+
+        .inv-item-details {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            font-size: 0.75rem;
         }
 
-        .inv-field-3d {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .inv-field-3d label {
-            font-size: 0.6rem;
-            color: var(--sky-deep);
-            opacity: 0.7;
-            text-transform: uppercase;
-        }
-
-        .inv-field-3d input {
-            padding: 8px;
-            background: linear-gradient(180deg, var(--white-ice), var(--white-cloud));
-            border: 1px solid rgba(135, 206, 235, 0.3);
-            border-radius: 8px;
-            color: var(--sky-deep);
-            font-size: 0.8rem;
-            font-family: 'Outfit', sans-serif;
+        .inv-detail {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            border-radius: 10px;
             text-align: center;
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .inv-field-3d input:focus {
+        .inv-detail label {
+            display: block;
+            color: var(--light-muted);
+            margin-bottom: 6px;
+            font-size: 0.65rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .inv-detail input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: var(--light);
+            font-size: 0.9rem;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .inv-detail input:focus {
             outline: none;
-            border-color: var(--sky-medium);
-            box-shadow: 0 0 0 2px rgba(0, 180, 219, 0.2);
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
         }
 
-        .inv-actions-3d {
+        .inv-actions {
             display: flex;
-            gap: 8px;
+            gap: 10px;
             margin-top: 12px;
         }
 
-        .action-btn-3d {
+        .inv-btn {
             flex: 1;
             padding: 10px;
             border: none;
-            border-radius: 8px;
-            font-size: 0.75rem;
-            font-weight: 600;
+            border-radius: 10px;
+            font-size: 0.8rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-family: 'Outfit', sans-serif;
-        }
-
-        .save-btn-3d {
-            background: linear-gradient(180deg, var(--accent-green), #00C853);
-            color: white;
-            box-shadow: 0 3px 10px rgba(0, 230, 118, 0.3);
-        }
-
-        .delete-btn-3d {
-            background: linear-gradient(180deg, #FF1744, #D50000);
-            color: white;
-            box-shadow: 0 3px 10px rgba(255, 23, 68, 0.3);
-        }
-
-        .action-btn-3d:hover {
-            transform: translateY(-2px);
-        }
-
-        .add-toggle-btn-3d {
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(180deg, var(--sky-medium), var(--sky-deep));
-            border: 2px dashed rgba(255, 255, 255, 0.3);
-            border-radius: 16px;
-            color: white;
-            font-size: 0.95rem;
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Outfit', sans-serif;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            margin-top: 15px;
-            box-shadow: 0 6px 20px rgba(0, 131, 176, 0.25);
-        }
-
-        .add-toggle-btn-3d:hover {
-            border-color: var(--white-pure);
-            box-shadow: 0 8px 25px rgba(0, 131, 176, 0.35);
-        }
-
-        .add-form-3d {
-            display: none;
-            background: linear-gradient(180deg, var(--white-pure), var(--white-cloud));
-            border-radius: 16px;
-            padding: 20px;
-            margin-top: 12px;
-            box-shadow: 0 10px 30px rgba(0, 131, 176, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-        }
-
-        .add-form-3d.show {
-            display: block;
-            animation: slideIn 0.3s ease;
-        }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .form-row-3d {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-
-        .form-field-3d {
-            display: flex;
-            flex-direction: column;
             gap: 6px;
         }
 
-        .form-field-3d label {
-            font-size: 0.75rem;
-            color: var(--sky-deep);
-            font-weight: 500;
-        }
-
-        .form-field-3d input {
-            padding: 12px;
-            background: linear-gradient(180deg, var(--white-ice), var(--white-cloud));
-            border: 1px solid rgba(135, 206, 235, 0.3);
-            border-radius: 10px;
-            color: var(--sky-deep);
-            font-size: 0.9rem;
-            font-family: 'Outfit', sans-serif;
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
-        }
-
-        .form-field-3d input:focus {
-            outline: none;
-            border-color: var(--sky-medium);
-            box-shadow: 0 0 0 2px rgba(0, 180, 219, 0.2);
-        }
-
-        .status-toggle-3d {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 15px;
-        }
-
-        .status-option-3d {
-            flex: 1;
-            padding: 12px;
-            background: linear-gradient(180deg, var(--white-ice), var(--white-cloud));
-            border: 1px solid rgba(135, 206, 235, 0.3);
-            border-radius: 10px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--sky-deep);
-        }
-
-        .status-option-3d.active {
-            border-color: var(--accent-green);
-            background: linear-gradient(180deg, rgba(0, 230, 118, 0.2), rgba(0, 230, 118, 0.1));
-            color: var(--accent-green);
-        }
-
-        .create-btn-3d {
-            width: 100%;
-            padding: 14px;
-            background: linear-gradient(180deg, var(--sky-medium), var(--sky-deep));
-            border: none;
-            border-radius: 12px;
+        .save-btn {
+            background: linear-gradient(135deg, var(--success), #059669);
             color: white;
-            font-size: 1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Outfit', sans-serif;
-            box-shadow: 0 6px 20px rgba(0, 131, 176, 0.3);
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
         }
 
-        .create-btn-3d:hover {
+        .save-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 131, 176, 0.4);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5);
         }
 
-        .report-card-3d {
-            background: linear-gradient(180deg, var(--white-pure), var(--white-cloud));
+        .delete-btn {
+            background: linear-gradient(135deg, var(--danger), #dc2626);
+            color: white;
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+        }
+
+        .delete-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.5);
+        }
+
+        .add-new-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--secondary), var(--dark));
+            border: 2px dashed var(--glass-border);
             border-radius: 16px;
-            padding: 15px;
-            margin-bottom: 12px;
-            box-shadow: 0 8px 25px rgba(0, 131, 176, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-        }
-
-        .report-header-3d {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-
-        .report-title-3d {
+            color: rgba(255, 255, 255, 0.8);
             font-size: 0.95rem;
             font-weight: 600;
-            color: var(--sky-deep);
-        }
-
-        .report-count-3d {
-            font-size: 1.1rem;
-            font-weight: 700;
-        }
-
-        .report-count-3d.negative { color: #FF1744; }
-        .report-count-3d.low { color: var(--accent-orange); }
-        .report-count-3d.active { color: var(--accent-green); }
-
-        .report-list-3d {
-            max-height: 150px;
-            overflow-y: auto;
-        }
-
-        .report-item-3d {
-            display: flex;
-            justify-content: space-between;
-            padding: 8px;
-            background: rgba(135, 206, 235, 0.1);
-            border-radius: 6px;
-            margin-bottom: 6px;
-            font-size: 0.75rem;
-            color: var(--sky-deep);
-        }
-
-        .report-item-qty-3d.negative { color: #FF1744; font-weight: 700; }
-        .report-item-qty-3d.low { color: var(--accent-orange); font-weight: 700; }
-        .report-item-qty-3d.active { color: var(--accent-green); font-weight: 700; }
-
-        .download-pdf-btn-3d {
-            width: 100%;
-            padding: 16px;
-            background: linear-gradient(180deg, var(--accent-green), #00C853);
-            border: none;
-            border-radius: 12px;
-            color: white;
-            font-size: 1rem;
-            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-top: 15px;
-            font-family: 'Outfit', sans-serif;
+            margin-bottom: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            box-shadow: 0 6px 20px rgba(0, 230, 118, 0.3);
         }
 
-        .download-pdf-btn-3d:hover {
+        .add-new-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 230, 118, 0.4);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.2);
+        }
+
+        .add-new-btn i {
+            font-size: 1.1rem;
+            animation: bounce 1s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%) translateY(150px);
+            background: linear-gradient(135deg, var(--dark), var(--darker));
+            color: var(--light);
+            padding: 16px 28px;
+            border-radius: 14px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(16, 185, 129, 0.2);
+            z-index: 1000;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            font-weight: 500;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .toast.error {
+            border-color: rgba(239, 68, 68, 0.3);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(239, 68, 68, 0.2);
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--darker);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-light);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal.show {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, var(--dark), var(--darker));
+            padding: 30px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 380px;
+            border: 1px solid var(--glass-border);
+            animation: slideUp 0.4s ease;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(99, 102, 241, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modal-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent-2), var(--gold));
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-title {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .modal-form .form-group {
+            margin-bottom: 18px;
+        }
+
+        .modal-form input {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid var(--glass-border);
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            color: var(--light);
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .modal-form input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 20px var(--glow-primary);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .modal-form input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .cancel-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .cancel-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            box-shadow: 0 4px 15px var(--glow-primary);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--glow-primary);
+        }
+
+        .submit-btn i {
+            margin-right: 6px;
+        }
+
+        .summary-section {
+            margin-bottom: 25px;
+        }
+
+        .summary-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border-radius: 16px;
+            padding: 18px;
+            margin-bottom: 12px;
+            border: 1px solid var(--glass-border);
+            animation: slideInLeft 0.5s ease backwards;
+        }
+
+        .summary-card:nth-child(1) { animation-delay: 0.1s; }
+        .summary-card:nth-child(2) { animation-delay: 0.2s; }
+        .summary-card:nth-child(3) { animation-delay: 0.3s; }
+
+        .summary-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .summary-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .summary-count {
+            font-size: 1.3rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--primary), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .summary-card.out-of-stock .summary-count {
+            background: linear-gradient(90deg, var(--danger), var(--warning));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .summary-card.low-stock .summary-count {
+            background: linear-gradient(90deg, var(--warning), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .summary-card.active .summary-count {
+            background: linear-gradient(90deg, var(--success), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .report-list {
+            max-height: 250px;
+            overflow-y: auto;
+        }
+
+        .report-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            margin-bottom: 8px;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .report-item:hover {
+            background: rgba(0, 0, 0, 0.4);
+            transform: translateX(5px);
+        }
+
+        .report-item-name {
+            flex: 1;
+            padding-right: 12px;
+        }
+
+        .report-item-qty {
+            font-weight: 700;
+        }
+
+        .report-item-qty.negative {
+            color: var(--danger);
+        }
+
+        .report-item-qty.low {
+            color: var(--warning);
+        }
+
+        .download-report-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--success), #059669);
+            border: none;
+            border-radius: 14px;
+            color: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 25px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-report-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .download-report-btn:hover::before {
+            left: 100%;
+        }
+
+        .download-report-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(16, 185, 129, 0.5);
+        }
+
+        .download-report-btn i {
+            animation: bounce 1s ease-in-out infinite;
         }
     </style>
 </head>
 
-<body class="admin-page">
-    <div class="admin-content">
-        <!-- 3D Header -->
-        <div class="admin-header-3d">
+<body>
+    <div class="premium-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+        <div class="particles-container" id="particles"></div>
+    </div>
+
+    <div class="dashboard-container">
+        <div class="dash-header">
             <div>
-                <div class="admin-title-3d">Admin Dashboard</div>
-                <div class="admin-subtitle-3d">Plaza Steel & Crockery</div>
+                <div class="dash-title">Dashboard</div>
+                <div style="font-size: 0.75rem; color: rgba(255,255,255,0.6);">Plaza Steel & Crockery</div>
             </div>
-            <button class="logout-btn-3d" onclick="logout()">
+            <button class="logout-btn" onclick="logout()">
                 <i class="fas fa-sign-out-alt"></i> Logout
             </button>
         </div>
 
-        <!-- 3D Stats -->
-        <div class="stats-grid-3d">
-            <div class="stat-card-3d">
-                <div class="stat-value-3d" id="totalItems" style="color: var(--sky-deep);">0</div>
-                <div class="stat-label-3d">Total Items</div>
+        <div class="stats-grid">
+            <div class="stat-card total">
+                <i class="fas fa-boxes"></i>
+                <div class="stat-value" id="totalItems">0</div>
+                <div class="stat-label">Total Items</div>
             </div>
-            <div class="stat-card-3d">
-                <div class="stat-value-3d" id="inStock" style="color: var(--accent-green);">0</div>
-                <div class="stat-label-3d">In Stock</div>
+            <div class="stat-card in-stock">
+                <i class="fas fa-check-circle"></i>
+                <div class="stat-value" id="inStock">0</div>
+                <div class="stat-label">In Stock</div>
             </div>
-            <div class="stat-card-3d">
-                <div class="stat-value-3d" id="outStock" style="color: #FF1744;">0</div>
-                <div class="stat-label-3d">Out of Stock</div>
+            <div class="stat-card out-stock">
+                <i class="fas fa-times-circle"></i>
+                <div class="stat-value" id="outStock">0</div>
+                <div class="stat-label">Out of Stock</div>
             </div>
         </div>
 
-        <!-- 3D Tabs -->
-        <div class="tab-nav-3d">
-            <button class="tab-btn-3d active" onclick="showTab('inventory')">
+        <div class="nav-tabs">
+            <div class="nav-tab active" onclick="showSection('inventory')">
                 <i class="fas fa-box"></i> Inventory
-            </button>
-            <button class="tab-btn-3d" onclick="showTab('report')">
+            </div>
+            <div class="nav-tab" onclick="showSection('report')">
                 <i class="fas fa-chart-bar"></i> Report
-            </button>
+            </div>
         </div>
 
-        <!-- Inventory Tab -->
-        <div class="tab-content-3d active" id="inventoryTab">
-            <input type="text" class="input-3d" id="invSearch" placeholder="Search inventory..." style="margin-bottom: 12px;">
-            
-            <div class="filter-btns-3d">
-                <button class="filter-btn-3d active" onclick="filterItems('all', this)">All</button>
-                <button class="filter-btn-3d" onclick="filterItems('online', this)">Online</button>
-                <button class="filter-btn-3d" onclick="filterItems('offline', this)">Offline</button>
-                <button class="filter-btn-3d" onclick="filterItems('low', this)">Low Stock</button>
-                <button class="filter-btn-3d" onclick="filterItems('negative', this)">Negative</button>
-            </div>
-
-            <div class="inventory-box-3d" id="inventoryList">
-                <div style="padding: 40px; text-align: center; color: var(--sky-deep); opacity: 0.7;">
-                    <i class="fas fa-spinner fa-spin"></i> Loading...
-                </div>
-            </div>
-
-            <!-- Add New Item -->
-            <button class="add-toggle-btn-3d" onclick="toggleAddForm()">
+        <div class="content-section active" id="inventorySection">
+            <button class="add-new-btn" onclick="showAddModal()">
                 <i class="fas fa-plus"></i> Add New Item
             </button>
-            
-            <div class="add-form-3d" id="addForm">
-                <div class="form-row-3d">
-                    <div class="form-field-3d">
-                        <label>Item Description</label>
-                        <input type="text" id="newDesc" placeholder="Enter name">
+
+            <input type="text" class="inv-search" id="invSearch" placeholder="Search inventory...">
+
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterInventory('all')">All</button>
+                <button class="filter-btn" onclick="filterInventory('online')">Online</button>
+                <button class="filter-btn" onclick="filterInventory('offline')">Offline</button>
+                <button class="filter-btn" onclick="filterInventory('low')">Low Stock</button>
+                <button class="filter-btn" onclick="filterInventory('negative')">Negative</button>
+            </div>
+
+            <div id="inventoryList"></div>
+        </div>
+
+        <div class="content-section" id="reportSection">
+            <div class="summary-section">
+                <div class="summary-card out-of-stock">
+                    <div class="summary-header">
+                        <span class="summary-title">Out of Stock (0 or less)</span>
+                        <span class="summary-count" id="outOfStockCount">0</span>
                     </div>
-                    <div class="form-field-3d">
-                        <label>Cost Price</label>
-                        <input type="number" id="newCost" placeholder="0">
-                    </div>
+                    <div class="report-list" id="outOfStockList"></div>
                 </div>
-                <div class="form-row-3d">
-                    <div class="form-field-3d">
-                        <label>Sale Price</label>
-                        <input type="number" id="newPrice" placeholder="0">
+
+                <div class="summary-card low-stock">
+                    <div class="summary-header">
+                        <span class="summary-title">Low Stock (1-10)</span>
+                        <span class="summary-count" id="lowStockCount">0</span>
                     </div>
-                    <div class="form-field-3d">
-                        <label>Quantity</label>
-                        <input type="number" id="newQty" placeholder="0">
+                    <div class="report-list" id="lowStockList"></div>
+                </div>
+
+                <div class="summary-card active">
+                    <div class="summary-header">
+                        <span class="summary-title">Active Stock (10+)</span>
+                        <span class="summary-count" id="activeStockCount">0</span>
                     </div>
+                    <div class="report-list" id="activeStockList"></div>
                 </div>
-                <div class="status-toggle-3d">
-                    <div class="status-option-3d active" onclick="setNewStatus('online')" id="statusOnline">Online</div>
-                    <div class="status-option-3d" onclick="setNewStatus('offline')" id="statusOffline">Offline</div>
-                </div>
-                <button class="create-btn-3d" onclick="createItem()">
-                    <i class="fas fa-plus"></i> Create Item
+            </div>
+
+            <div class="pdf-buttons-row">
+                <button class="download-report-btn negative-btn" onclick="downloadNegativePDF()">
+                    <i class="fas fa-minus-circle"></i> Negative Stock PDF
+                </button>
+                <button class="download-report-btn low-btn" onclick="downloadLowStockPDF()">
+                    <i class="fas fa-exclamation-triangle"></i> Low Stock PDF
                 </button>
             </div>
         </div>
+    </div>
 
-        <!-- Report Tab -->
-        <div class="tab-content-3d" id="reportTab">
-            <div class="report-card-3d">
-                <div class="report-header-3d">
-                    <span class="report-title-3d">Negative Stock</span>
-                    <span class="report-count-3d negative" id="negativeCount">0</span>
+    <div class="modal" id="itemModal">
+        <div class="modal-content">
+            <h3 class="modal-title" id="modalTitle">Add New Item</h3>
+            <form class="modal-form" id="itemForm">
+                <div class="form-group">
+                    <label>Item Description</label>
+                    <input type="text" id="itemDescription" placeholder="Enter item name" required>
                 </div>
-                <div class="report-list-3d" id="negativeList"></div>
-            </div>
-
-            <div class="report-card-3d">
-                <div class="report-header-3d">
-                    <span class="report-title-3d">Low Stock (1-9)</span>
-                    <span class="report-count-3d low" id="lowCount">0</span>
+                <div class="form-group">
+                    <label>Cost Price</label>
+                    <input type="number" id="itemCost" placeholder="0" min="0" required>
                 </div>
-                <div class="report-list-3d" id="lowList"></div>
-            </div>
-
-            <div class="report-card-3d">
-                <div class="report-header-3d">
-                    <span class="report-title-3d">Active Stock (10+)</span>
-                    <span class="report-count-3d active" id="activeCount">0</span>
+                <div class="form-group">
+                    <label>Sale Price</label>
+                    <input type="number" id="itemPrice" placeholder="0" min="0" required>
                 </div>
-                <div class="report-list-3d" id="activeList"></div>
-            </div>
-
-            <button class="download-pdf-btn-3d" onclick="downloadPDF()">
-                <i class="fas fa-file-pdf"></i> Download PDF Report
-            </button>
+                <div class="form-group">
+                    <label>Quantity in Hand</label>
+                    <input type="number" id="itemQty" placeholder="0" required>
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" class="modal-btn cancel-btn" onclick="closeModal()">Cancel</button>
+                    <button type="submit" class="modal-btn submit-btn">Save</button>
+                </div>
+            </form>
         </div>
     </div>
 
-    <!-- 3D Toast -->
-    <div class="toast-3d" id="toast"></div>
+    <div class="toast" id="toast"></div>
 
     <script>
-        let products = [];
-        let currentFilter = 'all';
-        let newItemStatus = 'online';
-
-        if (!sessionStorage.getItem('adminLoggedIn')) {
-            window.location.href = 'admin-login.html';
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 12 + 's';
+                particle.style.animationDuration = (8 + Math.random() * 8) + 's';
+                particle.style.width = (3 + Math.random() * 3) + 'px';
+                particle.style.height = particle.style.width;
+                container.appendChild(particle);
+            }
         }
 
-        function animateValue(id, start, end, duration) {
-            const element = document.getElementById(id);
-            const range = end - start;
-            const startTime = performance.now();
-            
-            function update(currentTime) {
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-                const value = Math.floor(start + range * progress);
-                element.textContent = value;
-                
-                if (progress < 1) {
-                    requestAnimationFrame(update);
-                }
-            }
-            
-            requestAnimationFrame(update);
+        let products = [];
+        let editingIndex = -1;
+        let currentFilter = 'all';
+
+        const isLoggedIn = sessionStorage.getItem('plazaAdminLoggedIn');
+        if (isLoggedIn !== 'true') {
+            window.location.href = 'admin-login.html';
         }
 
         async function loadProducts() {
             try {
-                const response = await fetch('data/items.json');
-                const data = await response.json();
-                products = data;
+                localStorage.removeItem('plazaProducts');
+                
+                const response = await fetch('list/iteam list.json?t=' + Date.now());
+                const text = await response.text();
+                
+                console.log('JSON response:', text);
+                
+                if (!text || text.trim() === '' || text.trim() === '{}') {
+                    console.log('Empty JSON - clearing products');
+                    products = [];
+                    updateStats();
+                    renderInventory();
+                    renderReport();
+                    return;
+                }
+                
+                const data = JSON.parse(text);
+
+                products = [];
+                data.forEach(table => {
+                    if (table['Sheet1'] && Array.isArray(table['Sheet1'])) {
+                        table['Sheet1'].forEach(item => {
+                            if (item['Item Description'] && item.Price !== undefined) {
+                                products.push({
+                                    description: item['Item Description'],
+                                    cost: item.Cost || 0,
+                                    price: item.Price,
+                                    qty: item['Qty OH'] || 0,
+                                    status: item.status !== false && item.status !== 'offline'
+                                });
+                            }
+                        });
+                    } else if (table['Table 1']) {
+                        table['Table 1'].forEach(item => {
+                            if (item['Item Description'] && item.Price !== undefined) {
+                                products.push({
+                                    description: item['Item Description'],
+                                    cost: item.Cost || 0,
+                                    price: item.Price,
+                                    qty: item['Qty OH'] || 0,
+                                    status: item.status !== false && item.status !== 'offline'
+                                });
+                            }
+                        });
+                    } else if (Array.isArray(table)) {
+                        table.forEach(item => {
+                            if (item['Item Description'] && item.Price !== undefined) {
+                                products.push({
+                                    description: item['Item Description'],
+                                    cost: item.Cost || 0,
+                                    price: item.Price,
+                                    qty: item['Qty OH'] || 0,
+                                    status: item.status !== false && item.status !== 'offline'
+                                });
+                            }
+                        });
+                    }
+                });
+
+                if (products.length === 0) {
+                    localStorage.removeItem('plazaProducts');
+                    updateStats();
+                    renderInventory();
+                    renderReport();
+                    return;
+                }
+
+                localStorage.setItem('plazaProducts', JSON.stringify(products));
+
                 updateStats();
                 renderInventory();
                 renderReport();
             } catch (error) {
-                console.error('Error:', error);
-                showToast('Error loading products');
+                console.error('Error loading products:', error);
+                showToast('Error loading products', true);
             }
+        }
+
+        function saveToLocalStorage() {
+            localStorage.setItem('plazaProducts', JSON.stringify(products));
+        }
+
+        function logout() {
+            sessionStorage.removeItem('plazaAdminLoggedIn');
+            sessionStorage.removeItem('plazaAdminLoginTime');
+            window.location.href = 'index.html';
         }
 
         function updateStats() {
             const total = products.length;
-            const inStock = products.filter(p => p['Qty OH'] > 0).length;
-            const outStock = products.filter(p => p['Qty OH'] <= 0).length;
+            const inStock = products.filter(p => p.qty > 0).length;
+            const outStock = products.filter(p => p.qty <= 0).length;
 
-            animateValue('totalItems', 0, total, 1000);
-            animateValue('inStock', 0, inStock, 1000);
-            animateValue('outStock', 0, outStock, 1000);
+            document.getElementById('totalItems').textContent = total;
+            document.getElementById('inStock').textContent = inStock;
+            document.getElementById('outStock').textContent = outStock;
+        }
+
+        function showSection(section) {
+            document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
+
+            if (section === 'inventory') {
+                document.querySelectorAll('.nav-tab')[0].classList.add('active');
+                document.getElementById('inventorySection').classList.add('active');
+            } else {
+                document.querySelectorAll('.nav-tab')[1].classList.add('active');
+                document.getElementById('reportSection').classList.add('active');
+                renderReport();
+            }
+        }
+
+        function filterInventory(filter) {
+            currentFilter = filter;
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            renderInventory();
         }
 
         function renderInventory() {
             const searchTerm = document.getElementById('invSearch').value.toLowerCase();
-            
+
             let filtered = products.filter(p => {
-                const matchesSearch = p['Item Description'].toLowerCase().includes(searchTerm);
-                
+                const matchesSearch = p.description.toLowerCase().includes(searchTerm);
+
                 switch (currentFilter) {
-                    case 'online': return matchesSearch && p.Status === 'online';
-                    case 'offline': return matchesSearch && p.Status === 'offline';
-                    case 'low': return matchesSearch && p['Qty OH'] > 0 && p['Qty OH'] <= 9;
-                    case 'negative': return matchesSearch && p['Qty OH'] < 0;
+                    case 'online': return matchesSearch && p.status;
+                    case 'offline': return matchesSearch && !p.status;
+                    case 'low': return matchesSearch && p.qty > 0 && p.qty <= 10;
+                    case 'negative': return matchesSearch && p.qty < 0;
                     default: return matchesSearch;
                 }
             });
 
-            const list = document.getElementById('inventoryList');
-            
+            const inventoryList = document.getElementById('inventoryList');
+
             if (filtered.length === 0) {
-                list.innerHTML = '<div style="padding: 40px; text-align: center; color: var(--sky-deep); opacity: 0.7;">No items found</div>';
+                inventoryList.innerHTML = `
+                    <div style="text-align: center; padding: 40px; color: rgba(255,255,255,0.5);">
+                        <i class="fas fa-box-open" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                        <p>No items found</p>
+                    </div>
+                `;
                 return;
             }
 
-            list.innerHTML = filtered.map((item, index) => `
-                <div class="inv-item-3d">
-                    <div class="inv-header-3d">
-                        <div class="inv-name-3d">${item['Item Description']}</div>
-                        <div class="status-badge-3d ${item.Status}" onclick="toggleStatus(${index})">${item.Status}</div>
+            inventoryList.innerHTML = filtered.map((product, index) => {
+                const originalIndex = products.indexOf(product);
+                return `
+                    <div class="inv-item">
+                        <div class="inv-item-header">
+                            <div class="inv-item-name">${escapeHtml(product.description)}</div>
+                            <div class="status-toggle ${product.status ? 'online' : 'offline'}" 
+                                onclick="toggleStatus(${originalIndex})">
+                                ${product.status ? 'ONLINE' : 'OFFLINE'}
+                            </div>
+                        </div>
+                        <div class="inv-item-details">
+                            <div class="inv-detail">
+                                <label>Cost</label>
+                                <input type="number" value="${product.cost}" 
+                                    onchange="updateField(${originalIndex}, 'cost', this.value)">
+                            </div>
+                            <div class="inv-detail">
+                                <label>Price</label>
+                                <input type="number" value="${product.price}" 
+                                    onchange="updateField(${originalIndex}, 'price', this.value)">
+                            </div>
+                            <div class="inv-detail">
+                                <label>Qty OH</label>
+                                <input type="number" value="${product.qty}" 
+                                    onchange="updateField(${originalIndex}, 'qty', this.value)"
+                                    style="color: ${product.qty < 0 ? 'var(--danger)' : product.qty <= 10 ? 'var(--warning)' : 'var(--light)'}">
+                            </div>
+                        </div>
+                        <div class="inv-actions">
+                            <button class="inv-btn save-btn" onclick="editItem(${originalIndex})">
+                                <i class="fas fa-edit"></i> Edit
+                            </button>
+                            <button class="inv-btn delete-btn" onclick="deleteItem(${originalIndex})">
+                                <i class="fas fa-trash"></i> Delete
+                            </button>
+                        </div>
                     </div>
-                    <div class="inv-fields-3d">
-                        <div class="inv-field-3d">
-                            <label>Cost</label>
-                            <input type="number" value="${item.Cost}" onchange="updateField(${index}, 'Cost', this.value)">
-                        </div>
-                        <div class="inv-field-3d">
-                            <label>Price</label>
-                            <input type="number" value="${item.Price}" onchange="updateField(${index}, 'Price', this.value)">
-                        </div>
-                        <div class="inv-field-3d">
-                            <label>Qty</label>
-                            <input type="number" value="${item['Qty OH']}" onchange="updateField(${index}, 'Qty OH', this.value)">
-                        </div>
-                        <div class="inv-field-3d">
-                            <label>ID</label>
-                            <input type="text" value="${item.id}" disabled style="opacity: 0.5">
-                        </div>
-                    </div>
-                    <div class="inv-actions-3d">
-                        <button class="action-btn-3d save-btn-3d" onclick="saveItem(${index})">
-                            <i class="fas fa-save"></i> Save
-                        </button>
-                        <button class="action-btn-3d delete-btn-3d" onclick="deleteItem(${index})">
-                            <i class="fas fa-trash"></i> Delete
-                        </button>
-                    </div>
-                </div>
-            `).join('');
+                `;
+            }).join('');
         }
 
         function toggleStatus(index) {
-            products[index].Status = products[index].Status === 'online' ? 'offline' : 'online';
+            products[index].status = !products[index].status;
             saveToLocalStorage();
             renderInventory();
             updateStats();
-            showToast(`Item ${products[index].Status === 'online' ? 'activated' : 'deactivated'}`);
+            renderReport();
+            showToast(`Item ${products[index].status ? 'activated' : 'deactivated'}`);
         }
 
         function updateField(index, field, value) {
             products[index][field] = parseFloat(value) || 0;
+            saveToLocalStorage();
+            updateStats();
+            renderReport();
         }
 
-        function saveItem(index) {
-            saveToLocalStorage();
-            showToast('Item saved successfully');
+        function editItem(index) {
+            editingIndex = index;
+            const product = products[index];
+
+            document.getElementById('modalTitle').textContent = 'Edit Item';
+            document.getElementById('itemDescription').value = product.description;
+            document.getElementById('itemCost').value = product.cost;
+            document.getElementById('itemPrice').value = product.price;
+            document.getElementById('itemQty').value = product.qty;
+
+            document.getElementById('itemModal').classList.add('show');
         }
 
         function deleteItem(index) {
@@ -751,174 +1180,412 @@
                 saveToLocalStorage();
                 renderInventory();
                 updateStats();
-                showToast('Item deleted');
-            }
-        }
-
-        function filterItems(filter, btn) {
-            currentFilter = filter;
-            document.querySelectorAll('.filter-btn-3d').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            renderInventory();
-        }
-
-        function showTab(tab) {
-            document.querySelectorAll('.tab-btn-3d').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.tab-content-3d').forEach(content => content.classList.remove('active'));
-            
-            if (tab === 'inventory') {
-                document.querySelectorAll('.tab-btn-3d')[0].classList.add('active');
-                document.getElementById('inventoryTab').classList.add('active');
-            } else {
-                document.querySelectorAll('.tab-btn-3d')[1].classList.add('active');
-                document.getElementById('reportTab').classList.add('active');
                 renderReport();
+                showToast('Item deleted successfully');
             }
         }
 
-        function toggleAddForm() {
-            document.getElementById('addForm').classList.toggle('show');
+        function showAddModal() {
+            editingIndex = -1;
+            document.getElementById('modalTitle').textContent = 'Add New Item';
+            document.getElementById('itemForm').reset();
+            document.getElementById('itemModal').classList.add('show');
         }
 
-        function setNewStatus(status) {
-            newItemStatus = status;
-            document.getElementById('statusOnline').classList.toggle('active', status === 'online');
-            document.getElementById('statusOffline').classList.toggle('active', status === 'offline');
+        function closeModal() {
+            document.getElementById('itemModal').classList.remove('show');
+            editingIndex = -1;
         }
 
-        function createItem() {
-            const desc = document.getElementById('newDesc').value;
-            const cost = parseFloat(document.getElementById('newCost').value) || 0;
-            const price = parseFloat(document.getElementById('newPrice').value) || 0;
-            const qty = parseFloat(document.getElementById('newQty').value) || 0;
-
-            if (!desc) {
-                showToast('Please enter item description');
-                return;
-            }
+        document.getElementById('itemForm').addEventListener('submit', function (e) {
+            e.preventDefault();
 
             const newItem = {
-                id: 'item-' + (products.length + 1),
-                'Item Description': desc,
-                Cost: cost,
-                Price: price,
-                'Qty OH': qty,
-                Status: newItemStatus
+                description: document.getElementById('itemDescription').value,
+                cost: parseFloat(document.getElementById('itemCost').value) || 0,
+                price: parseFloat(document.getElementById('itemPrice').value) || 0,
+                qty: parseFloat(document.getElementById('itemQty').value) || 0,
+                status: true
             };
 
-            products.push(newItem);
+            if (editingIndex >= 0) {
+                products[editingIndex] = newItem;
+                showToast('Item updated successfully');
+            } else {
+                products.push(newItem);
+                showToast('Item added successfully');
+            }
+
             saveToLocalStorage();
-            
-            document.getElementById('newDesc').value = '';
-            document.getElementById('newCost').value = '';
-            document.getElementById('newPrice').value = '';
-            document.getElementById('newQty').value = '';
-            
+            closeModal();
             renderInventory();
             updateStats();
-            showToast('Item created successfully');
-        }
+            renderReport();
+        });
 
         function renderReport() {
-            const negative = products.filter(p => p['Qty OH'] < 0);
-            const low = products.filter(p => p['Qty OH'] > 0 && p['Qty OH'] <= 9);
-            const active = products.filter(p => p['Qty OH'] >= 10);
+            const outOfStock = products.filter(p => p.qty <= 0);
+            const lowStock = products.filter(p => p.qty > 0 && p.qty <= 10);
+            const activeStock = products.filter(p => p.qty > 10);
 
-            document.getElementById('negativeCount').textContent = negative.length;
-            document.getElementById('lowCount').textContent = low.length;
-            document.getElementById('activeCount').textContent = active.length;
+            document.getElementById('outOfStockCount').textContent = outOfStock.length;
+            document.getElementById('lowStockCount').textContent = lowStock.length;
+            document.getElementById('activeStockCount').textContent = activeStock.length;
 
-            document.getElementById('negativeList').innerHTML = negative.slice(0, 10).map(p => `
-                <div class="report-item-3d">
-                    <span>${p['Item Description'].substring(0, 25)}</span>
-                    <span class="report-item-qty-3d negative">${p['Qty OH']}</span>
-                </div>
-            `).join('') + (negative.length > 10 ? `<div style="text-align:center;padding:8px;color:var(--sky-deep);opacity:0.7">+${negative.length - 10} more</div>` : '');
+            document.getElementById('outOfStockList').innerHTML = outOfStock.length ?
+                outOfStock.slice(0, 15).map(p => `
+                    <div class="report-item">
+                        <span class="report-item-name">${escapeHtml(p.description.substring(0, 25))}</span>
+                        <span class="report-item-qty negative">${p.qty}</span>
+                    </div>
+                `).join('') + (outOfStock.length > 15 ? `<p style="padding:8px;color:rgba(255,255,255,0.5);text-align:center;font-size:0.75rem">+${outOfStock.length - 15} more</p>` : '')
+                : '<p style="padding:10px;color:rgba(255,255,255,0.5)">No items</p>';
 
-            document.getElementById('lowList').innerHTML = low.slice(0, 10).map(p => `
-                <div class="report-item-3d">
-                    <span>${p['Item Description'].substring(0, 25)}</span>
-                    <span class="report-item-qty-3d low">${p['Qty OH']}</span>
-                </div>
-            `).join('') + (low.length > 10 ? `<div style="text-align:center;padding:8px;color:var(--sky-deep);opacity:0.7">+${low.length - 10} more</div>` : '');
+            document.getElementById('lowStockList').innerHTML = lowStock.length ?
+                lowStock.slice(0, 15).map(p => `
+                    <div class="report-item">
+                        <span class="report-item-name">${escapeHtml(p.description.substring(0, 25))}</span>
+                        <span class="report-item-qty low">${p.qty}</span>
+                    </div>
+                `).join('') + (lowStock.length > 15 ? `<p style="padding:8px;color:rgba(255,255,255,0.5);text-align:center;font-size:0.75rem">+${lowStock.length - 15} more</p>` : '')
+                : '<p style="padding:10px;color:rgba(255,255,255,0.5)">No items</p>';
 
-            document.getElementById('activeList').innerHTML = active.slice(0, 10).map(p => `
-                <div class="report-item-3d">
-                    <span>${p['Item Description'].substring(0, 25)}</span>
-                    <span class="report-item-qty-3d active">${p['Qty OH']}</span>
-                </div>
-            `).join('') + (active.length > 10 ? `<div style="text-align:center;padding:8px;color:var(--sky-deep);opacity:0.7">+${active.length - 10} more</div>` : '');
+            document.getElementById('activeStockList').innerHTML = activeStock.length ?
+                activeStock.slice(0, 15).map(p => `
+                    <div class="report-item">
+                        <span class="report-item-name">${escapeHtml(p.description.substring(0, 25))}</span>
+                        <span class="report-item-qty">${p.qty}</span>
+                    </div>
+                `).join('') + (activeStock.length > 15 ? `<p style="padding:8px;color:rgba(255,255,255,0.5);text-align:center;font-size:0.75rem">+${activeStock.length - 15} more</p>` : '')
+                : '<p style="padding:10px;color:rgba(255,255,255,0.5)">No items</p>';
         }
 
         function downloadPDF() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
+            
+            const pageWidth = doc.internal.pageSize.getWidth();
+            const pageHeight = doc.internal.pageSize.getHeight();
+            const margin = 14;
+            const tableWidth = pageWidth - (margin * 2);
+            const colWidths = [tableWidth * 0.45, tableWidth * 0.15, tableWidth * 0.20, tableWidth * 0.20];
+            
+            doc.setFontSize(22);
+            doc.setTextColor(99, 102, 241);
+            doc.text('PLAZA STEEL & CROCKERY', pageWidth / 2, 18, { align: 'center' });
 
-            doc.setFontSize(20);
-            doc.setTextColor(0, 131, 176);
-            doc.text('PLAZA STEEL & CROCKERY', 105, 20, { align: 'center' });
-
-            doc.setFontSize(14);
-            doc.setTextColor(51, 51, 51);
-            doc.text('Inventory Summary Report', 105, 30, { align: 'center' });
-            doc.text(`Date: ${new Date().toLocaleDateString()}`, 105, 38, { align: 'center' });
-
-            let y = 55;
             doc.setFontSize(12);
-            doc.text(`Total Items: ${products.length}`, 20, y);
-            doc.text(`In Stock: ${products.filter(p => p['Qty OH'] > 0).length}`, 20, y + 8);
-            doc.text(`Out of Stock: ${products.filter(p => p['Qty OH'] <= 0).length}`, 20, y + 16);
+            doc.setTextColor(100, 100, 100);
+            doc.text('Complete Product Rate List', pageWidth / 2, 26, { align: 'center' });
 
-            y = 85;
-            doc.setFontSize(14);
-            doc.setTextColor(255, 23, 68);
-            doc.text('NEGATIVE STOCK', 20, y);
-            
-            const negative = products.filter(p => p['Qty OH'] < 0);
-            y += 8;
             doc.setFontSize(9);
-            doc.setTextColor(51, 51, 51);
-            negative.slice(0, 10).forEach(p => {
-                doc.text(`${p['Item Description'].substring(0, 35)} - Qty: ${p['Qty OH']}`, 20, y);
-                y += 6;
-            });
+            doc.setTextColor(150, 150, 150);
+            doc.text(`Generated: ${new Date().toLocaleDateString()} | Total Items: ${products.length}`, pageWidth / 2, 32, { align: 'center' });
 
+            let y = 42;
+            
+            const headers = ['Item Description', 'Cost', 'Price', 'Qty'];
+            doc.setFillColor(99, 102, 241);
+            doc.rect(margin, y, tableWidth, 8, 'F');
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(10);
+            doc.setFont(undefined, 'bold');
+            
+            let xPos = margin + 2;
+            headers.forEach((header, i) => {
+                doc.text(header, xPos + colWidths[i] / 2, y + 5.5, { align: 'center' });
+                xPos += colWidths[i];
+            });
+            
+            doc.setFont(undefined, 'normal');
             y += 10;
-            doc.setFontSize(14);
-            doc.setTextColor(255, 152, 0);
-            doc.text('LOW STOCK (1-9)', 20, y);
             
-            const low = products.filter(p => p['Qty OH'] > 0 && p['Qty OH'] <= 9);
-            y += 8;
-            doc.setFontSize(9);
-            doc.setTextColor(51, 51, 51);
-            low.slice(0, 10).forEach(p => {
-                doc.text(`${p['Item Description'].substring(0, 35)} - Qty: ${p['Qty OH']}`, 20, y);
-                y += 6;
+            const rowsPerPage = 26;
+            let rowCount = 0;
+            
+            products.forEach((p, index) => {
+                if (y > pageHeight - 20) {
+                    doc.addPage();
+                    y = 20;
+                    
+                    doc.setFillColor(99, 102, 241);
+                    doc.rect(margin, y, tableWidth, 8, 'F');
+                    doc.setTextColor(255, 255, 255);
+                    doc.setFontSize(10);
+                    doc.setFont(undefined, 'bold');
+                    
+                    xPos = margin + 2;
+                    headers.forEach((header, i) => {
+                        doc.text(header, xPos + colWidths[i] / 2, y + 5.5, { align: 'center' });
+                        xPos += colWidths[i];
+                    });
+                    
+                    doc.setFont(undefined, 'normal');
+                    y += 10;
+                }
+                
+                const bgColor = index % 2 === 0 ? [248, 250, 252] : [255, 255, 255];
+                doc.setFillColor(...bgColor);
+                doc.rect(margin, y - 4, tableWidth, 7, 'F');
+                
+                doc.setTextColor(50, 50, 50);
+                doc.setFontSize(8);
+                
+                xPos = margin + 2;
+                const desc = p.description ? p.description.substring(0, 30) : '';
+                doc.text(desc, xPos + colWidths[0] / 2, y, { align: 'center' });
+                xPos += colWidths[0];
+                
+                doc.text(p.cost ? p.cost.toString() : '0', xPos + colWidths[1] / 2, y, { align: 'center' });
+                xPos += colWidths[1];
+                
+                doc.text(p.price ? p.price.toString() : '0', xPos + colWidths[2] / 2, y, { align: 'center' });
+                xPos += colWidths[2];
+                
+                if (p.qty <= 0) {
+                    doc.setTextColor(239, 68, 68);
+                } else if (p.qty <= 10) {
+                    doc.setTextColor(245, 158, 11);
+                } else {
+                    doc.setTextColor(16, 185, 129);
+                }
+                doc.text(p.qty ? p.qty.toString() : '0', xPos + colWidths[3] / 2, y, { align: 'center' });
+                
+                y += 7;
+                rowCount++;
             });
+            
+            y += 5;
+            doc.setFontSize(8);
+            doc.setTextColor(150, 150, 150);
+            doc.text('Page ' + doc.internal.getCurrentPageInfo().pageNumber, pageWidth / 2, y, { align: 'center' });
 
-            doc.save('Plaza_Inventory_Report.pdf');
-            showToast('PDF downloaded');
+            doc.save(`Plaza_Products_${new Date().toISOString().split('T')[0]}.pdf`);
+            showToast('All products saved to PDF!');
         }
 
-        function saveToLocalStorage() {
-            localStorage.setItem('plazaProducts', JSON.stringify(products));
+        function downloadNegativePDF() {
+            const negativeStock = products.filter(p => p.qty < 0);
+            if (negativeStock.length === 0) {
+                showToast('No negative stock items found!', true);
+                return;
+            }
+            
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            const pageWidth = doc.internal.pageSize.getWidth();
+            const pageHeight = doc.internal.pageSize.getHeight();
+            const margin = 14;
+            const tableWidth = pageWidth - (margin * 2);
+            const colWidths = [tableWidth * 0.45, tableWidth * 0.15, tableWidth * 0.20, tableWidth * 0.20];
+            
+            doc.setFontSize(22);
+            doc.setTextColor(239, 68, 68);
+            doc.text('PLAZA STEEL & CROCKERY', pageWidth / 2, 18, { align: 'center' });
+
+            doc.setFontSize(12);
+            doc.setTextColor(200, 50, 50);
+            doc.text('Negative Stock Report', pageWidth / 2, 26, { align: 'center' });
+
+            doc.setFontSize(9);
+            doc.setTextColor(150, 150, 150);
+            doc.text(`Generated: ${new Date().toLocaleDateString()} | Items: ${negativeStock.length}`, pageWidth / 2, 32, { align: 'center' });
+
+            let y = 42;
+            
+            const headers = ['Item Description', 'Cost', 'Price', 'Qty'];
+            doc.setFillColor(239, 68, 68);
+            doc.rect(margin, y, tableWidth, 8, 'F');
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(10);
+            doc.setFont(undefined, 'bold');
+            
+            let xPos = margin + 2;
+            headers.forEach((header, i) => {
+                doc.text(header, xPos + colWidths[i] / 2, y + 5.5, { align: 'center' });
+                xPos += colWidths[i];
+            });
+            
+            doc.setFont(undefined, 'normal');
+            y += 10;
+            
+            negativeStock.forEach((p, index) => {
+                if (y > pageHeight - 20) {
+                    doc.addPage();
+                    y = 20;
+                    
+                    doc.setFillColor(239, 68, 68);
+                    doc.rect(margin, y, tableWidth, 8, 'F');
+                    doc.setTextColor(255, 255, 255);
+                    doc.setFontSize(10);
+                    doc.setFont(undefined, 'bold');
+                    
+                    xPos = margin + 2;
+                    headers.forEach((header, i) => {
+                        doc.text(header, xPos + colWidths[i] / 2, y + 5.5, { align: 'center' });
+                        xPos += colWidths[i];
+                    });
+                    
+                    doc.setFont(undefined, 'normal');
+                    y += 10;
+                }
+                
+                doc.setFillColor(255, 240, 240);
+                doc.rect(margin, y - 4, tableWidth, 7, 'F');
+                
+                doc.setTextColor(50, 50, 50);
+                doc.setFontSize(8);
+                
+                xPos = margin + 2;
+                const desc = p.description ? p.description.substring(0, 30) : '';
+                doc.text(desc, xPos + colWidths[0] / 2, y, { align: 'center' });
+                xPos += colWidths[0];
+                
+                doc.text(p.cost ? p.cost.toString() : '0', xPos + colWidths[1] / 2, y, { align: 'center' });
+                xPos += colWidths[1];
+                
+                doc.text(p.price ? p.price.toString() : '0', xPos + colWidths[2] / 2, y, { align: 'center' });
+                xPos += colWidths[2];
+                
+                doc.setTextColor(239, 68, 68);
+                doc.setFont(undefined, 'bold');
+                doc.text(p.qty ? p.qty.toString() : '0', xPos + colWidths[3] / 2, y, { align: 'center' });
+                doc.setFont(undefined, 'normal');
+                
+                y += 7;
+            });
+            
+            y += 5;
+            doc.setFontSize(8);
+            doc.setTextColor(150, 150, 150);
+            doc.text('Page ' + doc.internal.getCurrentPageInfo().pageNumber, pageWidth / 2, y, { align: 'center' });
+
+            doc.save(`Plaza_Negative_Stock_${new Date().toISOString().split('T')[0]}.pdf`);
+            showToast('Negative stock PDF downloaded!');
         }
 
-        function showToast(message) {
+        function downloadLowStockPDF() {
+            const lowStock = products.filter(p => p.qty >= 1 && p.qty <= 10);
+            if (lowStock.length === 0) {
+                showToast('No low stock items found!', true);
+                return;
+            }
+            
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            
+            const pageWidth = doc.internal.pageSize.getWidth();
+            const pageHeight = doc.internal.pageSize.getHeight();
+            const margin = 14;
+            const tableWidth = pageWidth - (margin * 2);
+            const colWidths = [tableWidth * 0.45, tableWidth * 0.15, tableWidth * 0.20, tableWidth * 0.20];
+            
+            doc.setFontSize(22);
+            doc.setTextColor(245, 158, 11);
+            doc.text('PLAZA STEEL & CROCKERY', pageWidth / 2, 18, { align: 'center' });
+
+            doc.setFontSize(12);
+            doc.setTextColor(200, 130, 20);
+            doc.text('Low Stock Report (1-10)', pageWidth / 2, 26, { align: 'center' });
+
+            doc.setFontSize(9);
+            doc.setTextColor(150, 150, 150);
+            doc.text(`Generated: ${new Date().toLocaleDateString()} | Items: ${lowStock.length}`, pageWidth / 2, 32, { align: 'center' });
+
+            let y = 42;
+            
+            const headers = ['Item Description', 'Cost', 'Price', 'Qty'];
+            doc.setFillColor(245, 158, 11);
+            doc.rect(margin, y, tableWidth, 8, 'F');
+            doc.setTextColor(255, 255, 255);
+            doc.setFontSize(10);
+            doc.setFont(undefined, 'bold');
+            
+            let xPos = margin + 2;
+            headers.forEach((header, i) => {
+                doc.text(header, xPos + colWidths[i] / 2, y + 5.5, { align: 'center' });
+                xPos += colWidths[i];
+            });
+            
+            doc.setFont(undefined, 'normal');
+            y += 10;
+            
+            lowStock.forEach((p, index) => {
+                if (y > pageHeight - 20) {
+                    doc.addPage();
+                    y = 20;
+                    
+                    doc.setFillColor(245, 158, 11);
+                    doc.rect(margin, y, tableWidth, 8, 'F');
+                    doc.setTextColor(255, 255, 255);
+                    doc.setFontSize(10);
+                    doc.setFont(undefined, 'bold');
+                    
+                    xPos = margin + 2;
+                    headers.forEach((header, i) => {
+                        doc.text(header, xPos + colWidths[i] / 2, y + 5.5, { align: 'center' });
+                        xPos += colWidths[i];
+                    });
+                    
+                    doc.setFont(undefined, 'normal');
+                    y += 10;
+                }
+                
+                doc.setFillColor(255, 250, 230);
+                doc.rect(margin, y - 4, tableWidth, 7, 'F');
+                
+                doc.setTextColor(50, 50, 50);
+                doc.setFontSize(8);
+                
+                xPos = margin + 2;
+                const desc = p.description ? p.description.substring(0, 30) : '';
+                doc.text(desc, xPos + colWidths[0] / 2, y, { align: 'center' });
+                xPos += colWidths[0];
+                
+                doc.text(p.cost ? p.cost.toString() : '0', xPos + colWidths[1] / 2, y, { align: 'center' });
+                xPos += colWidths[1];
+                
+                doc.text(p.price ? p.price.toString() : '0', xPos + colWidths[2] / 2, y, { align: 'center' });
+                xPos += colWidths[2];
+                
+                doc.setTextColor(245, 158, 11);
+                doc.setFont(undefined, 'bold');
+                doc.text(p.qty ? p.qty.toString() : '0', xPos + colWidths[3] / 2, y, { align: 'center' });
+                doc.setFont(undefined, 'normal');
+                
+                y += 7;
+            });
+            
+            y += 5;
+            doc.setFontSize(8);
+            doc.setTextColor(150, 150, 150);
+            doc.text('Page ' + doc.internal.getCurrentPageInfo().pageNumber, pageWidth / 2, y, { align: 'center' });
+
+            doc.save(`Plaza_Low_Stock_${new Date().toISOString().split('T')[0]}.pdf`);
+            showToast('Low stock PDF downloaded!');
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function showToast(message, isError = false) {
             const toast = document.getElementById('toast');
             toast.textContent = message;
-            toast.classList.add('show');
+            toast.className = 'toast show';
+            if (isError) {
+                toast.classList.add('error');
+            }
             setTimeout(() => toast.classList.remove('show'), 3000);
         }
 
-        function logout() {
-            sessionStorage.removeItem('adminLoggedIn');
-            window.location.href = 'index.html';
-        }
-
-        document.getElementById('invSearch').addEventListener('input', renderInventory);
-        document.addEventListener('DOMContentLoaded', loadProducts);
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            loadProducts();
+        });
     </script>
 </body>
 
