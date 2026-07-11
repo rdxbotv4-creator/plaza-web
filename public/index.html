@@ -639,6 +639,14 @@
             </button>
         </div>
 
+        <div class="search-wrapper price-filter-wrapper" style="margin-top: 12px;">
+            <i class="fas fa-tag search-icon"></i>
+            <input type="number" class="search-input" id="underPriceInput" placeholder="Under price (e.g. 2000)" autocomplete="off" min="0" inputmode="numeric">
+            <button class="search-clear" id="underPriceClear" style="display: none;">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
         <div class="results-info">
             <span class="result-count" id="resultCount"></span>
             <span class="total-badge" id="totalBadge"></span>
@@ -691,6 +699,7 @@
     <script>
         let allProducts = [];
         let searchQuery = '';
+        let underPrice = null;
 
         function createParticles() {
             const container = document.getElementById('particles');
@@ -806,10 +815,14 @@
             let displayProducts = activeProducts;
             if (searchQuery.trim()) {
                 const terms = searchQuery.toLowerCase().split(' ').filter(t => t.length > 0);
-                displayProducts = activeProducts.filter(product => {
+                displayProducts = displayProducts.filter(product => {
                     const desc = product.description.toLowerCase();
                     return terms.every(term => desc.includes(term));
                 });
+            }
+
+            if (underPrice !== null && !isNaN(underPrice)) {
+                displayProducts = displayProducts.filter(product => Number(product.price) <= underPrice);
             }
 
             productCount.textContent = `${displayProducts.length} items`;
@@ -820,7 +833,7 @@
                     <div class="no-products">
                         <i class="fas fa-search"></i>
                         <p>No matching products</p>
-                        <span class="search-query">"${searchQuery}"</span>
+                        <span class="search-query">${searchQuery ? `"${searchQuery}"` : `Under Rs. ${formatNumber(underPrice)}`}</span>
                     </div>
                 `;
                 return;
@@ -858,6 +871,25 @@
             document.getElementById('searchInput').value = '';
             document.getElementById('searchClear').style.display = 'none';
             searchQuery = '';
+            displayProducts(allProducts);
+        }
+
+        function handleUnderPrice(value) {
+            const clearBtn = document.getElementById('underPriceClear');
+            if (value === '' || value === null) {
+                underPrice = null;
+                clearBtn.style.display = 'none';
+            } else {
+                underPrice = Number(value);
+                clearBtn.style.display = 'flex';
+            }
+            displayProducts(allProducts);
+        }
+
+        function clearUnderPrice() {
+            document.getElementById('underPriceInput').value = '';
+            document.getElementById('underPriceClear').style.display = 'none';
+            underPrice = null;
             displayProducts(allProducts);
         }
 
@@ -921,6 +953,25 @@
                 if (e.key === 'Escape') {
                     clearSearch();
                     searchInput.blur();
+                }
+            });
+
+            const underPriceInput = document.getElementById('underPriceInput');
+            let priceDebounceTimer;
+
+            underPriceInput.addEventListener('input', (e) => {
+                clearTimeout(priceDebounceTimer);
+                priceDebounceTimer = setTimeout(() => {
+                    handleUnderPrice(e.target.value);
+                }, 200);
+            });
+
+            document.getElementById('underPriceClear').addEventListener('click', clearUnderPrice);
+
+            underPriceInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    clearUnderPrice();
+                    underPriceInput.blur();
                 }
             });
         });
