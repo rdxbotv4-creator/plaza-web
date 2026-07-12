@@ -653,6 +653,26 @@
             opacity: 1;
         }
 
+        .bill-section {
+            margin-bottom: 20px;
+        }
+
+        .bill-btn {
+            width: 100%;
+            padding: 16px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .bill-btn i {
+            font-size: 1.2rem;
+            animation: bounce 1s ease-in-out infinite;
+        }
+
         @media (max-width: 480px) {
             .app-container {
                 padding: 15px;
@@ -680,6 +700,11 @@
             <div class="shape shape-2"></div>
             <div class="shape shape-3"></div>
         </div>
+        <div class="sparkle" style="top: 12%; left: 20%; animation-delay: 0s;"></div>
+        <div class="sparkle" style="top: 25%; left: 75%; animation-delay: 0.8s;"></div>
+        <div class="sparkle" style="top: 55%; left: 10%; animation-delay: 1.5s;"></div>
+        <div class="sparkle" style="top: 70%; left: 85%; animation-delay: 0.4s;"></div>
+        <div class="sparkle" style="top: 40%; left: 50%; animation-delay: 2s;"></div>
     </div>
 
     <div class="app-container">
@@ -718,12 +743,14 @@
         </div>
 
         <section class="product-section">
-            <div class="product-box">
-                <div class="product-header">
-                    <span><i class="fas fa-box-open"></i> Products</span>
-                    <span class="product-count" id="productCount">0 items</span>
+            <div class="glow-ring-wrap">
+                <div class="product-box shimmer-auto">
+                    <div class="product-header">
+                        <span><i class="fas fa-box-open"></i> Products</span>
+                        <span class="product-count" id="productCount">0 items</span>
+                    </div>
+                    <div class="product-list" id="productList"></div>
                 </div>
-                <div class="product-list" id="productList"></div>
             </div>
         </section>
 
@@ -754,6 +781,12 @@
             <div class="portal-section">
                 <a href="portal.html" class="portal-btn">
                     <i class="fas fa-store"></i> Plaza Portal
+                </a>
+            </div>
+
+            <div class="bill-section">
+                <a href="bill.html" class="bill-btn glow-btn glow-btn-gold shimmer-auto">
+                    <i class="fas fa-file-invoice-dollar"></i> Make a Bill
                 </a>
             </div>
         </div>
@@ -924,7 +957,7 @@
                     <div class="product-card" style="animation-delay: ${index * 0.03}s">
                         <div class="product-description">${displayDesc}</div>
                         <div class="product-prices">
-                            <span class="product-price">Rs. ${formatNumber(product.price)}</span>
+                            <span class="product-price glow-pulse-text">Rs. ${formatNumber(product.price)}</span>
                         </div>
                     </div>
                 `;

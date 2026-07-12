@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#0f172a">
+    <title>Make a Bill | Plaza Steel & Crockery</title>
+    <link rel="apple-touch-icon" href="../cache/app icon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/premium.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        body {
+            background: var(--darker);
+            min-height: 100vh;
+            color: var(--light);
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .app-container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .top-bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .back-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .back-btn:hover {
+            background: var(--glass-hover);
+            transform: translateX(-3px);
+            box-shadow: 0 0 20px var(--glow-primary);
+        }
+
+        .top-bar h1 {
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+
+        .card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, rgba(255,255,255,0.02) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 18px;
+            padding: 18px;
+            margin-bottom: 16px;
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .card-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--light-muted);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-title i {
+            color: var(--gold);
+        }
+
+        .field-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .field-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .field label {
+            display: block;
+            font-size: 0.72rem;
+            color: var(--light-muted);
+            margin-bottom: 6px;
+        }
+
+        .field input, .field select, .field textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1.5px solid var(--glass-border);
+            border-radius: 12px;
+            background: var(--glass);
+            color: var(--light);
+            font-size: 0.9rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .field input:focus, .field select:focus, .field textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 18px var(--glow-primary);
+            background: var(--glass-hover);
+        }
+
+        .search-add-wrapper {
+            position: relative;
+        }
+
+        #itemSearch {
+            width: 100%;
+            padding: 13px 16px;
+            border: 1.5px solid var(--glass-border);
+            border-radius: 12px;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            color: var(--light);
+            font-size: 0.9rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        #itemSearch:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 18px var(--glow-primary);
+            background: var(--glass-hover);
+        }
+
+        #itemSearch::placeholder {
+            color: var(--light-muted);
+        }
+
+        .search-results {
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+            right: 0;
+            max-height: 240px;
+            overflow-y: auto;
+            background: linear-gradient(135deg, var(--dark), var(--darker));
+            border: 1px solid var(--glass-border);
+            border-radius: 14px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 30px var(--glow-primary);
+            z-index: 50;
+            display: none;
+        }
+
+        .search-results.show {
+            display: block;
+            animation: fadeInUp 0.25s ease forwards;
+        }
+
+        .search-result-item {
+            padding: 12px 16px;
+            cursor: pointer;
+            border-bottom: 1px solid var(--glass-border);
+            transition: background 0.2s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-result-item:hover {
+            background: rgba(99,102,241,0.15);
+        }
+
+        .search-result-item .sri-desc {
+            font-size: 0.85rem;
+            flex: 1;
+        }
+
+        .search-result-item .sri-price {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--success);
+            white-space: nowrap;
+        }
+
+        .no-results-hint {
+            padding: 12px 16px;
+            font-size: 0.8rem;
+            color: var(--light-muted);
+        }
+
+        .custom-item-toggle {
+            margin-top: 10px;
+            font-size: 0.78rem;
+            color: var(--secondary);
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            user-select: none;
+        }
+
+        .custom-item-fields {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .custom-item-fields.show {
+            display: grid;
+        }
+
+        .add-item-btn {
+            margin-top: 12px;
+            width: 100%;
+        }
+
+        .bill-table-wrap {
+            overflow-x: auto;
+        }
+
+        .bill-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.8rem;
+            min-width: 480px;
+        }
+
+        .bill-table th {
+            text-align: left;
+            padding: 10px 8px;
+            color: var(--light-muted);
+            font-weight: 600;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .bill-table td {
+            padding: 8px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            vertical-align: middle;
+        }
+
+        .bill-table input {
+            width: 70px;
+            padding: 7px 8px;
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            background: var(--glass);
+            color: var(--light);
+            font-size: 0.8rem;
+            text-align: center;
+        }
+
+        .bill-table input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 12px var(--glow-primary);
+        }
+
+        .row-desc {
+            max-width: 140px;
+            word-break: break-word;
+        }
+
+        .row-amount {
+            font-weight: 700;
+            color: var(--success);
+            white-space: nowrap;
+        }
+
+        .remove-row-btn {
+            background: rgba(239,68,68,0.15);
+            border: 1px solid var(--danger);
+            color: var(--danger);
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .remove-row-btn:hover {
+            background: var(--danger);
+            color: white;
+            box-shadow: 0 0 15px rgba(239,68,68,0.5);
+        }
+
+        .empty-bill {
+            text-align: center;
+            padding: 30px 10px;
+            color: var(--light-muted);
+        }
+
+        .empty-bill i {
+            font-size: 2.4rem;
+            color: var(--primary);
+            opacity: 0.5;
+            margin-bottom: 10px;
+        }
+
+        .discount-type-toggle {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .discount-type-toggle button {
+            flex: 1;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1.5px solid var(--glass-border);
+            background: var(--glass);
+            color: var(--light-muted);
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .discount-type-toggle button.active {
+            background: linear-gradient(135deg, var(--primary), var(--accent-2));
+            color: white;
+            border-color: transparent;
+            box-shadow: 0 4px 15px var(--glow-primary);
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+
+        .summary-row.muted {
+            color: var(--light-muted);
+            font-size: 0.82rem;
+        }
+
+        .summary-row.total {
+            border-top: 1px solid var(--glass-border);
+            margin-top: 8px;
+            padding-top: 14px;
+            font-size: 1.3rem;
+            font-weight: 800;
+        }
+
+        .summary-row.total .amount {
+            background: linear-gradient(90deg, var(--success), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .action-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 4px;
+            margin-bottom: 30px;
+        }
+
+        .action-row .full {
+            grid-column: 1 / -1;
+        }
+
+        .action-btn {
+            padding: 15px;
+            border: none;
+            border-radius: 14px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .action-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .action-btn.print-btn {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+            color: white;
+            box-shadow: 0 8px 25px var(--glow-secondary);
+        }
+
+        .action-btn.pdf-btn {
+            background: linear-gradient(135deg, var(--gold), #f59e0b);
+            color: #1a1200;
+            box-shadow: 0 8px 25px rgba(251, 191, 36, 0.45);
+        }
+
+        .action-btn.reset-btn {
+            background: linear-gradient(135deg, var(--danger), #dc2626);
+            color: white;
+            box-shadow: 0 8px 25px rgba(239, 68, 68, 0.35);
+        }
+
+        #bill-toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(150px);
+            background: linear-gradient(135deg, var(--dark), var(--darker));
+            color: var(--light);
+            padding: 16px 28px;
+            border-radius: 16px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.5), 0 0 30px var(--glow-primary);
+            z-index: 9999;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid var(--glass-border);
+            font-weight: 500;
+        }
+
+        #bill-toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        /* -------- Printable invoice look -------- */
+        #printableBill {
+            display: none;
+        }
+
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+
+            #printableBill, #printableBill * {
+                visibility: visible;
+            }
+
+            #printableBill {
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                background: white;
+                color: #111;
+                padding: 24px;
+            }
+
+            .premium-bg, .back-btn {
+                display: none !important;
+            }
+        }
+
+        .invoice-header {
+            text-align: center;
+            margin-bottom: 18px;
+            border-bottom: 2px solid #6366f1;
+            padding-bottom: 14px;
+        }
+
+        .invoice-header h2 {
+            color: #4f46e5;
+            font-size: 1.5rem;
+        }
+
+        .invoice-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .invoice-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 16px;
+        }
+
+        .invoice-table th, .invoice-table td {
+            border: 1px solid #ccc;
+            padding: 8px 10px;
+            font-size: 0.85rem;
+            text-align: left;
+        }
+
+        .invoice-table th {
+            background: #f1f5f9;
+        }
+
+        .invoice-summary {
+            width: 260px;
+            margin-left: auto;
+            font-size: 0.9rem;
+        }
+
+        .invoice-summary div {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+        }
+
+        .invoice-summary .grand {
+            font-weight: 800;
+            font-size: 1.1rem;
+            border-top: 2px solid #333;
+            padding-top: 8px;
+            margin-top: 4px;
+        }
+
+        @media (max-width: 480px) {
+            .field-row {
+                grid-template-columns: 1fr 1fr;
+            }
+            .action-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="premium-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+        <div class="particles-container" id="particles"></div>
+        <div class="sparkle" style="top: 15%; left: 15%; animation-delay: 0s;"></div>
+        <div class="sparkle" style="top: 30%; left: 80%; animation-delay: 1s;"></div>
+        <div class="sparkle" style="top: 65%; left: 12%; animation-delay: 1.8s;"></div>
+    </div>
+
+    <div class="app-container">
+        <div class="top-bar">
+            <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i></a>
+            <h1 class="neon-text"><i class="fas fa-file-invoice-dollar"></i> Make a Bill</h1>
+        </div>
+
+        <div class="card" style="animation-delay: 0.05s;">
+            <div class="card-title"><i class="fas fa-user"></i> Customer & Bill Details</div>
+            <div class="field-row">
+                <div class="field">
+                    <label>Customer Name</label>
+                    <input type="text" id="customerName" placeholder="Walk-in Customer">
+                </div>
+                <div class="field">
+                    <label>Phone (optional)</label>
+                    <input type="text" id="customerPhone" placeholder="03xx-xxxxxxx">
+                </div>
+            </div>
+            <div class="field-row">
+                <div class="field">
+                    <label>Bill No.</label>
+                    <input type="text" id="billNumber" readonly>
+                </div>
+                <div class="field">
+                    <label>Date</label>
+                    <input type="date" id="billDate">
+                </div>
+            </div>
+        </div>
+
+        <div class="card glow-ring-wrap" style="animation-delay: 0.1s;">
+            <div class="card-title"><i class="fas fa-plus-circle"></i> Add Product</div>
+            <div class="search-add-wrapper">
+                <input type="text" id="itemSearch" placeholder="Search product to add..." autocomplete="off">
+                <div class="search-results" id="searchResults"></div>
+            </div>
+
+            <span class="custom-item-toggle" id="customItemToggle">
+                <i class="fas fa-pen"></i> Add a custom item instead
+            </span>
+
+            <div class="field-row custom-item-fields" id="customItemFields">
+                <div class="field">
+                    <label>Description</label>
+                    <input type="text" id="customDesc" placeholder="Item name">
+                </div>
+                <div class="field">
+                    <label>Rate (Rs.)</label>
+                    <input type="number" id="customRate" placeholder="0" min="0">
+                </div>
+            </div>
+            <button class="action-btn print-btn add-item-btn" id="addCustomBtn" style="display:none;">
+                <i class="fas fa-plus"></i> Add Custom Item
+            </button>
+        </div>
+
+        <div class="card" style="animation-delay: 0.15s;">
+            <div class="card-title"><i class="fas fa-list"></i> Bill Items</div>
+            <div class="bill-table-wrap">
+                <table class="bill-table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Qty</th>
+                            <th>Rate</th>
+                            <th>Disc %</th>
+                            <th>Amount</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="billTableBody"></tbody>
+                </table>
+            </div>
+            <div id="emptyBillMsg" class="empty-bill">
+                <i class="fas fa-receipt"></i>
+                <p>No items added yet. Search above to add products.</p>
+            </div>
+        </div>
+
+        <div class="card" style="animation-delay: 0.2s;">
+            <div class="card-title"><i class="fas fa-percentage"></i> Overall Discount</div>
+            <div class="discount-type-toggle">
+                <button type="button" id="discTypePercent" class="active">Percent (%)</button>
+                <button type="button" id="discTypeFixed">Fixed (Rs.)</button>
+            </div>
+            <div class="field">
+                <input type="number" id="overallDiscountValue" placeholder="0" min="0">
+            </div>
+        </div>
+
+        <div class="card glow-ring-wrap" style="animation-delay: 0.25s;">
+            <div class="card-title"><i class="fas fa-calculator"></i> Summary</div>
+            <div class="summary-row muted">
+                <span>Subtotal</span>
+                <span id="sumSubtotal">Rs. 0</span>
+            </div>
+            <div class="summary-row muted">
+                <span>Item Discounts</span>
+                <span id="sumItemDiscount">- Rs. 0</span>
+            </div>
+            <div class="summary-row muted">
+                <span>Overall Discount</span>
+                <span id="sumOverallDiscount">- Rs. 0</span>
+            </div>
+            <div class="summary-row total">
+                <span>Grand Total</span>
+                <span class="amount glow-pulse-text" id="sumGrandTotal">Rs. 0</span>
+            </div>
+        </div>
+
+        <div class="action-row">
+            <button class="action-btn print-btn full" id="printBtn"><i class="fas fa-print"></i> Print Bill</button>
+            <button class="action-btn pdf-btn full" id="pdfBtn"><i class="fas fa-file-pdf"></i> Download PDF</button>
+            <button class="action-btn reset-btn full" id="resetBtn"><i class="fas fa-trash-alt"></i> New Bill</button>
+        </div>
+    </div>
+
+    <div id="bill-toast"></div>
+
+    <!-- Hidden printable / PDF invoice layout -->
+    <div id="printableBill">
+        <div class="invoice-header">
+            <h2>PLAZA STEEL & CROCKERY</h2>
+            <p>Premium Quality Products at Best Rates</p>
+        </div>
+        <div class="invoice-meta">
+            <div>
+                <strong>Bill To:</strong> <span id="pv-customer">Walk-in Customer</span><br>
+                <span id="pv-phone"></span>
+            </div>
+            <div style="text-align: right;">
+                <strong>Bill No:</strong> <span id="pv-billno"></span><br>
+                <strong>Date:</strong> <span id="pv-date"></span>
+            </div>
+        </div>
+        <table class="invoice-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Item Description</th>
+                    <th>Qty</th>
+                    <th>Rate</th>
+                    <th>Disc %</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody id="pv-table-body"></tbody>
+        </table>
+        <div class="invoice-summary">
+            <div><span>Subtotal</span><span id="pv-subtotal">Rs. 0</span></div>
+            <div><span>Item Discounts</span><span id="pv-item-discount">- Rs. 0</span></div>
+            <div><span>Overall Discount</span><span id="pv-overall-discount">- Rs. 0</span></div>
+            <div class="grand"><span>Grand Total</span><span id="pv-grand-total">Rs. 0</span></div>
+        </div>
+        <p style="margin-top: 20px; font-size: 0.75rem; color: #666;">Thank you for shopping with Plaza Steel & Crockery!</p>
+    </div>
+
+    <script>
+        let allProducts = [];
+        let billItems = [];
+        let discountType = 'percent';
+
+        const STORAGE_KEY = 'plazaBillDraft';
+
+        function createParticles() {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 18; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (10 + Math.random() * 10) + 's';
+                particle.style.width = (2 + Math.random() * 3) + 'px';
+                particle.style.height = particle.style.width;
+                container.appendChild(particle);
+            }
+        }
+
+        function formatNumber(num) {
+            const n = Number(num) || 0;
+            return n.toFixed(n % 1 === 0 ? 0 : 2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
+
+        function generateBillNumber() {
+            const now = new Date();
+            return 'PLZ-' + now.getFullYear().toString().slice(-2) +
+                String(now.getMonth() + 1).padStart(2, '0') +
+                String(now.getDate()).padStart(2, '0') + '-' +
+                Math.floor(1000 + Math.random() * 9000);
+        }
+
+        async function loadProducts() {
+            try {
+                const response = await fetch('list/iteam list.json?t=' + Date.now());
+                const text = await response.text();
+                if (!text || text.trim() === '' || text.trim() === '{}') return;
+                const data = JSON.parse(text);
+                allProducts = [];
+                data.forEach(table => {
+                    const rows = table['Sheet1'] || table['Table 1'] || (Array.isArray(table) ? table : null);
+                    if (rows && Array.isArray(rows)) {
+                        rows.forEach(item => {
+                            if (item['Item Description'] && item.Price !== undefined) {
+                                allProducts.push({
+                                    description: item['Item Description'],
+                                    price: item.Price,
+                                    status: item.status !== false && item.status !== 'offline'
+                                });
+                            }
+                        });
+                    }
+                });
+                allProducts = allProducts.filter(p => p.status !== false);
+            } catch (error) {
+                console.error('Error loading products for bill:', error);
+            }
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('bill-toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+
+        function renderSearchResults(query) {
+            const box = document.getElementById('searchResults');
+            if (!query.trim()) {
+                box.classList.remove('show');
+                box.innerHTML = '';
+                return;
+            }
+            const terms = query.toLowerCase().split(' ').filter(t => t.length > 0);
+            const matches = allProducts.filter(p => {
+                const desc = p.description.toLowerCase();
+                return terms.every(t => desc.includes(t));
+            }).slice(0, 30);
+
+            if (matches.length === 0) {
+                box.innerHTML = '<div class="no-results-hint">No matching products. Try a custom item below.</div>';
+                box.classList.add('show');
+                return;
+            }
+
+            box.innerHTML = matches.map(p => `
+                <div class="search-result-item" data-desc="${escapeHtml(p.description)}" data-price="${p.price}">
+                    <span class="sri-desc">${escapeHtml(p.description)}</span>
+                    <span class="sri-price">Rs. ${formatNumber(p.price)}</span>
+                </div>
+            `).join('');
+            box.classList.add('show');
+
+            box.querySelectorAll('.search-result-item').forEach(el => {
+                el.addEventListener('click', () => {
+                    addBillItem(el.dataset.desc, Number(el.dataset.price));
+                    document.getElementById('itemSearch').value = '';
+                    box.classList.remove('show');
+                });
+            });
+        }
+
+        function addBillItem(description, rate) {
+            const existing = billItems.find(i => i.description === description);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                billItems.push({ description, qty: 1, rate: rate, discount: 0 });
+            }
+            renderBillTable();
+            saveDraft();
+            showToast(`Added "${description}" to bill`);
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function renderBillTable() {
+            const body = document.getElementById('billTableBody');
+            const emptyMsg = document.getElementById('emptyBillMsg');
+
+            if (billItems.length === 0) {
+                body.innerHTML = '';
+                emptyMsg.style.display = 'block';
+                calculateTotals();
+                return;
+            }
+            emptyMsg.style.display = 'none';
+
+            body.innerHTML = billItems.map((item, idx) => {
+                const amount = item.qty * item.rate * (1 - (item.discount || 0) / 100);
+                return `
+                    <tr>
+                        <td class="row-desc">${escapeHtml(item.description)}</td>
+                        <td><input type="number" min="0" value="${item.qty}" data-idx="${idx}" data-field="qty"></td>
+                        <td><input type="number" min="0" value="${item.rate}" data-idx="${idx}" data-field="rate"></td>
+                        <td><input type="number" min="0" max="100" value="${item.discount || 0}" data-idx="${idx}" data-field="discount"></td>
+                        <td class="row-amount">Rs. ${formatNumber(amount)}</td>
+                        <td><button class="remove-row-btn" data-idx="${idx}"><i class="fas fa-times"></i></button></td>
+                    </tr>
+                `;
+            }).join('');
+
+            body.querySelectorAll('input').forEach(inp => {
+                inp.addEventListener('input', (e) => {
+                    const idx = Number(e.target.dataset.idx);
+                    const field = e.target.dataset.field;
+                    let val = Number(e.target.value);
+                    if (isNaN(val) || val < 0) val = 0;
+                    billItems[idx][field] = val;
+                    calculateTotals();
+                    updateRowAmount(idx);
+                    saveDraft();
+                });
+            });
+
+            body.querySelectorAll('.remove-row-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const idx = Number(e.currentTarget.dataset.idx);
+                    billItems.splice(idx, 1);
+                    renderBillTable();
+                    saveDraft();
+                });
+            });
+
+            calculateTotals();
+        }
+
+        function updateRowAmount(idx) {
+            const rows = document.querySelectorAll('#billTableBody tr');
+            const row = rows[idx];
+            if (!row) return;
+            const item = billItems[idx];
+            const amount = item.qty * item.rate * (1 - (item.discount || 0) / 100);
+            row.querySelector('.row-amount').textContent = `Rs. ${formatNumber(amount)}`;
+        }
+
+        function calculateTotals() {
+            const subtotal = billItems.reduce((sum, i) => sum + (i.qty * i.rate), 0);
+            const itemDiscountTotal = billItems.reduce((sum, i) => sum + (i.qty * i.rate * (i.discount || 0) / 100), 0);
+            const afterItemDiscount = subtotal - itemDiscountTotal;
+
+            const overallVal = Number(document.getElementById('overallDiscountValue').value) || 0;
+            let overallDiscountAmount = 0;
+            if (discountType === 'percent') {
+                overallDiscountAmount = afterItemDiscount * (overallVal / 100);
+            } else {
+                overallDiscountAmount = overallVal;
+            }
+            overallDiscountAmount = Math.min(overallDiscountAmount, afterItemDiscount);
+
+            const grandTotal = Math.max(afterItemDiscount - overallDiscountAmount, 0);
+
+            document.getElementById('sumSubtotal').textContent = `Rs. ${formatNumber(subtotal)}`;
+            document.getElementById('sumItemDiscount').textContent = `- Rs. ${formatNumber(itemDiscountTotal)}`;
+            document.getElementById('sumOverallDiscount').textContent = `- Rs. ${formatNumber(overallDiscountAmount)}`;
+            document.getElementById('sumGrandTotal').textContent = `Rs. ${formatNumber(grandTotal)}`;
+
+            return { subtotal, itemDiscountTotal, overallDiscountAmount, grandTotal };
+        }
+
+        function saveDraft() {
+            const draft = {
+                customerName: document.getElementById('customerName').value,
+                customerPhone: document.getElementById('customerPhone').value,
+                billNumber: document.getElementById('billNumber').value,
+                billDate: document.getElementById('billDate').value,
+                billItems,
+                discountType,
+                overallDiscountValue: document.getElementById('overallDiscountValue').value
+            };
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(draft));
+        }
+
+        function loadDraft() {
+            const raw = localStorage.getItem(STORAGE_KEY);
+            if (!raw) return false;
+            try {
+                const draft = JSON.parse(raw);
+                document.getElementById('customerName').value = draft.customerName || '';
+                document.getElementById('customerPhone').value = draft.customerPhone || '';
+                document.getElementById('billNumber').value = draft.billNumber || generateBillNumber();
+                document.getElementById('billDate').value = draft.billDate || todayStr();
+                billItems = draft.billItems || [];
+                discountType = draft.discountType || 'percent';
+                document.getElementById('overallDiscountValue').value = draft.overallDiscountValue || '';
+                setDiscountTypeUI();
+                renderBillTable();
+                return true;
+            } catch (e) {
+                return false;
+            }
+        }
+
+        function todayStr() {
+            const d = new Date();
+            return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+        }
+
+        function setDiscountTypeUI() {
+            document.getElementById('discTypePercent').classList.toggle('active', discountType === 'percent');
+            document.getElementById('discTypeFixed').classList.toggle('active', discountType === 'fixed');
+        }
+
+        function resetBill() {
+            if (billItems.length > 0 && !confirm('Start a new bill? Current bill data will be cleared.')) return;
+            billItems = [];
+            document.getElementById('customerName').value = '';
+            document.getElementById('customerPhone').value = '';
+            document.getElementById('billNumber').value = generateBillNumber();
+            document.getElementById('billDate').value = todayStr();
+            document.getElementById('overallDiscountValue').value = '';
+            discountType = 'percent';
+            setDiscountTypeUI();
+            renderBillTable();
+            localStorage.removeItem(STORAGE_KEY);
+            showToast('New bill started');
+        }
+
+        function preparePrintableBill() {
+            const totals = calculateTotals();
+            const customer = document.getElementById('customerName').value.trim() || 'Walk-in Customer';
+            const phone = document.getElementById('customerPhone').value.trim();
+            const billNo = document.getElementById('billNumber').value;
+            const date = document.getElementById('billDate').value;
+
+            document.getElementById('pv-customer').textContent = customer;
+            document.getElementById('pv-phone').textContent = phone ? ('Phone: ' + phone) : '';
+            document.getElementById('pv-billno').textContent = billNo;
+            document.getElementById('pv-date').textContent = date;
+
+            document.getElementById('pv-table-body').innerHTML = billItems.map((item, idx) => {
+                const amount = item.qty * item.rate * (1 - (item.discount || 0) / 100);
+                return `
+                    <tr>
+                        <td>${idx + 1}</td>
+                        <td>${escapeHtml(item.description)}</td>
+                        <td>${item.qty}</td>
+                        <td>Rs. ${formatNumber(item.rate)}</td>
+                        <td>${item.discount || 0}%</td>
+                        <td>Rs. ${formatNumber(amount)}</td>
+                    </tr>
+                `;
+            }).join('');
+
+            document.getElementById('pv-subtotal').textContent = `Rs. ${formatNumber(totals.subtotal)}`;
+            document.getElementById('pv-item-discount').textContent = `- Rs. ${formatNumber(totals.itemDiscountTotal)}`;
+            document.getElementById('pv-overall-discount').textContent = `- Rs. ${formatNumber(totals.overallDiscountAmount)}`;
+            document.getElementById('pv-grand-total').textContent = `Rs. ${formatNumber(totals.grandTotal)}`;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+
+            if (!loadDraft()) {
+                document.getElementById('billNumber').value = generateBillNumber();
+                document.getElementById('billDate').value = todayStr();
+            }
+
+            loadProducts();
+
+            const itemSearch = document.getElementById('itemSearch');
+            let searchDebounce;
+            itemSearch.addEventListener('input', (e) => {
+                clearTimeout(searchDebounce);
+                searchDebounce = setTimeout(() => renderSearchResults(e.target.value), 150);
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.search-add-wrapper')) {
+                    document.getElementById('searchResults').classList.remove('show');
+                }
+            });
+
+            const customToggle = document.getElementById('customItemToggle');
+            const customFields = document.getElementById('customItemFields');
+            const addCustomBtn = document.getElementById('addCustomBtn');
+            customToggle.addEventListener('click', () => {
+                customFields.classList.toggle('show');
+                addCustomBtn.style.display = customFields.classList.contains('show') ? 'flex' : 'none';
+            });
+
+            addCustomBtn.addEventListener('click', () => {
+                const desc = document.getElementById('customDesc').value.trim();
+                const rate = Number(document.getElementById('customRate').value);
+                if (!desc) { showToast('Enter an item description'); return; }
+                if (!rate || rate <= 0) { showToast('Enter a valid rate'); return; }
+                addBillItem(desc, rate);
+                document.getElementById('customDesc').value = '';
+                document.getElementById('customRate').value = '';
+            });
+
+            document.getElementById('discTypePercent').addEventListener('click', () => {
+                discountType = 'percent';
+                setDiscountTypeUI();
+                calculateTotals();
+                saveDraft();
+            });
+
+            document.getElementById('discTypeFixed').addEventListener('click', () => {
+                discountType = 'fixed';
+                setDiscountTypeUI();
+                calculateTotals();
+                saveDraft();
+            });
+
+            document.getElementById('overallDiscountValue').addEventListener('input', () => {
+                calculateTotals();
+                saveDraft();
+            });
+
+            ['customerName', 'customerPhone', 'billDate'].forEach(id => {
+                document.getElementById(id).addEventListener('input', saveDraft);
+            });
+
+            document.getElementById('printBtn').addEventListener('click', () => {
+                if (billItems.length === 0) { showToast('Add at least one item first'); return; }
+                preparePrintableBill();
+                setTimeout(() => window.print(), 100);
+            });
+
+            document.getElementById('pdfBtn').addEventListener('click', () => {
+                if (billItems.length === 0) { showToast('Add at least one item first'); return; }
+                preparePrintableBill();
+                const el = document.getElementById('printableBill');
+                el.style.display = 'block';
+                const billNo = document.getElementById('billNumber').value || 'bill';
+                const opt = {
+                    margin: 0.3,
+                    filename: `${billNo}.pdf`,
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { scale: 2, backgroundColor: '#ffffff' },
+                    jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+                };
+                showToast('Generating PDF...');
+                html2pdf().set(opt).from(el).save().then(() => {
+                    el.style.display = 'none';
+                    showToast('PDF downloaded');
+                }).catch(() => {
+                    el.style.display = 'none';
+                    showToast('Could not generate PDF, try Print instead');
+                });
+            });
+
+            document.getElementById('resetBtn').addEventListener('click', resetBill);
+        });
+    </script>
+</body>
+
+</html>

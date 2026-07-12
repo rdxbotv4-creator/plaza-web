@@ -557,6 +557,101 @@ body {
     background: linear-gradient(var(--primary-light), var(--accent));
 }
 
+/* Animated glowing gradient border (safe cross-browser technique) */
+.glow-ring-wrap {
+    position: relative;
+    border-radius: 20px;
+    padding: 2px;
+    background: linear-gradient(135deg, var(--primary), var(--accent-2), var(--secondary), var(--gold), var(--primary));
+    background-size: 300% 300%;
+    animation: gradientBorderFlow 8s ease infinite;
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
+}
+
+.glow-ring-wrap > * {
+    border-radius: 18px;
+}
+
+.glow-ring-wrap > .product-box,
+.glow-ring-wrap > .card {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.97) 0%, rgba(2, 6, 23, 0.97) 100%);
+}
+
+@keyframes gradientBorderFlow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Pulsing glow for key numbers / totals */
+.glow-pulse-text {
+    animation: glowPulseText 2.2s ease-in-out infinite;
+}
+
+@keyframes glowPulseText {
+    0%, 100% { filter: drop-shadow(0 0 6px rgba(16, 185, 129, 0.4)); }
+    50% { filter: drop-shadow(0 0 18px rgba(16, 185, 129, 0.85)); }
+}
+
+/* Shimmer sweep overlay, plays automatically without hover */
+.shimmer-auto {
+    position: relative;
+    overflow: hidden;
+}
+
+.shimmer-auto::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+    animation: shimmerSweep 4.5s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes shimmerSweep {
+    0% { left: -60%; }
+    45%, 100% { left: 140%; }
+}
+
+/* Animated multi-hue background drift (subtle, used with premium-bg) */
+.hue-drift {
+    animation: hueDrift 12s ease-in-out infinite;
+}
+
+@keyframes hueDrift {
+    0%, 100% { filter: hue-rotate(0deg); }
+    50% { filter: hue-rotate(20deg); }
+}
+
+/* Sparkle twinkle dots */
+.sparkle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 8px 2px rgba(255, 255, 255, 0.8);
+    animation: sparkleTwinkle 2.5s ease-in-out infinite;
+}
+
+@keyframes sparkleTwinkle {
+    0%, 100% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Bill-specific gold action button */
+.glow-btn-gold {
+    background: linear-gradient(135deg, var(--gold), #f59e0b);
+    color: #1a1200;
+    box-shadow: 0 8px 25px rgba(251, 191, 36, 0.45);
+}
+
+.glow-btn-gold:hover {
+    box-shadow: 0 15px 40px rgba(251, 191, 36, 0.6);
+}
+
 /* Product Card */
 .product-card {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
