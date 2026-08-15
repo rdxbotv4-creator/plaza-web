@@ -65,7 +65,7 @@
   "Item Description": "1097 MEAT MINDER & VEG CUTER",
   "Cost": 9500,
   "Price": 11440,
-  "Qty OH": 1
+  "Qty OH": 0
  },
  {
   "Item Description": "1098 MEAT MINDER & VEG CUTER",
@@ -107,31 +107,31 @@
   "Item Description": "1154 GARMENT STEAMER",
   "Cost": 18700,
   "Price": 22460,
-  "Qty OH": 3
+  "Qty OH": 5
  },
  {
   "Item Description": "1155 GARMENT STEAMER",
   "Cost": 18700,
   "Price": 22460,
-  "Qty OH": 2
+  "Qty OH": 4
  },
  {
   "Item Description": "1156 GARMENT STEAMER",
   "Cost": 20600,
   "Price": 24740,
-  "Qty OH": 5
+  "Qty OH": 4
  },
  {
   "Item Description": "1157 GARMENT STEAMER",
   "Cost": 23000,
   "Price": 27640,
-  "Qty OH": 2
+  "Qty OH": 3
  },
  {
   "Item Description": "1159 GARMENT STEAMER",
   "Cost": 32300,
   "Price": 38790,
-  "Qty OH": 1
+  "Qty OH": 2
  },
  {
   "Item Description": "1186 JUICER",
@@ -167,7 +167,7 @@
   "Item Description": "13 HANDY MULTI WONDER",
   "Cost": 2850,
   "Price": 3430,
-  "Qty OH": 4
+  "Qty OH": 0
  },
  {
   "Item Description": "1301 (TOWER MODEL)(NET RATE)",
@@ -209,13 +209,13 @@
   "Item Description": "1353 HANDY GARMENT STEAMER",
   "Cost": 8600,
   "Price": 10700,
-  "Qty OH": 7
+  "Qty OH": 6
  },
  {
   "Item Description": "1401 WATER DISPENSER (NET RATE)",
   "Cost": 32500,
   "Price": 39000,
-  "Qty OH": 0
+  "Qty OH": 1
  },
  {
   "Item Description": "142 CERAMIC COOKER",
@@ -275,7 +275,7 @@
   "Item Description": "1847 JUICER (4*1)",
   "Cost": 25500,
   "Price": 30650,
-  "Qty OH": 5
+  "Qty OH": 4
  },
  {
   "Item Description": "1853 FOOD PROCESSOR",
@@ -299,7 +299,7 @@
   "Item Description": "1860 FOOD PROCESSOR",
   "Cost": 21100,
   "Price": 25350,
-  "Qty OH": -2
+  "Qty OH": 2
  },
  {
   "Item Description": "2020 STEEM IRON",
@@ -311,7 +311,7 @@
   "Item Description": "2023 COFFE MAKER",
   "Cost": 9900,
   "Price": 11900,
-  "Qty OH": 4
+  "Qty OH": 3
  },
  {
   "Item Description": "2024 COFFEE MAKER",
@@ -329,7 +329,7 @@
   "Item Description": "2063 IRON",
   "Cost": 7800,
   "Price": 9380,
-  "Qty OH": 13
+  "Qty OH": 12
  },
  {
   "Item Description": "2064 IRON",
@@ -395,121 +395,102 @@
   "Item Description": "2430 IRON",
   "Cost": 4900,
   "Price": 6000,
-  "Qty OH": 9
+  "Qty OH": 8
  },
  {
   "Item Description": "2431 IRON",
   "Cost": 4750,
-  "Price": 6000,
-  "Qty OH": 10
+  "Price": 6000
  },
  {
   "Item Description": "2432 IRON",
   "Cost": 4350,
-  "Price": 5840,
-  "Qty OH": 5
+  "Price": 5840
  },
  {
   "Item Description": "2451 IRON",
   "Cost": 4350,
-  "Price": 5840,
-  "Qty OH": 10
+  "Price": 5840
  },
  {
   "Item Description": "2528 TOSTER",
   "Cost": 8000,
-  "Price": 10360,
-  "Qty OH": 0
+  "Price": 10360
  },
  {
   "Item Description": "2532 TOSTER",
   "Cost": 7350,
-  "Price": 10360,
-  "Qty OH": 5
+  "Price": 10360
  },
  {
   "Item Description": "2538 TOSTER",
   "Cost": 6850,
-  "Price": 8820,
-  "Qty OH": 0
+  "Price": 8820
  },
  {
   "Item Description": "2540 TOSTER",
   "Cost": 6850,
-  "Price": 8820,
-  "Qty OH": 4
+  "Price": 8820
  },
  {
   "Item Description": "2542 TOSTER",
   "Cost": 6850,
-  "Price": 8820,
-  "Qty OH": 3
+  "Price": 8820
  },
  {
   "Item Description": "2550 TOSTER",
   "Cost": 5800,
-  "Price": 6980,
-  "Qty OH": 3
+  "Price": 6980
  },
  {
   "Item Description": "2553 TOSTER",
   "Cost": 5800,
-  "Price": 6980,
-  "Qty OH": 7
+  "Price": 6980
  },
  {
   "Item Description": "2561 TOSTER",
   "Cost": 6850,
-  "Price": 8820,
-  "Qty OH": 4
+  "Price": 8820
  },
  {
   "Item Description": "2589 TOSTER",
   "Cost": 6850,
-  "Price": 8820,
-  "Qty OH": 2
+  "Price": 8820
  },
  {
   "Item Description": "261  HOT PLATE SINGLE",
   "Cost": 7300,
-  "Price": 9340,
-  "Qty OH": 2
+  "Price": 9340
  },
  {
   "Item Description": "2610 ELECTRIC OVEN (27L)",
   "Cost": 22000,
-  "Price": 26440,
-  "Qty OH": 5
+  "Price": 26440
  },
  {
   "Item Description": "262 HOT PLATE DOUBLE",
   "Cost": 10600,
-  "Price": 13480,
-  "Qty OH": 0
+  "Price": 13480
  },
  {
   "Item Description": "271 HOT PLATE SINGLE",
   "Cost": 7300,
-  "Price": 9340,
-  "Qty OH": 6
+  "Price": 9340
  },
  {
   "Item Description": "272 HOT PLATE DOUBLE",
   "Cost": 10600,
-  "Price": 13480,
-  "Qty OH": 1
+  "Price": 13480
  },
  {
   "Item Description": "2800 ELECTRIC OVEN (30L)",
   "Cost": 22300,
-  "Price": 26790,
-  "Qty OH": 4
+  "Price": 26790
  },
  {
   "Item Description": "2803 FOOD PROCESSOR (9*1)",
   "Cost": 15900,
-  "Price": 19850,
-  "Qty OH": 4
+  "Price": 19850
  },
  {
   "Item Description": "2804 FOOD PROCESSOR (9*1)",
@@ -520,278 +501,232 @@
  {
   "Item Description": "2805 FOOD PROCESSOR (9*1)",
   "Cost": 16500,
-  "Price": 19850,
-  "Qty OH": 4
+  "Price": 19850
  },
  {
   "Item Description": "281 HOT PLATE SINGLE",
   "Cost": 7300,
-  "Price": 9340,
-  "Qty OH": 1
+  "Price": 9340
  },
  {
   "Item Description": "282 HOT PLATE DOUBLE",
   "Cost": 10600,
-  "Price": 13480,
-  "Qty OH": 0
+  "Price": 13480
  },
  {
   "Item Description": "291 HOT PLATE",
   "Cost": 13000,
-  "Price": 17920,
-  "Qty OH": 0
+  "Price": 17920
  },
  {
   "Item Description": "292 HOT PLATE DOUBAL",
   "Cost": 23200,
-  "Price": 27860,
-  "Qty OH": 2
+  "Price": 27860
  },
  {
   "Item Description": "3000 ELECTRIC OVEN",
   "Cost": 6300,
-  "Price": 22000,
-  "Qty OH": 1
+  "Price": 22000
  },
  {
   "Item Description": "301 BLENDER",
   "Cost": 8500,
-  "Price": 10460,
-  "Qty OH": 0
+  "Price": 10460
  },
  {
   "Item Description": "302 BLENDER",
   "Cost": 8500,
-  "Price": 10460,
-  "Qty OH": 2
+  "Price": 10460
  },
  {
   "Item Description": "303 BLENDER",
   "Cost": 8500,
-  "Price": 10460,
-  "Qty OH": 2
+  "Price": 10460
  },
  {
   "Item Description": "304 BLENDER",
   "Cost": 8500,
-  "Price": 10460,
-  "Qty OH": 4
+  "Price": 10460
  },
  {
   "Item Description": "3040 MEAT MINDER",
   "Cost": 17900,
-  "Price": 22800,
-  "Qty OH": 0
+  "Price": 22800
  },
  {
   "Item Description": "3050 MEAT MINDER",
-  "Cost": 20100,
-  "Price": 27880,
-  "Qty OH": 1
+  "Cost": 24600,
+  "Price": 29540
  },
  {
   "Item Description": "307 BLENDER",
   "Cost": 8700,
-  "Price": 10460,
-  "Qty OH": 4
+  "Price": 10460
  },
  {
   "Item Description": "308 BLENDER",
   "Cost": 8500,
-  "Price": 10460,
-  "Qty OH": 6
+  "Price": 10460
  },
  {
   "Item Description": "3115 KATLE",
   "Cost": 1380,
-  "Price": 4520,
-  "Qty OH": 2
+  "Price": 4520
  },
  {
   "Item Description": "3117 KATTLE",
   "Cost": 3500,
-  "Price": 4520,
-  "Qty OH": 29
+  "Price": 4520
  },
  {
   "Item Description": "3118 KATTLE",
   "Cost": 3500,
-  "Price": 4520,
-  "Qty OH": 0
+  "Price": 4520
  },
  {
   "Item Description": "3119 KATTLE",
   "Cost": 3500,
-  "Price": 4520,
-  "Qty OH": 8
+  "Price": 4520
  },
  {
   "Item Description": "312 BLENDER",
   "Cost": 6950,
-  "Price": 8360,
-  "Qty OH": 7
+  "Price": 8360
  },
  {
   "Item Description": "313 BLENDER",
   "Cost": 6950,
-  "Price": 8360,
-  "Qty OH": 1
+  "Price": 8360
  },
  {
   "Item Description": "314 BLENDER",
   "Cost": 6950,
-  "Price": 8360,
-  "Qty OH": 1
+  "Price": 8360
  },
  {
   "Item Description": "3165 PIZA MAKER",
   "Cost": 9250,
-  "Price": 10700,
-  "Qty OH": 0
+  "Price": 10700
  },
  {
   "Item Description": "3166 PIZZA PAN",
   "Cost": 9350,
-  "Price": 11540,
-  "Qty OH": 5
+  "Price": 11540
  },
  {
   "Item Description": "329 BABY BOTLE STERYLIZER",
   "Cost": 6600,
-  "Price": 8180,
-  "Qty OH": 6
+  "Price": 8180
  },
  {
   "Item Description": "330 BABY BOTLE STERYLIZER",
   "Cost": 8200,
-  "Price": 10120,
-  "Qty OH": 5
+  "Price": 10120
  },
  {
   "Item Description": "332 BLENDER (SINGLE)",
   "Cost": 6400,
-  "Price": 7710,
-  "Qty OH": 17
+  "Price": 7710
  },
  {
   "Item Description": "3321 BLENDER (SINGLE)",
   "Cost": 6400,
-  "Price": 7710,
-  "Qty OH": 10
+  "Price": 7710
  },
  {
   "Item Description": "333 BLENDER (DOUBLE)",
   "Cost": 6350,
-  "Price": 8250,
-  "Qty OH": 6
+  "Price": 8250
  },
  {
   "Item Description": "3331 BLENDER (DOUBLE)",
   "Cost": 6850,
-  "Price": 8250,
-  "Qty OH": 15
+  "Price": 8250
  },
  {
   "Item Description": "342 BLENDER (DOUBLE)",
   "Cost": 8150,
-  "Price": 10160,
-  "Qty OH": 2
+  "Price": 10160
  },
  {
   "Item Description": "343 BLENDER",
   "Cost": 8150,
-  "Price": 10160,
-  "Qty OH": 3
+  "Price": 10160
  },
  {
   "Item Description": "3469 DRUM TYP",
   "Cost": 29300,
-  "Price": 35190,
-  "Qty OH": 3
+  "Price": 35190
  },
  {
   "Item Description": "3569 DRUM TYP (MADE IN TURKEY)",
   "Cost": 29300,
-  "Price": 35190,
-  "Qty OH": 1
+  "Price": 35190
  },
  {
   "Item Description": "3601 CAPSULE TYP",
   "Cost": 13000,
-  "Price": 16700,
-  "Qty OH": 0
+  "Price": 16700
  },
  {
   "Item Description": "3602 CAPSULE TYP",
   "Cost": 13900,
-  "Price": 16700,
-  "Qty OH": 0
+  "Price": 16700
  },
  {
   "Item Description": "3616 DOUGH MAKER",
   "Cost": 15500,
-  "Price": 18640,
-  "Qty OH": 12
+  "Price": 18640
  },
  {
   "Item Description": "364 BLANDER GRINDER (2*1)",
   "Cost": 13900,
-  "Price": 16700,
-  "Qty OH": 5
+  "Price": 16700
  },
  {
   "Item Description": "366 BLENDER",
   "Cost": 14400,
-  "Price": 17920,
-  "Qty OH": 0
+  "Price": 17920
  },
  {
   "Item Description": "3669 DRUM TYP STEL BODY",
   "Cost": 30250,
-  "Price": 36350,
-  "Qty OH": 1
+  "Price": 36350
  },
  {
   "Item Description": "367 BLANDER GRINDER (3*1)",
   "Cost": 17100,
-  "Price": 20540,
-  "Qty OH": 10
+  "Price": 20540
  },
  {
   "Item Description": "372 BLANDER (SINGEL)",
   "Cost": 10300,
-  "Price": 12390,
-  "Qty OH": 0
+  "Price": 12390
  },
  {
   "Item Description": "373 BLANDER (DOUBLE)",
   "Cost": 11400,
-  "Price": 13710,
-  "Qty OH": 12
+  "Price": 13710
  },
  {
   "Item Description": "3804 FOOD PROCESSOR (9*1)",
   "Cost": 15900,
-  "Price": 19850,
-  "Qty OH": 2
+  "Price": 19850
  },
  {
   "Item Description": "3870 FOOT MASSAGER",
   "Cost": 12600,
-  "Price": 16230,
-  "Qty OH": 1
+  "Price": 16230
  },
  {
   "Item Description": "393 BLENDER CHOPER",
   "Cost": 16200,
-  "Price": 19460,
-  "Qty OH": 10
+  "Price": 19460
  },
  {
   "Item Description": "408 KATTLE",
   "Cost": 5300,
-  "Price": 6860,
-  "Qty OH": 3
+  "Price": 6860
  },
  {
   "Item Description": "409 KATTLE",
@@ -1171,7 +1106,7 @@
  },
  {
   "Item Description": "6174 KATTLE",
-  "Cost": 7750,
+  "Cost": 8100,
   "Price": 9740
  },
  {
@@ -1201,9 +1136,8 @@
  },
  {
   "Item Description": "6184 KATTLE",
-  "Cost": 7750,
-  "Price": 9740,
-  "Qty OH": 1
+  "Cost": 8100,
+  "Price": 9740
  },
  {
   "Item Description": "6193 SANDWICH MAKER",
@@ -1358,7 +1292,7 @@
  },
  {
   "Item Description": "672 IRON",
-  "Cost": 4900,
+  "Cost": 5000,
   "Price": 6000
  },
  {
@@ -1394,8 +1328,7 @@
  {
   "Item Description": "6813 HAIR CLIPPER",
   "Cost": 4150,
-  "Price": 6140,
-  "Qty OH": 1
+  "Price": 6140
  },
  {
   "Item Description": "691 SANDWICH MAKER",
@@ -1457,6 +1390,13 @@
   "Item Description": "7112 INSECT KILLER",
   "Cost": 12700,
   "Price": 15520
+ },
+ null,
+ {
+  "Item Description": "Item Description",
+  "Cost": "Cost",
+  "Price": "Price",
+  "Qty OH": "Qty OH"
  },
  {
   "Item Description": "7115 INSECT KILLER",
@@ -1748,7 +1688,7 @@
  },
  {
   "Item Description": "9224 COFFY GRINDER",
-  "Cost": 7800,
+  "Cost": 8000,
   "Price": 9630
  },
  {
@@ -1794,157 +1734,188 @@
  {
   "Item Description": "9491 BLENDER (DOUBAL)",
   "Cost": 6200,
-  "Price": 7470
+  "Price": 7470,
+  "Qty OH": 29
  },
  {
   "Item Description": "9501 HAND BEATER",
   "Cost": 4800,
-  "Price": 7280
+  "Price": 7280,
+  "Qty OH": 6
  },
  {
   "Item Description": "9504 BOWL BEATER",
   "Cost": 9400,
-  "Price": 11300
+  "Price": 11300,
+  "Qty OH": 0
  },
  {
   "Item Description": "960 DRUM TYP",
   "Cost": 26500,
-  "Price": 31840
+  "Price": 31840,
+  "Qty OH": 6
  },
  {
   "Item Description": "9601 HAND BEATER",
   "Cost": 5650,
-  "Price": 7280
+  "Price": 7280,
+  "Qty OH": 10
  },
  {
   "Item Description": "970 DRUM TYP",
   "Cost": 17200,
-  "Price": 20660
+  "Price": 20660,
+  "Qty OH": 0
  },
  {
   "Item Description": "9701 HAND BEATER",
   "Cost": 5650,
-  "Price": 7280
+  "Price": 7280,
+  "Qty OH": 10
  },
  {
   "Item Description": "9714 HAND BEATER",
   "Cost": 6950,
-  "Price": 8380
+  "Price": 8380,
+  "Qty OH": 9
  },
  {
   "Item Description": "9715 HAND BEATER",
   "Cost": 7550,
-  "Price": 9080
+  "Price": 9080,
+  "Qty OH": 10
  },
  {
   "Item Description": "9800 HAND BEATER",
   "Cost": 5500,
-  "Price": 7280
+  "Price": 7280,
+  "Qty OH": 8
  },
  {
   "Item Description": "9801 HAND BEATER WEST POINT BEATER",
   "Cost": 5900,
-  "Price": 7700
+  "Price": 7700,
+  "Qty OH": 13
  },
  {
   "Item Description": "9802 HAND BEATER",
   "Cost": 6950,
-  "Price": 9080
+  "Price": 9080,
+  "Qty OH": 6
  },
  {
   "Item Description": "9804  HAND BEATER",
   "Cost": 6200,
-  "Price": 7700
+  "Price": 7700,
+  "Qty OH": 4
  },
  {
   "Item Description": "9805  HAND BEATER",
   "Cost": 5900,
-  "Price": 7700
+  "Price": 7700,
+  "Qty OH": 1
  },
  {
   "Item Description": "9806 HAND BEATER",
   "Cost": 7000,
-  "Price": 8420
+  "Price": 8420,
+  "Qty OH": 16
  },
  {
   "Item Description": "9807 HAND BEATER",
   "Cost": 7000,
-  "Price": 8420
+  "Price": 8420,
+  "Qty OH": 16
  },
  {
   "Item Description": "9808 WEIGHT SCALE",
   "Cost": 3750,
-  "Price": 4640
+  "Price": 4640,
+  "Qty OH": 7
  },
  {
   "Item Description": "9809 WEIGHT SCALE",
   "Cost": 3750,
-  "Price": 4640
+  "Price": 4640,
+  "Qty OH": 8
  },
  {
   "Item Description": "9814 HAND BEATER",
   "Cost": 6500,
-  "Price": 8380
+  "Price": 8380,
+  "Qty OH": 3
  },
  {
   "Item Description": "9815 HAND BEATER",
   "Cost": 7550,
-  "Price": 9210
+  "Price": 9210,
+  "Qty OH": 14
  },
  {
   "Item Description": "9816 HAND BEATER",
   "Cost": 10150,
-  "Price": 12210
+  "Price": 12210,
+  "Qty OH": 13
  },
  {
   "Item Description": "9826 HAND MIXER WITH BOWL",
   "Cost": 10000,
-  "Price": 12050
+  "Price": 12050,
+  "Qty OH": 3
  },
  {
   "Item Description": "989 KATTLE",
   "Cost": 6050,
-  "Price": 7520
+  "Price": 7520,
+  "Qty OH": 1
  },
  {
   "Item Description": "98B IRON",
   "Cost": 6075,
-  "Price": 7300
+  "Price": 7300,
+  "Qty OH": 13
  },
  {
   "Item Description": "9901 HAND BEATER",
   "Cost": 5650,
-  "Price": 7280
+  "Price": 7280,
+  "Qty OH": 12
  },
  {
   "Item Description": "9914 HAND BEATER",
   "Cost": 7200,
-  "Price": 8930
+  "Price": 8930,
+  "Qty OH": 10
  },
  {
   "Item Description": "9915 HAND BEATER",
   "Cost": 8250,
-  "Price": 10350
+  "Price": 10350,
+  "Qty OH": 12
  },
  {
   "Item Description": "9916 HAND BEATER",
   "Cost": 11500,
-  "Price": 14190
+  "Price": 14190,
+  "Qty OH": 0
  },
  {
   "Item Description": "9934 HAND BEATER",
   "Cost": 7050,
-  "Price": 8930
+  "Price": 8930,
+  "Qty OH": 0
  },
  {
   "Item Description": "9935 HAND BEATER",
   "Cost": 7650,
-  "Price": 9210
+  "Price": 9210,
+  "Qty OH": 16
  },
  {
   "Item Description": "9936 HAND BEATER",
   "Cost": 8600,
-  "Price": 10350
+  "Price": 10350,
+  "Qty OH": 9
  },
  {
   "Item Description": "AIR BEND COOKER (DOZAN)",
@@ -1968,82 +1939,91 @@
   "Item Description": "BALTI NO.2 (16G)",
   "Cost": 790,
   "Price": 1020,
-  "Qty OH": -806
+  "Qty OH": -808
  },
  {
   "Item Description": "BALTI NO.2 OP",
   "Cost": 1250,
-  "Price": 1515
+  "Price": 1515,
+  "Qty OH": -31
  },
  {
   "Item Description": "BALTI NO.2.5 (16G)",
   "Cost": 645,
   "Price": 1075,
-  "Qty OH": -1387
+  "Qty OH": -1389
  },
  {
   "Item Description": "BALTI NO.3 (16G)",
   "Cost": 705,
   "Price": 1160,
-  "Qty OH": -3080
+  "Qty OH": -3097
  },
  {
   "Item Description": "BALTI NO.3 OP",
   "Cost": 1350,
-  "Price": 1635
+  "Price": 1635,
+  "Qty OH": -107
  },
  {
   "Item Description": "BALTI NO.4 (16G)",
   "Cost": 1105,
   "Price": 1625,
-  "Qty OH": -1066
+  "Qty OH": -1068
  },
  {
   "Item Description": "BALTI NO.4 OP",
   "Cost": 1530,
   "Price": 1850,
-  "Qty OH": -1
+  "Qty OH": -134
  },
  {
   "Item Description": "BALTI NO.5 (16G)",
   "Cost": 1380,
   "Price": 1750,
-  "Qty OH": -359
+  "Qty OH": -361
  },
  {
   "Item Description": "BARNI NO.0",
   "Cost": 513,
-  "Price": 720
+  "Price": 720,
+  "Qty OH": -29
  },
  {
   "Item Description": "BARNI NO.1",
   "Cost": 639.2,
-  "Price": 770
+  "Price": 770,
+  "Qty OH": 67
  },
  {
   "Item Description": "BARNI NO.2",
   "Cost": 705,
-  "Price": 850
+  "Price": 850,
+  "Qty OH": -28
  },
  {
   "Item Description": "BARNI NO.3",
   "Cost": 790,
-  "Price": 950
+  "Price": 950,
+  "Qty OH": -71
  },
  {
   "Item Description": "BARNI NO.4",
   "Cost": 987,
-  "Price": 1200
+  "Price": 1200,
+  "Qty OH": -3
  },
  {
   "Item Description": "BARNI NO.5",
   "Cost": 1270,
-  "Price": 1525
+  "Price": 1525,
+  "Qty OH": 10
  },
  {
   "Item Description": "BARNI NO.6",
   "Cost": 1457,
-  "Price": 1960
+  "Price": 1960,
+  "Qty OH": -14
  },
  {
   "Item Description": "BASE (NATIONNOAL) LARGE",
@@ -2055,28 +2035,31 @@
   "Item Description": "BASE 3*1 (LOCK) (GM)",
   "Cost": 200,
   "Price": 260,
-  "Qty OH": -1529
+  "Qty OH": -1553
  },
  {
   "Item Description": "BASE WEST POINT & NOWAKE (GM)",
   "Cost": 165,
   "Price": 215,
-  "Qty OH": -1087
+  "Qty OH": -1107
  },
  {
   "Item Description": "BASKET GRACE MINISO",
   "Cost": 149,
-  "Price": 245
+  "Price": 245,
+  "Qty OH": 137
  },
  {
   "Item Description": "BASKET GRACE PICNIC",
   "Cost": 790.5,
-  "Price": 1015
+  "Price": 1015,
+  "Qty OH": -1
  },
  {
   "Item Description": "BATH SET BOX (EMPTY)",
   "Cost": 212.5,
-  "Price": 300
+  "Price": 300,
+  "Qty OH": 964
  },
  {
   "Item Description": "BATH SET GRACE BEAUTY (WITH BOX)",
@@ -2087,7 +2070,8 @@
  {
   "Item Description": "BATH SET GRACE BEAUTY (WITHOUT BOX)",
   "Cost": 1626.9,
-  "Price": 2080
+  "Price": 2080,
+  "Qty OH": 136
  },
  {
   "Item Description": "BATH SET GRACE BEAUTY + DUSTBIN (WITH BO",
@@ -2098,13 +2082,14 @@
  {
   "Item Description": "BATH SET GRACE BEAUTY + DUSTBIN (WITHOUT",
   "Cost": 1694,
-  "Price": 2835
+  "Price": 2835,
+  "Qty OH": 230
  },
  {
   "Item Description": "BELLI SET (10P) (SK)",
   "Cost": 7992.9,
   "Price": 10725,
-  "Qty OH": -131
+  "Qty OH": -135
  },
  {
   "Item Description": "BESUN 10\" (16G)",
@@ -2122,7 +2107,7 @@
   "Item Description": "BESUN 12\" (16G)",
   "Cost": 220,
   "Price": 310,
-  "Qty OH": -1330
+  "Qty OH": -1344
  },
  {
   "Item Description": "BESUN 14'' (18G)",
@@ -2134,13 +2119,13 @@
   "Item Description": "BESUN 14\" (16G)",
   "Cost": 290,
   "Price": 405,
-  "Qty OH": -2070
+  "Qty OH": -2086
  },
  {
   "Item Description": "BESUN 16'' (18G)",
   "Cost": 300,
   "Price": 370,
-  "Qty OH": -834
+  "Qty OH": -836
  },
  {
   "Item Description": "BESUN 16\" (16G)",
@@ -2164,7 +2149,7 @@
   "Item Description": "BESUN 8'' (16G)",
   "Cost": 95,
   "Price": 135,
-  "Qty OH": -564
+  "Qty OH": -569
  },
  {
   "Item Description": "BESUN NO.1 (20CM) F",
@@ -2176,25 +2161,25 @@
   "Item Description": "BESUN NO.2 (22CM) F",
   "Cost": 460,
   "Price": 615,
-  "Qty OH": -162
+  "Qty OH": -170
  },
  {
   "Item Description": "BESUN NO.3 (26CM) F",
   "Cost": 540,
   "Price": 725,
-  "Qty OH": -45
+  "Qty OH": -59
  },
  {
   "Item Description": "BESUN NO.4 (30CM) F",
   "Cost": 630,
   "Price": 835,
-  "Qty OH": -49
+  "Qty OH": -61
  },
  {
   "Item Description": "BESUN NO.5 (34CM) F",
   "Cost": 750,
   "Price": 985,
-  "Qty OH": -45
+  "Qty OH": -57
  },
  {
   "Item Description": "BESUN NO.6 (38CM) F",
@@ -2218,7 +2203,7 @@
   "Item Description": "BLENDER (SINGEL)",
   "Cost": 2100,
   "Price": 2650,
-  "Qty OH": -486
+  "Qty OH": -474
  },
  {
   "Item Description": "BOWL 6\" (A)",
@@ -2296,37 +2281,37 @@
   "Item Description": "CHANANA LARGE NO.3 FANCY",
   "Cost": 1025,
   "Price": 1425,
-  "Qty OH": -893
+  "Qty OH": -895
  },
  {
   "Item Description": "CHANANA LONG HANDLE NO.19.5 (SHERAZ)",
   "Cost": 560,
   "Price": 675,
-  "Qty OH": -374
+  "Qty OH": -380
  },
  {
   "Item Description": "CHANANA LONG HANDLE NO.22.5 (SHERAZ)",
   "Cost": 610,
   "Price": 735,
-  "Qty OH": 27
+  "Qty OH": 21
  },
  {
   "Item Description": "CHANANA LONG HANDLE NO.25.5 (SHERAZ)",
   "Cost": 660,
   "Price": 790,
-  "Qty OH": -46
+  "Qty OH": -58
  },
  {
   "Item Description": "CHANANA MEDIUM NO.2 FANCY",
   "Cost": 925,
   "Price": 1325,
-  "Qty OH": -1009
+  "Qty OH": -1012
  },
  {
   "Item Description": "CHANANA NO.2 (16G)",
   "Cost": 400,
   "Price": 680,
-  "Qty OH": -739
+  "Qty OH": -750
  },
  {
   "Item Description": "CHANANA NO.3 (16G)",
@@ -2344,7 +2329,7 @@
   "Item Description": "CHANANA NO.4 (16G)",
   "Cost": 500,
   "Price": 780,
-  "Qty OH": -2258
+  "Qty OH": -2282
  },
  {
   "Item Description": "CHANANA NO.5 (16G)",
@@ -2362,67 +2347,73 @@
   "Item Description": "CHANANA PH N0.30 (SHERAZ)",
   "Cost": 1040,
   "Price": 1235,
-  "Qty OH": 21
+  "Qty OH": -1
  },
  {
   "Item Description": "CHANANA PH N0.34 (SHERAZ)",
   "Cost": 1140,
   "Price": 1355,
-  "Qty OH": 88
+  "Qty OH": 57
  },
  {
   "Item Description": "CHANANA PH N0.38 (SHERAZ)",
   "Cost": 1440,
   "Price": 1705,
-  "Qty OH": 164
+  "Qty OH": 135
  },
  {
   "Item Description": "CHANANA SILVER NO.28.5 (SHERAZ)",
   "Cost": 680,
   "Price": 815,
-  "Qty OH": -161
+  "Qty OH": -172
  },
  {
   "Item Description": "CHANANA SILVER NO.31.5 (SHERAZ)",
   "Cost": 780,
   "Price": 935,
-  "Qty OH": -21
+  "Qty OH": -226
  },
  {
   "Item Description": "CHANANA SILVER NO.34.5 (SHERAZ)",
   "Cost": 880,
   "Price": 1050,
-  "Qty OH": -2
+  "Qty OH": -22
  },
  {
   "Item Description": "CHANANA SILVER NO.37.5 (SHERAZ)",
   "Cost": 1120,
   "Price": 1335,
-  "Qty OH": -284
+  "Qty OH": -299
  },
  {
   "Item Description": "CHANANA SMALL NO.1 FANCY",
   "Cost": 825,
   "Price": 1225,
-  "Qty OH": -668
+  "Qty OH": -671
+ },
+ {
+  "Item Description": "CHANANA SUPER NO.4 (MT)",
+  "Cost": 550,
+  "Price": 850,
+  "Qty OH": -336
  },
  {
   "Item Description": "CHANANA SUPER NO.7 STEEL",
   "Cost": 1000,
   "Price": 1450,
-  "Qty OH": -138
+  "Qty OH": -141
  },
  {
   "Item Description": "CHANANA TOKRI N0.26 GOOL (SHERAZ)",
   "Cost": 630,
   "Price": 915,
-  "Qty OH": 33
+  "Qty OH": 28
  },
  {
   "Item Description": "CHANANA TOKRI N0.30 GOOL (SHERAZ)",
   "Cost": 780,
   "Price": 1100,
-  "Qty OH": 41
+  "Qty OH": 36
  },
  {
   "Item Description": "CHANANA TOKRI N0.34 GOOL (SHERAZ)",
@@ -2440,7 +2431,7 @@
   "Item Description": "CHANANA TOKRI NO.1 (12'') (18G)",
   "Cost": 200,
   "Price": 300,
-  "Qty OH": -249
+  "Qty OH": -250
  },
  {
   "Item Description": "CHANANA TOKRI NO.1 (NEW) (16G)",
@@ -2485,10 +2476,16 @@
   "Qty OH": -1384
  },
  {
-  "Item Description": "CHATI NO.1 (16G)",
+  "Item Description": "CHATI NO.1 (14G) FINE",
   "Cost": 2700,
+  "Price": 3300,
+  "Qty OH": -22
+ },
+ {
+  "Item Description": "CHATI NO.1 (16G) GOGI",
+  "Cost": 2650,
   "Price": 3200,
-  "Qty OH": -293
+  "Qty OH": -286
  },
  {
   "Item Description": "CHATI NO.1 MT (BOX + DHAKAN DIAMOND)",
@@ -2497,10 +2494,16 @@
   "Qty OH": 12
  },
  {
-  "Item Description": "CHATI NO.2 (16G)",
+  "Item Description": "CHATI NO.2 (14G) FINE",
+  "Cost": 3300,
+  "Price": 4000,
+  "Qty OH": 6
+ },
+ {
+  "Item Description": "CHATI NO.2 (16G) GOGI",
   "Cost": 3150,
   "Price": 3785,
-  "Qty OH": 7
+  "Qty OH": 16
  },
  {
   "Item Description": "CHATI NO.2 MT (BOX + DHAKAN DIAMOND)",
@@ -2509,10 +2512,10 @@
   "Qty OH": -63
  },
  {
-  "Item Description": "CHATI NO.3 (16G)",
+  "Item Description": "CHATI NO.3 (16G) GOGI",
   "Cost": 3700,
   "Price": 4435,
-  "Qty OH": 35
+  "Qty OH": 31
  },
  {
   "Item Description": "CHATI NO.3 MT (BOX + DHAKAN DIAMOND)",
@@ -2521,16 +2524,10 @@
   "Qty OH": -52
  },
  {
-  "Item Description": "CHATI NO.4 (16G)",
-  "Cost": 4150,
-  "Price": 4650,
-  "Qty OH": 6
- },
- {
   "Item Description": "CHILLI CUTTER",
   "Cost": 255,
   "Price": 370,
-  "Qty OH": -386
+  "Qty OH": -387
  },
  {
   "Item Description": "CHIMTA  (L)",
@@ -2542,7 +2539,7 @@
   "Item Description": "CHIMTA (CHINA)",
   "Cost": 80,
   "Price": 110,
-  "Qty OH": -870
+  "Qty OH": -894
  },
  {
   "Item Description": "COOKER (SONEX) CLASSIC (11 L) (CHOORI)",
@@ -2551,16 +2548,10 @@
   "Qty OH": -22
  },
  {
-  "Item Description": "COOKER (SONEX) CLASSIC (9L) (CHOORI)",
-  "Cost": 8890,
-  "Price": 11250,
-  "Qty OH": -26
- },
- {
   "Item Description": "COOKER 11 LTR (KARAHI G\/L) (WESTPOINT)",
   "Cost": 5350,
   "Price": 6325,
-  "Qty OH": -27
+  "Qty OH": -32
  },
  {
   "Item Description": "COOKER 11 LTR (KARHAI MIRROR)(SK)",
@@ -2571,7 +2562,7 @@
   "Item Description": "COOKER 11 LTR (MJ)",
   "Cost": 3250,
   "Price": 4000,
-  "Qty OH": -773
+  "Qty OH": -778
  },
  {
   "Item Description": "COOKER 11 LTR (SAMSUNG) (NS)",
@@ -2595,13 +2586,13 @@
   "Item Description": "COOKER 11 LTR (WESTPOINT)",
   "Cost": 4200,
   "Price": 4975,
-  "Qty OH": -495
+  "Qty OH": -499
  },
  {
   "Item Description": "COOKER 11 LTR (WOODCO) (WESTPOINT)",
   "Cost": 4950,
   "Price": 5850,
-  "Qty OH": -560
+  "Qty OH": -561
  },
  {
   "Item Description": "COOKER 11 LTR MARIO (SK)",
@@ -2625,7 +2616,7 @@
   "Item Description": "COOKER 11 LTR SAPHIRE (SK)",
   "Cost": 4448.8,
   "Price": 5960,
-  "Qty OH": -59
+  "Qty OH": -63
  },
  {
   "Item Description": "COOKER 11 LTR WOODCO (SK)",
@@ -2659,13 +2650,13 @@
   "Item Description": "COOKER 5 LTR (MJ)",
   "Cost": 3100,
   "Price": 3700,
-  "Qty OH": -452
+  "Qty OH": -455
  },
  {
   "Item Description": "COOKER 5 LTR (WESTPOINT)",
   "Cost": 3900,
   "Price": 4675,
-  "Qty OH": -273
+  "Qty OH": -275
  },
  {
   "Item Description": "COOKER 5 LTR (WOODCO) (WESTPOINT)",
@@ -2688,7 +2679,7 @@
   "Item Description": "COOKER 7 LTR (KARAHI G\/L) (WESTPOINT)",
   "Cost": 4450,
   "Price": 6125,
-  "Qty OH": -58
+  "Qty OH": -54
  },
  {
   "Item Description": "COOKER 7 LTR (KARAHI) (SK) EMERALED",
@@ -2700,19 +2691,19 @@
   "Item Description": "COOKER 7 LTR (MJ)",
   "Cost": 3150,
   "Price": 3800,
-  "Qty OH": -841
+  "Qty OH": -854
  },
  {
   "Item Description": "COOKER 7 LTR (WESTPOINT)",
   "Cost": 4000,
   "Price": 4775,
-  "Qty OH": -559
+  "Qty OH": -561
  },
  {
   "Item Description": "COOKER 7 LTR (WOODCO) (WESTPOINT)",
   "Cost": 4050,
   "Price": 5650,
-  "Qty OH": -315
+  "Qty OH": -321
  },
  {
   "Item Description": "COOKER 7 LTR MARIO (SK)",
@@ -2730,7 +2721,7 @@
   "Item Description": "COOKER 7 LTR SAPHIRE (SK)",
   "Cost": 4033.8,
   "Price": 5760,
-  "Qty OH": -70
+  "Qty OH": -76
  },
  {
   "Item Description": "COOKER 7 LTR WOODCO (SK)",
@@ -2738,9 +2729,16 @@
   "Price": 6925
  },
  {
+  "Item Description": "COOKER 9 LTR  (SONEX) CLASSIC ( (CHOORI)",
+  "Cost": 8890,
+  "Price": 11250,
+  "Qty OH": -26
+ },
+ {
   "Item Description": "COOKER 9 LTR (KARAHI G\/L) (WESTPOINT)",
   "Cost": 5250,
-  "Price": 6225
+  "Price": 6225,
+  "Qty OH": -14
  },
  {
   "Item Description": "COOKER 9 LTR (KARAHI) (SK) EMERALED",
@@ -2757,7 +2755,7 @@
   "Item Description": "COOKER 9 LTR (MJ)",
   "Cost": 3200,
   "Price": 3900,
-  "Qty OH": -2047
+  "Qty OH": -2062
  },
  {
   "Item Description": "COOKER 9 LTR (SAMSUNG) (NS)",
@@ -2781,13 +2779,13 @@
   "Item Description": "COOKER 9 LTR (WESTPOINT)",
   "Cost": 4100,
   "Price": 4875,
-  "Qty OH": -1344
+  "Qty OH": -1351
  },
  {
   "Item Description": "COOKER 9 LTR (WOODCO) (WESTPOINT)",
   "Cost": 4850,
   "Price": 5750,
-  "Qty OH": -1217
+  "Qty OH": -1223
  },
  {
   "Item Description": "COOKER 9 LTR MARIO (SK)",
@@ -2811,7 +2809,7 @@
   "Item Description": "COOKER 9 LTR SAPHIRE (SK)",
   "Cost": 4324.3,
   "Price": 5860,
-  "Qty OH": -135
+  "Qty OH": -142
  },
  {
   "Item Description": "COOKER 9 LTR WOODCO (SK)",
@@ -2852,7 +2850,7 @@
   "Item Description": "COOKING SET (NS) GLORY (AR)",
   "Cost": 12700,
   "Price": 15400,
-  "Qty OH": -234
+  "Qty OH": -240
  },
  {
   "Item Description": "COOKING SET (NS) GOLD SIGNATURE (SK)",
@@ -2887,13 +2885,13 @@
   "Item Description": "COOKING SET (NS) TURKISH POT (AR)",
   "Cost": 15700,
   "Price": 18925,
-  "Qty OH": -25
+  "Qty OH": -26
  },
  {
   "Item Description": "COOKING SET (NS) WINGCHING (15P)",
   "Cost": 9150,
   "Price": 11575,
-  "Qty OH": -24
+  "Qty OH": -34
  },
  {
   "Item Description": "COOKING SET FINE (MF) (AL)",
@@ -2905,55 +2903,55 @@
   "Item Description": "COOLER (GRACE) (120)",
   "Cost": 615.6,
   "Price": 775,
-  "Qty OH": 172
+  "Qty OH": 169
  },
  {
   "Item Description": "COOLER (GRACE) (124)",
   "Cost": 741.6,
   "Price": 940,
-  "Qty OH": 363
+  "Qty OH": 357
  },
  {
   "Item Description": "COOLER (GRACE) (132)",
   "Cost": 801,
   "Price": 1005,
-  "Qty OH": 150
+  "Qty OH": 151
  },
  {
   "Item Description": "COOLER (GRACE) (142)",
   "Cost": 1017,
   "Price": 1280,
-  "Qty OH": 190
+  "Qty OH": 186
  },
  {
   "Item Description": "COOLER (GRACE) (152)",
   "Cost": 1245.6,
   "Price": 1570,
-  "Qty OH": 316
+  "Qty OH": 291
  },
  {
   "Item Description": "COOLER (GRACE) (164)",
   "Cost": 1371.6,
   "Price": 1730,
-  "Qty OH": 272
+  "Qty OH": 269
  },
  {
   "Item Description": "COOLER (GRACE) (184)",
   "Cost": 1485,
   "Price": 1875,
-  "Qty OH": 166
+  "Qty OH": 148
  },
  {
   "Item Description": "COOLER (GRACE) (186)",
   "Cost": 1920.6,
   "Price": 2425,
-  "Qty OH": 298
+  "Qty OH": 285
  },
  {
   "Item Description": "COOLER (GRACE) (200)",
   "Cost": 2110.5,
   "Price": 2670,
-  "Qty OH": 406
+  "Qty OH": 394
  },
  {
   "Item Description": "COOLER (GRACE) (205) (F-H)",
@@ -2965,7 +2963,7 @@
   "Item Description": "COOLER (GRACE) W\/M (150)",
   "Cost": 1344.6,
   "Price": 1695,
-  "Qty OH": 179
+  "Qty OH": 173
  },
  {
   "Item Description": "COOLER (GRACE) W\/M (160)",
@@ -2977,25 +2975,25 @@
   "Item Description": "COOLER (GRACE) W\/M (170)",
   "Cost": 1791,
   "Price": 2260,
-  "Qty OH": -39
+  "Qty OH": -42
  },
  {
   "Item Description": "COOLER (GRACE) W\/M (180)",
   "Cost": 1917,
   "Price": 2420,
-  "Qty OH": 29
+  "Qty OH": 26
  },
  {
   "Item Description": "COOLER (GRACE) W\/M (190)",
   "Cost": 2244.6,
   "Price": 2825,
-  "Qty OH": -18
+  "Qty OH": -35
  },
  {
   "Item Description": "COOLER (GRACE) W\/M (210)",
   "Cost": 2511,
   "Price": 3170,
-  "Qty OH": 36
+  "Qty OH": 25
  },
  {
   "Item Description": "COOLER (GRACE) W\/M (220) (F-H)",
@@ -3007,13 +3005,13 @@
   "Item Description": "COOLER (GRACE) W\/M (250)",
   "Cost": 3645,
   "Price": 4590,
-  "Qty OH": -4
+  "Qty OH": -5
  },
  {
   "Item Description": "COOLER (GRACE) W\/M (300)",
   "Cost": 3915,
   "Price": 4915,
-  "Qty OH": 90
+  "Qty OH": 89
  },
  {
   "Item Description": "COOLER (GRACE) W\/M (400)",
@@ -3031,7 +3029,7 @@
   "Item Description": "COOLER (MJ) BEST (1100)",
   "Cost": 2089.95,
   "Price": 2375,
-  "Qty OH": 26
+  "Qty OH": 41
  },
  {
   "Item Description": "COOLER (MJ) BEST (1500)",
@@ -3061,13 +3059,13 @@
   "Item Description": "COOLER (MJ) BEST (550)",
   "Cost": 1231.94,
   "Price": 1430,
-  "Qty OH": -44
+  "Qty OH": 26
  },
  {
   "Item Description": "COOLER (MJ) BEST (750)",
   "Cost": 1468.96,
   "Price": 1715,
-  "Qty OH": -401
+  "Qty OH": -330
  },
  {
   "Item Description": "COOLER (MJ) BEST (800)",
@@ -3085,7 +3083,7 @@
   "Item Description": "COOLER (MJ) IDEAL (900)",
   "Cost": 1764.9,
   "Price": 2130,
-  "Qty OH": 8
+  "Qty OH": 28
  },
  {
   "Item Description": "COOLER (MJ) IDEAL (925) W\/M",
@@ -3103,7 +3101,7 @@
   "Item Description": "COOLER AJWA (AT)",
   "Cost": 870,
   "Price": 1050,
-  "Qty OH": 47
+  "Qty OH": 41
  },
  {
   "Item Description": "COOLER IRANI (2PS)",
@@ -3151,19 +3149,19 @@
   "Item Description": "COOLER STEEL (10L)",
   "Cost": 3700,
   "Price": 4600,
-  "Qty OH": -19
+  "Qty OH": -5
  },
  {
   "Item Description": "COOLER STEEL (15L)",
-  "Cost": 4300,
+  "Cost": 4400,
   "Price": 5425,
-  "Qty OH": -23
+  "Qty OH": -1
  },
  {
   "Item Description": "COOLER STEEL (25L)",
   "Cost": 5200,
   "Price": 6500,
-  "Qty OH": -39
+  "Qty OH": -28
  },
  {
   "Item Description": "CUTLARE SET (12P-14G) (SONEX)",
@@ -3175,7 +3173,7 @@
   "Item Description": "CUTLARE SET (6P-14G) (CHORIS & FLOWER)",
   "Cost": 1850,
   "Price": 2325,
-  "Qty OH": -38
+  "Qty OH": -39
  },
  {
   "Item Description": "CUTLARE SET (6P-14G) (LAZER)",
@@ -3211,49 +3209,49 @@
   "Item Description": "CUTTING BOARD WOOD (30CM) (M)",
   "Cost": 300,
   "Price": 400,
-  "Qty OH": -6
+  "Qty OH": 12
  },
  {
   "Item Description": "CUTTING BOARD WOOD (34CM) (L)",
   "Cost": 400,
   "Price": 525,
-  "Qty OH": -6
+  "Qty OH": 12
  },
  {
   "Item Description": "DABRA 18\" (16G)",
   "Cost": 560,
   "Price": 690,
-  "Qty OH": -182
+  "Qty OH": -184
  },
  {
   "Item Description": "DABRA 20'' (16G)",
   "Cost": 630,
   "Price": 815,
-  "Qty OH": -262
+  "Qty OH": -267
  },
  {
   "Item Description": "DABRA 20'' (PRIME)",
   "Cost": 800,
   "Price": 1040,
-  "Qty OH": -221
+  "Qty OH": -231
  },
  {
   "Item Description": "DABRA 22'' (16G)",
   "Cost": 750,
   "Price": 965,
-  "Qty OH": -210
+  "Qty OH": -217
  },
  {
   "Item Description": "DABRA 22'' (PRIME)",
   "Cost": 950,
   "Price": 1225,
-  "Qty OH": -52
+  "Qty OH": -60
  },
  {
   "Item Description": "DABRA 24'' (16G)",
   "Cost": 950,
   "Price": 1325,
-  "Qty OH": -63
+  "Qty OH": -59
  },
  {
   "Item Description": "DABRA 26'' (16G)",
@@ -3265,7 +3263,7 @@
   "Item Description": "DABRA TOL (14G)",
   "Cost": 740,
   "Price": 940,
-  "Qty OH": -136
+  "Qty OH": -147
  },
  {
   "Item Description": "DEEP FRYPAN 24CM (NS) (SK)",
@@ -3295,13 +3293,13 @@
   "Item Description": "DINER SET BAHAAR (8P)",
   "Cost": 9000,
   "Price": 12000,
-  "Qty OH": -16
+  "Qty OH": -13
  },
  {
   "Item Description": "DINER SET BAHARAIN (8P)",
   "Cost": 9500,
   "Price": 13000,
-  "Qty OH": 1
+  "Qty OH": 10
  },
  {
   "Item Description": "DINER SET BANIGALA (8P)",
@@ -3324,325 +3322,398 @@
  {
   "Item Description": "DINER SET BOLIVIA (6P)",
   "Cost": 5500,
-  "Price": 6425
+  "Price": 6425,
+  "Qty OH": 2
  },
  {
   "Item Description": "DINER SET BREITLING (8P)(GL)",
   "Cost": 11250,
-  "Price": 14200
+  "Price": 14200,
+  "Qty OH": 26
  },
  {
   "Item Description": "DINER SET BUNTY (8P)",
   "Cost": 8300,
-  "Price": 9650
+  "Price": 9650,
+  "Qty OH": 29
  },
  {
   "Item Description": "DINER SET CANON (6P)",
   "Cost": 4000,
-  "Price": 5850
+  "Price": 5850,
+  "Qty OH": -21
+ },
+ {
+  "Item Description": "DINER SET CHOICE (8P)",
+  "Cost": 8800,
+  "Price": 10800,
+  "Qty OH": -73
  },
  {
   "Item Description": "DINER SET CRAVE (8P)",
   "Cost": 5800,
-  "Price": 6900
+  "Price": 6900,
+  "Qty OH": -130
  },
  {
   "Item Description": "DINER SET CURVE (8P)",
   "Cost": 11200,
-  "Price": 14250
+  "Price": 14250,
+  "Qty OH": 7
  },
  {
   "Item Description": "DINER SET CUTEX (8P)",
   "Cost": 15000,
-  "Price": 17750
+  "Price": 17750,
+  "Qty OH": 2
  },
  {
   "Item Description": "DINER SET EVENT (8P)",
   "Cost": 10706.33,
-  "Price": 14300
+  "Price": 14300,
+  "Qty OH": 20
  },
  {
   "Item Description": "DINER SET EXECUTIVE (8P)",
   "Cost": 10800,
-  "Price": 12900
+  "Price": 12900,
+  "Qty OH": -7
  },
  {
   "Item Description": "DINER SET GOLD LINE (8P)",
   "Cost": 14200,
-  "Price": 16800
+  "Price": 16800,
+  "Qty OH": 22
  },
  {
   "Item Description": "DINER SET GOLD VIEW (8P)",
   "Cost": 13200,
-  "Price": 15650
+  "Price": 15650,
+  "Qty OH": 8
  },
  {
   "Item Description": "DINER SET GRACE AMBEROID (8P)",
   "Cost": 9300,
-  "Price": 10975
+  "Price": 10975,
+  "Qty OH": 1
  },
  {
   "Item Description": "DINER SET GRACE ARTIUM (8P)",
   "Cost": 10485,
-  "Price": 12815
+  "Price": 12815,
+  "Qty OH": 4
  },
  {
   "Item Description": "DINER SET GRACE ARTIVE (8P)",
   "Cost": 9400,
-  "Price": 11125
+  "Price": 11125,
+  "Qty OH": -2
  },
  {
   "Item Description": "DINER SET GRACE ARTVIEW (8P)",
   "Cost": 10755,
-  "Price": 12875
+  "Price": 12875,
+  "Qty OH": 4
  },
  {
   "Item Description": "DINER SET GRACE AVENUE (8P)",
   "Cost": 15800,
-  "Price": 18700
+  "Price": 18700,
+  "Qty OH": 15
  },
  {
   "Item Description": "DINER SET GRACE BEAUTY LIFE (8P)",
   "Cost": 9500,
-  "Price": 11350
+  "Price": 11350,
+  "Qty OH": 0
  },
  {
   "Item Description": "DINER SET GRACE DEKURE (8P)",
   "Cost": 15030,
-  "Price": 18275
+  "Price": 18275,
+  "Qty OH": 10
  },
  {
   "Item Description": "DINER SET GRACE DELUXE (8P)",
   "Cost": 9880,
-  "Price": 10600
+  "Price": 10600,
+  "Qty OH": -1
  },
  {
   "Item Description": "DINER SET GRACE EVERDINE (8P)",
   "Cost": 11850,
-  "Price": 12650
+  "Price": 12650,
+  "Qty OH": -3
  },
  {
   "Item Description": "DINER SET GRACE EVEREST (G\/L) (8P)",
   "Cost": 14600,
-  "Price": 15475
+  "Price": 15475,
+  "Qty OH": 8
  },
  {
   "Item Description": "DINER SET GRACE FLOURISH (8P)",
   "Cost": 10450,
-  "Price": 12550
+  "Price": 12550,
+  "Qty OH": -3
  },
  {
   "Item Description": "DINER SET GRACE HERITAGE (8P)",
   "Cost": 15480,
-  "Price": 18800
+  "Price": 18800,
+  "Qty OH": 13
  },
  {
   "Item Description": "DINER SET GRACE HOME (8P)",
   "Cost": 13540,
-  "Price": 14500
+  "Price": 14500,
+  "Qty OH": 0
  },
  {
   "Item Description": "DINER SET GRACE LIFE STYLE (8P)",
   "Cost": 9550,
-  "Price": 11450
+  "Price": 11450,
+  "Qty OH": 2
  },
  {
   "Item Description": "DINER SET GRACE LIVON (8P)",
   "Cost": 11115,
   "Price": 13600,
-  "Qty OH": 1
+  "Qty OH": 7
  },
  {
   "Item Description": "DINER SET GRACE LOOK SMART (8P)",
   "Cost": 9950,
   "Price": 11975,
-  "Qty OH": 1
+  "Qty OH": 7
  },
  {
   "Item Description": "DINER SET GRACE LUSH (8P)",
   "Cost": 13750,
-  "Price": 16175
+  "Price": 16175,
+  "Qty OH": 3
  },
  {
   "Item Description": "DINER SET GRACE LYNX (8P)",
   "Cost": 14700,
-  "Price": 17225
+  "Price": 17225,
+  "Qty OH": 16
  },
  {
   "Item Description": "DINER SET GRACE LYNX (GL) (8P)",
   "Cost": 14670,
-  "Price": 17650
+  "Price": 17650,
+  "Qty OH": 14
  },
  {
   "Item Description": "DINER SET GRACE MARION (8P)",
   "Cost": 16700,
-  "Price": 19225
+  "Price": 19225,
+  "Qty OH": -1
  },
  {
   "Item Description": "DINER SET GRACE MEXON (8P)",
   "Cost": 13995,
-  "Price": 16700
+  "Price": 16700,
+  "Qty OH": 16
  },
  {
   "Item Description": "DINER SET GRACE MODESTY (8P)",
   "Cost": 11970,
-  "Price": 14435
+  "Price": 14435,
+  "Qty OH": 31
  },
  {
   "Item Description": "DINER SET GRACE MONTAGE (8P)",
   "Cost": 14040,
-  "Price": 17025
+  "Price": 17025,
+  "Qty OH": 24
  },
  {
   "Item Description": "DINER SET GRACE MY CHARM (8P)",
   "Cost": 10620,
-  "Price": 12550
+  "Price": 12550,
+  "Qty OH": 3
  },
  {
   "Item Description": "DINER SET GRACE NEORAH (8P)",
   "Cost": 13635,
   "Price": 16485,
-  "Qty OH": 1
+  "Qty OH": 9
  },
  {
   "Item Description": "DINER SET GRACE NORETAKE (8P)",
   "Cost": 15750,
-  "Price": 19125
+  "Price": 19125,
+  "Qty OH": 3
  },
  {
   "Item Description": "DINER SET GRACE POSH (6P)",
   "Cost": 9750,
-  "Price": 10325
+  "Price": 10325,
+  "Qty OH": 1
  },
  {
   "Item Description": "DINER SET GRACE POSH (8P)",
   "Cost": 14220,
-  "Price": 17225
+  "Price": 17225,
+  "Qty OH": 5
  },
  {
   "Item Description": "DINER SET GRACE PRESTIGE (8P)",
   "Cost": 13365,
-  "Price": 16175
+  "Price": 16175,
+  "Qty OH": 9
  },
  {
   "Item Description": "DINER SET GRACE PRESTO (8P)",
   "Cost": 11600,
-  "Price": 12600
+  "Price": 12600,
+  "Qty OH": 0
  },
  {
   "Item Description": "DINER SET GRACE PRISMA (8P)(G\/L)",
   "Cost": 14300,
-  "Price": 16700
+  "Price": 16700,
+  "Qty OH": -6
  },
  {
   "Item Description": "DINER SET GRACE PYREX (8P) (G\/L)",
   "Cost": 15700,
-  "Price": 18700
+  "Price": 18700,
+  "Qty OH": 1
  },
  {
   "Item Description": "DINER SET GRACE REGAL (8P)",
   "Cost": 15930,
-  "Price": 18500
+  "Price": 18500,
+  "Qty OH": 4
  },
  {
   "Item Description": "DINER SET GRACE SAPPHIRE (8P)",
   "Cost": 9675,
-  "Price": 11450
+  "Price": 11450,
+  "Qty OH": 0
  },
  {
   "Item Description": "DINER SET GRACE SIRENA (GL) (8P)",
   "Cost": 16920,
-  "Price": 20370
+  "Price": 20370,
+  "Qty OH": 18
  },
  {
   "Item Description": "DINER SET GRACE TREND (GL) (8P)",
   "Cost": 15300,
-  "Price": 18450
+  "Price": 18450,
+  "Qty OH": 19
  },
  {
   "Item Description": "DINER SET GRACE VISION (8P)",
   "Cost": 16650,
-  "Price": 20325
+  "Price": 20325,
+  "Qty OH": 18
  },
  {
   "Item Description": "DINER SET GRACE WEALTH (8P)",
   "Cost": 14900,
-  "Price": 17250
+  "Price": 17250,
+  "Qty OH": -43
  },
  {
   "Item Description": "DINER SET GRACE WORTHY WAY (8P)",
   "Cost": 16170,
-  "Price": 17300
+  "Price": 17300,
+  "Qty OH": 1
  },
  {
   "Item Description": "DINER SET GRACIOUS AL-SAEED (8P)",
   "Cost": 11300,
-  "Price": 14400
+  "Price": 14400,
+  "Qty OH": 5
  },
  {
   "Item Description": "DINER SET HILTON (8P)",
   "Cost": 12600,
-  "Price": 14375
+  "Price": 14375,
+  "Qty OH": 0
  },
  {
   "Item Description": "DINER SET HI-TECH (8P)",
   "Cost": 12000,
-  "Price": 14300
+  "Price": 14300,
+  "Qty OH": -402
  },
  {
   "Item Description": "DINER SET LIVON PLUS (8P)(AS)",
   "Cost": 7900,
-  "Price": 9800
+  "Price": 9800,
+  "Qty OH": 6
  },
  {
   "Item Description": "DINER SET LYRA GOLD (6P)",
   "Cost": 6100,
-  "Price": 8500
+  "Price": 8500,
+  "Qty OH": -90
+ },
+ {
+  "Item Description": "DINER SET MAGNO (8P)",
+  "Cost": 12000,
+  "Price": 13675,
+  "Qty OH": 1
  },
  {
   "Item Description": "DINER SET MILTON ARTFUL (8P)(WITH TRY SET)",
   "Cost": 11250,
-  "Price": 14875
+  "Price": 14875,
+  "Qty OH": -1
  },
  {
   "Item Description": "DINER SET MILTON CLASSY (8P)",
   "Cost": 9600,
-  "Price": 12650
+  "Price": 12650,
+  "Qty OH": -63
  },
  {
   "Item Description": "DINER SET MILTON CRESCENT (8P)",
   "Cost": 15275,
-  "Price": 17300
+  "Price": 17300,
+  "Qty OH": -7
  },
  {
   "Item Description": "DINER SET MILTON ELEGANT (8P)",
   "Cost": 11400,
-  "Price": 14750
+  "Price": 14750,
+  "Qty OH": 3
  },
  {
   "Item Description": "DINER SET MILTON FLORIAN (8P)",
   "Cost": 11450,
-  "Price": 14800
+  "Price": 14800,
+  "Qty OH": -50
  },
  {
   "Item Description": "DINER SET MILTON GEM (WHITE CLR + SOUP SE",
   "Cost": 11800,
-  "Price": 13975
+  "Price": 13975,
+  "Qty OH": 6
  },
  {
   "Item Description": "DINER SET MILTON GLARIOUS (8P)",
   "Cost": 11100,
-  "Price": 14500
+  "Price": 14500,
+  "Qty OH": -14
  },
  {
   "Item Description": "DINER SET MILTON GLOW (8P)",
   "Cost": 12200,
-  "Price": 14150
+  "Price": 14150,
+  "Qty OH": -86
  },
  {
   "Item Description": "DINER SET MILTON GRACEFUL (8P)",
   "Cost": 9300,
-  "Price": 12800
+  "Price": 12800,
+  "Qty OH": -51
  },
  {
   "Item Description": "DINER SET MILTON IMPERIAL (8P)",
@@ -3658,13 +3729,12 @@
   "Item Description": "DINER SET MILTON MOTIF (8P)",
   "Cost": 10200,
   "Price": 13400,
-  "Qty OH": -186
+  "Qty OH": -188
  },
  {
   "Item Description": "DINER SET M-ONE (8P)",
   "Cost": 7400,
-  "Price": 8800,
-  "Qty OH": 26
+  "Price": 8800
  },
  {
   "Item Description": "DINER SET NORIS (8P)",
@@ -3680,31 +3750,28 @@
   "Item Description": "DINER SET ROUND (8P)",
   "Cost": 6100,
   "Price": 7900,
-  "Qty OH": 149
+  "Qty OH": 130
  },
  {
   "Item Description": "DINER SET ROYALTY (8P)",
   "Cost": 11500,
   "Price": 13700,
-  "Qty OH": -42
+  "Qty OH": -44
  },
  {
   "Item Description": "DINER SET SAFFRON (8P)",
   "Cost": 9700,
-  "Price": 12950,
-  "Qty OH": 1
+  "Price": 12950
  },
  {
   "Item Description": "DINER SET SAFFRON GLASSY (GL) (8P)",
   "Cost": 10400,
-  "Price": 13950,
-  "Qty OH": 14
+  "Price": 13950
  },
  {
   "Item Description": "DINER SET SAFFRON GOLD GL (8P)",
   "Cost": 11200,
-  "Price": 14600,
-  "Qty OH": 13
+  "Price": 14600
  },
  {
   "Item Description": "DINER SET SHAHANSHAH GLASSY (8P)",
@@ -3732,13 +3799,13 @@
   "Item Description": "DINER SET WHITE STONE (GL) (8P)",
   "Cost": 11700,
   "Price": 16150,
-  "Qty OH": -29
+  "Qty OH": -30
  },
  {
   "Item Description": "DISH (16G)",
   "Cost": 370,
   "Price": 500,
-  "Qty OH": -122
+  "Qty OH": -126
  },
  {
   "Item Description": "DONGA 10'' DIAMOND (16G)",
@@ -3750,19 +3817,18 @@
   "Item Description": "DONGA 10\" NICE (F) (BOX)",
   "Cost": 600,
   "Price": 700,
-  "Qty OH": -277
+  "Qty OH": -278
  },
  {
   "Item Description": "DONGA 9'' (CH)",
   "Cost": 376.7,
-  "Price": 475,
-  "Qty OH": 97
+  "Price": 475
  },
  {
   "Item Description": "DONGA 9\" NICE (F) (BOX)",
   "Cost": 550,
   "Price": 650,
-  "Qty OH": -75
+  "Qty OH": -76
  },
  {
   "Item Description": "DONGA ELITE G\/L (26CM)",
@@ -3785,8 +3851,7 @@
  {
   "Item Description": "DONGA ITALIAN FANCY (GOOL)(3PS)",
   "Cost": 2100,
-  "Price": 2500,
-  "Qty OH": 10
+  "Price": 2500
  },
  {
   "Item Description": "DONGA ITALIAN SUPREME (KUNDA)(3PS)",
@@ -3804,7 +3869,7 @@
   "Item Description": "DONGA SET STEEL 3P (GL) NICE",
   "Cost": 2100,
   "Price": 2825,
-  "Qty OH": -491
+  "Qty OH": -492
  },
  {
   "Item Description": "DONGA SET STEEL 3P (SADA) NICE",
@@ -3822,19 +3887,18 @@
   "Item Description": "DRUME NO.10KG (OP) (MT)",
   "Cost": 1580,
   "Price": 1985,
-  "Qty OH": -275
+  "Qty OH": -286
  },
  {
   "Item Description": "DRUME NO.10KG (OP) AL-REHMAT",
   "Cost": 1800,
-  "Price": 2315,
-  "Qty OH": 78
+  "Price": 2315
  },
  {
   "Item Description": "DRUME NO.10KG (OP) GOGI",
   "Cost": 2300,
   "Price": 2785,
-  "Qty OH": -175
+  "Qty OH": -185
  },
  {
   "Item Description": "DRUME NO.12KG (0P) (MT)",
@@ -3851,7 +3915,7 @@
   "Item Description": "DRUME NO.15KG (OP) (MT)",
   "Cost": 2150,
   "Price": 2675,
-  "Qty OH": -86
+  "Qty OH": -85
  },
  {
   "Item Description": "DRUME NO.15KG (OP) GOGI",
@@ -3862,31 +3926,29 @@
   "Item Description": "DRUME NO.20KG (OP) (MT)",
   "Cost": 2500,
   "Price": 3385,
-  "Qty OH": -34
+  "Qty OH": -33
  },
  {
   "Item Description": "DRUME NO.20KG (OP) GOGI",
   "Cost": 3680,
   "Price": 4465,
-  "Qty OH": -15
+  "Qty OH": -16
  },
  {
   "Item Description": "DRUME NO.5KG (OP) (MT)",
   "Cost": 1280,
   "Price": 1785,
-  "Qty OH": -97
+  "Qty OH": -1
  },
  {
   "Item Description": "DRUME NO.5KG (OP) AL-REHMAT",
   "Cost": 1400,
-  "Price": 1835,
-  "Qty OH": 46
+  "Price": 1835
  },
  {
   "Item Description": "DRUME NO.5KG (OP) GOGI",
   "Cost": 1582.4,
-  "Price": 1935,
-  "Qty OH": 39
+  "Price": 1935
  },
  {
   "Item Description": "DRUME NO.7KG (OP) AL-REHMAT",
@@ -3897,13 +3959,14 @@
  {
   "Item Description": "DRUME NO.7KG (OP) GOGI",
   "Cost": 1748,
-  "Price": 2135
+  "Price": 2135,
+  "Qty OH": -14
  },
  {
   "Item Description": "DRUME NO.8KG (OP) (MT)",
   "Cost": 1380,
   "Price": 1885,
-  "Qty OH": -135
+  "Qty OH": -144
  },
  {
   "Item Description": "DUSTBIN WOOD FANCY (2P)",
@@ -3939,7 +4002,7 @@
   "Item Description": "FISH POT (6P) (MF) (SK) (36*40)",
   "Cost": 12250.8,
   "Price": 16450,
-  "Qty OH": -15
+  "Qty OH": -16
  },
  {
   "Item Description": "FISH POT (8P) (MF) (SK) (26*33)",
@@ -3949,15 +4012,14 @@
  },
  {
   "Item Description": "FRUIT TOKRI CHROME (GOL & CHORUS)",
-  "Cost": 490,
-  "Price": 590,
-  "Qty OH": -20
+  "Cost": 440,
+  "Price": 590
  },
  {
   "Item Description": "FRUIT TOKRI COPPER (GOL & CHORUS)",
   "Cost": 540,
   "Price": 690,
-  "Qty OH": 131
+  "Qty OH": 156
  },
  {
   "Item Description": "FRUIT TOKRI FANCY (PH)",
@@ -3969,31 +4031,30 @@
   "Item Description": "FRYPAN (10\") NS",
   "Cost": 1050,
   "Price": 1485,
-  "Qty OH": -62
+  "Qty OH": -67
  },
  {
   "Item Description": "FRYPAN (8\") NS",
   "Cost": 660,
   "Price": 1150,
-  "Qty OH": -154
+  "Qty OH": -160
  },
  {
   "Item Description": "FRYPAN (9\") NS",
   "Cost": 885,
   "Price": 1295,
-  "Qty OH": -147
+  "Qty OH": -156
  },
  {
   "Item Description": "FRYPAN 14CM (SK) BABY",
   "Cost": 556.1,
-  "Price": 750,
-  "Qty OH": 13
+  "Price": 750
  },
  {
   "Item Description": "FRYPAN 16CM (SK) BABY",
   "Cost": 655.7,
   "Price": 890,
-  "Qty OH": -18
+  "Qty OH": -25
  },
  {
   "Item Description": "FRYPAN 20CM (SK) ROYAL",
@@ -4016,7 +4077,7 @@
   "Item Description": "FRYPAN 26CM (SK) ROYAL",
   "Cost": 1083.15,
   "Price": 1475,
-  "Qty OH": -20
+  "Qty OH": -25
  },
  {
   "Item Description": "FRYPAN 28CM (SK) ROYAL",
@@ -4025,46 +4086,58 @@
   "Qty OH": 13
  },
  {
+  "Item Description": "FRYPAN LAZER CUTTING (24CM)",
+  "Cost": 2444,
+  "Price": 3215,
+  "Qty OH": -10
+ },
+ {
+  "Item Description": "FRYPAN LAZER CUTTING (26CM)",
+  "Cost": 2644,
+  "Price": 3485,
+  "Qty OH": -10
+ },
+ {
   "Item Description": "FRYPAN SAMSUNG",
   "Cost": 1380,
-  "Price": 1575,
-  "Qty OH": -2293
+  "Price": 1590,
+  "Qty OH": -2295
  },
  {
   "Item Description": "FRYPAN WITH COVER SAMSUNG",
   "Cost": 1450,
-  "Price": 1575,
-  "Qty OH": -4574
+  "Price": 1590,
+  "Qty OH": -4579
  },
  {
   "Item Description": "GADVI KG (MT) (16G)",
   "Cost": 190,
   "Price": 270,
-  "Qty OH": -726
+  "Qty OH": -745
  },
  {
   "Item Description": "GADVI NO.3",
   "Cost": 290,
   "Price": 380,
-  "Qty OH": -3440
+  "Qty OH": -3446
  },
  {
   "Item Description": "GADVI NO.4",
   "Cost": 340,
   "Price": 440,
-  "Qty OH": -2344
+  "Qty OH": -2352
  },
  {
   "Item Description": "GADVI NO.5",
   "Cost": 400,
   "Price": 500,
-  "Qty OH": -3333
+  "Qty OH": -3336
  },
  {
   "Item Description": "GADVI NO.6",
   "Cost": 460,
   "Price": 585,
-  "Qty OH": -3255
+  "Qty OH": -3267
  },
  {
   "Item Description": "GIFT SET BRAVO (4P)",
@@ -4076,13 +4149,13 @@
   "Item Description": "GIFT SET GOLD (4P)",
   "Cost": 5950,
   "Price": 7100,
-  "Qty OH": 0
+  "Qty OH": -3
  },
  {
   "Item Description": "GIFT SET GRACE BRIGHTON (GL)",
   "Cost": 6120,
   "Price": 7150,
-  "Qty OH": 63
+  "Qty OH": 54
  },
  {
   "Item Description": "GIFT SET GRACE BRIGHTON GOLD (GL)",
@@ -4094,7 +4167,7 @@
   "Item Description": "GIFT SET GRACE KORYO (GL)",
   "Cost": 6165,
   "Price": 7200,
-  "Qty OH": 38
+  "Qty OH": 33
  },
  {
   "Item Description": "GIFT SET HABIT (4P)",
@@ -4112,7 +4185,7 @@
   "Item Description": "GIFT SET LIVON KING",
   "Cost": 3175,
   "Price": 3950,
-  "Qty OH": -60
+  "Qty OH": -66
  },
  {
   "Item Description": "GIFT SET MJ CIVIC (GL)",
@@ -4148,13 +4221,13 @@
   "Item Description": "GIFT SET REVO (GL) (2-3-4)",
   "Cost": 5777.78,
   "Price": 6950,
-  "Qty OH": -202
+  "Qty OH": -214
  },
  {
   "Item Description": "GIFT SET ROYAL (GL) (2-3-4)",
   "Cost": 5700,
   "Price": 6850,
-  "Qty OH": -46
+  "Qty OH": -49
  },
  {
   "Item Description": "GIFT SET SPRING (6P)",
@@ -4166,7 +4239,7 @@
   "Item Description": "GIFT SET WINNER",
   "Cost": 3900,
   "Price": 4950,
-  "Qty OH": -136
+  "Qty OH": -142
  },
  {
   "Item Description": "GIFT SET WITNESS (4P)",
@@ -4178,7 +4251,7 @@
   "Item Description": "GLASS (MT) BOX (A) (1.5 KG)",
   "Cost": 1150,
   "Price": 1875,
-  "Qty OH": -1750
+  "Qty OH": -1758
  },
  {
   "Item Description": "GLASS (MT) LOSS (FANCE STEEL)",
@@ -4190,7 +4263,7 @@
   "Item Description": "GLASS (STEEL) BOX (GOLD)",
   "Cost": 145,
   "Price": 205,
-  "Qty OH": -164
+  "Qty OH": -224
  },
  {
   "Item Description": "GLASS (STEEL) CLASSIC (16G) (BOX)(1.5 KG)",
@@ -4205,28 +4278,22 @@
   "Qty OH": -1154
  },
  {
-  "Item Description": "GLASS INDIAN (A)",
-  "Cost": 1020,
-  "Price": 1950,
-  "Qty OH": -99
+  "Item Description": "GLASS INDIAN (MURI KANARI) (WAZNI)",
+  "Cost": 1920,
+  "Price": 2350,
+  "Qty OH": -372
  },
  {
-  "Item Description": "GLASS INDIAN (FUL WAZNI)",
+  "Item Description": "GLASS INDIAN (SADA)",
   "Cost": 1020,
   "Price": 2050,
-  "Qty OH": -553
- },
- {
-  "Item Description": "GLASS INDIAN (MURI KANARI) (WAZNI)",
-  "Cost": 1980,
-  "Price": 2350,
-  "Qty OH": -418
+  "Qty OH": -556
  },
  {
   "Item Description": "GLASS STEEL (MEHRAN) (14G)",
   "Cost": 2150,
   "Price": 2800,
-  "Qty OH": -412
+  "Qty OH": -416
  },
  {
   "Item Description": "GLASS STEEL (MEHRAN) (16G)",
@@ -4238,7 +4305,7 @@
   "Item Description": "GLASS WINE (INDIAN)",
   "Cost": 270,
   "Price": 335,
-  "Qty OH": -926
+  "Qty OH": -968
  },
  {
   "Item Description": "GRACE DUSTBIN (40LTR)",
@@ -4262,7 +4329,7 @@
   "Item Description": "GRACE DUSTBIN CURVE (M) (12L)",
   "Cost": 475,
   "Price": 565,
-  "Qty OH": -24
+  "Qty OH": -30
  },
  {
   "Item Description": "GRACE DUSTBIN CURVE (S) (7.5L)",
@@ -4274,43 +4341,43 @@
   "Item Description": "GRACE DUSTBIN CURVE (XS) (4L)",
   "Cost": 260,
   "Price": 335,
-  "Qty OH": -12
+  "Qty OH": -18
  },
  {
   "Item Description": "GRACE DUSTBIN ECO VERTEX (11L)",
   "Cost": 538.9,
   "Price": 795,
-  "Qty OH": 263
+  "Qty OH": 254
  },
  {
   "Item Description": "GRACE DUSTBIN ECO VERTEX (26L)",
   "Cost": 969,
   "Price": 1385,
-  "Qty OH": 9
+  "Qty OH": 3
  },
  {
   "Item Description": "GRACE PLATE RACK 2 KHANA",
   "Cost": 952,
   "Price": 1310,
-  "Qty OH": -121
+  "Qty OH": -131
  },
  {
   "Item Description": "GRACE PLATE RACK 3 KHANA",
   "Cost": 1414.4,
   "Price": 1925,
-  "Qty OH": 56
+  "Qty OH": 48
  },
  {
   "Item Description": "GRACE SABZI RACK 3 KHANA",
   "Cost": 963.9,
   "Price": 1325,
-  "Qty OH": 222
+  "Qty OH": 207
  },
  {
   "Item Description": "GRACE SWIFT TROLLY",
   "Cost": 1802,
   "Price": 2370,
-  "Qty OH": 42
+  "Qty OH": 44
  },
  {
   "Item Description": "HALF LITER",
@@ -4328,37 +4395,37 @@
   "Item Description": "HANDI 10\" STEEL",
   "Cost": 990,
   "Price": 1185,
-  "Qty OH": -102
+  "Qty OH": -103
  },
  {
   "Item Description": "HANDI 8'' STEEL",
   "Cost": 790,
   "Price": 950,
-  "Qty OH": -903
+  "Qty OH": -905
  },
  {
   "Item Description": "HANDI 9'' STEEL",
   "Cost": 890,
   "Price": 1060,
-  "Qty OH": -153
+  "Qty OH": -157
+ },
+ {
+  "Item Description": "HANDI CHOOPER FALARI (CHINA)",
+  "Cost": 750,
+  "Price": 975,
+  "Qty OH": -17
  },
  {
   "Item Description": "HANDI SET STEEL (3P)",
   "Cost": 2640,
   "Price": 3185,
-  "Qty OH": -1163
+  "Qty OH": -1171
  },
  {
   "Item Description": "HANDI SET STEEL 3P (BACHA) (16G)",
   "Cost": 1160,
   "Price": 1600,
-  "Qty OH": -651
- },
- {
-  "Item Description": "HANDU CHOOPER FALARI (CHINA)",
-  "Cost": 750,
-  "Price": 975,
-  "Qty OH": 0
+  "Qty OH": -668
  },
  {
   "Item Description": "HEATER (AM) FAN & BOX (NET RATE)",
@@ -4370,7 +4437,7 @@
   "Item Description": "HOT POT DYNASTY (GL) (L)",
   "Cost": 1825,
   "Price": 2285,
-  "Qty OH": 8
+  "Qty OH": 4
  },
  {
   "Item Description": "HOT POT GRACE BRIGHTON (GL) (L)",
@@ -4388,19 +4455,19 @@
   "Item Description": "HOT POT GRACE KORYO (GL) (L)",
   "Cost": 2375,
   "Price": 2715,
-  "Qty OH": 7
+  "Qty OH": 5
  },
  {
   "Item Description": "HOT POT KING (L)",
   "Cost": 1000,
   "Price": 1310,
-  "Qty OH": -12
+  "Qty OH": -17
  },
  {
   "Item Description": "HOT POT MILTON DYNASTY (L)",
   "Cost": 1900,
   "Price": 2250,
-  "Qty OH": 14
+  "Qty OH": 10
  },
  {
   "Item Description": "HOT POT MJ CIVIC (L)",
@@ -4411,392 +4478,333 @@
  {
   "Item Description": "HOT POT MJ GOLD (L)",
   "Cost": 1400,
-  "Price": 1680,
-  "Qty OH": -83
+  "Price": 1680
  },
  {
   "Item Description": "HOT POT MJ SHINE (L)",
   "Cost": 1642,
-  "Price": 2070,
-  "Qty OH": 0
+  "Price": 2070
  },
  {
   "Item Description": "HOT POT PEARL (L)",
   "Cost": 900,
-  "Price": 1035,
-  "Qty OH": -6
+  "Price": 1035
  },
  {
   "Item Description": "HOT POT PRINT (L) (SADA)",
   "Cost": 1900,
-  "Price": 2250,
-  "Qty OH": 1
+  "Price": 2250
  },
  {
   "Item Description": "HOT POT REVO (GL) (L)",
   "Cost": 1700,
-  "Price": 2225,
-  "Qty OH": -23
- },
- {
-  "Item Description": "HOT POT WEENER (L) (GL)",
-  "Cost": 1650,
-  "Price": 2075,
-  "Qty OH": -32
+  "Price": 2225
  },
  {
   "Item Description": "HOT POT WINNER (L)",
   "Cost": 1200,
-  "Price": 1535,
-  "Qty OH": 4
+  "Price": 1535
+ },
+ {
+  "Item Description": "HOT POT WINNER (L) (GL)",
+  "Cost": 1650,
+  "Price": 2075
  },
  {
   "Item Description": "ICE BOX MJ (6LTR)",
   "Cost": 1490,
-  "Price": 1720,
-  "Qty OH": -9
+  "Price": 1720
  },
  {
   "Item Description": "IRON (PANASONIC)(KENWOOD)",
   "Cost": 1550,
-  "Price": 2150,
-  "Qty OH": -41
+  "Price": 2150
  },
  {
   "Item Description": "JAR SET (2P) N0.1302 ACRYLIC",
   "Cost": 900,
-  "Price": 1115,
-  "Qty OH": -157
+  "Price": 1115
  },
  {
   "Item Description": "JAR SET (3P) N0.1102 ACRYLIC",
   "Cost": 1415,
-  "Price": 1940,
-  "Qty OH": -28
+  "Price": 1940
  },
  {
   "Item Description": "JUG (3 & 1) 1.5 LTR",
   "Cost": 240,
-  "Price": 310,
-  "Qty OH": -2560
+  "Price": 310
  },
  {
   "Item Description": "JUG (3 & 1) 1LTR",
   "Cost": 180,
-  "Price": 250,
-  "Qty OH": -2013
+  "Price": 250
  },
  {
   "Item Description": "JUG (MOULINEX)",
   "Cost": 260,
-  "Price": 340,
-  "Qty OH": -3168
+  "Price": 340
  },
  {
   "Item Description": "JUG (NOWAKE)",
   "Cost": 200,
-  "Price": 260,
-  "Qty OH": -7516
+  "Price": 260
  },
  {
   "Item Description": "JUG FAMILY A (ZENIT)",
   "Cost": 720,
-  "Price": 925,
-  "Qty OH": -5310
+  "Price": 925
  },
  {
   "Item Description": "JUG FAMILY LARGE (MT)",
   "Cost": 460,
-  "Price": 565,
-  "Qty OH": -252
+  "Price": 565
  },
  {
-  "Item Description": "JUG FAMILY MEDIUM (KAAM)(MT)",
-  "Cost": 263.2,
-  "Price": 375,
-  "Qty OH": -497
+  "Item Description": "JUG FAMILY MEDIUM (MT)",
+  "Cost": 410,
+  "Price": 500
  },
  {
   "Item Description": "JUG FAMILY WAZNI (ZENIT)",
   "Cost": 840,
-  "Price": 1100,
-  "Qty OH": -2440
+  "Price": 1100
  },
  {
   "Item Description": "JUG GAMLA (A)",
-  "Cost": 480,
-  "Price": 585,
-  "Qty OH": -865
+  "Cost": 470,
+  "Price": 585
  },
  {
   "Item Description": "JUG GAMLA (WAZNE)",
   "Cost": 550,
-  "Price": 675,
-  "Qty OH": -155
+  "Price": 675
  },
  {
   "Item Description": "JUG GAMLA MAHRAN (F)",
   "Cost": 600,
-  "Price": 740,
-  "Qty OH": 37
+  "Price": 740
  },
  {
   "Item Description": "JUG OCEAN (LIVON)",
   "Cost": 415,
-  "Price": 560,
-  "Qty OH": 40
+  "Price": 560
  },
  {
   "Item Description": "JUGI NO.1 MEHRAN",
   "Cost": 295,
-  "Price": 365,
-  "Qty OH": -178
+  "Price": 365
  },
  {
   "Item Description": "JUGI NO.2 MEHRAN",
   "Cost": 345,
-  "Price": 420,
-  "Qty OH": -62
+  "Price": 420
  },
  {
   "Item Description": "JUICER NATIONAL (3*1)",
   "Cost": 3150,
-  "Price": 3950,
-  "Qty OH": -44
+  "Price": 3950
  },
  {
   "Item Description": "KADDOKSH (PH) A",
   "Cost": 225,
-  "Price": 300,
-  "Qty OH": -398
+  "Price": 300
  },
  {
   "Item Description": "KADDOKSH BOX (PIPE)",
   "Cost": 310,
-  "Price": 420,
-  "Qty OH": -765
+  "Price": 420
  },
  {
   "Item Description": "KADDOKSH FANCY (PH)",
   "Cost": 470,
-  "Price": 625,
-  "Qty OH": -192
+  "Price": 625
  },
  {
   "Item Description": "KADDOKSH FANCY (ST)",
   "Cost": 520,
-  "Price": 690,
-  "Qty OH": -69
+  "Price": 690
  },
  {
   "Item Description": "KADDOKSH SHERAZ (26CM)",
   "Cost": 1110,
-  "Price": 1315,
-  "Qty OH": -861
+  "Price": 1315
  },
  {
   "Item Description": "KADDOKSH SHERAZ (30CM)",
   "Cost": 1250,
-  "Price": 1485,
-  "Qty OH": -650
+  "Price": 1485
  },
  {
   "Item Description": "KALSI LG (DOZEN)",
   "Cost": 252,
   "Price": 336,
-  "Qty OH": -109
+  "Qty OH": -1
  },
  {
   "Item Description": "KALSI ROSE (DOZEN)",
   "Cost": 285,
-  "Price": 420,
-  "Qty OH": -123
+  "Price": 420
  },
  {
   "Item Description": "KALSI SIPRI (DOZEN)",
   "Cost": 96,
-  "Price": 180,
-  "Qty OH": -2564
+  "Price": 180
  },
  {
   "Item Description": "KALSI STEEL (DOZEN)",
   "Cost": 30,
-  "Price": 120,
-  "Qty OH": -182
+  "Price": 120
  },
  {
   "Item Description": "KALSI TAMBIYA & KARAHI (KG)",
   "Cost": 320,
-  "Price": 500,
-  "Qty OH": -1030
+  "Price": 500
  },
  {
   "Item Description": "KARAHI 28CM SK",
   "Cost": 2392.75,
-  "Price": 3275,
-  "Qty OH": -139
+  "Price": 3275
  },
  {
   "Item Description": "KARAHI 30CM SK",
   "Cost": 2705.8,
-  "Price": 3650,
-  "Qty OH": -30
+  "Price": 3650
  },
  {
   "Item Description": "KARAHI 32CM SK",
   "Cost": 2932.5,
-  "Price": 4025,
-  "Qty OH": -35
+  "Price": 4025
  },
  {
   "Item Description": "KARAHI 34CM SK",
   "Cost": 3398.85,
-  "Price": 4575,
-  "Qty OH": -251
+  "Price": 4575
  },
  {
   "Item Description": "KARAHI 36CM SK",
   "Cost": 3635.4,
-  "Price": 4895,
-  "Qty OH": -27
+  "Price": 4895
  },
  {
   "Item Description": "KARAHI CALDERO 20*36 SK (MF)",
   "Cost": 11390,
-  "Price": 15525,
-  "Qty OH": -361
+  "Price": 15525
  },
  {
   "Item Description": "KARAHI HAANI (1*10)",
   "Cost": 1340,
-  "Price": 1585,
-  "Qty OH": -15375
+  "Price": 1600
  },
  {
   "Item Description": "KARAHI LASER CUTTING (32CM)",
   "Cost": 4500,
-  "Price": 5675,
-  "Qty OH": -510
+  "Price": 5675
+ },
+ {
+  "Item Description": "KARAHI LASER CUTTING (34CM)",
+  "Cost": 3373,
+  "Price": 4450
  },
  {
   "Item Description": "KARAHI LG (1*6)",
   "Cost": 1335,
-  "Price": 1600,
-  "Qty OH": -13888
+  "Price": 1600
  },
  {
   "Item Description": "KARAHI METAL FINISH (1*7)",
   "Cost": 1150,
-  "Price": 1400,
-  "Qty OH": -546
+  "Price": 1400
  },
  {
   "Item Description": "KARAHI NO.1 NS (G\/L)",
   "Cost": 1860,
-  "Price": 2400,
-  "Qty OH": -78
+  "Price": 2400
  },
  {
   "Item Description": "KARAHI NO.2 NS (G\/L)",
   "Cost": 2070,
-  "Price": 2625,
-  "Qty OH": -207
+  "Price": 2625
  },
  {
   "Item Description": "KARAHI NO.3 NS (G\/L)",
   "Cost": 2270,
-  "Price": 2900,
-  "Qty OH": -222
+  "Price": 2900
  },
  {
   "Item Description": "KARAHI NO.4 NS (G\/L)",
   "Cost": 2490,
-  "Price": 3300,
-  "Qty OH": -183
+  "Price": 3300
  },
  {
   "Item Description": "KARAHI NO.5 NS (G\/L)",
   "Cost": 2750,
-  "Price": 4145,
-  "Qty OH": -76
+  "Price": 4145
  },
  {
   "Item Description": "KARAHI SAMSUNG (1*8)",
-  "Cost": 1380,
-  "Price": 1575,
-  "Qty OH": -75863
+  "Cost": 1280,
+  "Price": 1590
  },
  {
   "Item Description": "KARAHI SONEX 32CM",
   "Cost": 2550,
-  "Price": 3265,
-  "Qty OH": -10
+  "Price": 3265
  },
  {
   "Item Description": "KARAHI SONEX 36CM",
   "Cost": 2900,
-  "Price": 3720,
-  "Qty OH": -313
+  "Price": 3720
  },
  {
   "Item Description": "KARAHI SONEX 40CM",
   "Cost": 3800,
-  "Price": 5030,
-  "Qty OH": -203
+  "Price": 5030
  },
  {
   "Item Description": "KARAHI SONEX GALAXY 32CM",
   "Cost": 3350,
-  "Price": 4300,
-  "Qty OH": -1
+  "Price": 4300
  },
  {
   "Item Description": "KARAHI SUPREEM",
   "Cost": 1060,
-  "Price": 1585,
-  "Qty OH": -14752
+  "Price": 1585
  },
  {
   "Item Description": "KARCHI KAFGEER 17\" BLACK (12G)",
   "Cost": 216.66,
-  "Price": 290,
-  "Qty OH": -97
+  "Price": 290
  },
  {
   "Item Description": "KARCHI KAFGEER 17\" KAHU (14G)",
   "Cost": 200,
-  "Price": 250,
-  "Qty OH": 88
+  "Price": 250
  },
  {
   "Item Description": "KARCHI KAFGEER 20\" WH",
   "Cost": 200,
-  "Price": 325,
-  "Qty OH": -12
+  "Price": 325
  },
  {
   "Item Description": "KARCHI KAFGEER 24\" KUNDY WALI",
   "Cost": 358.33,
-  "Price": 450,
-  "Qty OH": 238
+  "Price": 450
  },
  {
   "Item Description": "KARCHI KAFGEER BABY BLACK (12G)",
   "Cost": 183.33,
-  "Price": 245,
-  "Qty OH": -162
+  "Price": 245
  },
  {
   "Item Description": "KARCHI KAFGEER BABY KAHU (14G)",
   "Cost": 100,
-  "Price": 120,
-  "Qty OH": 19
+  "Price": 120
  },
  {
   "Item Description": "KARCHI KAFGEER STEEL HANDEL 27''",
   "Cost": 365,
-  "Price": 425,
-  "Qty OH": -7
+  "Price": 425
  },
  {
   "Item Description": "KARCHI KAFGER 20\" (WH)",
@@ -4808,77 +4816,85 @@
   "Item Description": "KASA (N&T) (14G) (1.5)",
   "Cost": 1050,
   "Price": 1440,
-  "Qty OH": -96
+  "Qty OH": -99
  },
  {
   "Item Description": "KASA (N) (16G)",
   "Cost": 720,
   "Price": 1020,
-  "Qty OH": -80
+  "Qty OH": -89
  },
  {
-  "Item Description": "KASA (TV) (PRIEM) (1.200)",
+  "Item Description": "KASA (TV) (PRIME) (1.200)",
   "Cost": 920,
   "Price": 1200,
-  "Qty OH": -1256
+  "Qty OH": -1260
  },
  {
   "Item Description": "KASA BATI (16G) (1.200)",
   "Cost": 925,
   "Price": 1200,
-  "Qty OH": -1933
+  "Qty OH": -1935
  },
  {
   "Item Description": "KASA BATI PRESS",
   "Cost": 720,
   "Price": 1130,
-  "Qty OH": -314
+  "Qty OH": -318
  },
  {
   "Item Description": "KASA CHAND (16G)",
   "Cost": 925,
-  "Price": 1200
+  "Price": 1200,
+  "Qty OH": -853
  },
  {
   "Item Description": "KASA CHAND (18G)",
   "Cost": 580,
-  "Price": 900
+  "Price": 900,
+  "Qty OH": -989
  },
  {
   "Item Description": "KATTLE ELECTRIC (MINI)(NATIONAL)",
   "Cost": 450,
-  "Price": 750
+  "Price": 750,
+  "Qty OH": 12
  },
  {
   "Item Description": "KATTLE ELECTRIC (OXFORD)",
   "Cost": 1690,
-  "Price": 2150
+  "Price": 2150,
+  "Qty OH": -63
  },
  {
   "Item Description": "KATTLE ELECTRIC STEEL (KENWOOD & PHILIPS",
   "Cost": 820,
-  "Price": 1200
+  "Price": 1200,
+  "Qty OH": -142
  },
  {
   "Item Description": "KETLI (12CP) STEEL",
   "Cost": 610,
-  "Price": 720
+  "Price": 720,
+  "Qty OH": -537
  },
  {
   "Item Description": "KETLI (15CP) STEEL",
   "Cost": 630,
-  "Price": 740
+  "Price": 740,
+  "Qty OH": -626
  },
  {
   "Item Description": "KETLI (18CP) STEEL",
   "Cost": 650,
   "Price": 770,
-  "Qty OH": -1152
+  "Qty OH": -1154
  },
  {
   "Item Description": "KETLI (2.5L) GERMAN",
   "Cost": 1410,
-  "Price": 1775
+  "Price": 1775,
+  "Qty OH": -812
  },
  {
   "Item Description": "KETLI (24CP) STEEL",
@@ -4889,219 +4905,260 @@
  {
   "Item Description": "KETLI (3.5L) GERMAN",
   "Cost": 1510,
-  "Price": 1900
+  "Price": 1900,
+  "Qty OH": -683
  },
  {
   "Item Description": "KETLI (30CP) STEEL",
   "Cost": 750,
-  "Price": 900
+  "Price": 900,
+  "Qty OH": -706
  },
  {
   "Item Description": "KETLI (40CP) STEEL",
   "Cost": 1020,
-  "Price": 1210
+  "Price": 1210,
+  "Qty OH": -108
  },
  {
   "Item Description": "KETLI (5.5L) GERMAN",
   "Cost": 1850,
-  "Price": 2325
+  "Price": 2325,
+  "Qty OH": -14
  },
  {
   "Item Description": "KETLI (50CP) STEEL",
   "Cost": 1150,
-  "Price": 1350
+  "Price": 1350,
+  "Qty OH": -32
  },
  {
   "Item Description": "KETLI (6.5L) GERMAN",
   "Cost": 2200,
-  "Price": 2885
+  "Price": 2885,
+  "Qty OH": -125
  },
  {
   "Item Description": "KETLI (60CP) STEEL",
   "Cost": 1300,
-  "Price": 1525
+  "Price": 1525,
+  "Qty OH": 3
  },
  {
   "Item Description": "KETLI (70CP) STEEL",
   "Cost": 1450,
-  "Price": 1700
+  "Price": 1700,
+  "Qty OH": -2
  },
  {
   "Item Description": "KETLI (80CP) STEEL",
   "Cost": 1660,
-  "Price": 1865
+  "Price": 1865,
+  "Qty OH": -1
  },
  {
   "Item Description": "KETLI (90CP) STEEL",
   "Cost": 1850,
-  "Price": 2170
+  "Price": 2170,
+  "Qty OH": -1
  },
  {
   "Item Description": "KETLI AJWA (18CM) COLOUR",
   "Cost": 1490,
-  "Price": 1875
+  "Price": 1875,
+  "Qty OH": 17
  },
  {
   "Item Description": "KETLI AJWA (18CM) NAQSHI",
   "Cost": 1560,
-  "Price": 1960
+  "Price": 1960,
+  "Qty OH": -42
  },
  {
   "Item Description": "KETLI AJWA (18CM) SADA",
   "Cost": 1540,
-  "Price": 1860
+  "Price": 1860,
+  "Qty OH": -88
  },
  {
   "Item Description": "KETLI AJWA (24CM) BABA",
   "Cost": 1560,
-  "Price": 1875
+  "Price": 1875,
+  "Qty OH": 4
  },
  {
   "Item Description": "KETLI AJWA (24CM) COLOUR",
   "Cost": 1610,
-  "Price": 2015
+  "Price": 2015,
+  "Qty OH": -776
  },
  {
   "Item Description": "KETLI AJWA (24CM) NAQSHI",
   "Cost": 1660,
-  "Price": 2085
+  "Price": 2085,
+  "Qty OH": -15
  },
  {
   "Item Description": "KETLI AJWA (24CM) SADA",
   "Cost": 1670,
-  "Price": 1925
+  "Price": 1925,
+  "Qty OH": -59
  },
  {
   "Item Description": "KETLI KOHNOOR FLOWER",
   "Cost": 1500,
-  "Price": 1885
+  "Price": 1885,
+  "Qty OH": -830
  },
  {
   "Item Description": "KETLI NEELAM (18CM) SADA",
   "Cost": 1480,
-  "Price": 1960
+  "Price": 1960,
+  "Qty OH": -557
  },
  {
   "Item Description": "KETLI NEELAM (24CM) SADA",
   "Cost": 1610,
-  "Price": 2025
+  "Price": 2025,
+  "Qty OH": -109
  },
  {
   "Item Description": "KETLI WHISTLE (5.5CM)",
   "Cost": 2550,
-  "Price": 3200
+  "Price": 3200,
+  "Qty OH": -37
  },
  {
   "Item Description": "KITCHEN SET (HALO HANDAL) (7P) (12G)",
   "Cost": 1900,
-  "Price": 2600
+  "Price": 2600,
+  "Qty OH": 5
  },
  {
   "Item Description": "KITCHEN SET BLACK (4P) (12G)",
   "Cost": 1012,
-  "Price": 1275
+  "Price": 1275,
+  "Qty OH": 42
  },
  {
   "Item Description": "KITCHEN SET BLACK (7P) (12G)",
   "Cost": 1645,
-  "Price": 2100
+  "Price": 2100,
+  "Qty OH": -25
  },
  {
   "Item Description": "KITCHEN SET BLACK BABY (4P) (12G)",
   "Cost": 830,
-  "Price": 1075
+  "Price": 1075,
+  "Qty OH": -94
  },
  {
   "Item Description": "KITCHEN SET HALO HANDLE (4P)",
   "Cost": 1164,
-  "Price": 2375
+  "Price": 2375,
+  "Qty OH": -497
  },
  {
   "Item Description": "KITCHEN SET KAHU (4P) (WAZNI)",
   "Cost": 870,
-  "Price": 1100
+  "Price": 1100,
+  "Qty OH": 37
  },
  {
   "Item Description": "KITCHEN SET STEEL (PIPE+SITTA) (4P) (14G)",
   "Cost": 1025,
-  "Price": 1400
+  "Price": 1400,
+  "Qty OH": -1
  },
  {
   "Item Description": "KONCHA 27'' GOOL STEEL HANDEL",
   "Cost": 280,
-  "Price": 450
+  "Price": 450,
+  "Qty OH": -25
  },
  {
   "Item Description": "LAGAR NO.2",
   "Cost": 1230,
-  "Price": 1460
+  "Price": 1460,
+  "Qty OH": -65
  },
  {
   "Item Description": "LAGAR NO.2 (16G)",
   "Cost": 1440,
-  "Price": 1710
+  "Price": 1710,
+  "Qty OH": -109
  },
  {
   "Item Description": "LAGAR NO.3",
   "Cost": 1370,
-  "Price": 1775
+  "Price": 1775,
+  "Qty OH": -79
  },
  {
   "Item Description": "LAGAR NO.3 (16G)",
   "Cost": 1700,
-  "Price": 2060
+  "Price": 2060,
+  "Qty OH": -258
  },
  {
   "Item Description": "LAGAR NO.4",
   "Cost": 1500,
-  "Price": 2000
+  "Price": 2000,
+  "Qty OH": 2
  },
  {
   "Item Description": "LAGAR NO.4 (16G)",
   "Cost": 1900,
-  "Price": 2300
+  "Price": 2300,
+  "Qty OH": -88
  },
  {
   "Item Description": "LAGAR TOL (14G) (SPECIAL)",
-  "Cost": 860,
+  "Cost": 848.17,
   "Price": 1175,
-  "Qty OH": -2185
+  "Qty OH": -1893
  },
  {
   "Item Description": "LAUNDRY GRACE",
   "Cost": 1550,
-  "Price": 2040
+  "Price": 2040,
+  "Qty OH": 5
  },
  {
   "Item Description": "LAUNDRY GRACE PIXEL",
   "Cost": 650,
-  "Price": 1310
+  "Price": 1310,
+  "Qty OH": 43
  },
  {
   "Item Description": "LAUNDRY GRACE RATTAN",
   "Cost": 1150,
-  "Price": 2280
+  "Price": 2280,
+  "Qty OH": 137
  },
  {
   "Item Description": "LAUNDRY GRACE RENZO",
   "Cost": 820,
-  "Price": 1560
+  "Price": 1560,
+  "Qty OH": 81
  },
  {
   "Item Description": "LEMON JUICER (WH)",
   "Cost": 70,
-  "Price": 110
+  "Price": 110,
+  "Qty OH": -588
  },
  {
   "Item Description": "LITER A",
   "Cost": 120,
-  "Price": 160
+  "Price": 160,
+  "Qty OH": -659
  },
  {
   "Item Description": "LOSS MALL DOUBLE GLAZE (GMW)",
   "Cost": 630,
   "Price": 890,
-  "Qty OH": -41953
+  "Qty OH": -42048
  },
  {
   "Item Description": "LOSS TRY CHORAS (GMW)",
@@ -5113,61 +5170,67 @@
   "Item Description": "LOTA FANCY WAZNI",
   "Cost": 640,
   "Price": 825,
-  "Qty OH": -3001
+  "Qty OH": -3022
  },
  {
   "Item Description": "LOTA NAGINA",
   "Cost": 720,
-  "Price": 950
+  "Price": 950,
+  "Qty OH": -598
  },
  {
   "Item Description": "LOTA NO.4",
   "Cost": 475,
   "Price": 600,
-  "Qty OH": -8498
+  "Qty OH": -8506
  },
  {
   "Item Description": "LOTA NO.5",
-  "Cost": 540,
+  "Cost": 550,
   "Price": 700,
-  "Qty OH": -3952
+  "Qty OH": -3916
  },
  {
   "Item Description": "LOTA NO.6",
   "Cost": 610,
   "Price": 785,
-  "Qty OH": -3710
+  "Qty OH": -3713
  },
  {
   "Item Description": "LUNCH BOX LARGE (2P) SHERAZ",
   "Cost": 1080,
-  "Price": 1300
+  "Price": 1300,
+  "Qty OH": -106
  },
  {
   "Item Description": "LUNCH BOX SMALL (2P) SHERAZ",
   "Cost": 980,
-  "Price": 1175
+  "Price": 1175,
+  "Qty OH": -28
  },
  {
   "Item Description": "MAKHAN DABI DIAMOND (3P)",
   "Cost": 750,
   "Price": 940,
-  "Qty OH": -2003
+  "Qty OH": -2010
  },
  {
   "Item Description": "MAKHAN DABI HASSAN (3P)",
   "Cost": 635,
-  "Price": 790
+  "Price": 790,
+  "Qty OH": 1
  },
  {
   "Item Description": "MARTABAN NO. 0 MT",
   "Cost": 380,
-  "Price": 510
+  "Price": 510,
+  "Qty OH": -49
  },
  {
   "Item Description": "MARTABAN NO. 1 MT",
   "Cost": 430,
-  "Price": 560
+  "Price": 560,
+  "Qty OH": -28
  },
  {
   "Item Description": "MARTABAN NO. 2 MT",
@@ -5179,7 +5242,7 @@
   "Item Description": "MARTABAN NO. 3 MT",
   "Cost": 550,
   "Price": 700,
-  "Qty OH": -60
+  "Qty OH": -61
  },
  {
   "Item Description": "MARTABAN NO. 4 MT",
@@ -5190,68 +5253,64 @@
  {
   "Item Description": "MARTABAN NO. 5 MT",
   "Cost": 650,
-  "Price": 925,
-  "Qty OH": 32
+  "Price": 925
  },
  {
   "Item Description": "MARTABAN NO.0",
   "Cost": 658,
-  "Price": 825,
-  "Qty OH": 17
+  "Price": 825
  },
  {
   "Item Description": "MARTABAN NO.1",
   "Cost": 752,
   "Price": 910,
-  "Qty OH": -47
+  "Qty OH": -58
  },
  {
   "Item Description": "MARTABAN NO.1 FANCY",
   "Cost": 850,
   "Price": 1000,
-  "Qty OH": -995
+  "Qty OH": -997
  },
  {
   "Item Description": "MARTABAN NO.2",
   "Cost": 875,
   "Price": 1050,
-  "Qty OH": -52
+  "Qty OH": -65
  },
  {
   "Item Description": "MARTABAN NO.2 FANCY",
   "Cost": 950,
   "Price": 1125,
-  "Qty OH": -877
+  "Qty OH": -880
  },
  {
   "Item Description": "MARTABAN NO.3",
   "Cost": 987,
   "Price": 1200,
-  "Qty OH": 208
+  "Qty OH": 205
  },
  {
   "Item Description": "MARTABAN NO.3 FANCY",
   "Cost": 1050,
   "Price": 1250,
-  "Qty OH": -774
+  "Qty OH": -782
  },
  {
   "Item Description": "MARTABAN NO.4",
   "Cost": 1175,
-  "Price": 1425,
-  "Qty OH": 95
+  "Price": 1425
  },
  {
   "Item Description": "MARTABAN NO.4 FANCY",
   "Cost": 1128,
   "Price": 1470,
-  "Qty OH": -41
+  "Qty OH": -53
  },
  {
   "Item Description": "MARTABAN NO.5",
   "Cost": 1363,
-  "Price": 1650,
-  "Qty OH": 39
+  "Price": 1650
  },
  {
   "Item Description": "MARTABAN NO.5 FANCY",
@@ -5262,20 +5321,18 @@
  {
   "Item Description": "MARTABAN NO.6",
   "Cost": 1560,
-  "Price": 1885,
-  "Qty OH": 8
+  "Price": 1885
  },
  {
   "Item Description": "MASALA BOX (5P) NO.1161 ACRYLIC",
   "Cost": 1037.5,
-  "Price": 1285,
-  "Qty OH": 19
+  "Price": 1285
  },
  {
   "Item Description": "MASALA BOX (6P) CHORAS ACRYLIC NO.1101",
   "Cost": 2822,
   "Price": 3500,
-  "Qty OH": -341
+  "Qty OH": -347
  },
  {
   "Item Description": "MASALA BOX (6P) NO.1121 ACRYLIC",
@@ -5291,27 +5348,24 @@
  },
  {
   "Item Description": "MASALA BOX BRAVO SMART (6P) (PB)",
-  "Cost": 1450,
-  "Price": 1825,
-  "Qty OH": 18
+  "Cost": 1350,
+  "Price": 1825
  },
  {
   "Item Description": "MASALA BOX BRAVO SMART (9P) (PB)",
-  "Cost": 1950,
-  "Price": 2450,
-  "Qty OH": 13
+  "Cost": 1850,
+  "Price": 2450
  },
  {
   "Item Description": "MASALA BOX CHOICE (6P)",
-  "Cost": 1000,
-  "Price": 1295,
-  "Qty OH": -14
+  "Cost": 950,
+  "Price": 1295
  },
  {
   "Item Description": "MASALA BOX CHOICE (9P)",
-  "Cost": 1400,
+  "Cost": 1350,
   "Price": 1810,
-  "Qty OH": -40
+  "Qty OH": -30
  },
  {
   "Item Description": "MASALA BOX CROWN (12P) PB",
@@ -5335,37 +5389,36 @@
   "Item Description": "MASALA BOX CROWN (9P) PB",
   "Cost": 1080,
   "Price": 1710,
-  "Qty OH": -31
+  "Qty OH": -34
  },
  {
   "Item Description": "MASALA BOX HI CLASS (6P) PB",
   "Cost": 810,
   "Price": 1060,
-  "Qty OH": -47
+  "Qty OH": -48
  },
  {
   "Item Description": "MASALA BOX HI CLASS (6P) WB",
-  "Cost": 900,
+  "Cost": 855,
   "Price": 1175,
-  "Qty OH": -36
+  "Qty OH": -12
  },
  {
   "Item Description": "MASALA BOX HI CLASS (8P) PB",
   "Cost": 990,
   "Price": 1295,
-  "Qty OH": -26
+  "Qty OH": -29
  },
  {
   "Item Description": "MASALA BOX HI CLASS (8P) WB",
-  "Cost": 1035,
+  "Cost": 990,
   "Price": 1355,
-  "Qty OH": -40
+  "Qty OH": -24
  },
  {
   "Item Description": "MASALA BOX MODERN (6P) WB",
   "Cost": 1035,
-  "Price": 1355,
-  "Qty OH": 19
+  "Price": 1355
  },
  {
   "Item Description": "MASALA BOX MODERN (8P) WB",
@@ -5377,7 +5430,7 @@
   "Item Description": "MASALA DIBI STEEL (SINGEL)",
   "Cost": 110,
   "Price": 250,
-  "Qty OH": 174
+  "Qty OH": 168
  },
  {
   "Item Description": "MILK CANE NO.0",
@@ -5394,50 +5447,46 @@
  {
   "Item Description": "MILK CANE NO.1",
   "Cost": 573.4,
-  "Price": 725,
-  "Qty OH": 47
+  "Price": 725
  },
  {
   "Item Description": "MILK CANE NO.1 (16G)",
   "Cost": 686,
   "Price": 830,
-  "Qty OH": 17
+  "Qty OH": 1
  },
  {
   "Item Description": "MILK CANE NO.1 MT",
   "Cost": 410,
-  "Price": 490,
-  "Qty OH": -6
+  "Price": 490
  },
  {
   "Item Description": "MILK CANE NO.2",
   "Cost": 650,
   "Price": 795,
-  "Qty OH": -179
+  "Qty OH": -195
  },
  {
   "Item Description": "MILK CANE NO.2 (16G)",
   "Cost": 780,
   "Price": 950,
-  "Qty OH": -21
+  "Qty OH": -29
  },
  {
   "Item Description": "MILK CANE NO.2 MT",
   "Cost": 460,
   "Price": 600,
-  "Qty OH": -106
+  "Qty OH": -107
  },
  {
   "Item Description": "MILK CANE NO.3",
   "Cost": 705,
-  "Price": 875,
-  "Qty OH": 13
+  "Price": 875
  },
  {
   "Item Description": "MILK CANE NO.3 (16G)",
   "Cost": 880,
-  "Price": 1060,
-  "Qty OH": 71
+  "Price": 1060
  },
  {
   "Item Description": "MILK CANE NO.3 MT",
@@ -5448,92 +5497,87 @@
  {
   "Item Description": "MILK CANE NO.4 (16G)",
   "Cost": 1075,
-  "Price": 1300,
-  "Qty OH": -5
+  "Price": 1300
  },
  {
   "Item Description": "MILK CANE NO.4 MT",
   "Cost": 640,
-  "Price": 790,
-  "Qty OH": 30
+  "Price": 790
  },
  {
   "Item Description": "MILK CANE NO.5 (16G)",
   "Cost": 1265,
-  "Price": 1525,
-  "Qty OH": 30
+  "Price": 1525
  },
  {
   "Item Description": "MILK CANE NO.5 MT",
   "Cost": 720,
-  "Price": 940,
-  "Qty OH": 48
+  "Price": 940
  },
  {
   "Item Description": "MILK CANE NO.6 (16G)",
   "Cost": 1460,
-  "Price": 1800,
-  "Qty OH": 0
+  "Price": 1800
  },
  {
   "Item Description": "MILK PAN (16CM) SMALL SK (DOUBLE KNOB)",
   "Cost": 593.45,
   "Price": 950,
-  "Qty OH": -286
+  "Qty OH": -295
  },
  {
   "Item Description": "MILK PAN (18CM) MEDIUM SK (DOUBLE KNOB)",
   "Cost": 722.1,
   "Price": 1050,
-  "Qty OH": -286
+  "Qty OH": -292
  },
  {
   "Item Description": "MILK PAN (20CM) LARGE SK (DOUBLE KNOB)",
   "Cost": 854.9,
   "Price": 1150,
-  "Qty OH": -148
+  "Qty OH": -153
  },
  {
   "Item Description": "MIX MALL (STEEL)",
   "Cost": 10988,
   "Price": 1,
-  "Qty OH": -1109
+  "Qty OH": -1108
  },
  {
   "Item Description": "MUG FANCY LARGE (INDIAN)",
   "Cost": 200,
   "Price": 295,
-  "Qty OH": -757
+  "Qty OH": -798
  },
  {
   "Item Description": "MUG FANCY MEDIUM (INDIAN)",
   "Cost": 160,
   "Price": 230,
-  "Qty OH": -573
+  "Qty OH": -629
  },
  {
   "Item Description": "MUG NO.1 MEHRAN",
   "Cost": 190,
   "Price": 230,
-  "Qty OH": -215
+  "Qty OH": -221
  },
  {
   "Item Description": "MUG NO.2 MEHRAN",
   "Cost": 235,
   "Price": 285,
-  "Qty OH": -531
+  "Qty OH": -578
  },
  {
   "Item Description": "MUG NO.3 MEHRAN",
   "Cost": 275,
   "Price": 330,
-  "Qty OH": -276
+  "Qty OH": -338
  },
  {
   "Item Description": "MUG NO.4 MEHRAN",
   "Cost": 325,
   "Price": 390,
-  "Qty OH": -223
+  "Qty OH": -241
  },
  {
   "Item Description": "MUGHI NO.1  (14G)",
@@ -5545,13 +5589,13 @@
   "Item Description": "MUGHI NO.1 (FINE) N",
   "Cost": 900,
   "Price": 1225,
-  "Qty OH": -2784
+  "Qty OH": -2786
  },
  {
   "Item Description": "MUGHI NO.1 (FINE) S",
-  "Cost": 920,
+  "Cost": 900,
   "Price": 1125,
-  "Qty OH": -381
+  "Qty OH": -343
  },
  {
   "Item Description": "MUGHI NO.1 (GOGI)",
@@ -5563,7 +5607,7 @@
   "Item Description": "MUGHI NO.1 MT",
   "Cost": 630,
   "Price": 790,
-  "Qty OH": 20
+  "Qty OH": 16
  },
  {
   "Item Description": "MUGHI NO.2 (14G)",
@@ -5575,13 +5619,13 @@
   "Item Description": "MUGHI NO.2 (FINE) N",
   "Cost": 1200,
   "Price": 1450,
-  "Qty OH": -2750
+  "Qty OH": -2756
  },
  {
   "Item Description": "MUGHI NO.2 (FINE) S",
-  "Cost": 1020,
+  "Cost": 1010,
   "Price": 1235,
-  "Qty OH": -370
+  "Qty OH": -279
  },
  {
   "Item Description": "MUGHI NO.2 (GOGI)",
@@ -5593,7 +5637,7 @@
   "Item Description": "MUGHI NO.2 MT",
   "Cost": 770,
   "Price": 975,
-  "Qty OH": 16
+  "Qty OH": 8
  },
  {
   "Item Description": "MUGHI NO.2 MT WAZNI",
@@ -5605,7 +5649,7 @@
   "Item Description": "MUGHI NO.3  (14G)",
   "Cost": 1500,
   "Price": 2025,
-  "Qty OH": -295
+  "Qty OH": -307
  },
  {
   "Item Description": "MUGHI NO.3 (FINE) N",
@@ -5617,7 +5661,7 @@
   "Item Description": "MUGHI NO.3 (FINE) S",
   "Cost": 1200,
   "Price": 1485,
-  "Qty OH": -1166
+  "Qty OH": -1167
  },
  {
   "Item Description": "MUGHI NO.3 (GOGI)",
@@ -5629,7 +5673,7 @@
   "Item Description": "MUGHI NO.3 MT",
   "Cost": 920,
   "Price": 1150,
-  "Qty OH": -64
+  "Qty OH": -36
  },
  {
   "Item Description": "MUGHI NO.4  (14G)",
@@ -5639,15 +5683,15 @@
  },
  {
   "Item Description": "MUGHI NO.4 (FINE) N",
-  "Cost": 1600,
+  "Cost": 1550,
   "Price": 1925,
-  "Qty OH": -2999
+  "Qty OH": -2976
  },
  {
   "Item Description": "MUGHI NO.4 (FINE) S",
-  "Cost": 1500,
+  "Cost": 1470,
   "Price": 1835,
-  "Qty OH": 7
+  "Qty OH": 64
  },
  {
   "Item Description": "MUGHI NO.4 (GOGI)",
@@ -5659,7 +5703,7 @@
   "Item Description": "MUGHI NO.4 MT",
   "Cost": 1070,
   "Price": 1325,
-  "Qty OH": -44
+  "Qty OH": -47
  },
  {
   "Item Description": "MUGHI NO.5  (14G)",
@@ -5671,7 +5715,7 @@
   "Item Description": "MUGHI NO.5 (FINE) N",
   "Cost": 1900,
   "Price": 2335,
-  "Qty OH": -2557
+  "Qty OH": -2524
  },
  {
   "Item Description": "MUGHI NO.5 (FINE) S",
@@ -5683,7 +5727,7 @@
   "Item Description": "MUGHI NO.5 (GOGI)",
   "Cost": 1800,
   "Price": 2150,
-  "Qty OH": -46
+  "Qty OH": -47
  },
  {
   "Item Description": "MUGHI NO.5 MT",
@@ -5707,7 +5751,7 @@
   "Item Description": "MULTI WONDER (CHINA)",
   "Cost": 260,
   "Price": 350,
-  "Qty OH": -12
+  "Qty OH": 41
  },
  {
   "Item Description": "MX MALL (STEEL)",
@@ -5725,25 +5769,25 @@
   "Item Description": "NAMAK DANI (2P) NO.(1203\/2) ACRYLIC",
   "Cost": 514.6,
   "Price": 640,
-  "Qty OH": -2422
+  "Qty OH": -2424
  },
  {
   "Item Description": "NAMAK DANI (2P) NO.1206 ACRYLIC",
   "Cost": 415,
   "Price": 620,
-  "Qty OH": -380
+  "Qty OH": -382
  },
  {
   "Item Description": "NAMAK DANI (3P) NO.1131 ACRYLIC (FALCON)",
   "Cost": 888.1,
   "Price": 1100,
-  "Qty OH": -1136
+  "Qty OH": -1144
  },
  {
   "Item Description": "NAMAK DANI (4P) NO.1211 ACRYLIC",
   "Cost": 763.6,
   "Price": 950,
-  "Qty OH": -688
+  "Qty OH": -690
  },
  {
   "Item Description": "NAMAK DANI (DS) BLACK & WHITE",
@@ -5779,13 +5823,13 @@
   "Item Description": "NAMAK DANI (DS) LA PRADO (4P)",
   "Cost": 697,
   "Price": 1030,
-  "Qty OH": -272
+  "Qty OH": -277
  },
  {
   "Item Description": "NAMAK DANI (DS) MARVEL",
   "Cost": 369,
   "Price": 565,
-  "Qty OH": -194
+  "Qty OH": -196
  },
  {
   "Item Description": "NAMAK DANI (DS) OLD WORLD (STAND)",
@@ -5815,19 +5859,25 @@
   "Item Description": "NAMAK DANI (DS) SPARKLE",
   "Cost": 516.6,
   "Price": 770,
-  "Qty OH": -249
+  "Qty OH": -254
  },
  {
   "Item Description": "NAMAK DANI (DS) SPRINKLE EZY STAND",
   "Cost": 385.4,
   "Price": 720,
-  "Qty OH": -246
+  "Qty OH": -259
  },
  {
   "Item Description": "NAMAK DANI (DS) TULIP",
   "Cost": 328,
   "Price": 500,
   "Qty OH": -56
+ },
+ {
+  "Item Description": "NAMAK DANI DOLLER 2PS",
+  "Cost": 180,
+  "Price": 240,
+  "Qty OH": 4
  },
  {
   "Item Description": "NAMAK DANI LIVON FINE (3P) (PH)",
@@ -5875,13 +5925,13 @@
   "Item Description": "PARAAT 14\" (16G)",
   "Cost": 305,
   "Price": 375,
-  "Qty OH": -7
+  "Qty OH": -44
  },
  {
   "Item Description": "PARAAT 14\" (18G)",
   "Cost": 205,
   "Price": 310,
-  "Qty OH": -184
+  "Qty OH": -190
  },
  {
   "Item Description": "PARAAT 14\" PRIME",
@@ -5893,7 +5943,7 @@
   "Item Description": "PARAAT 16\" (16G)",
   "Cost": 365,
   "Price": 475,
-  "Qty OH": -24
+  "Qty OH": -31
  },
  {
   "Item Description": "PARAAT 16\" (18G)",
@@ -5905,13 +5955,13 @@
   "Item Description": "PARAAT 16\" PRIME",
   "Cost": 490,
   "Price": 615,
-  "Qty OH": 103
+  "Qty OH": 98
  },
  {
   "Item Description": "PARAAT 18\" (16G)",
   "Cost": 465,
   "Price": 600,
-  "Qty OH": -208
+  "Qty OH": -222
  },
  {
   "Item Description": "PARAAT 18\" (18G)",
@@ -5923,13 +5973,13 @@
   "Item Description": "PARAAT 18\" PRIME",
   "Cost": 699.4,
   "Price": 775,
-  "Qty OH": -20
+  "Qty OH": -43
  },
  {
   "Item Description": "PARAAT 20\" (16G)",
   "Cost": 550,
   "Price": 750,
-  "Qty OH": -253
+  "Qty OH": -262
  },
  {
   "Item Description": "PARAAT 20\" (18G)",
@@ -5947,7 +5997,7 @@
   "Item Description": "PARAAT 22\" (16G)",
   "Cost": 650,
   "Price": 925,
-  "Qty OH": -52
+  "Qty OH": -55
  },
  {
   "Item Description": "PARAAT 22\" (18G)",
@@ -5995,13 +6045,13 @@
   "Item Description": "PARAAT SHERAZ 20\" (16G)",
   "Cost": 745,
   "Price": 925,
-  "Qty OH": -6445
+  "Qty OH": -6451
  },
  {
   "Item Description": "PARAAT SHERAZ 22\" (16G)",
   "Cost": 925,
   "Price": 1160,
-  "Qty OH": -5649
+  "Qty OH": -5658
  },
  {
   "Item Description": "PARAAT SHERAZ 24\" (16G)",
@@ -6013,7 +6063,7 @@
   "Item Description": "PARAAT SHERAZ 24\" (PRIME)",
   "Cost": 1120,
   "Price": 1635,
-  "Qty OH": 196
+  "Qty OH": 193
  },
  {
   "Item Description": "PARAAT SHERAZ 26\" (16G)",
@@ -6037,7 +6087,7 @@
   "Item Description": "PARAAT TOOL (12-24) (14G)",
   "Cost": 635,
   "Price": 790,
-  "Qty OH": -918
+  "Qty OH": -943
  },
  {
   "Item Description": "PARAAT TOOL SHERAZ (12-20) (14G)",
@@ -6067,7 +6117,7 @@
   "Item Description": "PLATE 8\" (16G)",
   "Cost": 817.2,
   "Price": 1358,
-  "Qty OH": -9
+  "Qty OH": -10
  },
  {
   "Item Description": "PLATE 8\" (18G)",
@@ -6079,13 +6129,13 @@
   "Item Description": "PLATE 9\" (14G)(2.5)",
   "Cost": 1584,
   "Price": 2090,
-  "Qty OH": -332
+  "Qty OH": -338
  },
  {
   "Item Description": "PLATE 9\" (16G)(1.7)",
   "Cost": 1048.85,
   "Price": 1490,
-  "Qty OH": 27
+  "Qty OH": 13
  },
  {
   "Item Description": "PLATE 9\" (20G)(1.0)",
@@ -6107,9 +6157,9 @@
  },
  {
   "Item Description": "PONI NO.1 DELL (14G)",
-  "Cost": 725,
+  "Cost": 780,
   "Price": 1014,
-  "Qty OH": -45
+  "Qty OH": -35
  },
  {
   "Item Description": "PONI NO.1 HERO",
@@ -6121,7 +6171,7 @@
   "Item Description": "PONI NO.1 MINAR",
   "Cost": 640,
   "Price": 850,
-  "Qty OH": -54
+  "Qty OH": -55
  },
  {
   "Item Description": "PONI NO.1 ROYAL",
@@ -6133,49 +6183,49 @@
   "Item Description": "PONI NO.2 DELL (14G)",
   "Cost": 880,
   "Price": 1140,
-  "Qty OH": -29
+  "Qty OH": -6
  },
  {
   "Item Description": "PONI NO.2 MINAR",
   "Cost": 740,
   "Price": 970,
-  "Qty OH": -839
+  "Qty OH": -847
  },
  {
   "Item Description": "PONI NO.2 ROYAL",
   "Cost": 810,
   "Price": 1030,
-  "Qty OH": -154
+  "Qty OH": -157
  },
  {
   "Item Description": "PONI NO.3 DELL (14G)",
   "Cost": 980,
   "Price": 1270,
-  "Qty OH": -3
+  "Qty OH": 8
  },
  {
   "Item Description": "PONI NO.3 MINAR",
   "Cost": 840,
   "Price": 1100,
-  "Qty OH": -423
+  "Qty OH": -428
  },
  {
   "Item Description": "PONI NO.3 ROYAL",
   "Cost": 910,
   "Price": 1150,
-  "Qty OH": -200
+  "Qty OH": -204
  },
  {
   "Item Description": "PONI NO.4 MINER",
   "Cost": 940,
   "Price": 1210,
-  "Qty OH": -36
+  "Qty OH": -40
  },
  {
   "Item Description": "PONI NO.4 ROYAL",
   "Cost": 1280,
   "Price": 1600,
-  "Qty OH": -191
+  "Qty OH": -192
  },
  {
   "Item Description": "PONI NO.5 DELL (14G)",
@@ -6205,7 +6255,7 @@
   "Item Description": "POWA 24\" KAHU (16G)",
   "Cost": 391.66,
   "Price": 525,
-  "Qty OH": -45
+  "Qty OH": -49
  },
  {
   "Item Description": "POWA 27'' STEEL HANDLE",
@@ -6217,7 +6267,7 @@
   "Item Description": "POWA BABY BLACK (12G)",
   "Cost": 260,
   "Price": 325,
-  "Qty OH": -445
+  "Qty OH": -451
  },
  {
   "Item Description": "POWA BABY WH",
@@ -6235,13 +6285,13 @@
   "Item Description": "PUSH CHOPPER 2L (PH) (CHINA)",
   "Cost": 440,
   "Price": 590,
-  "Qty OH": -6
+  "Qty OH": -12
  },
  {
   "Item Description": "PUSH CHOPPER 2L (ST) (CHINA)",
   "Cost": 600,
   "Price": 790,
-  "Qty OH": -4
+  "Qty OH": 6
  },
  {
   "Item Description": "RABER COOKER (BLACK)",
@@ -6259,13 +6309,13 @@
   "Item Description": "RABER COOKER (SK)",
   "Cost": 250,
   "Price": 365,
-  "Qty OH": -409
+  "Qty OH": -413
  },
  {
   "Item Description": "RABER COOKER (WHITE)",
   "Cost": 1190,
   "Price": 1500,
-  "Qty OH": -1554
+  "Qty OH": -1557
  },
  {
   "Item Description": "RABER COOKER BLACK A (G\/L)",
@@ -6295,7 +6345,7 @@
   "Item Description": "SASPAN (NS) SK 18CM (STONE)",
   "Cost": 1556.25,
   "Price": 2100,
-  "Qty OH": -37
+  "Qty OH": -40
  },
  {
   "Item Description": "SASPAN (NS) SK 21CM (STONE)",
@@ -6307,409 +6357,19 @@
   "Item Description": "SASPAN LG",
   "Cost": 1335,
   "Price": 1600,
-  "Qty OH": 41
+  "Qty OH": 34
  },
  {
   "Item Description": "SASPAN METAL FINISH",
   "Cost": 1150,
   "Price": 1400,
-  "Qty OH": -815
+  "Qty OH": -737
  },
  {
   "Item Description": "SASPAN SAMSUNG",
-  "Cost": 1380,
-  "Price": 1575,
-  "Qty OH": -17057
- },
- {
-  "Item Description": "SASPAN STEEL 5'' BABY",
-  "Cost": 450,
-  "Price": 545,
-  "Qty OH": -53
- },
- {
-  "Item Description": "SASPAN STEEL 6'' SMALL",
-  "Cost": 510,
-  "Price": 635,
-  "Qty OH": -895
- },
- {
-  "Item Description": "SASPAN STEEL 7'' MEDIUM",
-  "Cost": 610,
-  "Price": 765,
-  "Qty OH": -1168
- },
- {
-  "Item Description": "SASPAN STEEL 8'' LARGE",
-  "Cost": 710,
-  "Price": 900,
-  "Qty OH": -1128
- },
- {
-  "Item Description": "SASPAN STEEL 9'' JUMBO",
-  "Cost": 910,
-  "Price": 1150,
-  "Qty OH": -137
- },
- {
-  "Item Description": "SEFTY WAL COOKER",
-  "Cost": 94,
-  "Price": 115,
-  "Qty OH": -434
- },
- {
-  "Item Description": "SIPRI SET DEEL (11*12)",
-  "Cost": 1410,
-  "Price": 1685,
-  "Qty OH": -332
- },
- {
-  "Item Description": "SIPRI SET DEEL (WITHOUT BOX)",
-  "Cost": 1400,
-  "Price": 1675,
-  "Qty OH": -2391
- },
- {
-  "Item Description": "SIPRI SET SUPREEM",
-  "Cost": 1400,
-  "Price": 1570,
-  "Qty OH": -26778
- },
- {
-  "Item Description": "SIPRI SUPREEM (11*12)",
-  "Cost": 1060,
-  "Price": 1580,
-  "Qty OH": -447
- },
- {
-  "Item Description": "SONEX DOUBLE GRILL 30CM",
-  "Cost": 2785,
-  "Price": 3360,
-  "Qty OH": -3
- },
- {
-  "Item Description": "SONEX DOUBLE GRILL 36CM",
-  "Cost": 3500,
-  "Price": 4200,
-  "Qty OH": -4
- },
- {
-  "Item Description": "SOUP SET SUPER WARE",
-  "Cost": 1120,
-  "Price": 1290,
-  "Qty OH": -103
- },
- {
-  "Item Description": "SPON (B) (16G)",
-  "Cost": 370,
-  "Price": 515,
-  "Qty OH": -967
- },
- {
-  "Item Description": "SPON (D) (16G)",
-  "Cost": 400,
-  "Price": 525,
-  "Qty OH": -5489
- },
- {
-  "Item Description": "SPON (D) MT",
-  "Cost": 270,
-  "Price": 370,
-  "Qty OH": -99
- },
- {
-  "Item Description": "SPON (KANTA) (16G)",
-  "Cost": 370,
-  "Price": 525,
-  "Qty OH": -589
- },
- {
-  "Item Description": "SPON (SARVING & PANJA) (16G)",
-  "Cost": 880,
-  "Price": 1100,
-  "Qty OH": -783
- },
- {
-  "Item Description": "SPON (T) (16G) AR",
-  "Cost": 370,
-  "Price": 480,
-  "Qty OH": -41
- },
- {
-  "Item Description": "SPON CHAINA (B)",
-  "Cost": 400,
-  "Price": 500,
-  "Qty OH": -13
- },
- {
-  "Item Description": "SPON SONEX (B) (14G)",
-  "Cost": 715,
-  "Price": 900,
-  "Qty OH": -206
- },
- {
-  "Item Description": "SPON SONEX (D) (14G)",
-  "Cost": 730,
-  "Price": 915,
-  "Qty OH": -498
- },
- {
-  "Item Description": "SPON SONEX (KANTA) (14G)",
-  "Cost": 730,
-  "Price": 915,
-  "Qty OH": -60
- },
- {
-  "Item Description": "SPON SONEX (SARVING+PANJA) (14G)",
-  "Cost": 1200,
-  "Price": 1830,
-  "Qty OH": -83
- },
- {
-  "Item Description": "SPON SONEX (T) (14G)",
-  "Cost": 700,
-  "Price": 845,
-  "Qty OH": -56
- },
- {
-  "Item Description": "STEAMER SK (3P)",
-  "Cost": 5522.5,
-  "Price": 7950,
-  "Qty OH": -6
- },
- {
-  "Item Description": "STEEMER JALI COOKER",
-  "Cost": 170,
-  "Price": 235,
-  "Qty OH": 10
- },
- {
-  "Item Description": "STORAGE BOWL (3P) (SHERAZ)",
-  "Cost": 1960,
-  "Price": 2325,
-  "Qty OH": -2293
- },
- {
-  "Item Description": "TAMBIYA  13*16 METAL FINSH",
-  "Cost": 1150,
-  "Price": 1400,
-  "Qty OH": -870
- },
- {
-  "Item Description": "TAMBIYA (4-6-8-10)  HAANI",
-  "Cost": 1400,
-  "Price": 1585,
-  "Qty OH": -399
- },
- {
-  "Item Description": "TAMBIYA (NS) 28CM (SK) (CASSEROLE)",
-  "Cost": 2792.95,
-  "Price": 3900,
-  "Qty OH": -1
- },
- {
-  "Item Description": "TAMBIYA (NS) 30CM (SK) (CASSEROLE)",
-  "Cost": 3361.5,
-  "Price": 4700,
-  "Qty OH": -17
- },
- {
-  "Item Description": "TAMBIYA (NS) 32CM (SK) (CASSEROLE)",
-  "Cost": 4909.85,
-  "Price": 5675,
-  "Qty OH": -15
- },
- {
-  "Item Description": "TAMBIYA (NS) 34CM (SK) (CASSEROLE)",
-  "Cost": 4734.5,
-  "Price": 6425,
-  "Qty OH": -170
- },
- {
-  "Item Description": "TAMBIYA 11*12 HAANI (KAN-KUNDA)",
-  "Cost": 1410,
-  "Price": 1595,
-  "Qty OH": -17732
- },
- {
-  "Item Description": "TAMBIYA 11*14 HAANI & (F)",
-  "Cost": 1343,
-  "Price": 1585,
-  "Qty OH": -1297
- },
- {
-  "Item Description": "TAMBIYA 11*14 SAMSUNG & (F)",
-  "Cost": 1378,
-  "Price": 1575,
-  "Qty OH": -7284
- },
- {
-  "Item Description": "TAMBIYA 11*14 SUPREEM",
-  "Cost": 970,
-  "Price": 1855,
-  "Qty OH": -3139
- },
- {
-  "Item Description": "TAMBIYA 13*15 (STEEL)",
-  "Cost": 786.23,
-  "Price": 960,
-  "Qty OH": -2396
- },
- {
-  "Item Description": "TAMBIYA 13*16 HAANI & (F)",
-  "Cost": 1345,
-  "Price": 1585,
-  "Qty OH": -5184
- },
- {
-  "Item Description": "TAMBIYA 13*16 SAMSUNG & (F)",
-  "Cost": 1380,
-  "Price": 1575,
-  "Qty OH": -23197
- },
- {
-  "Item Description": "TAMBIYA 13*16 SUPREEM",
-  "Cost": 1060,
-  "Price": 1855,
-  "Qty OH": -12540
- },
- {
-  "Item Description": "TAMBIYA 2*6 (M-F) (10P)",
-  "Cost": 1275,
-  "Price": 1545,
-  "Qty OH": -350
- },
- {
-  "Item Description": "TAMBIYA 7*10 (M-F) (8P)",
-  "Cost": 1300,
-  "Price": 1550,
-  "Qty OH": 4
- },
- {
-  "Item Description": "TAMBIYA 7*12 (STEEL)",
-  "Cost": 760,
-  "Price": 910,
-  "Qty OH": -4058
- },
- {
-  "Item Description": "TAMBIYA 7*9 (M-F) (6P)",
-  "Cost": 1275,
-  "Price": 1550,
-  "Qty OH": -95
- },
- {
-  "Item Description": "TAMBIYA 9*12 HAANI & (F)",
-  "Cost": 1340,
-  "Price": 1580,
-  "Qty OH": -2139
- },
- {
-  "Item Description": "TAMBIYA 9*12 METAL FINISH",
-  "Cost": 1150,
-  "Price": 1400,
-  "Qty OH": -133
- },
- {
-  "Item Description": "TAMBIYA 9*12 SAMSUNG & (F)",
-  "Cost": 1145,
-  "Price": 1570,
-  "Qty OH": -5805
- },
- {
-  "Item Description": "TAMBIYA 9*12 SUPREEM",
-  "Cost": 1060,
-  "Price": 1850,
-  "Qty OH": -4687
- },
- {
-  "Item Description": "TAMBIYA SONEX GALAXY 28CM",
-  "Cost": 3810,
-  "Price": 4800,
-  "Qty OH": -232
- },
- {
-  "Item Description": "TAWA (NS) 12'' (14G)",
-  "Cost": 1150,
-  "Price": 1575,
-  "Qty OH": -615
- },
- {
-  "Item Description": "TAWA (NS) 12\" (16G)",
-  "Cost": 925,
-  "Price": 1350,
-  "Qty OH": -2073
- },
- {
-  "Item Description": "TAWA (NS) 13\" (16G)",
-  "Cost": 850,
-  "Price": 1250,
-  "Qty OH": -82
- },
- {
-  "Item Description": "TAWA (NS) FINE 12\" SUPER",
-  "Cost": 1100,
-  "Price": 1485,
-  "Qty OH": -367
- },
- {
-  "Item Description": "TAWA (NS) FINE 14''",
-  "Cost": 1600,
-  "Price": 1950,
-  "Qty OH": -125
- },
- {
-  "Item Description": "TAWA (NS) IRON 14''",
-  "Cost": 750,
-  "Price": 1175,
-  "Qty OH": -128
- },
- {
-  "Item Description": "TAWA (NS) IRON NO.12''",
-  "Cost": 590,
-  "Price": 975,
-  "Qty OH": -37
- },
- {
-  "Item Description": "TAWA (NS) IRON NO.13''",
-  "Cost": 670,
-  "Price": 1075,
-  "Qty OH": -4
- },
- {
-  "Item Description": "TAWA (NS) IRON PIZZA 12\"",
-  "Cost": 610,
-  "Price": 1000,
-  "Qty OH": -216
- },
- {
-  "Item Description": "TAWA (NS) IRON PIZZA 13\"",
-  "Cost": 690,
-  "Price": 1100,
-  "Qty OH": -1
- },
- {
-  "Item Description": "TAWA (NS) PIZA FINE NO.2",
-  "Cost": 1440,
-  "Price": 1850,
-  "Qty OH": -304
- },
- {
-  "Item Description": "TAWA (NS) PIZA FINE NO.3",
-  "Cost": 1600,
-  "Price": 2050,
-  "Qty OH": -78
- },
- {
-  "Item Description": "TAWA (NS) PIZZA 13\"",
-  "Cost": 900,
-  "Price": 1350,
-  "Qty OH": -1538
- },
- {
-  "Item Description": "TAWA (NS) PIZZA SONEX GALAXY",
-  "Cost": 1660,
-  "Price": 2250,
-  "Qty OH": -50
+  "Cost": 1280,
+  "Price": 1590,
+  "Qty OH": -16951
  },
  {
   "Item Description": "TAWA 26CM (SK) PIZA SIGNATURE",
@@ -6721,7 +6381,7 @@
   "Item Description": "TAWA 30CM (SK) MARBLE STONE",
   "Cost": 1419.3,
   "Price": 1925,
-  "Qty OH": -153
+  "Qty OH": -156
  },
  {
   "Item Description": "TAWA 30CM (SK) PIZA SIGNATURE",
@@ -6732,20 +6392,20 @@
  {
   "Item Description": "TAWA DELL SAMSUNG",
   "Cost": 1150,
-  "Price": 1575,
+  "Price": 1590,
   "Qty OH": -2627
  },
  {
   "Item Description": "TAWA LASER CUTTING (30CM)",
   "Cost": 3040,
   "Price": 3875,
-  "Qty OH": -4
+  "Qty OH": -3
  },
  {
   "Item Description": "TAWA LASER CUTTING (34CM)",
   "Cost": 3600,
   "Price": 4600,
-  "Qty OH": -4
+  "Qty OH": -7
  },
  {
   "Item Description": "TEMPO SET (19*28) (MF) (SK)",
@@ -6763,19 +6423,19 @@
   "Item Description": "THAAL 13\" (16G)",
   "Cost": 245,
   "Price": 305,
-  "Qty OH": -1489
+  "Qty OH": -1498
  },
  {
   "Item Description": "THAAL 13\" (18G)",
   "Cost": 140,
   "Price": 210,
-  "Qty OH": -4909
+  "Qty OH": -4924
  },
  {
   "Item Description": "THAAL 15\" (16G)",
   "Cost": 275,
   "Price": 415,
-  "Qty OH": -54
+  "Qty OH": -60
  },
  {
   "Item Description": "THAAL 15\" (16G) NAQSHI",
@@ -6793,13 +6453,13 @@
   "Item Description": "THAAL 17\" (16G)",
   "Cost": 420,
   "Price": 520,
-  "Qty OH": -528
+  "Qty OH": -532
  },
  {
   "Item Description": "THAAL 17\" (16G) NAQSHI",
   "Cost": 445,
   "Price": 625,
-  "Qty OH": -96
+  "Qty OH": -98
  },
  {
   "Item Description": "THAAL 17\" (18G)",
@@ -6823,7 +6483,7 @@
   "Item Description": "THAAL 21'' (16G)",
   "Cost": 630,
   "Price": 750,
-  "Qty OH": -294
+  "Qty OH": -298
  },
  {
   "Item Description": "THAAL 21\" (18G)",
@@ -6853,73 +6513,85 @@
   "Item Description": "THARMAS (3 L)",
   "Cost": 2500,
   "Price": 3125,
-  "Qty OH": -65
+  "Qty OH": -69
+ },
+ {
+  "Item Description": "THARMAS CAPRA STEEL (1 L)",
+  "Cost": 1310,
+  "Price": 1575,
+  "Qty OH": 9
+ },
+ {
+  "Item Description": "THARMAS CAPRA STEEL (2 L)",
+  "Cost": 1410,
+  "Price": 1690,
+  "Qty OH": 0
+ },
+ {
+  "Item Description": "THARMAS CAPRA STEEL (2 L)(CLR)",
+  "Cost": 1510,
+  "Price": 1790,
+  "Qty OH": 1
+ },
+ {
+  "Item Description": "THARMAS CAPRA STEEL (3 L)",
+  "Cost": 1710,
+  "Price": 2100,
+  "Qty OH": 0
  },
  {
   "Item Description": "THARMAS DAY 7 (0.3)",
   "Cost": 180,
   "Price": 225,
-  "Qty OH": -134
+  "Qty OH": -152
  },
  {
   "Item Description": "THARMAS DYNASTY GOLD (1 L)",
   "Cost": 1100,
   "Price": 1315,
-  "Qty OH": -89
+  "Qty OH": -93
  },
  {
   "Item Description": "THARMAS IMH",
   "Cost": 870,
   "Price": 1100,
-  "Qty OH": -157
- },
- {
-  "Item Description": "THARMAS PHONEX STEEL (1 L)",
-  "Cost": 1320,
-  "Price": 1575,
-  "Qty OH": -490
- },
- {
-  "Item Description": "THARMAS PHONEX STEEL (2 L)",
-  "Cost": 1420,
-  "Price": 1690,
-  "Qty OH": -40
+  "Qty OH": -179
  },
  {
   "Item Description": "THARMAS POLO PB (1 L)",
   "Cost": 960,
   "Price": 1160,
-  "Qty OH": -236
+  "Qty OH": -248
  },
  {
   "Item Description": "THARMAS SAFRON (CS) (1.6L)",
   "Cost": 1360,
   "Price": 1600,
-  "Qty OH": -176
+  "Qty OH": -218
  },
  {
   "Item Description": "THARMAS SAFRON (CS) (1.9L)",
   "Cost": 1410,
   "Price": 1660,
-  "Qty OH": -190
+  "Qty OH": -220
  },
  {
   "Item Description": "THARMAS X3 COLOUR",
   "Cost": 1500,
   "Price": 1750,
-  "Qty OH": -1
+  "Qty OH": -120
  },
  {
   "Item Description": "THARMAS X4 PH FALCON",
   "Cost": 710,
   "Price": 975,
-  "Qty OH": -56
+  "Qty OH": -80
  },
  {
   "Item Description": "THARMAS X6 (CS-SS) (1 L)",
   "Cost": 1160,
   "Price": 1425,
-  "Qty OH": -286
+  "Qty OH": -294
  },
  {
   "Item Description": "TIFFAN 2 KHANA (A)",
@@ -6931,7 +6603,7 @@
   "Item Description": "TIFFAN 3 KHANA (A)",
   "Cost": 660,
   "Price": 825,
-  "Qty OH": -2392
+  "Qty OH": -2399
  },
  {
   "Item Description": "TIFFAN 3 KHANA (BOX)",
@@ -6979,13 +6651,13 @@
   "Item Description": "TIFFAN PH",
   "Cost": 535,
   "Price": 625,
-  "Qty OH": -72
+  "Qty OH": -77
  },
  {
   "Item Description": "TOKA SET FANCY 9P FALARI (CH)",
   "Cost": 2650,
   "Price": 3475,
-  "Qty OH": -1
+  "Qty OH": 1
  },
  {
   "Item Description": "TOKA SET WHITE (CH)",
@@ -7021,13 +6693,13 @@
   "Item Description": "TOOTI ROYAL (A)",
   "Cost": 320,
   "Price": 480,
-  "Qty OH": -72
+  "Qty OH": -75
  },
  {
   "Item Description": "TRY (16G)",
   "Cost": 450,
   "Price": 725,
-  "Qty OH": -146
+  "Qty OH": -151
  },
  {
   "Item Description": "TRY (18G)",
@@ -7045,13 +6717,13 @@
   "Item Description": "TRY KING (16G)",
   "Cost": 625,
   "Price": 825,
-  "Qty OH": -1541
+  "Qty OH": -1539
  },
  {
   "Item Description": "TRY PUNJAB (16G)",
   "Cost": 750,
   "Price": 950,
-  "Qty OH": -1881
+  "Qty OH": -1879
  },
  {
   "Item Description": "TRY SET BITE & ITEL (3P)",
@@ -7063,19 +6735,19 @@
   "Item Description": "TRY SET CALIX (3P)",
   "Cost": 1400,
   "Price": 1775,
-  "Qty OH": -357
+  "Qty OH": -361
  },
  {
   "Item Description": "TRY SET COROLLE (3P)",
   "Cost": 2050,
   "Price": 2600,
-  "Qty OH": -83
+  "Qty OH": -85
  },
  {
   "Item Description": "TRY SET DOSA (3P)",
   "Cost": 1000,
   "Price": 1325,
-  "Qty OH": -26
+  "Qty OH": -25
  },
  {
   "Item Description": "TRY SET ELITE (3P)",
@@ -7111,7 +6783,7 @@
   "Item Description": "TRY SET GRACE DIVERSE (3P)",
   "Cost": 2817,
   "Price": 3340,
-  "Qty OH": 50
+  "Qty OH": 41
  },
  {
   "Item Description": "TRY SET GRACE FAMILY (3P)",
@@ -7123,19 +6795,19 @@
   "Item Description": "TRY SET GRACE GOOD MORNING (3P)",
   "Cost": 1638,
   "Price": 2015,
-  "Qty OH": 19
+  "Qty OH": 18
  },
  {
   "Item Description": "TRY SET GRACE HOMAGE (3P)",
   "Cost": 2767.5,
-  "Price": 3125,
-  "Qty OH": 4
+  "Price": 3225,
+  "Qty OH": 1
  },
  {
   "Item Description": "TRY SET GRACE MAYFAIR (3P)",
   "Cost": 1647,
   "Price": 2025,
-  "Qty OH": 33
+  "Qty OH": 32
  },
  {
   "Item Description": "TRY SET GRACE RIVOLI (3P)",
@@ -7153,13 +6825,13 @@
   "Item Description": "TRY SET GRACE SAPPHIRE (3P)",
   "Cost": 1670,
   "Price": 2000,
-  "Qty OH": 3
+  "Qty OH": -4
  },
  {
   "Item Description": "TRY SET GRACE VALUE (3P)",
   "Cost": 2736,
   "Price": 3240,
-  "Qty OH": 18
+  "Qty OH": 15
  },
  {
   "Item Description": "TRY SET HILTON (4P)",
@@ -7172,6 +6844,12 @@
   "Cost": 950,
   "Price": 1235,
   "Qty OH": -26
+ },
+ {
+  "Item Description": "TRY SET MAXIMUM (3P) (THAAL)",
+  "Cost": 1330,
+  "Price": 1525,
+  "Qty OH": -105
  },
  {
   "Item Description": "TRY SET MILTON ATTRACITIVE (3P)",
@@ -7201,7 +6879,7 @@
   "Item Description": "TRY SET PRIDE (4P)",
   "Cost": 1325,
   "Price": 1650,
-  "Qty OH": -81
+  "Qty OH": -85
  },
  {
   "Item Description": "TRY SET ROYAL (3P)",
@@ -7213,7 +6891,13 @@
   "Item Description": "TRY SET ROYAL DINE (3P)",
   "Cost": 1115,
   "Price": 1525,
-  "Qty OH": -191
+  "Qty OH": -202
+ },
+ {
+  "Item Description": "TRY SET STUDIO (4P)",
+  "Cost": 1210,
+  "Price": 1550,
+  "Qty OH": -31
  },
  {
   "Item Description": "TRY SET T20 (3P)",
@@ -7255,19 +6939,19 @@
   "Item Description": "TUMBLER AKURA",
   "Cost": 1100,
   "Price": 1450,
-  "Qty OH": -9
+  "Qty OH": 23
  },
  {
   "Item Description": "TUMBLER HYDRA FLOW KUNDA",
   "Cost": 1200,
   "Price": 1600,
-  "Qty OH": -12
+  "Qty OH": 0
  },
  {
   "Item Description": "TUMBLER WHITE BOX",
   "Cost": 1000,
   "Price": 1250,
-  "Qty OH": -15
+  "Qty OH": 3
  },
  {
   "Item Description": "TUP (OP) (22 & 24) (14G)",
@@ -7285,19 +6969,19 @@
   "Item Description": "TUP NO.4",
   "Cost": 2000,
   "Price": 2560,
-  "Qty OH": -627
+  "Qty OH": -592
  },
  {
   "Item Description": "TUP NO.5",
   "Cost": 1800,
   "Price": 2735,
-  "Qty OH": -1690
+  "Qty OH": -1705
  },
  {
   "Item Description": "TUP NO.6",
   "Cost": 2400,
   "Price": 3250,
-  "Qty OH": -460
+  "Qty OH": -427
  },
  {
   "Item Description": "WASHAL COOKER",
@@ -7315,25 +6999,25 @@
   "Item Description": "WATER SET FINE JUMBO",
   "Cost": 1950,
   "Price": 2625,
-  "Qty OH": -1299
+  "Qty OH": -1303
  },
  {
   "Item Description": "WATER SET FINE KING",
   "Cost": 1750,
   "Price": 2095,
-  "Qty OH": -2965
+  "Qty OH": -2978
  },
  {
   "Item Description": "WATER SET FINE NO.3",
-  "Cost": 1550,
+  "Cost": 1450,
   "Price": 1965,
-  "Qty OH": -1121
+  "Qty OH": -1085
  },
  {
   "Item Description": "WATER SET FINE PUNJAB",
   "Cost": 1950,
   "Price": 2325,
-  "Qty OH": -1577
+  "Qty OH": -1578
  },
  {
   "Item Description": "WATER SET FINE XL",
@@ -7345,7 +7029,7 @@
   "Item Description": "WATER SET H.H AL KHAIR & 3 STAR",
   "Cost": 2000,
   "Price": 2625,
-  "Qty OH": 60
+  "Qty OH": 37
  },
  {
   "Item Description": "WATER SET MAGNO (INDIAN)",
@@ -7369,7 +7053,7 @@
   "Item Description": "WATER SET WINE (INDIAN)",
   "Cost": 2950,
   "Price": 3700,
-  "Qty OH": -1256
+  "Qty OH": -1267
  },
  {
   "Item Description": "WEIGHT COOKER",
@@ -7381,13 +7065,13 @@
   "Item Description": "WELNA SET ACRYLIC",
   "Cost": 1250,
   "Price": 1750,
-  "Qty OH": -47
+  "Qty OH": -30
  },
  {
   "Item Description": "WELNA SET MELAMINE (GOL+CHORAS)",
-  "Cost": 950,
+  "Cost": 1050,
   "Price": 1325,
-  "Qty OH": 100
+  "Qty OH": 81
  }
 ],
 "Sheet2":[],
